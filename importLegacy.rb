@@ -10,6 +10,7 @@ graduations = []
 payments = []
 groupIDs = {}
 groups = []
+users = []
 
 xmlData = File.new("register.xml", "r").read
 doc = REXML::Document.new(xmlData)
@@ -66,6 +67,16 @@ doc.elements.each("DataStore/Clubs/Club") do |c|
 	end
 end
 
+doc.elements.each("DataStore/Users/User") do |u|
+	fname, sname = u.attributes["RealName"].split(/ /)
+	users << {
+		'sname' => sname,
+		'fname' => fname,
+		'login' => u.attributes["Login"],
+		'password' => u.attributes["PasswordHash"],
+	}
+end
+
 def write_yml(data, filename, base)
 	n = 1
 	File.open(filename, "w") do |f|
@@ -90,4 +101,5 @@ write_yml(students, 'students.yml', 'student')
 write_yml(groups, 'groups.yml', 'group')
 write_yml(payments, 'payments.yml', 'payment')
 write_yml(graduations, 'graduations.yml', 'graduation')
+write_yml(users, 'users.yml', 'user')
 
