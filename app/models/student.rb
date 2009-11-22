@@ -1,5 +1,5 @@
 class Student < ActiveRecord::Base
-	belongs_to :club
+	belongs_to :group
 	has_many :payments
 	has_many :graduations
 	validates_presence_of :personal_number
