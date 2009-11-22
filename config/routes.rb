@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :users
 
-  map.resources :students
+  map.resources :students, :has_many => [ :payments, :graduations ]
 
   map.resources :clubs
 

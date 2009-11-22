@@ -1,0 +1,28 @@
+<h1>Listing graduations</h1>
+
+<table>
+  <tr>
+    <th>Student</th>
+    <th>Grade</th>
+    <th>Instructor</th>
+    <th>Examiner</th>
+    <th>Graduated</th>
+  </tr>
+
+<% @graduations.each do |graduation| %>
+  <tr>
+    <td><%=h graduation.student_id %></td>
+    <td><%=h graduation.grade %></td>
+    <td><%=h graduation.instructor %></td>
+    <td><%=h graduation.examiner %></td>
+    <td><%=h graduation.graduated %></td>
+    <td><%= link_to 'Show', graduation %></td>
+    <td><%= link_to 'Edit', edit_graduation_path(graduation) %></td>
+    <td><%= link_to 'Destroy', graduation, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New graduation', new_graduation_path %>

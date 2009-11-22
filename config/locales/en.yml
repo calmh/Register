@@ -3,3 +3,9 @@
 
 en:
   hello: "Hello world"
+  Students: Students
+  ID: ID
+  Name: Name
+  Grade: Grade
+  Statistics: Statistics
+  Num_students: Number of Students

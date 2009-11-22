@@ -1,0 +1,28 @@
+<p>
+  <b>Student:</b>
+  <%=h @graduation.student_id %>
+</p>
+
+<p>
+  <b>Grade:</b>
+  <%=h @graduation.grade %>
+</p>
+
+<p>
+  <b>Instructor:</b>
+  <%=h @graduation.instructor %>
+</p>
+
+<p>
+  <b>Examiner:</b>
+  <%=h @graduation.examiner %>
+</p>
+
+<p>
+  <b>Graduated:</b>
+  <%=h @graduation.graduated %>
+</p>
+
+
+<%= link_to 'Edit', edit_graduation_path(@graduation) %> |
+<%= link_to 'Back', graduations_path %>

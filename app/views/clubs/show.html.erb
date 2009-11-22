@@ -15,8 +15,32 @@
           <%= @club.name %>
         </p>
       <%= link_to 'Edit', edit_club_path(@club) %>
+
+ <h2><%=t(:Students)%></h2>
+      <table class="table">
+        <tr>             
+          <th class="first"><%=t :ID%></th>
+	<th><%=t :Name%></th>
+          <th class="last"><%=t :Grade%></th>
+        </tr>
+        <% @club.students.each do |student| -%>
+        <tr class="<%= cycle("odd", "even") %>">
+	<td>
+	<%= link_to student.id, student_path(student) %>
+	</td>
+          <td>
+            <%= student.fname %>
+            <%= student.sname %>
+          </td>
+          <td class="last">
+            <%= student.grade %>
+          </td>
+        </tr>          
+        <% end -%>
+      </table>
     </div>
   </div>
 </div>
 
 <% content_for :sidebar, render(:partial => 'sidebar') -%>
+

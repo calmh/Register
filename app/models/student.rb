@@ -1,5 +1,7 @@
 class Student < ActiveRecord::Base
 	belongs_to :club
+	has_many :payments
+	has_many :graduations
 	validates_presence_of :personal_number
 	validates_uniqueness_of :personal_number
 	validate :check_personal_number
@@ -33,5 +35,13 @@ class Student < ActiveRecord::Base
 		self.personal_number = "19" + value if value =~ /^[3-9]\d\d\d\d\d-\d\d\d\d$/;
 		self.personal_number = "20" + value if value =~ /^[0-2]\d\d\d\d\d-\d\d\d\d$/;
 		self.personal_number = value if value =~ /^\d\d\d\d\d\d\d\d-\d\d\d\d$/;
+	end
+
+	def grade
+		if !@graduations.blank?
+			return @graduations[0].grade
+		else
+			return "Unknown"
+		end
 	end
 end

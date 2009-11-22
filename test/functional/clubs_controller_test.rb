@@ -23,6 +23,9 @@ class ClubsControllerTest < ActionController::TestCase
   test "should show club" do
     get :show, :id => clubs(:one).id
     assert_response :success
+    assert assigns(:club)
+    club = assigns(:club)
+    assert club.students.length == 2
   end
 
   test "should get edit" do
