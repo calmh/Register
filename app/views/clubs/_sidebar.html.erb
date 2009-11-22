@@ -2,10 +2,12 @@
   <h3><%=t :Statistics%></h3>
   <div class="content">
   <table class="table">
+<% if @club != nil && !@club.students.blank? %>
   <tr>
   <td><%=t :Num_students%>:</td>
   <td><%= @club.students.length %></td>
   <tr>
+<% end %>
   </table>
   </div>
 </div>
