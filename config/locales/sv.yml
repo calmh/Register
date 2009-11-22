@@ -1,0 +1,41 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+sv:
+  students: tränande
+  id: ID
+  name: namn
+  grade: grad
+  statistics: statistik
+  num_students: antal tränande
+  red: röd
+  yellow: gul
+  green: grön
+  blue: blå
+  black: svart
+  unknown: okänd
+  group: grupp
+  personal_no: personnummer
+  latest_payment: senaste inbetalning
+  time_since_grade: sen gradering
+  none: ingen
+  list: lista
+  new: ny
+  show: visa
+  edit: redigera
+  datetime:
+   distance_in_words:
+    about_x_years: ungefär %d år
+    over_x_years: over %d år
+    about_x_hours:
+     one: ungefär %d timme
+     other: ungefär %d timmar
+    less_than_x_minutes:
+     one: mindre än %d minut 
+     other: mindre än %d minuter
+    x_minutes:
+     one: %d minut 
+     other: %d minuter
+    x_months:
+     one: %d månad
+     other: %d månader

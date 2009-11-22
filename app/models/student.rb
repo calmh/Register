@@ -1,7 +1,7 @@
 class Student < ActiveRecord::Base
 	belongs_to :group
 	has_many :payments
-	has_many :graduations
+	has_many :graduations, :order => "graduated desc"
 	validates_uniqueness_of :personal_number, :if => Proc.new { |s| !s.personal_number.blank? && s.personal_number =~ /^(19[3-9]|20[0-2])\d[01]\d[0-3]\d(-\d\d\d\d)?$/ }
 	validate :check_personal_number
 
@@ -38,11 +38,24 @@ class Student < ActiveRecord::Base
 		self.personal_number = value if value =~ /^\d\d\d\d\d\d\d\d-\d\d\d\d$/;
 	end
 
-	def grade
-		if !@graduations.blank?
-			return @graduations[0].grade
+	def name
+		return fname + " " + sname
+	end
+
+	def latest_payment
+		if !payments.blank?
+			return payments[0].amount.to_s + " " + payments[0].description
 		else
-			return "Unknown"
+			return "-"
+		end
+	end
+
+	def active?
+		cutoff_days = 180
+		if payments.blank?
+			return Time.now - created_at < 86400 * cutoff_days
+		else
+			return Time.now - payments[0].received < 86400 * cutoff_days
 		end
 	end
 end

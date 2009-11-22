@@ -73,3 +73,12 @@ Rails::Initializer.run do |config|
   # Please note that observers generated using script/generate observer need to have an _observer suffix
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
 end
+
+ActionView::Base.field_error_proc = Proc.new do |html_tag, instance| 
+  if html_tag =~ /<label/
+    %|<div class="fieldWithErrors">#{html_tag} <span class="error">#{[instance.error_message].join(', ')}</span></div>|
+  else
+    html_tag
+  end
+end
+

@@ -1,1 +1,6 @@
-/* Override here any style definide by web-app-theme */
+td.student-active {
+	background-color: #f0fff0;
+}
+td.student-inactive {
+	background-color: #fff0f0;
+}

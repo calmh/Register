@@ -2,10 +2,24 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
-  Students: Students
-  ID: ID
-  Name: Name
-  Grade: Grade
-  Statistics: Statistics
-  Num_students: Number of Students
+  students: students
+  id: ID
+  name: name
+  grade: grade
+  statistics: statistics
+  num_students: number of students
+  red: red
+  yellow: yellow
+  green: green
+  blue: blue
+  black: black
+  unknown: unknown
+  group: group
+  personal_no: personal number
+  latest_payment: latest payment
+  time_since_grade: since graduation
+  none: none
+  list: list
+  new: new
+  show: show
+  edit: edit

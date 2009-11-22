@@ -11,26 +11,16 @@
     <div class="inner">
       <table class="table">
         <tr>             
-          <th class="first">ID</th>
-										<th>Name</th>
-					          <th>Created at</th>
-          <th class="last">&nbsp;</th>
+	<th class="first"><%=t :Name%></th>
+	<th class="last"><%=t :Num_students%></th>
         </tr>
         <% @clubs.each do |club| -%>
         <tr class="<%= cycle("odd", "even") %>">
-          <td>
-            <%= club.id %>
-          </td>
-										<td>
-						<%= link_to club.name, club_path(club) %>
-					</td>
-										<td>
-            <%= club.created_at %>
-          </td>
+	<td>
+	<%= link_to club.name, club_path(club) %>
+	</td>
           <td class="last">
-            <%= link_to 'show', club_path(club) %> |
-            <%= link_to 'edit', edit_club_path(club) %> |
-            <%= link_to 'destroy', club_path(club), :method => :delete, :confirm => 'Are you sure?' %>
+            <%= num_students(club) %>
           </td>
         </tr>          
         <% end -%>

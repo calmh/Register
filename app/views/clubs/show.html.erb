@@ -1,40 +1,36 @@
 <div class="block">
   <div class="secondary-navigation">
     <ul>
-      <li class="first"><%= link_to 'List', clubs_path  %></li>
-      <li><%= link_to 'New', new_club_path %></li>
-      <li class="active"><%= link_to 'Show', club_path %></li>
+      <li class="first"><%= link_to t(:list).humanize, clubs_path  %></li>
+      <li><%= link_to t(:new).humanize, new_club_path %></li>
+      <li class="active"><%= link_to t(:show).humanize, club_path %></li>
+      <li><%= link_to t(:edit).humanize, edit_club_path(@club) %></li>
     </ul>
     <div class="clear"></div>
   </div>          
   <div class="content">
     <div class="inner">
       
-        <p>
-          <b>Name:</b>
-          <%= @club.name %>
-        </p>
-      <%= link_to 'Edit', edit_club_path(@club) %>
+        <h2><%= @club.name %></h2>
 
- <h2><%=t(:Students)%></h2>
+ <h3><%=t(:students).humanize%></h3>
       <table class="table">
         <tr>             
-          <th class="first"><%=t :ID%></th>
-	<th><%=t :Name%></th>
-          <th class="last"><%=t :Grade%></th>
+        <th class="first"><%=t(:group).humanize%></th>
+	<th><%=t(:name).humanize%>
+	<th><%=t(:personal_no).humanize%>
+        <th><%=t(:grade).humanize%></th>
+	<th><%=t(:time_since_grade).humanize%>
+	<th><%=t(:latest_payment).humanize%>
         </tr>
         <% @club.students.each do |student| -%>
         <tr class="<%= cycle("odd", "even") %>">
-	<td>
-	<%= link_to student.id, student_path(student) %>
-	</td>
-          <td>
-            <%= student.fname %>
-            <%= student.sname %>
-          </td>
-          <td class="last">
-            <%= student.grade %>
-          </td>
+	<td><%= student.group.identifier %></td>
+	<td><%= link_to student.name, student_path(student) %></td>
+        <td><%= student.formatted_personal_number %></td>
+        <td><%= grade_name(current_grade(student).grade) %></td>
+        <td><%= time_ago_in_words(current_grade(student).graduated) %></td>
+        <td class="student-<%= student.active? ? 'active' : 'inactive' %>"><%=h student.latest_payment %></td>
         </tr>          
         <% end -%>
       </table>

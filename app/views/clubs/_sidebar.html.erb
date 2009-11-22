@@ -1,14 +1,14 @@
 <div class="block">
-  <h3><%=t :Statistics%></h3>
+  <h3><%=t(:statistics).titlecase%></h3>
   <div class="content">
-  <table class="table">
-<% if @club != nil && !@club.students.blank? %>
-  <tr>
-  <td><%=t :Num_students%>:</td>
-  <td><%= @club.students.length %></td>
-  <tr>
+<% for group in @club.groups do %>
+<% if group != nil && !group.students.blank? %>
+  <p>
+  <%=t(:group).humanize%>: <%=h group.identifier%><br/>
+  <%=t(:num_students).titlecase%>: <%= group.students.length %><br/>
+  </p>
 <% end %>
-  </table>
+<% end %>
   </div>
 </div>
 <div class="block">
