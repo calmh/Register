@@ -1,8 +1,8 @@
 <div class="block">
   <div class="secondary-navigation">
     <ul>
-      <li class="first active"><%= link_to 'List', students_path %></li>
-      <li><%= link_to 'New', new_student_path %></li>
+      <li class="first active"><%= link_to 'List', club_students_path(@club) %></li>
+      <li><%= link_to 'New', new_club_student_path(@club) %></li>
     </ul>
     <div class="clear"></div>
   </div>          

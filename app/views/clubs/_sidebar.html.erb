@@ -1,16 +1,18 @@
 <div class="block">
-  <h3><%=t(:statistics).titlecase%></h3>
+<% if controller.action_name == "show" %>
+  <h3><%=t(:Statistics)%></h3>
   <div class="content">
 <% for group in @club.groups do %>
 <% if group != nil && !group.students.blank? %>
   <p>
-  <%=t(:group).humanize%>: <%=h group.identifier%><br/>
-  <%=t(:num_students).titlecase%>: <%= group.students.length %><br/>
+  <%=t(:Group)%>: <%=h group.identifier%><br/>
+  <%=t(:Num_students)%>: <%= group.students.length %><br/>
   </p>
 <% end %>
 <% end %>
   </div>
 </div>
+<% end %>
 <div class="block">
   <h3>Links</h3>
   <ul class="navigation">

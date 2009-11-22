@@ -16,8 +16,8 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale
  
   def set_locale
-    locale = params[:locale] || 'en'
-    I18n.locale = locale
-    I18n.load_path += Dir[ File.join(RAILS_ROOT, 'lib', 'locale', '*.{rb,yml}') ]
+    if params[:locale] != nil
+    	I18n.locale = params[:locale]
+    end
   end
 end

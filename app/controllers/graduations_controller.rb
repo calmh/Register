@@ -2,7 +2,9 @@ class GraduationsController < ApplicationController
   # GET /graduations
   # GET /graduations.xml
   def index
-    @graduations = Graduation.all
+    @student = Student.find(params[:student_id])
+    @club = @student.club
+    @graduations = @student.graduations
 
     respond_to do |format|
       format.html # index.html.erb

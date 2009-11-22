@@ -1,9 +1,12 @@
 <div class="block">
   <div class="secondary-navigation">
     <ul>
-      <li class="first"><%= link_to 'List', students_path  %></li>
-      <li><%= link_to 'New', new_student_path %></li>
-      <li class="active"><%= link_to 'Show', student_path %></li>
+      <li class="first"><%= link_to t(:Club_List), clubs_path  %></li>
+      <li><%= link_to @club.name, club_path(@club) %></li>
+      <li class="active"><%= link_to @student.name, student_path(@student) %></li>
+      <li><%= link_to t(:Edit), edit_student_path(@student) %></li>
+      <li><%= link_to t(:Graduations), student_graduations_path(@student) %></li>
+      <li><%= link_to t(:Payments), student_payments_path(@student) %></li>
     </ul>
     <div class="clear"></div>
   </div>          
@@ -11,70 +14,49 @@
     <div class="inner">
       
         <p>
-          <b>Group_id:</b>
-          <%= @student.group_id %>
+          <b><%=t(:Personal_no)%>:</b>
+          <%=h @student.personal_number %>
         </p>
 
         <p>
-          <b>Sname:</b>
-          <%= @student.sname %>
+          <b><%=t(:Email)%>:</b>
+          <%=h @student.email %>
         </p>
 
         <p>
-          <b>Fname:</b>
-          <%= @student.fname %>
+          <b><%=t(:Home_phone)%>:</b>
+          <%=h @student.home_phone %>
         </p>
 
         <p>
-          <b>Personal_number:</b>
-          <%= @student.personal_number %>
+          <b><%=t(:Mobile_phone)%>:</b>
+          <%=h @student.mobile_phone %>
         </p>
 
         <p>
-          <b>Email:</b>
-          <%= @student.email %>
+          <b><%=t(:Street)%>:</b>
+          <%=h @student.street %>
         </p>
 
         <p>
-          <b>Home_phone:</b>
-          <%= @student.home_phone %>
+          <b><%=t(:Zipcode)%>:</b>
+          <%=h @student.zipcode %>
         </p>
 
         <p>
-          <b>Mobile_phone:</b>
-          <%= @student.mobile_phone %>
+          <b><%=t(:City)%>:</b>
+          <%=h @student.city %>
         </p>
 
         <p>
-          <b>Street:</b>
-          <%= @student.street %>
+          <b><%=t(:Title)%>:</b>
+          <%=h @student.title %>
         </p>
 
         <p>
-          <b>Zipcode:</b>
-          <%= @student.zipcode %>
+          <b><%=t(:Comments)%>:</b>
         </p>
-
-        <p>
-          <b>City:</b>
-          <%= @student.city %>
-        </p>
-
-        <p>
-          <b>Title:</b>
-          <%= @student.title %>
-        </p>
-
-        <p>
-          <b>Comments:</b>
-          <%= @student.comments %>
-        </p>
-
-        <p>
-          <b>Password:</b>
-          <%= @student.password %>
-        </p>
-      <%= link_to 'Edit', edit_student_path(@student) %>
+        <%=simple_format @student.comments %>
     </div>
   </div>
 </div>

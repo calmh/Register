@@ -1,27 +1,28 @@
 <div class="block">
   <div class="secondary-navigation">
     <ul>
-      <li class="first"><%= link_to t(:list).humanize, clubs_path  %></li>
-      <li><%= link_to t(:new).humanize, new_club_path %></li>
-      <li class="active"><%= link_to t(:show).humanize, club_path %></li>
-      <li><%= link_to t(:edit).humanize, edit_club_path(@club) %></li>
+      <li class="first"><%= link_to t(:Club_List), clubs_path  %></li>
+      <% if new_club_permission? %>
+      <li><%= link_to t(:New_Club), new_club_path %></li>
+      <% end %>
+      <li class="active"><%= link_to @club.name, club_path %></li>
+      <% if edit_club_permission? %>
+      <li><%= link_to t(:Edit_Club), edit_club_path(@club) %></li>
+      <% end %>
     </ul>
     <div class="clear"></div>
   </div>          
   <div class="content">
     <div class="inner">
-      
-        <h2><%= @club.name %></h2>
-
- <h3><%=t(:students).humanize%></h3>
+    <h2><%=t(:Students)%></h2>
       <table class="table">
         <tr>             
-        <th class="first"><%=t(:group).humanize%></th>
-	<th><%=t(:name).humanize%>
-	<th><%=t(:personal_no).humanize%>
-        <th><%=t(:grade).humanize%></th>
-	<th><%=t(:time_since_grade).humanize%>
-	<th><%=t(:latest_payment).humanize%>
+        <th class="first"><%=t(:Group)%></th>
+	<th><%=t(:Name)%>
+	<th><%=t(:Personal_no)%>
+        <th><%=t(:Grade)%></th>
+	<th><%=t(:Time_since_grade)%>
+	<th class="last"><%=t(:Latest_payment)%>
         </tr>
         <% @club.students.each do |student| -%>
         <tr class="<%= cycle("odd", "even") %>">

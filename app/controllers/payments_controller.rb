@@ -2,7 +2,9 @@ class PaymentsController < ApplicationController
   # GET /payments
   # GET /payments.xml
   def index
-    @payments = Payment.all
+    @student = Student.find(params[:student_id])
+    @club = @student.club
+    @payments = @student.payments
 
     respond_to do |format|
       format.html # index.html.erb

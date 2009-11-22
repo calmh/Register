@@ -1,26 +1,40 @@
-<h1>Listing payments</h1>
+<div class="block">
+  <div class="secondary-navigation">
+    <ul>
+      <li class="first"><%= link_to t(:Club_List), clubs_path  %></li>
+      <li><%= link_to @club.name, club_path(@club) %></li>
+      <li><%= link_to @student.name, student_path(@student) %></li>
+      <li><%= link_to t(:Edit), edit_student_path(@student) %></li>
+      <li><%= link_to t(:Graduations), student_graduations_path(@student) %></li>
+      <li class="active"><%= link_to t(:Payments), student_payments_path(@student) %></li>
+    </ul>
+    <div class="clear"></div>
+  </div>          
+  <div class="content">          
+    <h2 class="title"><%=t:Payments%></h2>
+    <div class="inner">
+      <table class="table">
+        <tr>             
+          <th class="first"><%=t:Received%></th>
+	<th><%=t:Amount%></th>
+	<th class="last"><%=t:Description%></th>
+        </tr>
+        <% @payments.each do |payment| -%>
+        <tr class="<%= cycle("odd", "even") %>">
+          <td><%=payment.received%></td>
+          <td><%=payment.amount%></td>
+          <td><%=payment.description%></td>
+        </tr>          
+        <% end -%>
+      </table>
+      <div class="actions-bar">
+        <div class="actions">
+        </div>
+        
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<table>
-  <tr>
-    <th>Student</th>
-    <th>Amount</th>
-    <th>Received</th>
-    <th>Description</th>
-  </tr>
-
-<% @payments.each do |payment| %>
-  <tr>
-    <td><%=h payment.student_id %></td>
-    <td><%=h payment.amount %></td>
-    <td><%=h payment.received %></td>
-    <td><%=h payment.description %></td>
-    <td><%= link_to 'Show', payment %></td>
-    <td><%= link_to 'Edit', edit_payment_path(payment) %></td>
-    <td><%= link_to 'Destroy', payment, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New payment', new_payment_path %>
+<% content_for :sidebar, render(:partial => 'sidebar') -%>

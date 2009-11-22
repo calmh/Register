@@ -2,27 +2,57 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 sv:
-  students: tränande
-  id: ID
-  name: namn
-  grade: grad
-  statistics: statistik
-  num_students: antal tränande
+  Students: Tränande
+  ID: ID
+  Name: Namn
+  Grade: Grad
+  Statistics: Statistik
+  Num_students: Antal tränande
+  Group: Grupp
+  Personal_no: Personnummer
+  Latest_payment: Senaste inbetalning
+  Time_since_grade: Sen gradering
+  Club_List: Klubbar
+  New_Club: Ny klubb
+  Edit_Club: Redigera klubb
+  All_Clubs: Alla klubbar
+  Edit_Student: Redigera tränande
+  Email: Epost
+  Home_phone: Telefon hemma
+  Mobile_phone: Telefon mobil
+  Street: Gatuadress
+  Zipcode: Postnummer
+  City: Stad
+  Title: Titel
+  Comments: Kommentarer
+  Sname: Efternamn
+  Fname: Förnamn
+  Save: Spara
+  Cancel: Avbryt
   red: röd
   yellow: gul
   green: grön
   blue: blå
   black: svart
   unknown: okänd
-  group: grupp
-  personal_no: personnummer
-  latest_payment: senaste inbetalning
-  time_since_grade: sen gradering
   none: ingen
-  list: lista
-  new: ny
-  show: visa
-  edit: redigera
+  or: eller
+  Profile: Användardprofil
+  Settings: Inställningar
+  Logout: Logga ut
+  Graduations: Graderingar
+  Instructor: Instruktör
+  Examiner: Examinator
+  Graduated: Graderade
+  Edit: Redigera
+  Payments: Inbetalningar
+  Description: Förklaring
+  Received: Mottaget
+  Amount: Belopp
+
+  Personal_no_descr: Ange personnumer (19700102-1234) eller födelsedatum (19700102).
+  Phone_number_descr: Ange telefonnummer på formen 0123-456789 eller +45 12345678 för internationella nummer.
+
   datetime:
    distance_in_words:
     about_x_years: ungefär %d år

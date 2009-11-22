@@ -1,18 +1,20 @@
 <div class="block">
   <div class="secondary-navigation">
     <ul>
-      <li class="first active"><%= link_to 'List', clubs_path %></li>
-      <li><%= link_to 'New', new_club_path %></li>
+      <li class="first active"><%= link_to t(:Club_List), clubs_path %></li>
+      <% if new_club_permission? %>
+      <li><%= link_to t(:New_Club), new_club_path %></li>
+      <% end %>
     </ul>
     <div class="clear"></div>
   </div>          
   <div class="content">          
-    <h2 class="title">All Clubs</h2>
+    <h2 class="title"><%=t(:All_Clubs)%></h2>
     <div class="inner">
       <table class="table">
         <tr>             
-	<th class="first"><%=t :Name%></th>
-	<th class="last"><%=t :Num_students%></th>
+	<th class="first"><%=t(:Name)%></th>
+	<th class="last"><%=t(:Num_students)%></th>
         </tr>
         <% @clubs.each do |club| -%>
         <tr class="<%= cycle("odd", "even") %>">

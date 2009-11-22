@@ -1,28 +1,20 @@
-<h1>Editing payment</h1>
+<div class="block">
+  <div class="secondary-navigation">
+    <ul>
+      <li class="first"><%= link_to 'List', payments_path  %></li>
+      <li><%= link_to 'New', new_payment_path %></li>
+      <li class="active"><%= link_to 'Edit', edit_payment_path %></li>
+    </ul>
+    <div class="clear"></div>
+  </div>          
+  <div class="content">            
+    <h2 class="title">Edit Payment</h2>
+    <div class="inner">
+      <% form_for @payment, :url => payment_path(@payment), :html => { :class => :form } do |f| -%>
+        <%= render :partial => "form", :locals => {:f => f} %>
+      <% end -%>
+    </div>
+  </div>
+</div>
 
-<% form_for(@payment) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :student_id %><br />
-    <%= f.text_field :student_id %>
-  </p>
-  <p>
-    <%= f.label :amount %><br />
-    <%= f.text_field :amount %>
-  </p>
-  <p>
-    <%= f.label :received %><br />
-    <%= f.datetime_select :received %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
-<% end %>
-
-<%= link_to 'Show', @payment %> |
-<%= link_to 'Back', payments_path %>
+<% content_for :sidebar, render(:partial => 'sidebar') -%>

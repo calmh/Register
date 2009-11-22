@@ -13,29 +13,37 @@ module ApplicationHelper
 
 	def grade_name(grade)
 		if grade == nil:
-			return t(:unknown)
+			return t(:none)
 		end
 
 		colors = {
-			0 => t(:none),
-			1 => t(:red) + " I",
-			2 => t(:red) + " II",
-			3 => t(:yellow) + " I",
-			4 => t(:yellow) + " II",
-			5 => t(:green) + " I",
-			6 => t(:green) + " II",
-			7 => t(:blue) + " I",
-			8 => t(:blue) + " II",
-			9 => t(:black) + " I",
-			10 => t(:black) + " II",
-			11 => t(:black) + " III",
-			12 => t(:black) + " IIII",
+			0 => t(:none).titlecase,
+			1 => t(:red).titlecase + " I",
+			2 => t(:red).titlecase + " II",
+			3 => t(:yellow).titlecase + " I",
+			4 => t(:yellow).titlecase + " II",
+			5 => t(:green).titlecase + " I",
+			6 => t(:green).titlecase + " II",
+			7 => t(:blue).titlecase + " I",
+			8 => t(:blue).titlecase + " II",
+			9 => t(:black).titlecase + " I",
+			10 => t(:black).titlecase + " II",
+			11 => t(:black).titlecase + " III",
+			12 => t(:black).titlecase + " IIII",
 		}
 		c = colors[grade]
 		if c == nil
 			return t(:unknown) + " (" + grade.to_s + ")"
 		else
-			return c.titlecase
+			return c
 		end
+	end
+
+	def new_club_permission?
+		false
+	end
+
+	def edit_club_permission?
+		return @club.name == "Lund"
 	end
 end

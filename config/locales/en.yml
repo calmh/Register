@@ -2,24 +2,35 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  students: students
-  id: ID
-  name: name
-  grade: grade
-  statistics: statistics
-  num_students: number of students
+  Students: Students
+  ID: ID
+  Name: Name
+  Grade: Grade
+  Statistics: Statistics
+  Num_students: Number of students
+  Group: Group
+  Personal_no: Personal number
+  Latest_payment: Latest payment
+  Time_since_grade: Since graduation
+  Club_List: Club List
+  New_Club: new club
+  Edit_Club: Edit Club
+  All_Clubs: All Clubs
+  Edit_Student: Edit Student
+  Email: Email
+  Home_phone: Home phone
+  Mobile_phone: Mobile phone
+  Street: Street
+  Zipcode: Zip code
+  City: City
+  Title: Title
+  Comments: Comments
+  Sname: Surname
+  Fname: First name
   red: red
   yellow: yellow
   green: green
   blue: blue
   black: black
   unknown: unknown
-  group: group
-  personal_no: personal number
-  latest_payment: latest payment
-  time_since_grade: since graduation
   none: none
-  list: list
-  new: new
-  show: show
-  edit: edit
