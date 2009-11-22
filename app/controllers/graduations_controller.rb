@@ -28,7 +28,7 @@ class GraduationsController < ApplicationController
   # GET /graduations/new
   # GET /graduations/new.xml
   def new
-    @student = Student.find(:params[:student_id])
+    @student = Student.find(params[:student_id])
     @graduation = Graduation.new
     @graduation.student = @student
 

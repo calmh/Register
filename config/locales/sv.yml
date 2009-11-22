@@ -56,7 +56,15 @@ sv:
   Remember_me: Kom ihåg mig
   Login_successful: Du är nu inloggad.
   Logout_successful: Du är nu utloggad.
-
+  Logged_in_since: Inloggad sedan
+  Logged_in_from: Loggade senast in från
+  Previous_login: Förra inloggningen
+  Previous_login_from: Loggade förra gången in från
+  Num_logins: Antal lyckade inloggningar
+  Login_descr: Bokstäver och siffror, minst fyra tecken.
+  Edit_User: Redigera användare
+  Current_grade: Nuvarande grad
+  Held_since: Sedan
   Personal_no_descr: Ange personnumer (19700102-1234) eller födelsedatum (19700102).
   Phone_number_descr: Ange telefonnummer på formen 0123-456789 eller +45 12345678 för internationella nummer.
 
@@ -76,3 +84,23 @@ sv:
     x_months:
      one: %d månad
      other: %d månader
+  
+  date:
+    order: [ :year, :month, :day ]
+    month_names: [~, Januari, Februari, Mars, April, Maj, Juni, Juli, Augusti, September, Oktober, November, December]
+    abbr_month_names: [~, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
+    abbr_day_names: [Sön, Mon, Tis, Ons, Tor, Fre, Lör ]
+    day_names: [Söndag, Mondag, Tisdag, Onsdag, Torsdag, Fredag, Lördag ]
+    formats:
+      default: "%Y-%m-%d"
+      short: "%b %d"
+      long: "%B %d, %Y"
+
+  time:
+    formats:
+      default: "%a, %d %b %Y %H:%M:%S %z"
+      short: "%d %b %H:%M"
+      long: "%B %d, %Y %H:%M"
+    am: "am"
+    pm: "pm"
+

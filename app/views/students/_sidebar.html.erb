@@ -1,13 +1,37 @@
 <div class="block">
-  <h3>Simple Block</h3>
+  <h3><%=t:Current_grade%></h3>
   <div class="content">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+<% g = current_grade(@student) %>
+  <p>
+  <b><%=t:Current_grade%>:</b>
+  <%=grade_name(g.grade)%>
+  </p>
+  <p>
+  <b><%=t:Held_since%>:</b>
+  <%=l(g.graduated.to_date)%>
+  </p>
   </div>
 </div>
+
 <div class="block">
-  <h3>Links</h3>
-  <ul class="navigation">
-    <li><a href="#">Link 1</a></li>
-    <li><a href="#">Link 2</a></li>
-  </ul>
+  <h3><%=t:Latest_payment%></h3>
+  <div class="content">
+  <p>
+<% if @student.payments.blank? %>
+  <%=t:No_payment%>
+<% else %>
+<% p = @student.payments[0] %>
+  <b><%=t:Amount%>:</b>
+  <%=p.amount%>
+  </p>
+  <p>
+  <b><%=t:Received%>:</b>
+  <%=l(p.received.to_date)%>
+  </p>
+  <p>
+  <b><%=t:Description%>:</b>
+  <%=h p.description%>
+<% end %>
+  </p>
+  </div>
 </div>

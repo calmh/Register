@@ -1,34 +1,26 @@
 
-  <div class="group">
-    <%= f.label :student_id, "Student_id", :class => :label %>
-    <%= f.text_field :student_id, :class => 'text_field' %>
-    <span class="description">Ex: a simple text</span>
-  </div>
+    <%= f.hidden_field :student_id, :class => 'text_field' %>
 
   <div class="group">
     <%= f.label :grade, "Grade", :class => :label %>
     <%= f.text_field :grade, :class => 'text_field' %>
-    <span class="description">Ex: a simple text</span>
   </div>
 
   <div class="group">
     <%= f.label :instructor, "Instructor", :class => :label %>
     <%= f.text_field :instructor, :class => 'text_field' %>
-    <span class="description">Ex: a simple text</span>
   </div>
 
   <div class="group">
     <%= f.label :examiner, "Examiner", :class => :label %>
     <%= f.text_field :examiner, :class => 'text_field' %>
-    <span class="description">Ex: a simple text</span>
   </div>
 
   <div class="group">
     <%= f.label :graduated, "Graduated", :class => :label %>
-    <%= f.datetime_select :graduated, :class => 'datetime_select' %>
-    <span class="description">Ex: a simple text</span>
+    <%= f.date_select :graduated, :class => 'datetime_select' %>
   </div>
         
 <div class="group navform">
-  <input type="submit" class="button" value="Save &rarr;" /> or <%= link_to 'Cancel', graduations_path %>
+  <input type="submit" class="button" value="Save &rarr;" /> or <%= link_to 'Cancel', student_graduations_path(@student, @graduation) %>
 </div>

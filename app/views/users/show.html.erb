@@ -26,6 +26,31 @@
           <%= @user.email %>
         </p>
 
+        <p>
+          <b><%=t:Logged_in_since%>:</b>
+          <%= @user.current_login_at %>
+        </p>
+
+        <p>
+          <b><%=t:Logged_in_from%>:</b>
+          <%= @user.current_login_ip %>
+        </p>
+
+        <p>
+          <b><%=t:Previous_login%>:</b>
+          <%= @user.last_login_at %>
+        </p>
+
+        <p>
+          <b><%=t:Previous_login_from%>:</b>
+          <%= @user.last_login_ip %>
+        </p>
+
+        <p>
+          <b><%=t:Num_logins%>:</b>
+          <%= @user.login_count %>
+        </p>
+
     </div>
   </div>
 </div>
