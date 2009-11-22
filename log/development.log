@@ -2441,3 +2441,44 @@ Migrating to CreatePermissions (20091114215418)
   [4;35;1mSQL (2.1ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20091114214935')[0m
   [4;36;1mSQL (2.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20091114215240')[0m
   [4;35;1mSQL (1.5ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20091114215344')[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (246.7ms)[0m   [0;1mCREATE TABLE "clubs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (90.8ms)[0m   [0;1mCREATE TABLE "permissions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "club_id" integer, "user_id" integer, "permission" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (130.0ms)[0m   [0;1mCREATE TABLE "students" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "club_id" integer, "sname" varchar(255), "fname" varchar(255), "personal_number" varchar(255), "email" varchar(255), "home_phone" varchar(255), "mobile_phone" varchar(255), "street" varchar(255), "zipcode" varchar(255), "city" varchar(255), "title" varchar(255), "comments" text, "password" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.5ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (86.7ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "club_id" integer, "login" varchar(255), "sname" varchar(255), "fname" varchar(255), "email" varchar(255), "password" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.5ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (90.7ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (91.7ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
+  [4;36;1mSQL (69.9ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20091114215418')[0m
+  [4;35;1mSQL (74.7ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20091114214935')[0m
+  [4;36;1mSQL (111.7ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20091114215240')[0m
+  [4;35;1mSQL (83.6ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20091114215344')[0m

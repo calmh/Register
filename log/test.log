@@ -2858,3 +2858,224 @@ Processing UsersController#update (for 0.0.0.0 at 2009-11-15 00:26:15) [PUT]
   [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
 Redirected to #<User:0x102ddda58>
 Completed in 2ms (DB: 1) | 302 Found [http://test.host/users/1?]
+  [4;36;1mClub Load (0.3ms)[0m   [0;1mSELECT "clubs".id FROM "clubs" WHERE ("clubs"."name" = 'Lund') LIMIT 1[0m
+  [4;35;1mClub Load (0.1ms)[0m   [0mSELECT "clubs".id FROM "clubs" WHERE ("clubs"."name" IS NULL) LIMIT 1[0m
+  [4;36;1mStudent Load (0.1ms)[0m   [0;1mSELECT "students".id FROM "students" WHERE ("students"."personal_number" IS NULL) LIMIT 1[0m
+  [4;35;1mStudent Load (0.2ms)[0m   [0mSELECT "students".id FROM "students" WHERE ("students"."personal_number" = '19800115-4114') LIMIT 1[0m
+  [4;36;1mStudent Load (0.1ms)[0m   [0;1mSELECT "students".id FROM "students" WHERE ("students"."personal_number" = 'abc123') LIMIT 1[0m
+  [4;35;1mStudent Load (0.1ms)[0m   [0mSELECT "students".id FROM "students" WHERE ("students"."personal_number" = '') LIMIT 1[0m
+  [4;36;1mStudent Load (0.1ms)[0m   [0;1mSELECT "students".id FROM "students" WHERE ("students"."personal_number" = '20800115-1234') LIMIT 1[0m
+  [4;35;1mStudent Load (0.1ms)[0m   [0mSELECT "students".id FROM "students" WHERE ("students"."personal_number" = '800115-1234') LIMIT 1[0m
+  [4;36;1mStudent Load (0.1ms)[0m   [0;1mSELECT "students".id FROM "students" WHERE ("students"."personal_number" = '8001151234') LIMIT 1[0m
+  [4;35;1mStudent Load (0.1ms)[0m   [0mSELECT "students".id FROM "students" WHERE ("students"."personal_number" = '198001151234') LIMIT 1[0m
+  [4;36;1mStudent Load (0.1ms)[0m   [0;1mSELECT "students".id FROM "students" WHERE ("students"."personal_number" = '19800115-1235') LIMIT 1[0m
+  [4;35;1mStudent Create (0.2ms)[0m   [0mINSERT INTO "students" ("city", "personal_number", "created_at", "title", "comments", "zipcode", "updated_at", "club_id", "home_phone", "street", "fname", "password", "sname", "email", "mobile_phone") VALUES('Lund', '19800115-1235', '2009-11-22 09:40:17', 'Gau lin', 'None', '22642', '2009-11-22 09:40:17', NULL, '0755-556000', 'Skarpskyttevägen 20C', 'Jakob', 'None', 'Borg', 'jakob@nym.se', '070-6466677')[0m
+  [4;36;1mStudent Load (0.2ms)[0m   [0;1mSELECT "students".id FROM "students" WHERE ("students"."personal_number" IS NULL AND "students".id <> 2053932786) LIMIT 1[0m
+  [4;35;1mStudent Load (0.1ms)[0m   [0mSELECT "students".id FROM "students" WHERE ("students"."personal_number" = '20800115-1234' AND "students".id <> 2053932786) LIMIT 1[0m
+  [4;36;1mStudent Load (0.1ms)[0m   [0;1mSELECT "students".id FROM "students" WHERE ("students"."personal_number" = '19800115-1235' AND "students".id <> 2053932786) LIMIT 1[0m
+  [4;35;1mStudent Load (0.1ms)[0m   [0mSELECT "students".id FROM "students" WHERE ("students"."personal_number" = '19800115-1235' AND "students".id <> 2053932786) LIMIT 1[0m
+  [4;36;1mStudent Load (0.1ms)[0m   [0;1mSELECT "students".id FROM "students" WHERE ("students"."personal_number" = '19800115-1235' AND "students".id <> 2053932786) LIMIT 1[0m
+  [4;35;1mStudent Load (0.1ms)[0m   [0mSELECT "students".id FROM "students" WHERE ("students"."personal_number" = '19800115-1235' AND "students".id <> 2053932786) LIMIT 1[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "clubs" [0m
+
+
+Processing ClubsController#create (for 0.0.0.0 at 2009-11-22 10:40:18) [POST]
+  Parameters: {"club"=>{"name"=>"Test club"}}
+  [4;35;1mClub Load (0.3ms)[0m   [0mSELECT "clubs".id FROM "clubs" WHERE ("clubs"."name" = 'Test club') LIMIT 1[0m
+  [4;36;1mClub Create (0.2ms)[0m   [0;1mINSERT INTO "clubs" ("name", "created_at", "updated_at") VALUES('Test club', '2009-11-22 09:40:18', '2009-11-22 09:40:18')[0m
+Redirected to http://test.host/clubs/3
+Completed in 7ms (DB: 3) | 302 Found [http://test.host/clubs?club%5Bname%5D=Test+club]
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM "clubs" [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM "clubs" [0m
+  [4;35;1mClub Load (0.2ms)[0m   [0mSELECT * FROM "clubs" WHERE ("clubs"."id" = 1) [0m
+
+
+Processing ClubsController#destroy (for 0.0.0.0 at 2009-11-22 10:40:18) [DELETE]
+  Parameters: {"id"=>"1"}
+  [4;36;1mClub Load (0.3ms)[0m   [0;1mSELECT * FROM "clubs" WHERE ("clubs"."id" = 1) [0m
+  [4;35;1mStudent Load (0.7ms)[0m   [0mSELECT * FROM "students" WHERE ("students".club_id = 1) [0m
+  [4;36;1mStudent Destroy (0.2ms)[0m   [0;1mDELETE FROM "students" WHERE "id" = 298486374[0m
+  [4;35;1mStudent Destroy (0.1ms)[0m   [0mDELETE FROM "students" WHERE "id" = 2053932785[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users".club_id = 1) [0m
+  [4;35;1mClub Destroy (0.1ms)[0m   [0mDELETE FROM "clubs" WHERE "id" = 1[0m
+Redirected to http://test.host/clubs
+Completed in 8ms (DB: 2) | 302 Found [http://test.host/clubs/1]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM "clubs" [0m
+  [4;35;1mClub Load (0.3ms)[0m   [0mSELECT * FROM "clubs" WHERE ("clubs"."id" = 1) [0m
+
+
+Processing ClubsController#edit (for 0.0.0.0 at 2009-11-22 10:40:18) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mClub Load (0.3ms)[0m   [0;1mSELECT * FROM "clubs" WHERE ("clubs"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering clubs/edit
+Rendered clubs/_form (1.2ms)
+Rendered clubs/_sidebar (0.4ms)
+Completed in 14ms (View: 13, DB: 1) | 200 OK [http://test.host/clubs/1/edit]
+
+
+Processing ClubsController#index (for 0.0.0.0 at 2009-11-22 10:40:18) [GET]
+  [4;35;1mClub Load (0.4ms)[0m   [0mSELECT * FROM "clubs" [0m
+Rendering template within layouts/application
+Rendering clubs/index
+Rendered clubs/_sidebar (0.1ms)
+Completed in 58ms (View: 56, DB: 0) | 200 OK [http://test.host/clubs]
+
+
+Processing ClubsController#new (for 0.0.0.0 at 2009-11-22 10:40:18) [GET]
+Rendering template within layouts/application
+Rendering clubs/new
+Rendered clubs/_form (0.8ms)
+Rendered clubs/_sidebar (0.1ms)
+Completed in 4ms (View: 3, DB: 0) | 200 OK [http://test.host/clubs/new]
+  [4;36;1mClub Load (0.3ms)[0m   [0;1mSELECT * FROM "clubs" WHERE ("clubs"."id" = 1) [0m
+
+
+Processing ClubsController#show (for 0.0.0.0 at 2009-11-22 10:40:18) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mClub Load (0.2ms)[0m   [0mSELECT * FROM "clubs" WHERE ("clubs"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering clubs/show
+Rendered clubs/_sidebar (0.1ms)
+Completed in 3ms (View: 2, DB: 1) | 200 OK [http://test.host/clubs/1]
+  [4;36;1mClub Load (0.3ms)[0m   [0;1mSELECT * FROM "clubs" WHERE ("clubs"."id" = 1) [0m
+
+
+Processing ClubsController#update (for 0.0.0.0 at 2009-11-22 10:40:18) [PUT]
+  Parameters: {"club"=>{}, "id"=>"1"}
+  [4;35;1mClub Load (0.2ms)[0m   [0mSELECT * FROM "clubs" WHERE ("clubs"."id" = 1) [0m
+  [4;36;1mClub Load (0.1ms)[0m   [0;1mSELECT "clubs".id FROM "clubs" WHERE ("clubs"."name" = 'Lund' AND "clubs".id <> 1) LIMIT 1[0m
+Redirected to http://test.host/clubs/1
+Completed in 3ms (DB: 1) | 302 Found [http://test.host/clubs/1?]
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM "students" [0m
+
+
+Processing StudentsController#create (for 0.0.0.0 at 2009-11-22 10:40:18) [POST]
+  Parameters: {"student"=>{"formatted_personal_number"=>"800115-1235"}}
+  [4;36;1mStudent Load (0.1ms)[0m   [0;1mSELECT "students".id FROM "students" WHERE ("students"."personal_number" = '19800115-1235') LIMIT 1[0m
+  [4;35;1mStudent Create (0.2ms)[0m   [0mINSERT INTO "students" ("city", "personal_number", "created_at", "title", "comments", "zipcode", "updated_at", "club_id", "home_phone", "street", "fname", "password", "sname", "email", "mobile_phone") VALUES(NULL, '19800115-1235', '2009-11-22 09:40:18', NULL, NULL, NULL, '2009-11-22 09:40:18', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)[0m
+Redirected to http://test.host/students/2053932786
+Completed in 6ms (DB: 1) | 302 Found [http://test.host/students?student%5Bformatted_personal_number%5D=800115-1235]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM "students" [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM "students" [0m
+  [4;36;1mStudent Load (0.4ms)[0m   [0;1mSELECT * FROM "students" WHERE ("students"."id" = 2053932785) [0m
+
+
+Processing StudentsController#destroy (for 0.0.0.0 at 2009-11-22 10:40:18) [DELETE]
+  Parameters: {"id"=>"2053932785"}
+  [4;35;1mStudent Load (0.4ms)[0m   [0mSELECT * FROM "students" WHERE ("students"."id" = 2053932785) [0m
+  [4;36;1mStudent Destroy (0.2ms)[0m   [0;1mDELETE FROM "students" WHERE "id" = 2053932785[0m
+Redirected to http://test.host/students
+Completed in 2ms (DB: 1) | 302 Found [http://test.host/students/2053932785]
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM "students" [0m
+  [4;36;1mStudent Load (0.4ms)[0m   [0;1mSELECT * FROM "students" WHERE ("students"."id" = 2053932785) [0m
+
+
+Processing StudentsController#edit (for 0.0.0.0 at 2009-11-22 10:40:18) [GET]
+  Parameters: {"id"=>"2053932785"}
+  [4;35;1mStudent Load (0.4ms)[0m   [0mSELECT * FROM "students" WHERE ("students"."id" = 2053932785) [0m
+Rendering template within layouts/application
+Rendering students/edit
+Rendered students/_form (10.1ms)
+Rendered students/_sidebar (0.4ms)
+Completed in 15ms (View: 14, DB: 1) | 200 OK [http://test.host/students/2053932785/edit]
+
+
+Processing StudentsController#index (for 0.0.0.0 at 2009-11-22 10:40:18) [GET]
+  [4;36;1mStudent Load (0.7ms)[0m   [0;1mSELECT * FROM "students" [0m
+Rendering template within layouts/application
+Rendering students/index
+Rendered students/_sidebar (0.1ms)
+Completed in 10ms (View: 9, DB: 1) | 200 OK [http://test.host/students]
+
+
+Processing StudentsController#new (for 0.0.0.0 at 2009-11-22 10:40:18) [GET]
+Rendering template within layouts/application
+Rendering students/new
+Rendered students/_form (7.9ms)
+Rendered students/_sidebar (0.1ms)
+Completed in 11ms (View: 10, DB: 0) | 200 OK [http://test.host/students/new]
+  [4;35;1mStudent Load (0.4ms)[0m   [0mSELECT * FROM "students" WHERE ("students"."id" = 2053932785) [0m
+
+
+Processing StudentsController#show (for 0.0.0.0 at 2009-11-22 10:40:18) [GET]
+  Parameters: {"id"=>"2053932785"}
+  [4;36;1mStudent Load (0.4ms)[0m   [0;1mSELECT * FROM "students" WHERE ("students"."id" = 2053932785) [0m
+Rendering template within layouts/application
+Rendering students/show
+Rendered students/_sidebar (0.1ms)
+Completed in 4ms (View: 3, DB: 1) | 200 OK [http://test.host/students/2053932785]
+  [4;35;1mStudent Load (0.4ms)[0m   [0mSELECT * FROM "students" WHERE ("students"."id" = 2053932785) [0m
+
+
+Processing StudentsController#update (for 0.0.0.0 at 2009-11-22 10:40:18) [PUT]
+  Parameters: {"id"=>"2053932785", "student"=>{}}
+  [4;36;1mStudent Load (0.4ms)[0m   [0;1mSELECT * FROM "students" WHERE ("students"."id" = 2053932785) [0m
+  [4;35;1mStudent Load (0.1ms)[0m   [0mSELECT "students".id FROM "students" WHERE ("students"."personal_number" = '19800115-4114' AND "students".id <> 2053932785) LIMIT 1[0m
+Redirected to http://test.host/students/2053932785
+Completed in 3ms (DB: 1) | 302 Found [http://test.host/students/2053932785?]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM "users" [0m
+
+
+Processing UsersController#create (for 0.0.0.0 at 2009-11-22 10:40:18) [POST]
+  Parameters: {"user"=>{}}
+  [4;35;1mUser Create (0.3ms)[0m   [0mINSERT INTO "users" ("created_at", "updated_at", "club_id", "fname", "login", "password", "sname", "email") VALUES('2009-11-22 09:40:18', '2009-11-22 09:40:18', NULL, NULL, NULL, NULL, NULL, NULL)[0m
+Redirected to http://test.host/users/298486375
+Completed in 6ms (DB: 0) | 302 Found [http://test.host/users?]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM "users" [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM "users" [0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+
+
+Processing UsersController#destroy (for 0.0.0.0 at 2009-11-22 10:40:18) [DELETE]
+  Parameters: {"id"=>"1"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mUser Destroy (0.1ms)[0m   [0;1mDELETE FROM "users" WHERE "id" = 1[0m
+Redirected to http://test.host/users
+Completed in 2ms (DB: 1) | 302 Found [http://test.host/users/1]
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM "users" [0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+
+
+Processing UsersController#edit (for 0.0.0.0 at 2009-11-22 10:40:18) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering users/edit
+Rendered users/_form (3.7ms)
+Rendered users/_sidebar (0.4ms)
+Completed in 8ms (View: 7, DB: 1) | 200 OK [http://test.host/users/1/edit]
+
+
+Processing UsersController#index (for 0.0.0.0 at 2009-11-22 10:40:18) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" [0m
+Rendering template within layouts/application
+Rendering users/index
+Rendered users/_sidebar (0.1ms)
+Completed in 9ms (View: 8, DB: 0) | 200 OK [http://test.host/users]
+
+
+Processing UsersController#new (for 0.0.0.0 at 2009-11-22 10:40:18) [GET]
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (2.8ms)
+Rendered users/_sidebar (0.1ms)
+Completed in 5ms (View: 5, DB: 0) | 200 OK [http://test.host/users/new]
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+
+
+Processing UsersController#show (for 0.0.0.0 at 2009-11-22 10:40:18) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering users/show
+Rendered users/_sidebar (0.1ms)
+Completed in 3ms (View: 2, DB: 1) | 200 OK [http://test.host/users/1]
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+
+
+Processing UsersController#update (for 0.0.0.0 at 2009-11-22 10:40:18) [PUT]
+  Parameters: {"id"=>"1", "user"=>{}}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Redirected to http://test.host/users/1
+Completed in 2ms (DB: 1) | 302 Found [http://test.host/users/1?]
