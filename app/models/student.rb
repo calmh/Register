@@ -2,8 +2,7 @@ class Student < ActiveRecord::Base
 	belongs_to :group
 	has_many :payments
 	has_many :graduations
-	validates_presence_of :personal_number
-	validates_uniqueness_of :personal_number
+	validates_uniqueness_of :personal_number, :if => Proc.new { |s| !s.personal_number.blank? && s.personal_number =~ /^(19[3-9]|20[0-2])\d[01]\d[0-3]\d(-\d\d\d\d)?$/ }
 	validate :check_personal_number
 
 	def luhn
@@ -18,8 +17,10 @@ class Student < ActiveRecord::Base
 
 	def check_personal_number
 		if !personal_number.blank?
-			errors.add_to_base("is in invalid format") if personal_number !~ /^(19[3-9]|20[0-2])\d[01]\d[0-3]\d-\d\d\d\d$/
-			errors.add_to_base("doesn't have a correct check digit") if luhn != 0
+			errors.add_to_base("is in invalid format") if personal_number !~ /^(19[3-9]|20[0-2])\d[01]\d[0-3]\d(-\d\d\d\d)?$/
+			if personal_number.length == 13:
+				errors.add_to_base("doesn't have a correct check digit") if luhn != 0
+			end
 		end
 	end
 
