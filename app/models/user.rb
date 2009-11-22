@@ -1,3 +1,3 @@
 class User < ActiveRecord::Base
-	belongs_to :club
+	has_many :permissions
 end
