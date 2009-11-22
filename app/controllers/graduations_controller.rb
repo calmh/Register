@@ -1,4 +1,6 @@
 class GraduationsController < ApplicationController
+  before_filter :require_user
+
   # GET /graduations
   # GET /graduations.xml
   def index

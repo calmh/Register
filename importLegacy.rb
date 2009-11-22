@@ -73,7 +73,7 @@ doc.elements.each("DataStore/Users/User") do |u|
 		'sname' => sname,
 		'fname' => fname,
 		'login' => u.attributes["Login"],
-		'password' => u.attributes["PasswordHash"],
+		'crypted_password' => u.attributes["PasswordHash"].downcase,
 	}
 end
 

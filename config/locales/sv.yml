@@ -49,6 +49,13 @@ sv:
   Description: Förklaring
   Received: Mottaget
   Amount: Belopp
+  Must_log_in: Du måste logga in för att komma åt den här sidan.
+  Log_in: Logga in
+  Login: Användarnamn
+  Password: Lösenord
+  Remember_me: Kom ihåg mig
+  Login_successful: Du är nu inloggad.
+  Logout_successful: Du är nu utloggad.
 
   Personal_no_descr: Ange personnumer (19700102-1234) eller födelsedatum (19700102).
   Phone_number_descr: Ange telefonnummer på formen 0123-456789 eller +45 12345678 för internationella nummer.

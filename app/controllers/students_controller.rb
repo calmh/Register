@@ -1,4 +1,6 @@
 class StudentsController < ApplicationController
+  before_filter :require_user
+
   # GET /students/1
   # GET /students/1.xml
   def show

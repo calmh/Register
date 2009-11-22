@@ -1,4 +1,6 @@
 class PermissionsController < ApplicationController
+  before_filter :require_user
+
   # GET /permissions
   # GET /permissions.xml
   def index

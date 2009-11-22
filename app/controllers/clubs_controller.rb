@@ -1,4 +1,6 @@
 class ClubsController < ApplicationController
+  before_filter :require_user
+
   # GET /clubs
   # GET /clubs.xml
   def index

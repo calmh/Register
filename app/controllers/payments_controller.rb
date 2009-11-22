@@ -1,4 +1,6 @@
 class PaymentsController < ApplicationController
+  before_filter :require_user
+
   # GET /payments
   # GET /payments.xml
   def index
