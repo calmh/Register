@@ -1,0 +1,27 @@
+- Inloggning
+  - Rättigheter per klubb
+    - Administrera
+    - Beivra
+  - Byta lösenord
+  - Återfå glömt lösenord
+- Grupper
+  - Redigera per klubb
+  - Redigera globala?
+- Klubbsida
+  - Markera flera tränande
+  - Lägga till betalning i bulk
+  - Lägga till gradering i bulk
+  - Ändra sortering
+  - Filtrera
+  - Mer statistik
+  - Exportera CSV
+- Individuell inloggning
+  - Ändra personuppgifter
+  - Ändra lösenord
+- Epostlistor
+  - Administrera per klubb
+  - Administrara globala
+  - Redigera per tränande
+- Skicka meddelanden
+  - Epost
+  - SMS

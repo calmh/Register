@@ -1,17 +1,20 @@
 ActionController::Routing::Routes.draw do |map|
+  map.connect 'students/bulkoperations', :controller => 'students', :action => 'bulkoperations'
+
   map.resources :clubs, :shallow => true do |club|
-	club.resources :users
-  	club.resources :students do |student|
-		student.resources :payments
-		student.resources :graduations
-	end
+        club.resources :users
+        club.resources :students do |student|
+                student.resources :payments
+                student.resources :graduations
+        end
   end
+
+  map.resource :account, :controller => "users"
+  map.resource :user_session
+  map.resources :users
 
   map.root :controller => :clubs
 
-  map.resource :account, :controller => "users"
-  map.resources :users
-  map.resource :user_session
   # map.root :controller => "user_sessions", :action => "new"
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -32,7 +35,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # Sample resource route with sub-resources:
   #   map.resources :products, :has_many => [ :comments, :sales ], :has_one => :seller
-  
+
   # Sample resource route with more complex sub-resources
   #   map.resources :products do |products|
   #     products.resources :comments

@@ -1,22 +1,46 @@
+<% if controller.controller_name == "clubs" && controller.action_name == "index" -%>
 <div class="block">
-<% if controller.action_name == "show" %>
-  <h3><%=t(:Statistics)%></h3>
-  <div class="content">
-<% for group in @club.groups do %>
-<% if group != nil && !group.students.blank? %>
-  <p>
-  <%=t(:Group)%>: <%=h group.identifier%><br/>
-  <%=t(:Num_students)%>: <%= group.students.length %><br/>
-  </p>
-<% end %>
-<% end %>
-  </div>
-</div>
-<% end %>
-<div class="block">
-  <h3>Links</h3>
+  <h3><%=t(:Links)%></h3>
   <ul class="navigation">
-    <li><a href="#">Link 1</a></li>
-    <li><a href="#">Link 2</a></li>
+    <% if new_club_permission? %>
+    <li><%= link_to t(:New_Club), new_club_path %></li>
+    <% end %>
   </ul>
 </div>
+
+<div class="block">
+  <h3><%=t(:Statistics)%></h3>
+  <div class="content">
+    <p>
+      <%=t(:Num_clubs)%>: <%=@clubs.length%><br/>
+    </p>
+  </div>
+</div>
+<% else -%>
+<div class="block">
+  <h3><%=t(:Links)%> <%= t(:for) %> <%= h(@club.name) %></h3>
+  <ul class="navigation">
+    <% if controller.action_name != "index" -%>
+    <li><%= link_to t(:Show), club_path(@club) %></li>
+    <% end %>
+    <% if controller.action_name != "edit" -%>
+    <li><%= link_to t(:Edit), edit_club_path(@club) %></li>
+    <% end %>
+    <li><%= link_to t(:New_Student), new_club_student_path(@club) %></li>
+  </ul>
+</div>
+
+<div class="block">
+  <h3><%=t(:Statistics)%></h3>
+  <div class="content">
+    <% for group in @club.groups do %>
+    <% if group != nil && !group.students.blank? %>
+    <p>
+      <%=t(:Group)%>: <%=h group.identifier%><br/>
+      <%=t(:Num_students)%>: <%= group.students.length %><br/>
+    </p>
+    <% end %>
+    <% end %>
+  </div>
+</div>
+<% end -%>

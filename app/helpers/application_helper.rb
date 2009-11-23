@@ -29,7 +29,7 @@ module ApplicationHelper
         end
 
         def new_club_permission?
-                false
+                true
         end
 
         def edit_club_permission?

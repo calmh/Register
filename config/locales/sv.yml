@@ -70,6 +70,13 @@ sv:
   New_Student: Ny tränande
   Register_Graduation: Registrera gradering
   ago: sedan
+  Send_Message: Skicka meddelande
+  Register_Payment: Registrera inbetalning
+  Acts_on_selected: Nedanstående funktioner använder sig av de ovan markerade tränande. Markera en eller flera tränande för att skicka meddelanden eller registrera graderingar eller inbetalningar på dem samtidigt.
+  Show: Visa
+  Links: Val
+  for: för
+  Num_clubs: Antal klubbar
 
   datetime:
    distance_in_words:

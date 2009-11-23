@@ -3,38 +3,41 @@
     <ul>
       <li class="first"><%= link_to t(:Club_List), clubs_path  %></li>
       <li class="active"><%= link_to @club.name, club_path(@club) %></li>
-      <% if edit_club_permission? %>
-      <li><%= link_to t(:Edit_Club), edit_club_path(@club) %></li>
-      <% end %>
-      <li><%= link_to t(:New_Student), new_club_student_path(@club) %></li>
     </ul>
     <div class="clear"></div>
   </div>
   <div class="content">
     <div class="inner">
       <h2><%=t(:Students)%></h2>
+      <% form_tag '/students', :class => "form" do %>
       <table class="table">
         <tr>
-          <th class="first"><%=t(:Group)%></th>
+          <th class="first">&nbsp;</th>
+          <th><%=t(:Group)%></th>
           <th><%=t(:Name)%>
           <th><%=t(:Personal_no)%>
           <th><%=t(:Grade)%></th>
-          <th><%=t(:Time_since_grade)%>
           <th class="last"><%=t(:Latest_payment)%>
         </tr>
         <% @club.students.each do |student| -%>
         <tr class="<%= cycle("odd", "even") %>">
+          <td><%= check_box_tag "selected_students[]", student.id %></td>
           <td><%= student.group.identifier %></td>
           <td><%= link_to student.name, student_path(student) %></td>
           <td><%= student.formatted_personal_number %></td>
           <td><%= grade_name(student.current_grade.grade) %></td>
-          <td><%= time_ago_in_words(student.current_grade.graduated) %></td>
           <td class="student-<%= student.active? ? 'active' :
-          'inactive' %>"><%=h student.latest_payment.description %>:
-          <%= time_ago_in_words student.latest_payment.received.to_date %> <%=t :ago %></td>
+          'inactive' %>"><%=h student.latest_payment.description %></td>
         </tr>
         <% end -%>
       </table>
+      <div class="group navform">
+        <p><%= t(:Acts_on_selected) %></p>
+        <%= submit_tag t(:Send_Message) + " &rarr;", :name => "send_message", :class => "button" %>
+        <%= submit_tag t(:Register_Graduation) + " &rarr;", :name => "send_message", :class => "button" %>
+        <%= submit_tag t(:Register_Payment) + " &rarr;", :name => "send_message", :class => "button" %>
+      </div>
+      <% end -%>
     </div>
   </div>
 </div>

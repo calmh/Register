@@ -2,12 +2,11 @@
   <div class="secondary-navigation">
     <ul>
       <li class="first"><%= link_to t(:Club_List), clubs_path %></li>
-      <li><%= link_to t(:Profile), user_path(@user) %></li>
-      <li class="active"><%= link_to t(:Edit), edit_user_path(@user) %></li>
+      <li class="active"><%= link_to t(:Profile), edit_user_path(@user) %></li>
     </ul>
     <div class="clear"></div>
-  </div>          
-  <div class="content">            
+  </div>
+  <div class="content">
     <h2 class="title"><%=t(:Edit_User)%></h2>
     <div class="inner">
       <% form_for @user, :url => user_path(@user), :html => { :class => :form } do |f| -%>

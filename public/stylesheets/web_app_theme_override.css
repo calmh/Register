@@ -1,13 +1,15 @@
 td.student-active {
-	background-color: #f0fff0;
+        background-color: #f0fff0;
 }
 td.student-inactive {
-	background-color: #fff0f0;
+        background-color: #fff0f0;
 }
 th.first {
-	width: inherit!important;
+        width: inherit!important;
 }
 th.last {
-	width: inherit!important;
+        width: inherit!important;
 }
-
+.table td {
+    padding: 3px 4px 2px 4px;
+}
