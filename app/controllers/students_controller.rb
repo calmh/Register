@@ -86,4 +86,12 @@ class StudentsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def bulk_operations
+    @students = Student.find(params[:selected_students])
+    @operation = "bulk_message" if params[:bulk_message]
+    @operation = "bulk_payments" if params[:bulk_payments]
+    @operation = "bulk_graduations" if params[:bulk_graduations]
+    debugger
+  end
 end

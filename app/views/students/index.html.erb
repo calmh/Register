@@ -9,7 +9,7 @@
   <div class="content">
     <div class="inner">
       <h2><%=t(:Students)%></h2>
-      <% form_tag '/students', :class => "form" do %>
+      <% form_tag '/students/bulkoperations', :class => "form", :method => "post" do %>
       <table class="table">
         <tr>
           <th class="first">&nbsp;</th>
@@ -33,9 +33,9 @@
       </table>
       <div class="group navform">
         <p><%= t(:Acts_on_selected) %></p>
-        <%= submit_tag t(:Send_Message) + " &rarr;", :name => "send_message", :class => "button" %>
-        <%= submit_tag t(:Register_Graduation) + " &rarr;", :name => "send_message", :class => "button" %>
-        <%= submit_tag t(:Register_Payment) + " &rarr;", :name => "send_message", :class => "button" %>
+        <%= submit_tag t(:Send_Message) + " &rarr;", :name => "bulk_message", :class => "button" %>
+        <%= submit_tag t(:Register_Graduation) + " &rarr;", :name => "bulk_graduations", :class => "button" %>
+        <%= submit_tag t(:Register_Payment) + " &rarr;", :name => "bulk_payments", :class => "button" %>
       </div>
       <% end -%>
     </div>
