@@ -30,13 +30,13 @@
         <% end -%>
       </table>
     </div>
-    <h3 class="title"><%=t:Register_Graduation%></h3>
+    <h2 class="title"><%=t:Register_Graduation%></h2>
     <div class="inner">
-      <% @graduation = @student.graduations.build %>
-      <% form_for :graduation, :url => student_graduations_path(@student), :html => { :class => :form } do |f| -%>
-      <%= render :partial => "form", :locals => {:f => f} %>
+      <% @graduation = Graduation.new -%>
+      <% @graduation.student = @student -%>
+      <% form_for [ @student, @graduation ], :html => { :class => :form } do |f| -%>
+      <%= render :partial => "form", :locals => {:f => f} -%>
       <% end -%>
-
     </div>
   </div>
 </div>

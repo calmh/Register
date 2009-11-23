@@ -27,9 +27,11 @@
           <td><%= student.group.identifier %></td>
           <td><%= link_to student.name, student_path(student) %></td>
           <td><%= student.formatted_personal_number %></td>
-          <td><%= grade_name(current_grade(student).grade) %></td>
-          <td><%= time_ago_in_words(current_grade(student).graduated) %></td>
-          <td class="student-<%= student.active? ? 'active' : 'inactive' %>"><%=h student.latest_payment %></td>
+          <td><%= grade_name(student.current_grade.grade) %></td>
+          <td><%= time_ago_in_words(student.current_grade.graduated) %></td>
+          <td class="student-<%= student.active? ? 'active' :
+          'inactive' %>"><%=h student.latest_payment.description %>:
+          <%= time_ago_in_words student.latest_payment.received.to_date %> <%=t :ago %></td>
         </tr>
         <% end -%>
       </table>

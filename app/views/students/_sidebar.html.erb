@@ -1,7 +1,7 @@
 <div class="block">
   <h3><%=t:Current_grade%></h3>
   <div class="content">
-<% g = current_grade(@student) %>
+<% g = @student.current_grade %>
   <p>
   <b><%=t:Current_grade%>:</b>
   <%=grade_name(g.grade)%>

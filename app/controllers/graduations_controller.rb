@@ -47,17 +47,8 @@ class GraduationsController < ApplicationController
   # POST /graduations.xml
   def create
     @graduation = Graduation.new(params[:graduation])
-
-    respond_to do |format|
-      if @graduation.save
-        flash[:notice] = 'Graduation was successfully created.'
-        format.html { redirect_to(@graduation) }
-        format.xml  { render :xml => @graduation, :status => :created, :location => @graduation }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @graduation.errors, :status => :unprocessable_entity }
-      end
-    end
+    @graduation.save
+    redirect_to :action => :index
   end
 
   # PUT /graduations/1

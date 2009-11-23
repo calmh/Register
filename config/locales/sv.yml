@@ -68,6 +68,8 @@ sv:
   Personal_no_descr: Ange personnumer (19700102-1234) eller födelsedatum (19700102).
   Phone_number_descr: Ange telefonnummer på formen 0123-456789 eller +45 12345678 för internationella nummer.
   New_Student: Ny tränande
+  Register_Graduation: Registrera gradering
+  ago: sedan
 
   datetime:
    distance_in_words:
@@ -77,15 +79,18 @@ sv:
      one: ungefär %d timme
      other: ungefär %d timmar
     less_than_x_minutes:
-     one: mindre än %d minut 
+     one: mindre än %d minut
      other: mindre än %d minuter
     x_minutes:
-     one: %d minut 
+     one: %d minut
      other: %d minuter
     x_months:
      one: %d månad
      other: %d månader
-  
+    x_days:
+     one: %d dag
+     other: %d dagar
+
   date:
     order: [ :year, :month, :day ]
     month_names: [~, Januari, Februari, Mars, April, Maj, Juni, Juli, Augusti, September, Oktober, November, December]

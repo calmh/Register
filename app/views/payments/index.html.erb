@@ -9,30 +9,32 @@
       <li class="active"><%= link_to t(:Payments), student_payments_path(@student) %></li>
     </ul>
     <div class="clear"></div>
-  </div>          
-  <div class="content">          
+  </div>
+  <div class="content">
     <h2 class="title"><%=t:Payments%></h2>
     <div class="inner">
       <table class="table">
-        <tr>             
+        <tr>
           <th class="first"><%=t:Received%></th>
-	<th><%=t:Amount%></th>
-	<th class="last"><%=t:Description%></th>
+        <th><%=t:Amount%></th>
+        <th class="last"><%=t:Description%></th>
         </tr>
         <% @payments.each do |payment| -%>
         <tr class="<%= cycle("odd", "even") %>">
-          <td><%=payment.received%></td>
+          <td><%=payment.received.to_date%></td>
           <td><%=payment.amount%></td>
           <td><%=payment.description%></td>
-        </tr>          
+        </tr>
         <% end -%>
       </table>
-      <div class="actions-bar">
-        <div class="actions">
-        </div>
-        
-        <div class="clear"></div>
-      </div>
+    </div>
+    <h2 class="title"><%=t:Register_Payment%></h2>
+    <div class="inner">
+      <% @payment = Payment.new -%>
+      <% @payment.student = @student -%>
+      <% form_for [ @student, @payment ], :html => { :class => :form } do |f| -%>
+      <%= render :partial => "form", :locals => {:f => f} -%>
+      <% end -%>
     </div>
   </div>
 </div>

@@ -15,12 +15,7 @@ class ClubsController < ApplicationController
   # GET /clubs/1
   # GET /clubs/1.xml
   def show
-    @club = Club.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @club }
-    end
+    redirect_to(:controller => 'students', :action => 'index', :club_id => params[:id]) and return
   end
 
   # GET /clubs/new

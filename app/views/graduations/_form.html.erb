@@ -1,5 +1,5 @@
 
-    <%= f.hidden_field :student_id, :class => 'text_field' %>
+    <%= f.hidden_field :student_id %>
 
   <div class="group">
     <%= f.label :grade, t(:Grade), :class => :label %>
@@ -20,10 +20,10 @@
     <%= f.label :graduated, t(:Graduated), :class => :label %>
     <%= f.date_select :graduated, :class => 'datetime_select' %>
   </div>
-        
+
 <div class="group navform">
   <input type="submit" class="button" value="<%=t:Save%> &rarr;" />
-<% if controller.action_name != "new" %>
+<% if controller.action_name != "new" -%>
  or <%= link_to t(:Cancel), student_graduations_path(@student, @graduation) %>
-<% end %>
+<% end -%>
 </div>
