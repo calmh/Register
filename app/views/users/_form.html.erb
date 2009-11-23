@@ -21,10 +21,14 @@
   </div>
 
   <div class="group">
-    <%= f.label :password, t(:Password), :class => :label %>
-    <%= f.text_field :password, :class => 'text_field' %>
+    <%= f.label :password, f.object.new_record? ? t(:Password) : t(:Change_password), :class => :label %>
+    <%= f.password_field :password, :class => 'text_field' %>
   </div>
-        
+  <div class="group">
+    <%= f.label :password_confirmation, t(:Confirm_password), :class => :label %>
+    <%= f.password_field :password_confirmation, :class => 'text_field' %>
+  </div>
+
 <div class="group navform">
   <input type="submit" class="button" value="Save &rarr;" /> or <%= link_to 'Cancel', users_path %>
 </div>

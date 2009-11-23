@@ -4,5 +4,7 @@ class User < ActiveRecord::Base
     Authlogic::CryptoProviders::Sha1.stretches = 1
     c.transition_from_crypto_providers = Authlogic::CryptoProviders::Sha1
     c.crypto_provider = Authlogic::CryptoProviders::Sha256
+    c.validates_length_of_login_field_options = { :in => 2..20 }
   end
 end
+

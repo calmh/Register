@@ -77,6 +77,8 @@ sv:
   Links: Val
   for: för
   Num_clubs: Antal klubbar
+  Change_password: Byt lösenord
+  Confirm_password: Upprepa lösenordet, för säkerhets skull
 
   datetime:
    distance_in_words:
