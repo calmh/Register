@@ -67,6 +67,7 @@ sv:
   Held_since: Sedan
   Personal_no_descr: Ange personnumer (19700102-1234) eller födelsedatum (19700102).
   Phone_number_descr: Ange telefonnummer på formen 0123-456789 eller +45 12345678 för internationella nummer.
+  New_Student: Ny tränande
 
   datetime:
    distance_in_words:

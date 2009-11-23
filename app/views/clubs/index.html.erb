@@ -19,7 +19,7 @@
         <% @clubs.each do |club| -%>
         <tr class="<%= cycle("odd", "even") %>">
 	<td>
-	<%= link_to club.name, club_path(club) %>
+	<%= link_to club.name, club_students_path(club) %>
 	</td>
           <td class="last">
             <%= num_students(club) %>

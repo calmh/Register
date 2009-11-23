@@ -2,10 +2,7 @@
   <div class="secondary-navigation">
     <ul>
       <li class="first"><%= link_to t(:Club_List), clubs_path  %></li>
-      <% if new_club_permission? %>
-      <li><%= link_to t(:New_Club), new_club_path %></li>
-      <% end %>
-      <li><%= link_to @club.name, club_path(@club) %></li>
+      <li><%= link_to @club.name, club_students_path(@club) %></li>
       <li><%= link_to @student.name, student_path %></li>
       <li class="active"><%= link_to t(:Edit), edit_student_path(@student) %></li>
       <li><%= link_to t(:Graduations), student_graduations_path(@student) %></li>

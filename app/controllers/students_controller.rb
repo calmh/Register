@@ -1,5 +1,14 @@
 class StudentsController < ApplicationController
   before_filter :require_user
+  def index
+    @club = Club.find(params[:club_id])
+    @students = @club.students
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @student }
+    end
+  end
 
   # GET /students/1
   # GET /students/1.xml
@@ -16,7 +25,9 @@ class StudentsController < ApplicationController
   # GET /students/new
   # GET /students/new.xml
   def new
+    @club = Club.find(params[:club_id])
     @student = Student.new
+    @student.group = @club.groups[0]
 
     respond_to do |format|
       format.html # new.html.erb

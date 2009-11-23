@@ -14,27 +14,7 @@
   </div>          
   <div class="content">
     <div class="inner">
-    <h2><%=t(:Students)%></h2>
-      <table class="table">
-        <tr>             
-        <th class="first"><%=t(:Group)%></th>
-	<th><%=t(:Name)%>
-	<th><%=t(:Personal_no)%>
-        <th><%=t(:Grade)%></th>
-	<th><%=t(:Time_since_grade)%>
-	<th class="last"><%=t(:Latest_payment)%>
-        </tr>
-        <% @club.students.each do |student| -%>
-        <tr class="<%= cycle("odd", "even") %>">
-	<td><%= student.group.identifier %></td>
-	<td><%= link_to student.name, student_path(student) %></td>
-        <td><%= student.formatted_personal_number %></td>
-        <td><%= grade_name(current_grade(student).grade) %></td>
-        <td><%= time_ago_in_words(current_grade(student).graduated) %></td>
-        <td class="student-<%= student.active? ? 'active' : 'inactive' %>"><%=h student.latest_payment %></td>
-        </tr>          
-        <% end -%>
-      </table>
+      Foo
     </div>
   </div>
 </div>

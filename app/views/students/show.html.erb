@@ -2,7 +2,7 @@
   <div class="secondary-navigation">
     <ul>
       <li class="first"><%= link_to t(:Club_List), clubs_path  %></li>
-      <li><%= link_to @club.name, club_path(@club) %></li>
+      <li><%= link_to @club.name, club_students_path(@club) %></li>
       <li class="active"><%= link_to @student.name, student_path(@student) %></li>
       <li><%= link_to t(:Edit), edit_student_path(@student) %></li>
       <li><%= link_to t(:Graduations), student_graduations_path(@student) %></li>
@@ -13,6 +13,11 @@
   <div class="content">
     <div class="inner">
       
+        <p>
+          <b><%=t(:Group)%>:</b>
+          <%=h @student.group.identifier %>
+        </p>
+
         <p>
           <b><%=t(:Personal_no)%>:</b>
           <%=h @student.personal_number %>

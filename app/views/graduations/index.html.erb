@@ -9,32 +9,34 @@
       <li><%= link_to t(:Payments), student_payments_path(@student) %></li>
     </ul>
     <div class="clear"></div>
-  </div>          
-  <div class="content">          
+  </div>
+  <div class="content">
     <h2 class="title"><%=t:Graduations%></h2>
     <div class="inner">
       <table class="table">
-        <tr>             
-        <th class="first"><%=t:Graduated%></th>
-	<th><%=t:Grade%></th>
-	<th><%=t:Instructor%></th>
-        <th class="last"><%=t:Examiner%></th>
+        <tr>
+          <th class="first"><%=t:Graduated%></th>
+          <th><%=t:Grade%></th>
+          <th><%=t:Instructor%></th>
+          <th class="last"><%=t:Examiner%></th>
         </tr>
         <% @graduations.each do |graduation| -%>
         <tr class="<%= cycle("odd", "even") %>">
-          <td><%=h graduation.graduated%></td>
+          <td><%=h graduation.graduated.to_date%></td>
           <td><%=h grade_name graduation.grade%></td>
           <td><%=h graduation.instructor%></td>
           <td><%=h graduation.examiner%></td>
-        </tr>          
+        </tr>
         <% end -%>
       </table>
-      <div class="actions-bar">
-        <div class="actions">
-        </div>
-        
-        <div class="clear"></div>
-      </div>
+    </div>
+    <h3 class="title"><%=t:Register_Graduation%></h3>
+    <div class="inner">
+      <% @graduation = @student.graduations.build %>
+      <% form_for :graduation, :url => student_graduations_path(@student), :html => { :class => :form } do |f| -%>
+      <%= render :partial => "form", :locals => {:f => f} %>
+      <% end -%>
+
     </div>
   </div>
 </div>
