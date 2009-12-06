@@ -2,7 +2,7 @@
 <div class="block">
   <h3><%=t(:Links)%></h3>
   <ul class="navigation">
-    <% if current_user.clubs_permission? %>
+    <% if !@club.blank? && current_user.edit_club_permission?(@club) %>
     <li><%= link_to t(:New_Club), new_club_path %></li>
     <% end %>
   </ul>
@@ -23,10 +23,12 @@
     <% if controller.action_name != "index" -%>
     <li><%= link_to t(:Show), club_path(@club) %></li>
     <% end %>
-    <% if controller.action_name != "edit" -%>
+    <% if current_user.clubs_permission? && controller.action_name != "edit" -%>
     <li><%= link_to t(:Edit), edit_club_path(@club) %></li>
     <% end %>
+    <% if current_user.edit_club_permission?(@club) %>
     <li><%= link_to t(:New_Student), new_club_student_path(@club) %></li>
+    <% end %>
   </ul>
 </div>
 

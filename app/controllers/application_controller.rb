@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_session, :current_user
   before_filter :set_locale
   protect_from_forgery # :secret => '4250e2ff2a2308b6668755ef76677cbb'
-  before_filter :require_user, :only => 'test_validations'
 
   def set_locale
     if params[:locale] != nil
@@ -21,7 +20,6 @@ class ApplicationController < ActionController::Base
     @students = Student.find(:all)
   end
 
-  private
   def current_user_session
     return @current_user_session if defined?(@current_user_session)
     @current_user_session = UserSession.find

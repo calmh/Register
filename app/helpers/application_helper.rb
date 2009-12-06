@@ -39,4 +39,8 @@ module ApplicationHelper
   def groups
     Group.find(:all)
   end
+
+  def clubs
+    Club.find(:all)
+  end
 end

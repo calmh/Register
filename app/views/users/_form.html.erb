@@ -49,7 +49,19 @@
     <%= f.label :mailinglists_permission, t(:Edit_mailinglists), :class => :label %>
     <%= f.check_box :mailinglists_permission, :class => 'check_box' %>
   </div>
-<% end %>
+
+  <div class="group">
+    <table>
+    <% clubs.each do |c| -%>
+    <tr>
+    <th><%=c.name%></th>
+    <%= permission_checkboxes @user, c %>
+    </tr>
+    <% end -%>
+    </table>
+  </div>
+
+<% end -%>
 
 <div class="group navform">
   <input type="submit" class="button" value="Save &rarr;" /> or <%= link_to 'Cancel', users_path %>

@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :require_user
+
   # GET /users
   # GET /users.xml
   def index
@@ -58,6 +60,30 @@ class UsersController < ApplicationController
   # PUT /users/1.xml
   def update
     @user = User.find(params[:id])
+
+    # Check all existing permissions to see if we should keep them
+    if !@user.permissions.blank?
+    @user.permissions.each do |p|
+      c_id = p.club_id.to_s
+      if !params[:permission].key?(c_id) || !params[:permission][c_id].key?(p.permission)
+        p.destroy
+      end
+    end
+    end
+
+    params[:permission].each_key do |club_id|
+      permissions = params[:permission][club_id]
+      current_perms = @user.permissions_for Club.find(club_id)
+      permissions.each_key do |perm|
+        if !current_perms.include? perm
+          np = Permission.new
+          np.club_id = club_id.to_i
+          np.user = @user
+          np.permission = perm
+          np.save!
+        end
+      end
+    end
 
     respond_to do |format|
       if @user.update_attributes(params[:user])

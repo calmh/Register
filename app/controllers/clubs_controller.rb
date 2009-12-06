@@ -4,7 +4,8 @@ class ClubsController < ApplicationController
   # GET /clubs
   # GET /clubs.xml
   def index
-    @clubs = Club.find(:all)
+    # @clubs = Club.find(:all)
+    @clubs = current_user.clubs
 
     respond_to do |format|
       format.html # index.html.erb
