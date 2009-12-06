@@ -1,12 +1,11 @@
+- Per elev
+  - Attribut "gender" som antingen fylls i eller autogenereras från
+    personnummer.
 - Inloggning
   - Rättigheter per klubb
     - Administrera
     - Beivra
-  - Byta lösenord
   - Återfå glömt lösenord
-- Grupper
-  - Redigera per klubb
-  - Redigera globala?
 - Klubbsida
   - Markera flera tränande
   - Lägga till betalning i bulk
@@ -19,9 +18,7 @@
   - Ändra personuppgifter
   - Ändra lösenord
 - Epostlistor
-  - Administrera per klubb
   - Administrara globala
   - Redigera per tränande
 - Skicka meddelanden
-  - Epost
   - SMS

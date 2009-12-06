@@ -25,6 +25,7 @@
         <% end -%>
       </table>
     </div>
+
     <h2 class="title"><%=t:Register_Payment%></h2>
     <div class="inner">
       <% @payment = Payment.new -%>
@@ -33,6 +34,7 @@
       <%= render :partial => "form", :locals => {:f => f} -%>
       <% end -%>
     </div>
+
   </div>
 </div>
 

@@ -7,11 +7,18 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_session, :current_user
   before_filter :set_locale
   protect_from_forgery # :secret => '4250e2ff2a2308b6668755ef76677cbb'
+  before_filter :require_user, :only => 'test_validations'
 
   def set_locale
     if params[:locale] != nil
       I18n.locale = params[:locale]
     end
+  end
+
+  def test_validations
+    @users = User.find(:all)
+    @groups = Group.find(:all)
+    @students = Student.find(:all)
   end
 
   private
@@ -31,6 +38,17 @@ class ApplicationController < ActionController::Base
       flash[:notice] = t(:Must_log_in)
       redirect_to new_user_session_url
       return false
+    end
+  end
+
+  def require_groups_permission
+    if require_user
+      unless current_user.groups_permission?
+        store_location
+        flash[:notice] = t(:Must_log_in)
+        redirect_to new_user_session_url
+        return false
+      end
     end
   end
 

@@ -1,17 +1,13 @@
 <div class="block">
   <div class="secondary-navigation">
     <ul>
-      <li class="first"><%= link_to t(:Club_List), clubs_path  %></li>
-      <% if new_club_permission? %>
-      <li><%= link_to t(:New_Club), new_club_path %></li>
-      <% end %>
-      <li class="active"><%= link_to @club.name, club_path %></li>
+      <%= render :partial => 'application/links' %>
       <% if edit_club_permission? %>
       <li><%= link_to t(:Edit_Club), edit_club_path(@club) %></li>
       <% end %>
     </ul>
     <div class="clear"></div>
-  </div>          
+  </div>
   <div class="content">
     <div class="inner">
       Foo

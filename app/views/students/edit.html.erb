@@ -1,7 +1,7 @@
 <div class="block">
   <div class="secondary-navigation">
     <ul>
-      <li class="first"><%= link_to t(:Club_List), clubs_path  %></li>
+      <%= render :partial => 'application/links' %>
       <li><%= link_to @club.name, club_students_path(@club) %></li>
       <li class="active"><%= link_to h(@student.name), edit_student_path(@student) %></li>
     </ul>

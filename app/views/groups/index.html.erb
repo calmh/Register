@@ -1,24 +1,41 @@
-<h1>Listing groups</h1>
+<div class="block">
+  <div class="secondary-navigation">
+    <ul>
+      <%= render :partial => 'application/links' %>
+    </ul>
+    <div class="clear"></div>
+  </div>
+  <div class="content">
+    <h2 class="title"><%=t:All_Groups%></h2>
+    <div class="inner">
+      <table class="table">
+        <tr>
+          <th class="first"><%=t:Name%></th>
+          <th><%=t:Description%></th>
+          <th class="last"><%=t:Num_students%></th>
+        </tr>
+        <% @groups.each do |group| -%>
+        <tr class="<%= cycle("odd", "even") %>">
+          <td>
+            <%= link_to group.identifier, edit_group_path(group) %>
+          </td>
+          <td>
+            <%= group.comments %>
+          </td>
+          <td class="last">
+            <%= group.students.length %>
+          </td>
+        </tr>
+        <% end -%>
+      </table>
+      <div class="actions-bar">
+        <div class="actions">
+        </div>
 
-<table>
-  <tr>
-    <th>Club</th>
-    <th>Identifier</th>
-    <th>Comments</th>
-  </tr>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<% @groups.each do |group| %>
-  <tr>
-    <td><%=h group.club_id %></td>
-    <td><%=h group.identifier %></td>
-    <td><%=h group.comments %></td>
-    <td><%= link_to 'Show', group %></td>
-    <td><%= link_to 'Edit', edit_group_path(group) %></td>
-    <td><%= link_to 'Destroy', group, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New group', new_group_path %>
+<% content_for :sidebar, render(:partial => 'sidebar') -%>

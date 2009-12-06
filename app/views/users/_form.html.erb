@@ -29,6 +29,28 @@
     <%= f.password_field :password_confirmation, :class => 'text_field' %>
   </div>
 
+<% if current_user.users_permission? %>
+  <div class="group">
+    <%= f.label :clubs_permission, t(:Edit_clubs), :class => :label %>
+    <%= f.check_box :clubs_permission, :class => 'check_box' %>
+  </div>
+
+  <div class="group">
+    <%= f.label :groups_permission, t(:Edit_groups), :class => :label %>
+    <%= f.check_box :groups_permission, :class => 'check_box' %>
+  </div>
+
+  <div class="group">
+    <%= f.label :users_permission, t(:Edit_users), :class => :label %>
+    <%= f.check_box :users_permission, :class => 'check_box' %>
+  </div>
+
+  <div class="group">
+    <%= f.label :mailinglists_permission, t(:Edit_mailinglists), :class => :label %>
+    <%= f.check_box :mailinglists_permission, :class => 'check_box' %>
+  </div>
+<% end %>
+
 <div class="group navform">
   <input type="submit" class="button" value="Save &rarr;" /> or <%= link_to 'Cancel', users_path %>
 </div>

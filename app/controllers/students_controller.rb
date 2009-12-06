@@ -27,7 +27,7 @@ class StudentsController < ApplicationController
   def new
     @club = Club.find(params[:club_id])
     @student = Student.new
-    @student.group = @club.groups[0]
+    # @student.group = @club.groups[0]
 
     respond_to do |format|
       format.html # new.html.erb

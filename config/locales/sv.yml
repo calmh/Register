@@ -36,6 +36,8 @@ sv:
   black: svart
   unknown: okänd
   none: ingen
+  silver: silver
+  junior: junior
   or: eller
   Profile: Användardprofil
   Settings: Inställningar
@@ -61,7 +63,7 @@ sv:
   Previous_login: Förra inloggningen
   Previous_login_from: Loggade förra gången in från
   Num_logins: Antal lyckade inloggningar
-  Login_descr: Bokstäver och siffror, minst fyra tecken.
+  Login_descr: Bokstäver och siffror, minst två tecken.
   Edit_User: Redigera användare
   Current_grade: Nuvarande grad
   Held_since: Sedan
@@ -79,6 +81,33 @@ sv:
   Num_clubs: Antal klubbar
   Change_password: Byt lösenord
   Confirm_password: Upprepa lösenordet, för säkerhets skull
+  Group_List: Grupper
+  All_Groups: Alla grupper
+  New_Group: Ny grupp
+  Edit_Group: Redigera grupp
+  Merge: Slå ihop
+  Merge_descr: Om du väljer en annan grupp här, så kommer eleverna i den här gruppen att flyttas till den valda gruppen, och den här gruppen raderas.
+  User_List: Användare
+  All_Users: Alla användare
+  New_User: Ny användare
+  Allowed_to: Har tillåtelse att
+  Not_allowed_to: Har ej tillåtelse att
+  Edit_clubs: Redigera klubbar
+  Edit_groups: Redigera grupper
+  Edit_users: Redigera användare
+  Edit_mailinglists: Redigera epost-listor
+
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              too_short: för kort
+        student:
+          attributes:
+            personal_number:
+              taken: upptaget
 
   datetime:
    distance_in_words:

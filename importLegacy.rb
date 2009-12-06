@@ -24,18 +24,17 @@ doc.elements.each("DataStore/Clubs/Club") do |c|
   c.elements.each("Students/Student") do |s|
     studentID = nextStudentID += 1
     group = s.attributes["Group"]
-    group = "Standard" if group == nil
-    group = clubID.to_s + "-" + group
+    group = "Standard" if group.blank?
     if !(groupIDs.key? group)
       groupIDs[group] = groupIDs.values.length + 1
       groups << {
         'id' => groupIDs[group],
-        'club_id' => clubID,
         'identifier' => s.attributes["Group"]
       }
     end
     students << {
       'id' => studentID,
+      'club_id' => clubID,
       'group_id' => groupIDs[group],
       'sname' => s.attributes["SName"],
       'fname' => s.attributes["FName"],

@@ -1,7 +1,7 @@
 <div class="block">
   <div class="secondary-navigation">
     <ul>
-      <li class="first"><%= link_to t(:Club_List), clubs_path %></li>
+      <%= render :partial => 'application/links' %>
       <li class="active"><%= link_to t(:Profile), user_path(@user) %></li>
     </ul>
     <div class="clear"></div>
@@ -48,6 +48,26 @@
         <p>
           <b><%=t:Num_logins%>:</b>
           <%= @user.login_count %>
+        </p>
+
+        <% permission = @user.clubs_permission? ? t(:Allowed_to) : t(:Not_allowed_to) %>
+        <p>
+          <b><%= permission %> <%=t(:Edit_clubs).downcase%></b>
+        </p>
+
+        <% permission = @user.groups_permission? ? t(:Allowed_to) : t(:Not_allowed_to) %>
+        <p>
+          <b><%= permission %> <%=t(:Edit_groups).downcase%></b>
+        </p>
+
+        <% permission = @user.users_permission? ? t(:Allowed_to) : t(:Not_allowed_to) %>
+        <p>
+          <b><%= permission %> <%=t(:Edit_users).downcase%></b>
+        </p>
+
+        <% permission = @user.mailinglists_permission? ? t(:Allowed_to) : t(:Not_allowed_to) %>
+        <p>
+          <b><%= permission %> <%=t(:Edit_mailinglists).downcase%></b>
         </p>
 
     </div>

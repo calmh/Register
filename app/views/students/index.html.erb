@@ -1,7 +1,7 @@
 <div class="block">
   <div class="secondary-navigation">
     <ul>
-      <li class="first"><%= link_to t(:Club_List), clubs_path  %></li>
+      <%= render :partial => 'application/links' %>
       <li class="active"><%= link_to @club.name, club_path(@club) %></li>
     </ul>
     <div class="clear"></div>
@@ -22,7 +22,13 @@
         <% @club.students.each do |student| -%>
         <tr class="<%= cycle("odd", "even") %>">
           <td><%= check_box_tag "selected_students[]", student.id %></td>
-          <td><%= student.group.identifier %></td>
+          <td>
+            <% if student.group.blank? -%>
+            None?!
+            <% else -%>
+            <%= student.group.identifier %>
+            <% end -%>
+          </td>
           <td><%= link_to student.name, student_path(student) %></td>
           <td><%= student.formatted_personal_number %></td>
           <td><%= grade_name(student.current_grade.grade) %></td>

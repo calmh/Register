@@ -2,7 +2,7 @@
 
   <div class="group">
     <%= f.label :fname, t(:Group), :class => :label %>
-    <%= select "student", "group_id", @club.groups.map { |g| [ g.identifier, g.id ] } %>
+    <%= select "student", "group_id", groups.map { |g| [ g.identifier, g.id ] } %>
   </div>
 
   <div class="group">

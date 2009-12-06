@@ -1,0 +1,22 @@
+
+  <% if controller.action_name == "edit" %>
+  <div class="group">
+    <%= f.label :identifier, t(:Merge), :class => :label %>
+    <%= t:Merge_descr %><br/>
+    <%= select "group", "id", groups.map { |g| [ g.identifier, g.id ] } %>
+  </div>
+  <% end %>
+
+  <div class="group">
+    <%= f.label :identifier, t(:Name), :class => :label %>
+    <%= f.text_field :identifier, :class => 'text_field' %>
+  </div>
+
+  <div class="group">
+    <%= f.label :comments, t(:Description), :class => :label %>
+    <%= f.text_area :comments, :class => 'text_area' %>
+  </div>
+
+<div class="group navform">
+  <input type="submit" class="button" value="<%=t:Save%> &rarr;" /> <%=t:or%> <%= link_to t(:Cancel), groups_path %>
+</div>

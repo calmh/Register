@@ -1,10 +1,13 @@
 <div class="block">
   <h3><%=t:Links%></h3>
   <ul class="navigation">
-<% if controller.action_name != "show" -%>
+<% if controller.action_name != "new" -%>
+      <li><%= link_to t(:New_User), new_user_path %></li>
+<% end %>
+<% if !@user.blank? && controller.action_name != "show" -%>
       <li><%= link_to t(:Show), user_path(@user) %></li>
 <% end -%>
-<% if controller.action_name != "edit" -%>
+<% if !@user.blank? && controller.action_name != "edit" -%>
       <li><%= link_to t(:Edit), edit_user_path(@user) %></li>
 <% end -%>
   </ul>

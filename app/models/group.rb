@@ -1,4 +1,7 @@
 class Group < ActiveRecord::Base
-	belongs_to :club
-	has_many :students
+        has_many :students
+
+  def members_in(club)
+    return students.find(:all, :conditions => { :club_id => club.id })
+  end
 end

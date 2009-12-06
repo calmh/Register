@@ -1,0 +1,54 @@
+<div class="block">
+  <div class="secondary-navigation">
+    <ul>
+      <li class="first active"><%= link_to 'Validations', '/validate'  %></li>
+    </ul>
+    <div class="clear"></div>
+  </div>
+  <div class="content">
+    <div class="inner">
+
+<table>
+
+<% @users.each do |u| %>
+<tr>
+<td><%=u.login%></td>
+<% if !u.valid? %>
+<% errors = u.errors.each_full { |e| e } %>
+<td><%=link_to errors.join(", "), edit_user_path(u) %></td>
+<% else %>
+<td>OK</td>
+<% end %>
+</tr>
+<% end %>
+
+<% @groups.each do |g| %>
+<tr>
+<td><%=g.identifier%></td>
+<% if !g.valid? %>
+<% errors = g.errors.each_full { |e| e } %>
+<td><%=link_to errors.join(", "), edit_group_path(g) %></td>
+<% else %>
+<td>OK</td>
+<% end %>
+</tr>
+<% end %>
+
+<% @students.each do |s| %>
+<tr>
+<td><%=s.name%></td>
+<% if !s.valid? %>
+<% errors = s.errors.each_full { |e| e } %>
+<td><%=link_to errors.join(", "), edit_student_path(s) %></td>
+<% else %>
+<td>OK</td>
+<% end %>
+</tr>
+<% end %>
+
+</table>
+
+    </div>
+  </div>
+</div>
+

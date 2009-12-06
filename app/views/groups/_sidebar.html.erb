@@ -1,0 +1,8 @@
+<div class="block">
+  <h3><%=t(:Links)%></h3>
+  <ul class="navigation">
+    <% if controller.action_name != "new" -%>
+    <li><%= link_to t(:New_Group), new_group_path %></li>
+    <% end -%>
+  </ul>
+</div>

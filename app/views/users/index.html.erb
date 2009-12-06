@@ -1,44 +1,34 @@
 <div class="block">
   <div class="secondary-navigation">
     <ul>
-      <li class="first active"><%= link_to 'List', users_path %></li>
-      <li><%= link_to 'New', new_user_path %></li>
+      <%= render :partial => 'application/links' %>
     </ul>
     <div class="clear"></div>
-  </div>          
-  <div class="content">          
-    <h2 class="title">All Users</h2>
+  </div>
+  <div class="content">
+    <h2 class="title"><%=t:All_Users%></h2>
     <div class="inner">
       <table class="table">
-        <tr>             
-          <th class="first">ID</th>
-										<th>Login</th>
-					          <th>Created at</th>
+        <tr>
+          <th><%=t:Login%></th>
+          <th><%=t:Name%></th>
           <th class="last">&nbsp;</th>
         </tr>
         <% @users.each do |user| -%>
         <tr class="<%= cycle("odd", "even") %>">
           <td>
-            <%= user.id %>
+            <%= link_to user.login, user_path(user) %>
           </td>
-										<td>
-						<%= link_to user.login, user_path(user) %>
-					</td>
-										<td>
-            <%= user.created_at %>
+          <td>
+            <%= (user.fname or "") + " " + (user.sname or "") %>
           </td>
-          <td class="last">
-            <%= link_to 'show', user_path(user) %> |
-            <%= link_to 'edit', edit_user_path(user) %> |
-            <%= link_to 'destroy', user_path(user), :method => :delete, :confirm => 'Are you sure?' %>
-          </td>
-        </tr>          
+        </tr>
         <% end -%>
       </table>
       <div class="actions-bar">
         <div class="actions">
         </div>
-        
+
         <div class="clear"></div>
       </div>
     </div>

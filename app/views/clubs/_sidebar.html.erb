@@ -2,7 +2,7 @@
 <div class="block">
   <h3><%=t(:Links)%></h3>
   <ul class="navigation">
-    <% if new_club_permission? %>
+    <% if current_user.clubs_permission? %>
     <li><%= link_to t(:New_Club), new_club_path %></li>
     <% end %>
   </ul>
@@ -33,11 +33,12 @@
 <div class="block">
   <h3><%=t(:Statistics)%></h3>
   <div class="content">
-    <% for group in @club.groups do %>
-    <% if group != nil && !group.students.blank? %>
+    <% for group in groups do -%>
+    <% students = group.members_in(@club) -%>
+    <% if !students.blank? -%>
     <p>
       <%=t(:Group)%>: <%=h group.identifier%><br/>
-      <%=t(:Num_students)%>: <%= group.students.length %><br/>
+      <%=t(:Num_students)%>: <%= students.length %><br/>
     </p>
     <% end %>
     <% end %>

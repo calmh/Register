@@ -1,0 +1,13 @@
+<% active = controller.controller_name == 'clubs' &&
+   controller.action_name == 'index' %>
+<li class="first<%= active ? ' active' : ''%>"><%= link_to t(:Club_List), clubs_path %></li>
+<% if current_user.groups_permission? %>
+<% active = controller.controller_name == 'groups' &&
+   controller.action_name == 'index' %>
+<li class="<%= active ? ' active' : ''%>"><%= link_to t(:Group_List), groups_path %></li>
+<% end %>
+<% if current_user.users_permission? %>
+<% active = controller.controller_name == 'users' &&
+   controller.action_name == 'index' %>
+<li class="<%= active ? ' active' : ''%>"><%= link_to t(:User_List), users_path %></li>
+<% end %>
