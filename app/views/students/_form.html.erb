@@ -22,6 +22,12 @@
   </div>
 
   <div class="group">
+    <%= f.label :gender, t(:Gender), :class => :label %>
+    <%= select "student", "gender", ['male', 'female', 'unknown'].map { |g| [ t(g).titlecase, g ] } %><br/>
+    <span class="description"><%=t:Gender_descr%></span>
+  </div>
+
+  <div class="group">
     <%= f.label :email, t(:Email), :class => :label %>
     <%= f.text_field :email, :class => 'text_field' %>
   </div>

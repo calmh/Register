@@ -7,6 +7,7 @@ class Student < ActiveRecord::Base
   validate :check_personal_number
   validates_associated :group
   validates_associated :club
+  validates_format_of :gender, :with => /male|female|unknown/
 
   def luhn
     fact = 2
@@ -75,4 +76,13 @@ class Student < ActiveRecord::Base
       return Time.now - payments[0].received < 86400 * 180
     end
   end
+
+  def gender
+    if personal_number =~ /-\d\d(\d)\d$/
+      return $1.to_i.even? ? 'female' : 'male'
+    end
+    return self[:gender] unless self[:gender].blank?
+    return 'unknown'
+  end
+
 end

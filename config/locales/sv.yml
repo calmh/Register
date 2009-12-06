@@ -96,6 +96,10 @@ sv:
   Edit_groups: Redigera grupper
   Edit_users: Redigera användare
   Edit_mailinglists: Redigera epost-listor
+  Gender: Kön
+  male: man
+  female: kvinna
+  Gender_descr: Om ett komplett personnumer matats in ovan kommer informationen i det att användas för att bestämma könet.
 
   activerecord:
     errors:
