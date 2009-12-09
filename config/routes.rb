@@ -1,5 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   map.connect 'students/bulkoperations', :controller => 'students', :action => 'bulk_operations'
+  map.connect 'students/search', :controller => 'students', :action => 'search'
   map.connect 'validate', :controller => 'application', :action => 'test_validations'
 
   map.resources :clubs, :shallow => true do |club|

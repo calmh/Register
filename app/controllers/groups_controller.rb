@@ -4,7 +4,7 @@ class GroupsController < ApplicationController
 	# GET /groups
 	# GET /groups.xml
 	def index
-		@groups = Group.find(:all)
+		@groups = Group.find(:all, :order => :identifier)
 
 		respond_to do |format|
 			format.html # index.html.erb

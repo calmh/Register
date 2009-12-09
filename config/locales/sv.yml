@@ -114,6 +114,9 @@ sv:
   Club_created: Klubben har skapats.
   Student_updated: Eleven har uppdaterats.
   Student_created: Eleven har skapats.
+  Search: Sök
+  All: Alla
+  Search_students: Sök tränande
 
   activerecord:
     errors:

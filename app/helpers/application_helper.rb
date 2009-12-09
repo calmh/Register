@@ -37,10 +37,10 @@ module ApplicationHelper
   end
 
   def groups
-    Group.find(:all)
+    Group.find(:all, :order => :identifier)
   end
 
   def clubs
-    Club.find(:all)
+    Club.find(:all, :order => :name)
   end
 end

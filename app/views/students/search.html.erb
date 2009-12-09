@@ -1,0 +1,31 @@
+<div class="block">
+  <div class="secondary-navigation">
+    <ul>
+      <%= render :partial => 'application/links' %>
+    </ul>
+    <div class="clear"></div>
+  </div>
+  <div class="content">
+    <div class="inner">
+      <h2><%=t(:Students)%></h2>
+
+		<% form_tag '/students/search', :class => "form", :method => "post" do -%>
+		<div class="group">
+			<%=t:Club%>: <%= select "searchparams", "club_id", [[ t(:All), -100 ]] + @clubs.map { |g| [ g.name, g.id ] } %>
+		</div>
+		<div class="group">
+			<%=t:Grade%>: <%= select "searchparams", "grade", [[ t(:All), -100 ]] + -8.upto(12).map { |g| [ grade_name(g), g ] } %>
+		</div>
+		<div class="group">
+			<%=t:Group%>: <%= select "searchparams", "group_id", [[ t(:All), -100 ]] + groups.map { |g| [ g.identifier, g.id ] } %>
+		</div>
+		<div class="group">
+			<%= submit_tag t(:Search) %>
+		</div>
+		<% end -%>
+
+		<% @displayClubField = true %>
+		<%= render :partial => 'list' %>
+    </div>
+  </div>
+</div>

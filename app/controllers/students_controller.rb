@@ -1,8 +1,60 @@
 class StudentsController < ApplicationController
   before_filter :require_user
+
+	class SearchParams
+		attr_accessor :group_id
+		attr_accessor :grade
+		attr_accessor :club_id
+
+		def initialize
+			@group_id = -100
+			@grade = -100
+			@club_id = -100
+		end
+
+		def conditions
+			variables = []
+			conditions = []
+			if group_id != -100
+				conditions << "group_id = ?"
+				variables << @group_id
+			end
+			if club_id != -100
+				conditions << "club_id = ?"
+				variables << @club_id
+			end
+			return [ conditions.join(" AND ") ] + variables
+		end
+
+		def filter(students)
+			if grade == -100
+				return students
+			else
+				return students.select { |s| s.current_grade.grade == @grade }
+			end
+		end
+	end
+
   def index
     @club = Club.find(params[:club_id])
     @students = @club.students
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @student }
+    end
+  end
+
+  def search
+	@searchparams = SearchParams.new
+	if params.key? :searchparams
+		@searchparams.group_id = params[:searchparams][:group_id].to_i
+		@searchparams.grade = params[:searchparams][:grade].to_i
+		@searchparams.club_id = params[:searchparams][:club_id].to_i
+	end
+
+	@clubs = Club.find(:all)
+	@students = @searchparams.filter(Student.find(:all, :conditions => @searchparams.conditions))
 
     respond_to do |format|
       format.html # new.html.erb
