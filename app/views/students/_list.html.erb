@@ -34,8 +34,14 @@
 </table>
 <div class="group navform">
   <p><%= t(:Acts_on_selected) %></p>
+<!--
   <%= submit_tag t(:Send_Message) + " &rarr;", :name => "bulk_message", :class => "button" %>
+-->
+<% if current_user.clubs_permission? || current_user.graduations_permission?(@club) %>
   <%= submit_tag t(:Register_Graduation) + " &rarr;", :name => "bulk_graduations", :class => "button" %>
+<% end %>
+<% if @club && current_user.payments_permission?(@club) %>
   <%= submit_tag t(:Register_Payment) + " &rarr;", :name => "bulk_payments", :class => "button" %>
+<% end %>
 </div>
 <% end -%>

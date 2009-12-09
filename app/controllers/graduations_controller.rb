@@ -25,6 +25,25 @@ class GraduationsController < ApplicationController
     end
   end
 
+  def new_bulk
+    @graduation = Graduation.new
+	@students = Student.find(session[:selected_students]);
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @graduation }
+    end
+  end
+
+  def update_bulk
+	@students = Student.find(session[:selected_students]);
+	@students.each do |s|
+		s.graduations << Graduation.new(params[:graduation])
+		s.save
+	end
+	session[:selected_students] = nil
+	redirect_to session[:before_bulk]
+  end
+
   # GET /graduations/new
   # GET /graduations/new.xml
   def new

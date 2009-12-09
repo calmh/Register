@@ -117,6 +117,8 @@ sv:
   Search: Sök
   All: Alla
   Search_students: Sök tränande
+  Search_parameters: Sökparametrar
+  Search_descr: Använd fälten nedan för att begränsa listan på tränande till vänster.
 
   activerecord:
     errors:

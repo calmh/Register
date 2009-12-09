@@ -140,10 +140,16 @@ class StudentsController < ApplicationController
   end
 
   def bulk_operations
-    @students = Student.find(params[:selected_students])
-    @operation = "bulk_message" if params[:bulk_message]
-    @operation = "bulk_payments" if params[:bulk_payments]
-    @operation = "bulk_graduations" if params[:bulk_graduations]
-    debugger
+	session[:before_bulk] = request.referer
+    session[:selected_students] = params[:selected_students]
+    operation = "bulk_message" if params[:bulk_message]
+    operation = "bulk_payments" if params[:bulk_payments]
+    operation = "bulk_graduations" if params[:bulk_graduations]
+    if operation == "bulk_graduations"
+		redirect_to :controller => 'graduations', :action => 'new_bulk'
+	end
+    if operation == "bulk_payments"
+		redirect_to :controller => 'graduations', :action => 'new_bulk'
+	end
   end
 end

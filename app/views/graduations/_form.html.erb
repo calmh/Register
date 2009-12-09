@@ -3,7 +3,7 @@
 
   <div class="group">
     <%= f.label :grade, t(:Grade), :class => :label %>
-    <%= f.text_field :grade, :class => 'text_field' %>
+	<%= f.select :grade, -8.upto(12).map { |g| [ grade_name(g), g ] } %>
   </div>
 
   <div class="group">
@@ -23,7 +23,7 @@
 
 <div class="group navform">
   <input type="submit" class="button" value="<%=t:Save%> &rarr;" />
-<% if controller.action_name != "new" -%>
+<% if controller.action_name != "new" && controller.action_name != "new_bulk" -%>
  or <%= link_to t(:Cancel), student_graduations_path(@student, @graduation) %>
 <% end -%>
 </div>
