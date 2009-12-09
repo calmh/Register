@@ -28,8 +28,6 @@
 
     <h2 class="title"><%=t:Register_Payment%></h2>
     <div class="inner">
-      <% @payment = Payment.new -%>
-      <% @payment.student = @student -%>
       <% form_for [ @student, @payment ], :html => { :class => :form } do |f| -%>
       <%= render :partial => "form", :locals => {:f => f} -%>
       <% end -%>

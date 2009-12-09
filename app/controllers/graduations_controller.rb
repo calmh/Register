@@ -8,6 +8,13 @@ class GraduationsController < ApplicationController
     @club = @student.club
     @graduations = @student.graduations
 
+    @graduation = Graduation.new
+    @graduation.student = @student
+	@graduation.grade = get_default(:graduation_grade)
+	@graduation.instructor = get_default(:graduation_instructor)
+	@graduation.examiner = get_default(:graduation_examiner)
+	@graduation.graduated = DateTime.parse(get_default(:graduation_graduated) || Date.today.to_s)
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @graduations }
@@ -27,6 +34,10 @@ class GraduationsController < ApplicationController
 
   def new_bulk
     @graduation = Graduation.new
+	@graduation.grade = get_default(:graduation_grade)
+	@graduation.instructor = get_default(:graduation_instructor)
+	@graduation.examiner = get_default(:graduation_examiner)
+	@graduation.graduated = DateTime.parse(get_default(:graduation_graduated) || DateTime.now.to_s)
 	@students = Student.find(session[:selected_students]);
     respond_to do |format|
       format.html # new.html.erb
@@ -41,25 +52,14 @@ class GraduationsController < ApplicationController
 		s.save
 	end
 	session[:selected_students] = nil
+
+	@graduation = Graduation.new(params[:graduation])
+	set_default(:graduation_grade, @graduation.grade)
+	set_default(:graduation_instructor, @graduation.instructor)
+	set_default(:graduation_examiner, @graduation.examiner)
+	set_default(:graduation_graduated, @graduation.graduated.to_s)
+
 	redirect_to session[:before_bulk]
-  end
-
-  # GET /graduations/new
-  # GET /graduations/new.xml
-  def new
-    @student = Student.find(params[:student_id])
-    @graduation = Graduation.new
-    @graduation.student = @student
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @graduation }
-    end
-  end
-
-  # GET /graduations/1/edit
-  def edit
-    @graduation = Graduation.find(params[:id])
   end
 
   # POST /graduations
@@ -67,6 +67,10 @@ class GraduationsController < ApplicationController
   def create
     @graduation = Graduation.new(params[:graduation])
     @graduation.save
+	set_default(:graduation_grade, @graduation.grade)
+	set_default(:graduation_instructor, @graduation.instructor)
+	set_default(:graduation_examiner, @graduation.examiner)
+	set_default(:graduation_graduated, @graduation.graduated.to_s)
     redirect_to :action => :index
   end
 
@@ -74,6 +78,10 @@ class GraduationsController < ApplicationController
   # PUT /graduations/1.xml
   def update
     @graduation = Graduation.find(params[:id])
+	set_default(:graduation_grade, @graduation.grade)
+	set_default(:graduation_instructor, @graduation.instructor)
+	set_default(:graduation_examiner, @graduation.examiner)
+	set_default(:graduation_graduated, @graduation.graduated.to_s)
 
     respond_to do |format|
       if @graduation.update_attributes(params[:graduation])

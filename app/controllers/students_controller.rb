@@ -53,8 +53,8 @@ class StudentsController < ApplicationController
 		@searchparams.club_id = params[:searchparams][:club_id].to_i
 	end
 
-	@clubs = Club.find(:all)
-	@students = @searchparams.filter(Student.find(:all, :conditions => @searchparams.conditions))
+	@clubs = Club.find(:all, :order => :name)
+	@students = @searchparams.filter(Student.find(:all, :conditions => @searchparams.conditions, :order => "sname, fname"))
 
     respond_to do |format|
       format.html # new.html.erb

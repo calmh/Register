@@ -7,22 +7,14 @@ class PaymentsController < ApplicationController
     @student = Student.find(params[:student_id])
     @club = @student.club
     @payments = @student.payments
+	@payment = Payment.new
+	@payment.received = DateTime.parse(get_default(:payment_received) || DateTime.now.to_s)
+	@payment.amount = get_default(:payment_amount)
+	@payment.description = get_default(:payment_description)
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @payments }
-    end
-  end
-
-  # GET /payments/new
-  # GET /payments/new.xml
-  def new
-    @payment = Payment.new
-    @payment.student_id = params[:student_id]
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @payment }
     end
   end
 
@@ -36,6 +28,9 @@ class PaymentsController < ApplicationController
   def create
     @payment = Payment.new(params[:payment])
     @payment.save
+	set_default(:payment_amount, @payment.amount)
+	set_default(:payment_description, @payment.description)
+	set_default(:payment_received, @payment.received)
     redirect_to :action => :index
   end
 

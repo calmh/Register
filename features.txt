@@ -1,8 +1,6 @@
 - Återfå glömt lösenord
 - Klubbsida
-  - Markera flera tränande
   - Lägga till betalning i bulk
-  - Lägga till gradering i bulk
   - Ändra sortering
   - Filtrera
   - Mer statistik

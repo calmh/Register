@@ -119,6 +119,7 @@ sv:
   Search_students: Sök tränande
   Search_parameters: Sökparametrar
   Search_descr: Använd fälten nedan för att begränsa listan på tränande till vänster.
+  New_Graduation: Ny gradering
 
   activerecord:
     errors:

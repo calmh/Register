@@ -16,7 +16,7 @@
     </p>
   </div>
 </div>
-<% else -%>
+<% elsif controller.controller_name != 'clubs' && controller.action_name != 'new' -%>
 <div class="block">
   <h3><%=t(:Links)%> <%= t(:for) %> <%= h(@club.name) %></h3>
   <ul class="navigation">

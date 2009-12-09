@@ -28,8 +28,6 @@
     </div>
     <h2 class="title"><%=t:Register_Graduation%></h2>
     <div class="inner">
-      <% @graduation = Graduation.new -%>
-      <% @graduation.student = @student -%>
       <% form_for [ @student, @graduation ], :html => { :class => :form } do |f| -%>
       <%= render :partial => "form", :locals => {:f => f} -%>
       <% end -%>

@@ -67,4 +67,21 @@ class ApplicationController < ActionController::Base
     redirect_to(session[:return_to] || default)
     session[:return_to] = nil
   end
+
+	def get_default(key)
+		val = DefaultValue.find(:first, :conditions => { :user_id => current_user.id, :key => key })
+		return val.value if val != nil
+		return nil
+	end
+
+	def set_default(key, value)
+		val = DefaultValue.find(:first, :conditions => { :user_id => current_user.id, :key => key })
+		if val == nil
+			val = DefaultValue.new
+			val.user_id = current_user.id
+			val.key = key
+		end
+		val.value = value
+		val.save!
+	end
 end
