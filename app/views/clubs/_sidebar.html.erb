@@ -2,7 +2,7 @@
 <div class="block">
   <h3><%=t(:Links)%></h3>
   <ul class="navigation">
-    <% if !@club.blank? && current_user.edit_club_permission?(@club) %>
+    <% if current_user.clubs_permission? %>
     <li><%= link_to t(:New_Club), new_club_path %></li>
     <% end %>
   </ul>
