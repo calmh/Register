@@ -42,7 +42,7 @@ class ClubsController < ApplicationController
 
     respond_to do |format|
       if @club.save
-        flash[:notice] = 'Club was successfully created.'
+        flash[:notice] = t:Club_created
         format.html { redirect_to(@club) }
         format.xml  { render :xml => @club, :status => :created, :location => @club }
       else
@@ -59,7 +59,7 @@ class ClubsController < ApplicationController
 
     respond_to do |format|
       if @club.update_attributes(params[:club])
-        flash[:notice] = 'Club was successfully updated.'
+        flash[:notice] = t:Club_updated
         format.html { redirect_to(@club) }
         format.xml  { head :ok }
       else

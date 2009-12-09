@@ -46,7 +46,6 @@ class PermissionsController < ApplicationController
 
     respond_to do |format|
       if @permission.save
-        flash[:notice] = 'Permission was successfully created.'
         format.html { redirect_to(@permission) }
         format.xml  { render :xml => @permission, :status => :created, :location => @permission }
       else
@@ -63,7 +62,6 @@ class PermissionsController < ApplicationController
 
     respond_to do |format|
       if @permission.update_attributes(params[:permission])
-        flash[:notice] = 'Permission was successfully updated.'
         format.html { redirect_to(@permission) }
         format.xml  { head :ok }
       else

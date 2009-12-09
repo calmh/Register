@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
   def require_user
     unless current_user
       store_location
-      flash[:notice] = t(:Must_log_in)
+      flash[:warning] = t(:Must_log_in)
       redirect_to new_user_session_url
       return false
     end

@@ -1,4 +1,4 @@
-#!/usr/bin/ruby1.8
+#!/usr/bin/ruby
 
 require 'rexml/document'
 
@@ -24,7 +24,7 @@ doc.elements.each("DataStore/Clubs/Club") do |c|
   c.elements.each("Students/Student") do |s|
     studentID = nextStudentID += 1
     group = s.attributes["Group"]
-    group = "Standard" if group.blank?
+    group = "Standard" if group == nil || group.empty?
     if !(groupIDs.key? group)
       groupIDs[group] = groupIDs.values.length + 1
       groups << {
@@ -32,6 +32,8 @@ doc.elements.each("DataStore/Clubs/Club") do |c|
         'identifier' => s.attributes["Group"]
       }
     end
+	pnum = s.attributes["PersonalNumber"]
+	pnum = pnum.sub(/-1111$/, "").sub(/-1234$/, "").sub(/^190/, "200") unless pnum == nil
     students << {
       'id' => studentID,
       'club_id' => clubID,
@@ -45,7 +47,7 @@ doc.elements.each("DataStore/Clubs/Club") do |c|
       'street' => s.attributes["StreetAddress"],
       'zipcode' => s.attributes["ZipCode"],
       'city' => s.attributes["City"],
-      'personal_number' => s.attributes["PersonalNumber"],
+      'personal_number' => pnum,
     }
     s.elements.each("Payments/Payment") do |p|
       payments << {
@@ -70,12 +72,17 @@ end
 doc.elements.each("DataStore/Users/User") do |u|
   fname, sname = u.attributes["RealName"].split(/ /)
   userID = nextUserID += 1
+	admin = u.attributes["IsAdmin"]
   users << {
     'id' => userID,
     'sname' => sname,
     'fname' => fname,
     'login' => u.attributes["Login"],
     'crypted_password' => u.attributes["PasswordHash"].downcase,
+	'users_permission' => admin,
+	'groups_permission' => admin,
+	'clubs_permission' => admin,
+	'mailinglists_permission' => admin,
   }
 end
 

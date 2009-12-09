@@ -30,31 +30,45 @@
   </div>
 
 <% if current_user.users_permission? %>
-  <div class="group">
-    <%= f.label :clubs_permission, t(:Edit_clubs), :class => :label %>
-    <%= f.check_box :clubs_permission, :class => 'check_box' %>
-  </div>
+<h3><%=t:Global_permissions%></h3>
+<div class="group">
+<table>
+  <tr>
+	<td><%=t(:Edit_clubs)%></td>
+    <td><%= f.check_box :clubs_permission, :class => 'check_box' %></td>
+  </tr>
 
-  <div class="group">
-    <%= f.label :groups_permission, t(:Edit_groups), :class => :label %>
-    <%= f.check_box :groups_permission, :class => 'check_box' %>
-  </div>
+  <tr>
+    <td><%=t(:Edit_groups)%></td>
+    <td><%= f.check_box :groups_permission, :class => 'check_box' %></td>
+</tr>
 
-  <div class="group">
-    <%= f.label :users_permission, t(:Edit_users), :class => :label %>
-    <%= f.check_box :users_permission, :class => 'check_box' %>
-  </div>
+  <tr>
+    <td><%=t(:Edit_users)%></td>
+    <td><%= f.check_box :users_permission, :class => 'check_box' %></td>
+</tr>
 
-  <div class="group">
-    <%= f.label :mailinglists_permission, t(:Edit_mailinglists), :class => :label %>
-    <%= f.check_box :mailinglists_permission, :class => 'check_box' %>
-  </div>
+  <tr>
+    <td><%=t(:Edit_mailinglists)%></td>
+    <td><%= f.check_box :mailinglists_permission, :class => 'check_box' %></td>
+</tr>
+</table>
+</div>
 
+<h3><%=t:Club_permissions%></h3>
   <div class="group">
     <table>
+	<tr>
+		<td><b><%=t:Club%></b></td>
+		<td><abbr title="<%=t:Read%>">Rd</abbr></td>
+		<td><abbr title="<%=t:Write%>">Wr</abbr></td>
+		<td><abbr title="<%=t:Delete%>">De</abbr></td>
+		<td><abbr title="<%=t:Payments%>">Pa</abbr></td>
+		<td><abbr title="<%=t:Graduations%>">Gr</abbr></td>
+		</tr>
     <% clubs.each do |c| -%>
     <tr>
-    <th><%=c.name%></th>
+    <td><%=c.name%></td>
     <%= permission_checkboxes @user, c %>
     </tr>
     <% end -%>

@@ -3,7 +3,7 @@ class Student < ActiveRecord::Base
   belongs_to :group
   has_many :payments, :order => "received desc"
   has_many :graduations, :order => "graduated desc"
-  validates_uniqueness_of :personal_number, :if => Proc.new { |s| !s.personal_number.blank? && s.personal_number =~ /^(19[3-9]|20[0-2])\d[01]\d[0-3]\d(-\d\d\d\d)?$/ }
+  validates_uniqueness_of :personal_number, :if => Proc.new { |s| !s.personal_number.blank? && s.personal_number =~ /^(19[3-9]|20[0-2])\d[01]\d[0-3]\d-\d\d\d\d$/ }
   validate :check_personal_number
   validates_associated :group
   validates_associated :club

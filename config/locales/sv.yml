@@ -39,7 +39,7 @@ sv:
   silver: silver
   junior: junior
   or: eller
-  Profile: Användardprofil
+  Profile: Användarprofil
   Settings: Inställningar
   Logout: Logga ut
   Graduations: Graderingar
@@ -100,6 +100,20 @@ sv:
   male: man
   female: kvinna
   Gender_descr: Om ett komplett personnumer matats in ovan kommer informationen i det att användas för att bestämma könet.
+  Read: Läsa
+  Write: Skriva
+  Delete: Radera
+  Club: Klubb
+  Global_permissions: Globala rättigheter
+  Club_permissions: Rättigheter per klubb
+  Group_merged: Gruppen har slagits ihop och raderats.
+  Could_not_complete_validation_errors: Det gick inte att fullfölja operationen på grund av valideringsfel. Detta är ett tecken på att all information inte är som den ska i databasen. Kontakta administratatören.
+  Group_updated: Gruppen har uppdaterats.
+  Group_created: Gruppen har skapats.
+  Club_updated: Klubben har uppdaterats.
+  Club_created: Klubben har skapats.
+  Student_updated: Eleven har uppdaterats.
+  Student_created: Eleven har skapats.
 
   activerecord:
     errors:

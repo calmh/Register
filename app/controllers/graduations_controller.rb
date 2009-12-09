@@ -58,7 +58,6 @@ class GraduationsController < ApplicationController
 
     respond_to do |format|
       if @graduation.update_attributes(params[:graduation])
-        flash[:notice] = 'Graduation was successfully updated.'
         format.html { redirect_to(@graduation) }
         format.xml  { head :ok }
       else

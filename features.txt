@@ -1,11 +1,4 @@
-- Per elev
-  - Attribut "gender" som antingen fylls i eller autogenereras från
-    personnummer.
-- Inloggning
-  - Rättigheter per klubb
-    - Administrera
-    - Beivra
-  - Återfå glömt lösenord
+- Återfå glömt lösenord
 - Klubbsida
   - Markera flera tränande
   - Lägga till betalning i bulk

@@ -46,7 +46,6 @@ class PaymentsController < ApplicationController
 
     respond_to do |format|
       if @payment.update_attributes(params[:payment])
-        flash[:notice] = 'Payment was successfully updated.'
         format.html { redirect_to(@payment) }
         format.xml  { head :ok }
       else
