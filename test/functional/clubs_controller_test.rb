@@ -4,7 +4,7 @@ class ClubsControllerTest < ActionController::TestCase
   setup do
     activate_authlogic
     u = users(:one)
-    UserSession.create(u)
+    UserSession.create(:login => u.login, :password => u.password)
   end
 
   test "should get index" do
