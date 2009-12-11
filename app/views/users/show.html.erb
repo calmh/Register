@@ -70,6 +70,10 @@
           <b><%= permission %> <%=t(:Edit_mailinglists).downcase%></b>
         </p>
 
+		<% clubs.each do |club| %>
+			<%= club.name %> <%= current_user.graduations_permission?(club)%>
+			<br/>
+		<% end %>
     </div>
   </div>
 </div>

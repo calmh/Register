@@ -1,0 +1,24 @@
+--- 
+users_001: 
+  created_at: 2009-12-09 09:09:19
+  single_access_token: RcNDgaUdOCKapN7hWLUU
+  last_request_at: 2009-12-11 09:42:20
+  crypted_password: 6694a5cda8fcb5ddcfd6171ce35de9e593c20da32b0341917f4f1f6d40ce6d98
+  updated_at: 2009-12-11 09:42:20
+  perishable_token: NcuOuZSrQmRQXFhXhH8S
+  groups_permission: "1"
+  id: "1"
+  failed_login_count: "0"
+  current_login_ip: 127.0.0.1
+  current_login_at: 2009-12-11 09:37:29
+  persistence_token: 0f1dae1907c73885dcbeab9af3105ddf202a6aa8e2dc3ea93b2178a734e183b946a3c5ecfc4bbd7634344dbf7aec7070a4f5976a848ea38ec9d64a31d27c489a
+  login_count: "8"
+  fname: Admin
+  last_login_ip: 127.0.0.1
+  users_permission: "1"
+  mailinglists_permission: "1"
+  login: admin
+  last_login_at: 2009-12-11 09:06:58
+  sname: Istrator
+  email: admin@example.com
+  clubs_permission: "1"

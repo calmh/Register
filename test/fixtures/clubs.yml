@@ -1,0 +1,30 @@
+clubs_006:
+  name: Nybro
+  created_at: 2009-12-09 09:09:19
+  updated_at: 2009-12-09 09:09:19
+  id: "9"
+clubs_001:
+  name: Brålanda
+  created_at: 2009-12-09 09:09:19
+  updated_at: 2009-12-09 09:09:19
+  id: "2"
+clubs_002:
+  name: Vallåkra
+  created_at: 2009-12-09 09:09:19
+  updated_at: 2009-12-09 09:09:19
+  id: "3"
+clubs_003:
+  name: Frillesås
+  created_at: 2009-12-09 09:09:19
+  updated_at: 2009-12-09 09:09:19
+  id: "4"
+clubs_004:
+  name: Tandsbyn
+  created_at: 2009-12-09 09:09:19
+  updated_at: 2009-12-09 09:09:19
+  id: "5"
+clubs_005:
+  name: Edsvalla
+  created_at: 2009-12-09 09:09:19
+  updated_at: 2009-12-09 09:09:19
+  id: "8"

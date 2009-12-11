@@ -1,0 +1,18 @@
+groups_001:
+  created_at: 2009-12-09 09:09:19
+  comments:
+  updated_at: 2009-12-09 09:09:19
+  id: "7"
+  identifier: Nyregistrerad
+groups_002:
+  created_at: 2009-12-09 09:09:19
+  comments:
+  updated_at: 2009-12-09 09:09:19
+  id: "8"
+  identifier: "Instrukt\xC3\xB6rer"
+groups_003:
+  created_at: 2009-12-09 09:09:19
+  comments:
+  updated_at: 2009-12-09 09:09:19
+  id: "10"
+  identifier: Elever

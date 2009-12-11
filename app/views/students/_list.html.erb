@@ -38,11 +38,11 @@
   <%= submit_tag t(:Send_Message) + " &rarr;", :name => "bulk_message", :class => "button" %>
 -->
 <% if current_user.clubs_permission? || current_user.graduations_permission?(@club) %>
-  <%= submit_tag t(:Register_Graduation) + " &rarr;", :name => "bulk_graduations", :class => "button" %>
+  <%= submit_tag t(:Register_Graduation) + " &rarr;", :name => "bulk_graduations", :class => "button", :id => "bulk_graduations" %>
 <% end %>
 <!-->
 <% if @club && current_user.payments_permission?(@club) %>
-  <%= submit_tag t(:Register_Payment) + " &rarr;", :name => "bulk_payments", :class => "button" %>
+  <%= submit_tag t(:Register_Payment) + " &rarr;", :name => "bulk_payments", :class => "button", :id => "bulk_payments" %>
 <% end %>
 -->
 </div>

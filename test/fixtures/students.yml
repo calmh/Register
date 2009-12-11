@@ -1,0 +1,247 @@
+students_013:
+  city: Nybro
+  personal_number: "19450326-9377"
+  created_at: 2009-12-09 09:09:19
+  title: ToeTai
+  comments:
+  zipcode: "0"
+  updated_at: 2009-12-09 09:10:31
+  club_id: "9"
+  id: "137"
+  home_phone: 0481-5635981
+  street: Valldammsgatan 42
+  group_id: "7"
+  gender:
+  fname: Svante
+  password:
+  sname: Jansson
+  email: svante.jansson@example.com
+  mobile_phone:
+students_002:
+  city: FÖLLINGE
+  personal_number: "19620629-3349"
+  created_at: 2009-12-09 09:09:19
+  title: Unknown
+  comments:
+  zipcode: "83066"
+  updated_at: 2009-12-09 09:09:19
+  club_id: "2"
+  id: "26"
+  home_phone: 0645-7595472
+  street: Norrfjäll 44
+  group_id: "7"
+  gender:
+  fname: Agaton
+  password:
+  sname: Johnsson
+  email: agaton.johnsson@example.com
+  mobile_phone:
+students_003:
+  city: Arvidsjaur
+  personal_number: "19620629-3349"
+  created_at: 2009-12-09 09:09:19
+  title: DjoGau
+  comments:
+  zipcode: "93000"
+  updated_at: 2009-12-09 09:09:19
+  club_id: "2"
+  id: "27"
+  home_phone: 0960-8472971
+  street: Barrgatan 81
+  group_id: "8"
+  gender:
+  fname: Erna
+  password:
+  sname: Petterson
+  email: erna.petterson@example.com
+  mobile_phone:
+students_004:
+  city: Svartå
+  personal_number: 19420814-3778
+  created_at: 2009-12-09 09:09:19
+  title: GauLin
+  comments:
+  zipcode: 69330
+  updated_at: 2009-12-09 09:09:19
+  club_id: "3"
+  id: "29"
+  home_phone:
+  street: Verdandi Gränd 65
+  group_id: "10"
+  gender:
+  fname: Emil
+  password:
+  sname: Nyström
+  email: emil.nystrom@example.com
+  mobile_phone:
+students_005:
+  city: Vallåkra
+  personal_number: 19850107-1768
+  created_at: 2009-12-09 09:09:19
+  title: ToeTai
+  comments:
+  zipcode: "26030"
+  updated_at: 2009-12-09 09:09:19
+  club_id: "3"
+  id: "30"
+  home_phone: 042-3409841
+  street: Mjölkalånga 64
+  group_id: "10"
+  gender:
+  fname: Marielle
+  password:
+  sname: Dahlberg
+  email: marielle.dahlberg@example.com
+  mobile_phone:
+students_006:
+  city: Kristianstad
+  personal_number: 19460723-4780
+  created_at: 2009-12-09 09:09:19
+  title: Sifu
+  comments:
+  zipcode: "12353"
+  updated_at: 2009-12-09 09:10:30
+  club_id: "4"
+  id: "31"
+  home_phone: 044-212936
+  street: Norra Bäckebo 5
+  group_id: "7"
+  gender:
+  fname: Elif
+  password:
+  sname: Johnsson
+  email: elif.johnsson@example.com
+  mobile_phone:
+students_007:
+  city: Frillesås
+  personal_number: 19810628-1861
+  created_at: 2009-12-09 09:09:19
+  title: GauLin
+  comments:
+  zipcode: "43030"
+  updated_at: 2009-12-09 09:10:30
+  club_id: "4"
+  id: "32"
+  home_phone:
+  street: Tuvvägen 20
+  group_id: "7"
+  gender:
+  fname: Lisen
+  password:
+  sname: Berggren
+  email: lisen.berggren@example.com
+  mobile_phone:
+students_008:
+  city: Kvicksund
+  personal_number: 19581214-1496
+  created_at: 2009-12-09 09:09:19
+  title: GauLin
+  comments:
+  zipcode: "64045"
+  updated_at: 2009-12-09 09:10:30
+  club_id: "4"
+  id: "34"
+  home_phone: 0563-9198417
+  street: Kläppinge 89
+  group_id: "7"
+  gender:
+  fname: Edgar
+  password:
+  sname: Holmberg
+  email: edgar.holmberg@example.com
+  mobile_phone:
+students_009:
+  city: Tandsbyn
+  personal_number: 19671029-1219
+  created_at: 2009-12-09 09:09:19
+  title: ToeTai
+  comments:
+  zipcode: 83021
+  updated_at: 2009-12-09 09:10:30
+  club_id: "5"
+  id: "35"
+  home_phone: 063-5312134
+  street: Stallstigen 47
+  group_id: "7"
+  gender:
+  fname: Nino
+  password:
+  sname: Berg
+  email: nino.berg@example.com
+  mobile_phone:
+students_010:
+  city: Fågelfors
+  personal_number: 19670425-7176
+  created_at: 2009-12-09 09:09:19
+  title: ToeTai
+  comments:
+  zipcode: 57075
+  updated_at: 2009-12-09 09:10:30
+  club_id: "5"
+  id: "36"
+  home_phone: 0491-5675992
+  street:
+  group_id: "7"
+  gender:
+  fname: Devin
+  password:
+  sname: Johansson
+  email: devin.johansson@example.com
+  mobile_phone:
+students_011:
+  city: Ljungby
+  personal_number: 19510709-8054
+  created_at: 2009-12-09 09:09:19
+  title: Sifu
+  comments:
+  zipcode: 34147
+  updated_at: 2009-12-09 09:10:30
+  club_id: "8"
+  id: "135"
+  home_phone: 0372-9283685
+  street: Bygget 73
+  group_id: "7"
+  gender:
+  fname: Razmus
+  password:
+  sname: Hermansson
+  email: razmus.hermansson@example.com
+  mobile_phone:
+students_012:
+  city: Edsvalla
+  personal_number: 19500513-8515
+  created_at: 2009-12-09 09:09:19
+  title: ToeTai
+  comments:
+  zipcode: 66052
+  updated_at: 2009-12-09 09:10:30
+  club_id: "8"
+  id: "136"
+  home_phone: 054-7334012
+  street:
+  group_id: "7"
+  gender:
+  fname: Baran
+  password:
+  sname: Olofsson
+  email: baran.olofsson@example.com
+  mobile_phone:
+students_001:
+  city: Brålanda
+  personal_number: 19810203-9909
+  created_at: 2009-12-09 09:09:19
+  title: Unknown
+  comments:
+  zipcode: 46065
+  updated_at: 2009-12-09 09:09:19
+  club_id: "2"
+  id: "25"
+  home_phone: 0521-9520867
+  street: Valldammsgatan 42
+  group_id: "7"
+  gender:
+  fname: Amalia
+  password:
+  sname: Gustavsson
+  email: amalia.gustavsson@example.com
+  mobile_phone:
