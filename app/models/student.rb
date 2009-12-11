@@ -8,6 +8,8 @@ class Student < ActiveRecord::Base
   validates_associated :group
   validates_associated :club
   validates_format_of :gender, :with => /male|female|unknown/
+  has_many :mailing_list_memberships, :dependent => :destroy
+  has_many :mailing_lists, :through => :mailing_list_memberships
 
   def luhn
     fact = 2

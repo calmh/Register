@@ -18,6 +18,7 @@ class ApplicationController < ActionController::Base
 		@users = User.find(:all)
 		@groups = Group.find(:all)
 		@students = Student.find(:all)
+		@mailing_lists = MailingList.find(:all)
 	end
 
 	def current_user_session

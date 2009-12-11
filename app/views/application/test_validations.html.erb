@@ -46,6 +46,18 @@
 </tr>
 <% end %>
 
+<% @mailing_lists.each do |s| %>
+<tr>
+<td><%=s.email%></td>
+<% if !s.valid? %>
+<% errors = s.errors.each_full { |e| e } %>
+<td><%=link_to errors.join(", "), edit_mailing_list_path(s) %></td>
+<% else %>
+<td>OK</td>
+<% end %>
+</tr>
+<% end %>
+
 </table>
 
     </div>

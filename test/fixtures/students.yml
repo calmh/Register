@@ -38,7 +38,7 @@ students_002:
   mobile_phone:
 students_003:
   city: Arvidsjaur
-  personal_number: "19620629-3349"
+  personal_number: "19710730-3187"
   created_at: 2009-12-09 09:09:19
   title: DjoGau
   comments:
@@ -50,10 +50,10 @@ students_003:
   street: Barrgatan 81
   group_id: "8"
   gender:
-  fname: Erna
+  fname: Emma
   password:
   sname: Petterson
-  email: erna.petterson@example.com
+  email: emma.petterson@example.com
   mobile_phone:
 students_004:
   city: Svartå
