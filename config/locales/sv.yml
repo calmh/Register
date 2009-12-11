@@ -120,6 +120,10 @@ sv:
   Search_parameters: Sökparametrar
   Search_descr: Använd fälten nedan för att begränsa listan på tränande till vänster.
   New_Graduation: Ny gradering
+  Destroy: Radera
+  Are_you_sure_club: Är du säker? Klubben kommer att raderas, tillsammans med alla elever i den.
+  Are_you_sure_student: Är du säker? Eleven kommer att raderas.
+  Are_you_sure_user: Är du säker? Användaren kommer att raderas.
 
   activerecord:
     errors:

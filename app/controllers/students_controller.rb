@@ -134,7 +134,7 @@ class StudentsController < ApplicationController
     @student.destroy
 
     respond_to do |format|
-      format.html { redirect_to(students_url) }
+      format.html { redirect_to(@student.club) }
       format.xml  { head :ok }
     end
   end

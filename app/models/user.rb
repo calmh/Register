@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :permissions
+  has_many :permissions, :dependent => :destroy
   validates_presence_of :clubs_permission
   validates_presence_of :groups_permission
   validates_presence_of :users_permission
@@ -21,6 +21,10 @@ class User < ActiveRecord::Base
 
   def edit_club_permission?(club)
     permissions_for(club).include? 'edit'
+  end
+
+  def delete_permission?(club)
+    permissions_for(club).include? 'delete'
   end
 
   def graduations_permission?(club)

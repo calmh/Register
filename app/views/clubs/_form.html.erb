@@ -7,6 +7,9 @@
 <div class="group navform">
   <input type="submit" class="button" value="<%=t(:Save)%> &rarr;" />
 	<% if controller.action_name != 'new' -%>
+	<% if current_user.clubs_permission? %>
+	<%=t(:or)%> <%= link_to t(:Destroy), @club, :confirm => t(:Are_you_sure_club), :method => :delete %>
+	<% end %>
 	<%=t(:or)%> <%= link_to t(:Cancel), club_path(@club) %>
 	<% end -%>
 </div>
