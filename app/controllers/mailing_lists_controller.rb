@@ -1,5 +1,4 @@
 class MailingListsController < ApplicationController
-	before_filter :require_user
 	before_filter :require_mailing_lists_permission
 
 	def index

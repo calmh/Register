@@ -87,6 +87,9 @@ class PermissionTest < ActionController::IntegrationTest
 
 		click_link "Klubbar"
 		assert_contain "Nybro"
+
+		visit "/users"
+		assert_contain "måste logga in"
 	end
 
 	test "verify no groups permission" do
@@ -109,5 +112,8 @@ class PermissionTest < ActionController::IntegrationTest
 
 		click_link "Klubbar"
 		assert_contain "Nybro"
+
+		visit "/groups"
+		assert_contain "måste logga in"
 	end
 end

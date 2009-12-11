@@ -31,63 +31,41 @@ class ApplicationController < ActionController::Base
 		@current_user = current_user_session && current_user_session.user
 	end
 
+	def denied
+		store_location
+		flash[:warning] = t(:Must_log_in)
+	    current_user_session.destroy if current_user_session
+		redirect_to new_user_session_url
+		return false
+	end
+
 	def require_user
-		unless current_user
-			store_location
-			flash[:warning] = t(:Must_log_in)
-			redirect_to new_user_session_url
-			return false
-		end
+		return denied unless current_user
 	end
 
 	def require_clubs_permission
-		if require_user
-			unless current_user.clubs_permission?
-				store_location
-				flash[:notice] = t(:Must_log_in)
-				redirect_to new_user_session_url
-				return false
-			end
-		end
+		return denied unless current_user
+		return denied unless current_user.clubs_permission?
 	end
 
 	def require_groups_permission
-		if require_user
-			unless current_user.groups_permission?
-				store_location
-				flash[:notice] = t(:Must_log_in)
-				redirect_to new_user_session_url
-				return false
-			end
-		end
+		return denied unless current_user
+		return denied unless current_user.groups_permission?
 	end
 
 	def require_users_permission
-		if require_user
-			unless current_user.users_permission?
-				store_location
-				flash[:notice] = t(:Must_log_in)
-				redirect_to new_user_session_url
-				return false
-			end
-		end
+		return denied unless current_user
+		return denied unless current_user.users_permission?
 	end
 
 	def require_mailing_lists_permission
-		if require_user
-			unless current_user.mailing_lists_permission?
-				store_location
-				flash[:notice] = t(:Must_log_in)
-				redirect_to new_user_session_url
-				return false
-			end
-		end
+		return denied unless current_user
+		return denied unless current_user.mailinglists_permission?
 	end
 
 	def require_no_user
 		if current_user
 			store_location
-			# flash[:notice] = "You must be logged out to access this page"
 			redirect_to account_url
 			return false
 		end

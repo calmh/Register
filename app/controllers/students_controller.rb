@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-  before_filter :require_user
+	before_filter :require_user
 
 	class SearchParams
 		attr_accessor :group_id
@@ -35,121 +35,121 @@ class StudentsController < ApplicationController
 		end
 	end
 
-  def index
-    @club = Club.find(params[:club_id])
-    @students = @club.students
+	def index
+		@club = Club.find(params[:club_id])
+		@students = @club.students
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @student }
-    end
-  end
-
-  def search
-	@searchparams = SearchParams.new
-	if params.key? :searchparams
-		@searchparams.group_id = params[:searchparams][:group_id].to_i
-		@searchparams.grade = params[:searchparams][:grade].to_i
-		@searchparams.club_id = params[:searchparams][:club_id].to_i
+		respond_to do |format|
+			format.html # new.html.erb
+			format.xml  { render :xml => @student }
+		end
 	end
 
-	@clubs = Club.find(:all, :order => :name)
-	@students = @searchparams.filter(Student.find(:all, :conditions => @searchparams.conditions, :order => "sname, fname"))
+	def search
+		@searchparams = SearchParams.new
+		if params.key? :searchparams
+			@searchparams.group_id = params[:searchparams][:group_id].to_i
+			@searchparams.grade = params[:searchparams][:grade].to_i
+			@searchparams.club_id = params[:searchparams][:club_id].to_i
+		end
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @student }
-    end
-  end
+		@clubs = Club.find(:all, :order => :name)
+		@students = @searchparams.filter(Student.find(:all, :conditions => @searchparams.conditions, :order => "sname, fname"))
 
-  # GET /students/1
-  # GET /students/1.xml
-  def show
-    @student = Student.find(params[:id])
-    @club = @student.club
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @student }
-    end
-  end
-
-  # GET /students/new
-  # GET /students/new.xml
-  def new
-    @club = Club.find(params[:club_id])
-    @student = Student.new
-    # @student.group = @club.groups[0]
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @student }
-    end
-  end
-
-  # GET /students/1/edit
-  def edit
-    @student = Student.find(params[:id])
-    @club = @student.club
-  end
-
-  # POST /students
-  # POST /students.xml
-  def create
-    @student = Student.new(params[:student])
-
-    respond_to do |format|
-      if @student.save
-        flash[:notice] = t:Student_created
-        format.html { redirect_to(@student) }
-        format.xml  { render :xml => @student, :status => :created, :location => @student }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @student.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  # PUT /students/1
-  # PUT /students/1.xml
-  def update
-    @student = Student.find(params[:id])
-
-    respond_to do |format|
-      if @student.update_attributes(params[:student])
-        flash[:notice] = t:Student_updated
-        format.html { redirect_to(@student) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @student.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /students/1
-  # DELETE /students/1.xml
-  def destroy
-    @student = Student.find(params[:id])
-    @student.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(@student.club) }
-      format.xml  { head :ok }
-    end
-  end
-
-  def bulk_operations
-	session[:before_bulk] = request.referer
-    session[:selected_students] = params[:selected_students]
-    operation = "bulk_message" if params[:bulk_message]
-    operation = "bulk_payments" if params[:bulk_payments]
-    operation = "bulk_graduations" if params[:bulk_graduations]
-    if operation == "bulk_graduations"
-		redirect_to :controller => 'graduations', :action => 'new_bulk'
+		respond_to do |format|
+			format.html # new.html.erb
+			format.xml  { render :xml => @student }
+		end
 	end
-    if operation == "bulk_payments"
-		redirect_to :controller => 'graduations', :action => 'new_bulk'
+
+	# GET /students/1
+	# GET /students/1.xml
+	def show
+		@student = Student.find(params[:id])
+		@club = @student.club
+
+		respond_to do |format|
+			format.html # show.html.erb
+			format.xml  { render :xml => @student }
+		end
 	end
-  end
+
+	# GET /students/new
+	# GET /students/new.xml
+	def new
+		@club = Club.find(params[:club_id])
+		@student = Student.new
+		# @student.group = @club.groups[0]
+
+		respond_to do |format|
+			format.html # new.html.erb
+			format.xml  { render :xml => @student }
+		end
+	end
+
+	# GET /students/1/edit
+	def edit
+		@student = Student.find(params[:id])
+		@club = @student.club
+	end
+
+	# POST /students
+	# POST /students.xml
+	def create
+		@student = Student.new(params[:student])
+
+		respond_to do |format|
+			if @student.save
+				flash[:notice] = t:Student_created
+				format.html { redirect_to(@student) }
+				format.xml  { render :xml => @student, :status => :created, :location => @student }
+			else
+				format.html { render :action => "new" }
+				format.xml  { render :xml => @student.errors, :status => :unprocessable_entity }
+			end
+		end
+	end
+
+	# PUT /students/1
+	# PUT /students/1.xml
+	def update
+		@student = Student.find(params[:id])
+
+		respond_to do |format|
+			if @student.update_attributes(params[:student])
+				flash[:notice] = t:Student_updated
+				format.html { redirect_to(@student) }
+				format.xml  { head :ok }
+			else
+				format.html { render :action => "edit" }
+				format.xml  { render :xml => @student.errors, :status => :unprocessable_entity }
+			end
+		end
+	end
+
+	# DELETE /students/1
+	# DELETE /students/1.xml
+	def destroy
+		@student = Student.find(params[:id])
+		@student.destroy
+
+		respond_to do |format|
+			format.html { redirect_to(@student.club) }
+			format.xml  { head :ok }
+		end
+	end
+
+	def bulk_operations
+		session[:before_bulk] = request.referer
+		session[:selected_students] = params[:selected_students]
+		operation = "bulk_message" if params[:bulk_message]
+		operation = "bulk_payments" if params[:bulk_payments]
+		operation = "bulk_graduations" if params[:bulk_graduations]
+		if operation == "bulk_graduations"
+			redirect_to :controller => 'graduations', :action => 'new_bulk'
+		end
+		if operation == "bulk_payments"
+			redirect_to :controller => 'graduations', :action => 'new_bulk'
+		end
+	end
 end

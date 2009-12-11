@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	before_filter :require_user
-	before_filter :require_users_permission
+	before_filter :require_users_permission, :only => [ :destroy, :new, :create, :index ]
 
 	# GET /users
 	# GET /users.xml
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 	# GET /users/1.xml
 	def show
 		@user = User.find(params[:id])
-
+		@user = current_user if @user == nil
 		respond_to do |format|
 			format.html # show.html.erb
 			format.xml  { render :xml => @user }
@@ -62,27 +62,29 @@ class UsersController < ApplicationController
 	def update
 		@user = User.find(params[:id])
 
-		# Check all existing permissions to see if we should keep them
-		if !@user.permissions.blank?
-			@user.permissions.each do |p|
-				c_id = p.club_id.to_s
-				if !params.key?(:permission) || !params[:permission].key?(c_id) || !params[:permission][c_id].key?(p.permission)
-					p.destroy
+		if current_user.users_permission?
+			# Check all existing permissions to see if we should keep them
+			if !@user.permissions.blank?
+				@user.permissions.each do |p|
+					c_id = p.club_id.to_s
+					if !params.key?(:permission) || !params[:permission].key?(c_id) || !params[:permission][c_id].key?(p.permission)
+						p.destroy
+					end
 				end
 			end
-		end
 
-		if params.key? :permission
-			params[:permission].each_key do |club_id|
-				permissions = params[:permission][club_id]
-				current_perms = @user.permissions_for Club.find(club_id)
-				permissions.each_key do |perm|
-					if !current_perms.include? perm
-						np = Permission.new
-						np.club_id = club_id.to_i
-						np.user = @user
-						np.permission = perm
-						np.save!
+			if params.key? :permission
+				params[:permission].each_key do |club_id|
+					permissions = params[:permission][club_id]
+					current_perms = @user.permissions_for Club.find(club_id)
+					permissions.each_key do |perm|
+						if !current_perms.include? perm
+							np = Permission.new
+							np.club_id = club_id.to_i
+							np.user = @user
+							np.permission = perm
+							np.save!
+						end
 					end
 				end
 			end
