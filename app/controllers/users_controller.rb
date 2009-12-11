@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 	before_filter :require_user
+	before_filter :require_users_permission
 
 	# GET /users
 	# GET /users.xml

@@ -110,12 +110,4 @@ class PermissionTest < ActionController::IntegrationTest
 		click_link "Klubbar"
 		assert_contain "Nybro"
 	end
-
-	private
-	def log_in
-		visit "/"
-		fill_in "Användarnamn", :with => "admin"
-		fill_in "Lösenord", :with => "admin"
-		click_button "Logga in"
-	end
 end

@@ -42,4 +42,12 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+
+
+	def log_in
+		visit "/"
+		fill_in "Användarnamn", :with => "admin"
+		fill_in "Lösenord", :with => "admin"
+		click_button "Logga in"
+	end
 end

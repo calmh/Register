@@ -8,6 +8,12 @@
 <li class="<%= active ? ' active' : ''%>"><%= link_to t(:Group_List), groups_path %></li>
 <% end -%>
 
+<% if current_user.mailinglists_permission? -%>
+<% active = controller.controller_name == 'mailing_lists' &&
+   controller.action_name == 'index' -%>
+<li class="<%= active ? ' active' : ''%>"><%= link_to t(:Mailing_Lists), mailing_lists_path %></li>
+<% end -%>
+
 <% if current_user.users_permission? -%>
 <% active = controller.controller_name == 'users' &&
    controller.action_name == 'index' -%>

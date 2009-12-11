@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  email: all@example.com
+  description: Everyone
+  security: public
+
+two:
+  email: instructors@example.com
+  description: Instructors
+  security: private
