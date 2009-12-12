@@ -36,7 +36,9 @@
 			<%= yield %>
 			<div id="footer">
 				<div class="block">
-					<p><%=COPYRIGHT%></p>
+					<% cache do %>
+					<p><%=t:Register%> <%=version%> &emsp;|&emsp; <%=COPYRIGHT%></p>
+					<% end %>
 				</div>
 			</div>
 		</div>

@@ -43,4 +43,8 @@ module ApplicationHelper
 	def clubs
 		Club.find(:all, :order => :name)
 	end
+
+	def version
+		`git describe --always`
+	end
 end
