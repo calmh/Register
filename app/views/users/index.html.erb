@@ -1,38 +1,38 @@
 <div class="block">
-  <div class="secondary-navigation">
-    <ul>
-      <%= render :partial => 'application/links' %>
-    </ul>
-    <div class="clear"></div>
-  </div>
-  <div class="content">
-    <h2 class="title"><%=t:All_Users%></h2>
-    <div class="inner">
-      <table class="table">
-        <tr>
-          <th><%=t:Login%></th>
-          <th><%=t:Name%></th>
-          <th class="last">&nbsp;</th>
-        </tr>
-        <% @users.each do |user| -%>
-        <tr class="<%= cycle("odd", "even") %>">
-          <td>
-            <%= link_to user.login, user_path(user) %>
-          </td>
-          <td>
-            <%= (user.fname or "") + " " + (user.sname or "") %>
-          </td>
-        </tr>
-        <% end -%>
-      </table>
-      <div class="actions-bar">
-        <div class="actions">
-        </div>
+	<div class="secondary-navigation">
+		<ul>
+			<%= render :partial => 'application/links' %>
+		</ul>
+		<div class="clear"></div>
+	</div>
+	<div class="content">
+		<h2 class="title"><%=t:All_Users%></h2>
+		<div class="inner">
+			<table class="table">
+				<tr>
+					<th><%=t:Login%></th>
+					<th><%=t:Name%></th>
+					<th class="last">&nbsp;</th>
+				</tr>
+				<% @users.each do |user| -%>
+				<tr class="<%= cycle("odd", "even") %>">
+					<td>
+						<%= link_to user.login, user_path(user) %>
+					</td>
+					<td>
+						<%= (user.fname or "") + " " + (user.sname or "") %>
+					</td>
+				</tr>
+				<% end -%>
+			</table>
+			<div class="actions-bar">
+				<div class="actions">
+				</div>
 
-        <div class="clear"></div>
-      </div>
-    </div>
-  </div>
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
 </div>
 
 <% content_for :sidebar, render(:partial => 'sidebar') -%>

@@ -1,17 +1,17 @@
 <div class="block">
-  <div class="secondary-navigation">
-    <ul>
-      <%= render :partial => 'application/links' %>
-    </ul>
-    <div class="clear"></div>
-  </div>
-  <div class="content">
-    <div class="inner">
-      <h2><%=t(:Students)%></h2>
-		<% @displayClubField = true %>
-		<%= render :partial => 'list' %>
-    </div>
-  </div>
+	<div class="secondary-navigation">
+		<ul>
+			<%= render :partial => 'application/links' %>
+		</ul>
+		<div class="clear"></div>
+	</div>
+	<div class="content">
+		<div class="inner">
+			<h2><%=t(:Students)%></h2>
+			<% @displayClubField = true %>
+			<%= render :partial => 'list' %>
+		</div>
+	</div>
 </div>
 
 <% content_for :sidebar, render(:partial => 'searchbar') -%>

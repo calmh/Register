@@ -7,44 +7,44 @@
 	<%= stylesheet_link_tag 'web_app_theme_override' %>
 </head>
 <body>
-  <div id="container">
-    <div id="header">
-      <h1><a href="/"><%=SITE_NAME%></a></h1>
-      <div id="user-navigation">
-        <ul>
-<% if current_user %>
-          <li><%=link_to t(:Profile), user_path(current_user)%></a></li>
-          <li><%=link_to t(:Logout), user_session_path, :method => :delete, :class => "logout"%></a></li>
-<%end%>
-        </ul>
-        <div class="clear"></div>
-      </div>
-      <div id="main-navigation">
-        <ul></ul>
-        <div class="clear"></div>
-      </div>
-    </div>
-    <div id="wrapper">
-      <div class="flash">
-        <% flash.each do |type, message| -%>
-          <div class="message <%= type %>">
-            <p><%= message %></p>
-          </div>
-        <% end -%>
-      </div>
-      <div id="main">
-        <%= yield %>
-        <div id="footer">
-          <div class="block">
-            <p><%=COPYRIGHT%></p>
-          </div>
-        </div>
-      </div>
-      <div id="sidebar">
-        <%= yield :sidebar %>
-      </div>
-      <div class="clear"></div>
-    </div>
-  </div>
+	<div id="container">
+		<div id="header">
+			<h1><a href="/"><%=SITE_NAME%></a></h1>
+			<div id="user-navigation">
+				<ul>
+				<% if current_user %>
+				<li><%=link_to t(:Profile), user_path(current_user)%></a></li>
+				<li><%=link_to t(:Logout), user_session_path, :method => :delete, :class => "logout"%></a></li>
+				<%end%>
+			</ul>
+			<div class="clear"></div>
+		</div>
+		<div id="main-navigation">
+			<ul></ul>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div id="wrapper">
+		<div class="flash">
+			<% flash.each do |type, message| -%>
+			<div class="message <%= type %>">
+				<p><%= message %></p>
+			</div>
+			<% end -%>
+		</div>
+		<div id="main">
+			<%= yield %>
+			<div id="footer">
+				<div class="block">
+					<p><%=COPYRIGHT%></p>
+				</div>
+			</div>
+		</div>
+		<div id="sidebar">
+			<%= yield :sidebar %>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
 </body>
 </html>

@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
 	def denied
 		store_location
 		flash[:warning] = t(:Must_log_in)
-	    current_user_session.destroy if current_user_session
+		current_user_session.destroy if current_user_session
 		redirect_to new_user_session_url
 		return false
 	end
