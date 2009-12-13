@@ -13,8 +13,10 @@
 				<table class="table">
 					<tr><th class="first last  <%=cycle("odd", "even")%>" colspan="2"><%=h @student.name %></th></tr>
 					<tr>
-						<td><b><%=t(:Group)%>:</b></td>
-						<td><%=h @student.group.identifier %></td>
+						<td><b><%=t(:Groups)%>:</b></td>
+						<td>
+						<%= @student.groups.map{ |g| g.identifier }.join(", ") -%>
+						</td>
 					</tr>
 
 					<tr class="<%= cycle("odd", "even") %>">

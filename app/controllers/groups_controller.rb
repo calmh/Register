@@ -49,20 +49,15 @@ class GroupsController < ApplicationController
 	# PUT /groups/1.xml
 	def update
 		@group = Group.find(params[:id])
-
 		merge_with = Group.find(params[:group][:id])
-		success = true
+		merge_ids = merge_with.student_ids
+
 		if merge_with.id != @group.id
-			@group.students.each do |student|
-				student.group = merge_with
-				success = student.save && success
+			@group.students.each do |s|
+				merge_with.students<<s unless merge_ids.include? s.id
 			end
-			if success
-				@group.destroy
-				flash[:notice] = t:Group_merged
-			else
-				flash[:warning] = t:Could_not_complete_validation_errors
-			end
+			merge_with.save!
+			@group.destroy
 			redirect_to(groups_url)
 		else
 			respond_to do |format|

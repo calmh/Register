@@ -15,10 +15,6 @@ class StudentsController < ApplicationController
 		def conditions
 			variables = []
 			conditions = []
-			if group_id != -100
-				conditions << "group_id = ?"
-				variables << @group_id
-			end
 			if club_id != -100
 				conditions << "club_id = ?"
 				variables << @club_id
@@ -27,11 +23,14 @@ class StudentsController < ApplicationController
 		end
 
 		def filter(students)
-			if grade == -100
-				return students
-			else
-				return students.select { |s| s.current_grade.grade == @grade }
+			matched = students
+			if grade != -100
+				matched = matched.select { |s| s.current_grade.grade == @grade }
 			end
+			if group_id != -100
+				matched = matched.select { |s| s.group_ids.include? group_id }
+			end
+			return matched
 		end
 	end
 
@@ -114,6 +113,13 @@ class StudentsController < ApplicationController
 	# PUT /students/1.xml
 	def update
 		@student = Student.find(params[:id])
+
+		if params.key? :member_of
+			group_ids = params[:member_of].keys
+			@student.group_ids = group_ids
+		else
+			@student.groups.clear
+		end
 
 		respond_to do |format|
 			if @student.update_attributes(params[:student])

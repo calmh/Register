@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091211201045) do
+ActiveRecord::Schema.define(:version => 20091213150952) do
 
   create_table "clubs", :force => true do |t|
     t.string   "name"
@@ -42,11 +42,9 @@ ActiveRecord::Schema.define(:version => 20091211201045) do
     t.datetime "updated_at"
   end
 
-  create_table "mailing_list_memberships", :force => true do |t|
-    t.integer  "student_id"
-    t.integer  "mailing_list_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "groups_students", :id => false, :force => true do |t|
+    t.integer "group_id"
+    t.integer "student_id"
   end
 
   create_table "mailing_lists", :force => true do |t|
@@ -55,6 +53,11 @@ ActiveRecord::Schema.define(:version => 20091211201045) do
     t.string   "security"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "mailing_lists_students", :id => false, :force => true do |t|
+    t.integer "mailing_list_id"
+    t.integer "student_id"
   end
 
   create_table "payments", :force => true do |t|

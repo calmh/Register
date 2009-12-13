@@ -26,7 +26,7 @@ class PermissionTest < ActionController::IntegrationTest
 		assert_contain "inloggad"
 		assert_contain "Alla klubbar"
 		click_link "Nybro"
-
+		assert_contain " 1 tränande"
 		assert_contain "Svante Jansson"
 		assert_contain "Val för Nybro"
 		assert_contain "Ny tränande"
@@ -55,6 +55,7 @@ class PermissionTest < ActionController::IntegrationTest
 		assert_not_contain "Ny klubb"
 		assert_not_contain "Sök tränande"
 		click_link "Edsvalla"
+		assert_contain " 2 tränande"
 		assert_have_no_selector "#bulk_graduations"
 
 		click_link "Klubbar"
@@ -115,5 +116,22 @@ class PermissionTest < ActionController::IntegrationTest
 
 		visit "/groups"
 		assert_contain "måste logga in"
+	end
+
+	test "verify student search" do
+		log_in
+
+		assert_contain "Klubbar"
+		assert_contain "Grupper"
+		assert_contain "Användare"
+		assert_contain "Sök tränande"
+		assert_contain "Ny klubb"
+		click_link "Sök tränande"
+
+		assert_contain " 13 tränande"
+		select "Instruktörer"
+		click_button "Sök"
+
+		assert_contain " 2 tränande"
 	end
 end

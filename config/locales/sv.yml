@@ -130,6 +130,8 @@ sv:
   Email: Epostadress
   Security: Säkerhet
   Edit_Mailing_List: Redigera epostlista
+  Groups: Grupper
+  Matched_x_students: Hittade {{count}} tränande
 
   activerecord:
     errors:

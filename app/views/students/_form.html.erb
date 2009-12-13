@@ -1,8 +1,15 @@
 <%= f.hidden_field :group_id, :class => 'text_field' %>
 
 <div class="group">
-	<%= f.label :fname, t(:Group), :class => :label %>
-	<%= select "student", "group_id", groups.map { |g| [ g.identifier, g.id ] } %>
+	<%= f.label :fname, t(:Groups), :class => :label %>
+	<table>
+	<% groups.each do |group| -%>
+	<tr>
+		<td><%= check_box_tag "member_of[" + group.id.to_s + "]", value = "1", checked = @student.group_ids.include?(group.id) %></td>
+	<td><%=group.identifier%></td>
+	</tr>
+	<% end -%>
+	</table>
 </div>
 
 <div class="group">
