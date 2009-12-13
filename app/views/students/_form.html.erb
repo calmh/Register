@@ -1,15 +1,13 @@
-<%= f.hidden_field :group_id, :class => 'text_field' %>
+<%= f.hidden_field :club_id, :class => 'text_field' %>
 
 <div class="group">
-	<%= f.label :fname, t(:Groups), :class => :label %>
-	<table>
-	<% groups.each do |group| -%>
-	<tr>
-		<td><%= check_box_tag "member_of[" + group.id.to_s + "]", value = "1", checked = @student.group_ids.include?(group.id) %></td>
-	<td><%=group.identifier%></td>
-	</tr>
-	<% end -%>
-	</table>
+		<%= f.label :fname, t(:Groups), :class => :label %>
+		<% groups.each do |group| -%>
+		<label>
+			<%= check_box_tag "member_of[" + group.id.to_s + "]", value = "1", checked = @student.group_ids.include?(group.id) %>
+			<%=group.identifier%>
+		</label><br/>
+		<% end -%>
 </div>
 
 <div class="group">
@@ -41,13 +39,9 @@
 
 <div class="group">
 	<%= f.label :mailing_lists, t(:Mailing_Lists), :class => :label %>
-	<table>
 	<% mailing_lists.each do |ml| -%>
-	<tr>
-		<td><%= check_box_tag "subscribes_to[" + ml.id.to_s + "]", value = "1", checked = @student.mailing_list_ids.include?(ml.id) %></td>
-	<td><%=ml.description%></td>
-	</tr>
-	<% end -%>
+	<label><td><%= check_box_tag "subscribes_to[" + ml.id.to_s + "]", value = "1", checked = @student.mailing_list_ids.include?(ml.id) %> <%=ml.description%></label><br/>
+		<% end -%>
 	</table>
 </div>
 
@@ -85,15 +79,15 @@
 
 <div class="group">
 	<%= f.label :comments, t(:Comments), :class => :label %>
-	<%= f.text_area :comments, :class => 'text_area' %>
+	<%= f.text_area :comments, :class => 'text_area', :rows => 4, :cols => 16 %>
 </div>
 
 <div class="group navform">
 	<input type="submit" class="button" value="<%=t :Save%> &rarr;" />
 	<% if controller.action_name != "new" %>
-		<% if current_user.delete_permission?(@club) %>
-			<%=t(:or)%> <%= link_to t(:Destroy), @student, :confirm => t(:Are_you_sure_student), :method => :delete %>
-			<% end %>
-			<%=t :or%> <%= link_to t(:Cancel), student_path(@student) %>
-			<% end %>
-		</div>
+	<% if current_user.delete_permission?(@club) %>
+	<%=t(:or)%> <%= link_to t(:Destroy), @student, :confirm => t(:Are_you_sure_student), :method => :delete %>
+	<% end %>
+	<%=t :or%> <%= link_to t(:Cancel), student_path(@student) %>
+	<% end %>
+</div>

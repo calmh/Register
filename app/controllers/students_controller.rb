@@ -78,7 +78,7 @@ class StudentsController < ApplicationController
 	def new
 		@club = Club.find(params[:club_id])
 		@student = Student.new
-		# @student.group = @club.groups[0]
+		@student.club = @club
 
 		respond_to do |format|
 			format.html # new.html.erb
@@ -96,6 +96,16 @@ class StudentsController < ApplicationController
 	# POST /students.xml
 	def create
 		@student = Student.new(params[:student])
+
+		if params.key? :member_of
+			group_ids = params[:member_of].keys
+			@student.group_ids = group_ids
+		end
+
+		if params.key? :subscribes_to
+			ml_ids = params[:subscribes_to].keys
+			@student.mailing_list_ids = ml_ids
+		end
 
 		respond_to do |format|
 			if @student.save

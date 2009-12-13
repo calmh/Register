@@ -12,7 +12,7 @@
 			<p>
 				<table class="table">
 					<tr><th class="first last  <%=cycle("odd", "even")%>" colspan="2"><%=h @student.name %></th></tr>
-					<tr>
+					<tr class="<%= cycle("odd", "even") %>">
 						<td><b><%=t(:Groups)%>:</b></td>
 						<td>
 						<%= @student.groups.map{ |g| g.identifier }.join(", ") -%>
@@ -35,6 +35,13 @@
 					</tr>
 
 					<tr class="<%= cycle("odd", "even") %>">
+						<td><b><%=t(:Mailing_Lists)%>:</b></td>
+						<td>
+						<%= @student.mailing_lists.map{ |g| g.description }.join(", ") -%>
+						</td>
+					</tr>
+
+					<tr class="<%= cycle("odd", "even") %>">
 						<td><b><%=t(:Home_phone)%>:</b></td>
 						<td><%=h @student.home_phone %></td>
 					</tr>
@@ -46,7 +53,7 @@
 
 					<tr class="<%= cycle("odd", "even") %>">
 						<td><b><%=t(:Address)%>:</b></td>
-						<td><%=h @student.street %><br/><%=h "%05d" % @student.zipcode %> <%=h @student.city %></td>
+						<td><%=h @student.street %><br/><%=h format_zipcode(@student.zipcode) %> <%=h @student.city %></td>
 					</tr>
 
 					<tr class="<%= cycle("odd", "even") %>">

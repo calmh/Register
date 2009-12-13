@@ -232,17 +232,17 @@ students_001:
   personal_number: 19810203-9909
   created_at: 2009-12-09 09:09:19
   title: Unknown
-  comments: 
+  comments: ""
   zipcode: "46065"
-  updated_at: 2009-12-09 09:09:19
+  updated_at: 2009-12-13 19:35:02
   club_id: "2"
   id: "25"
   home_phone: 0521-9520867
   street: Valldammsgatan 42
   group_id: 
-  gender: 
+  gender: female
   fname: Amalia
   password: 
   sname: Gustavsson
   email: amalia.gustavsson@example.com
-  mobile_phone: 
+  mobile_phone: ""

@@ -144,6 +144,7 @@ sv:
   Security_descr: En publik lista kan enskilda elever välja att gå med i, men en privat lista kan endast en CI administrera medlemskap för.
   Edit_user: Redigera användare
   Edit_mailing_list: Redigera epostlista
+  Address: Adress
 
   activerecord:
     errors:

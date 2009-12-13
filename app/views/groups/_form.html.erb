@@ -13,7 +13,28 @@
 
 <div class="group">
 	<%= f.label :comments, t(:Description), :class => :label %>
-	<%= f.text_area :comments, :class => 'text_area' %>
+	<%= f.text_area :comments, :class => 'text_area', :rows => 4, :cols => 16 %>
+</div>
+
+<div class="group">
+	<%= f.label nil, t(:Members), :class => :label %>
+	<% @students = @group.students %>
+	<table class="table">
+		<tr>
+			<th class="first"><%=t(:Club)%></th>
+			<th><%=t(:Groups)%></th>
+			<th><%=t(:Name)%></th>
+			<th class="last"><%=t(:Grade)%></th>
+		</tr>
+		<% @students.each do |student| -%>
+		<tr class="<%= cycle("odd", "even") %>">
+			<td><%= link_to student.club.name, club_path(student.club) %></td>
+			<td><%= student.groups.map{ |g| g.identifier }.join(", ") %></td>
+			<td><%= link_to student.name, student_path(student) %></td>
+			<td><%= grade_name(student.current_grade.grade) %></td>
+		</tr>
+		<% end -%>
+	</table>
 </div>
 
 <div class="group navform">
