@@ -3,47 +3,47 @@ payments_001:
   student_id: "30"
   created_at: 2009-12-09 09:09:19
   updated_at: 2009-12-09 09:09:19
-  amount: "100.0"
-  id: "225070851"
+  amount: "100"
   received: 2009-03-02 12:00:00
+  id: "225070851"
   description: "Tr\xC3\xA4ningsavgift VT2009"
 payments_002: 
   student_id: "30"
   created_at: 2009-12-09 09:09:19
   updated_at: 2009-12-09 09:09:19
-  amount: "500.0"
-  id: "319740578"
+  amount: "500"
   received: 2009-04-29 12:00:00
+  id: "319740578"
   description: "Tr\xC3\xA4ningsavgift VT2009"
 payments_003: 
   student_id: "29"
   created_at: 2009-12-09 09:09:19
   updated_at: 2009-12-09 09:09:19
-  amount: "100.0"
-  id: "980190962"
+  amount: "100"
   received: 2009-05-13 12:00:00
+  id: "980190962"
   description: "Tr\xC3\xA4ningsavgift VT2009"
 payments_004: 
   student_id: "31"
   created_at: 2009-12-09 09:09:19
   updated_at: 2009-12-09 09:09:19
-  amount: "50.0"
-  id: "980254618"
+  amount: "50"
   received: 2009-02-01 12:00:00
+  id: "980254618"
   description: "Tr\xC3\xA4ningsavgift HT2009"
 payments_005: 
   student_id: "135"
   created_at: 2009-12-09 09:09:19
   updated_at: 2009-12-09 09:09:19
-  amount: "2.0"
-  id: "1005520445"
+  amount: "2"
   received: 2008-12-13 12:00:00
+  id: "1005520445"
   description: "Tr\xC3\xA4ningsavgift HT2009"
 payments_006: 
   student_id: "94"
   created_at: 2009-12-09 09:09:19
   updated_at: 2009-12-09 09:09:19
-  amount: "700.0"
-  id: "1025039570"
+  amount: "700"
   received: 2008-03-14 12:00:00
+  id: "1025039570"
   description: "Tr\xC3\xA4ningsavgift HT2009"
