@@ -8,7 +8,6 @@ ActionController::Routing::Routes.draw do |map|
 	map.connect 'payments/update_bulk', :controller => 'payments', :action => 'update_bulk'
 
 	map.resources :clubs, :shallow => true do |club|
-		club.resources :users
 		club.resources :students do |student|
 			student.resources :payments
 			student.resources :graduations

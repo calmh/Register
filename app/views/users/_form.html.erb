@@ -79,8 +79,10 @@
 
 <div class="group navform">
 	<input type="submit" class="button" value="<%=t:Save%> &rarr;" />
+	<% if controller.action_name != "new" %>
 	<% if current_user.users_permission? %>
 	<%=t(:or)%> <%= link_to t(:Destroy), @user, :confirm => t(:Are_you_sure_user), :method => :delete %>
 	<% end %>
 	<%=t:or%> <%= link_to t(:Cancel), users_path %>
+	<% end %>
 </div>

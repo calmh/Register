@@ -24,7 +24,7 @@ class PermissionTest < ActionController::IntegrationTest
 		log_in
 
 		assert_contain "inloggad"
-		assert_contain "Alla klubbar"
+		assert_contain "Klubbar"
 		click_link "Nybro"
 		assert_contain " 1 tränande"
 		assert_contain "Svante Jansson"
@@ -47,9 +47,9 @@ class PermissionTest < ActionController::IntegrationTest
 		uncheck "user[clubs_permission]"
 		click_button "Spara"
 
-		assert_contain "ej tillåtelse att redigera klubbar"
-		assert_contain "Nybro true"
-		assert_contain "Edsvalla false"
+		assert_not_contain "Redigera klubbar:"
+		assert_contain /Nybro:[^:]+Redigera/m
+		assert_not_contain /Edsvalla:[^:]+Graderingar/m
 		click_link "Klubbar"
 
 		assert_not_contain "Ny klubb"
@@ -78,8 +78,8 @@ class PermissionTest < ActionController::IntegrationTest
 		uncheck "user[users_permission]"
 		click_button "Spara"
 
-		assert_contain "Har ej tillåtelse att redigera användare"
-		assert_contain "Har tillåtelse att redigera grupper"
+		assert_not_contain "Redigera användare:"
+		assert_contain /Redigera grupper:\s+Ja/m
 		assert_not_contain "Användare"
 		click_link "Redigera"
 
@@ -108,7 +108,7 @@ class PermissionTest < ActionController::IntegrationTest
 		uncheck "user[groups_permission]"
 		click_button "Spara"
 
-		assert_contain "ej tillåtelse att redigera grupper"
+		assert_not_contain "Redigera grupper:"
 		assert_not_contain "Grupper"
 
 		click_link "Klubbar"
@@ -133,5 +133,15 @@ class PermissionTest < ActionController::IntegrationTest
 		click_button "Sök"
 
 		assert_contain " 2 tränande"
+	end
+
+
+	test "ci permissions" do
+		log_in_as_ci
+		assert_contain "Edsvalla"
+		assert_not_contain "Val"
+
+		click_link "Användarprofil"
+		assert_not_contain "Ny användare"
 	end
 end

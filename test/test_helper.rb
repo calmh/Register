@@ -50,4 +50,11 @@ class ActiveSupport::TestCase
 		fill_in "Lösenord", :with => "admin"
 		click_button "Logga in"
 	end
+
+	def log_in_as_ci
+		visit "/"
+		fill_in "Användarnamn", :with => "ci"
+		fill_in "Lösenord", :with => "ci123"
+		click_button "Logga in"
+	end
 end

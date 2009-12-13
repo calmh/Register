@@ -8,72 +8,99 @@
 	</div>
 	<div class="content">
 		<div class="inner">
+			<p></p>
+			<table class="table">
+				<tr>
+					<th colspan="2" class="first last"><%= @user.fname %> <%= @user.sname %></th>
+				</tr>
 
-			<p>
-				<b><%=t:Login%>:</b>
-				<%= @user.login %>
-			</p>
+				<tr class="<%=cycle('odd', 'even')%>">
+					<td><%=t:Login%>:</td>
+					<td><%= @user.login %></td>
+				</tr>
 
-			<p>
-				<b><%=t:Name%>:</b>
-				<%= @user.fname %>
-				<%= @user.sname %>
-			</p>
+				<tr class="<%=cycle('odd', 'even')%>">
+					<td><%=t:Email%>:</td>
+					<td><%= @user.email %></td>
+				</tr>
 
-			<p>
-				<b><%=t:Email%>:</b>
-				<%= @user.email %>
-			</p>
+				<tr class="<%=cycle('odd', 'even')%>">
+					<td><%=t:Logged_in_since%>:</td>
+					<td><%= @user.current_login_at %></td>
+				</tr>
 
-			<p>
-				<b><%=t:Logged_in_since%>:</b>
-				<%= @user.current_login_at %>
-			</p>
+				<tr class="<%=cycle('odd', 'even')%>">
+					<td><%=t:Logged_in_from%>:</td>
+					<td><%= @user.current_login_ip %></td>
+				</tr>
 
-			<p>
-				<b><%=t:Logged_in_from%>:</b>
-				<%= @user.current_login_ip %>
-			</p>
+				<tr class="<%=cycle('odd', 'even')%>">
+					<td><%=t:Previous_login%>:</td>
+					<td><%= @user.last_login_at %></td>
+				</tr>
 
-			<p>
-				<b><%=t:Previous_login%>:</b>
-				<%= @user.last_login_at %>
-			</p>
+				<tr class="<%=cycle('odd', 'even')%>">
+					<td><%=t:Previous_login_from%>:</td>
+					<td><%= @user.last_login_ip %></td>
+				</tr>
 
-			<p>
-				<b><%=t:Previous_login_from%>:</b>
-				<%= @user.last_login_ip %>
-			</p>
+				<tr class="<%=cycle('odd', 'even')%>">
+					<td><%=t:Num_logins%>:</td>
+					<td><%= @user.login_count %></td>
+				</tr>
+			</table>
 
-			<p>
-				<b><%=t:Num_logins%>:</b>
-				<%= @user.login_count %>
-			</p>
+			<% if @user.clubs_permission? || @user.groups_permission? || @user.users_permission? || @user.mailinglists_permission? -%>
+			<table class="table">
+				<tr>
+					<th colspan="2" class="first last"><%=t:Global_permissions%></th>
+				</tr>
 
-			<% permission = @user.clubs_permission? ? t(:Allowed_to) : t(:Not_allowed_to) %>
-			<p>
-				<b><%= permission %> <%=t(:Edit_clubs).downcase%></b>
-			</p>
+				<% if @user.clubs_permission? %>
+				<tr class="<%=cycle('even', 'odd')%>">
+					<td><%=t(:Edit_clubs)%>:</td>
+					<td><%=t(:P_yes)%></td>
+				</tr>
+				<% end %>
 
-			<% permission = @user.groups_permission? ? t(:Allowed_to) : t(:Not_allowed_to) %>
-			<p>
-				<b><%= permission %> <%=t(:Edit_groups).downcase%></b>
-			</p>
+				<% if @user.groups_permission? %>
+				<tr class="<%=cycle('even', 'odd')%>">
+					<td><%=t(:Edit_groups)%>:</td>
+					<td><%=t(:P_yes)%></td>
+				</tr>
+				<% end %>
 
-			<% permission = @user.users_permission? ? t(:Allowed_to) : t(:Not_allowed_to) %>
-			<p>
-				<b><%= permission %> <%=t(:Edit_users).downcase%></b>
-			</p>
+				<% if @user.users_permission? %>
+				<tr class="<%=cycle('even', 'odd')%>">
+					<td><%=t(:Edit_users)%>:</td>
+					<td><%=t(:P_yes)%></td>
+				</tr>
+				<% end %>
 
-			<% permission = @user.mailinglists_permission? ? t(:Allowed_to) : t(:Not_allowed_to) %>
-			<p>
-				<b><%= permission %> <%=t(:Edit_mailinglists).downcase%></b>
-			</p>
+				<% if @user.mailinglists_permission? %>
+				<tr class="<%=cycle('even', 'odd')%>">
+					<td><%=t(:Edit_mailinglists)%>:</td>
+					<td><%=t(:P_yes)%></td>
+				</tr>
+				<% end %>
+			</table>
+			<% end -%>
 
-			<% clubs.each do |club| %>
-			<%= club.name %> <%= current_user.graduations_permission?(club)%>
-			<br/>
-			<% end %>
+			<table class="table">
+				<tr>
+					<th colspan="2" class="first last"><%=t:Club_permissions%></th>
+				</tr>
+
+				<% clubs.each do |club| %>
+				<% perms = @user.permissions_for(club) %>
+				<% if perms.length > 0 %>
+				<tr class="<%=cycle('even','odd')%>">
+					<td><%= club.name %>:</td>
+					<td><%= @user.permissions_for(club).map{ |p| t(p).titlecase }.join(", ") %></td>
+				</tr>
+				<% end %>
+				<% end %>
+			</table>
 		</div>
 	</div>
 </div>

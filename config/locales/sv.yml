@@ -16,7 +16,6 @@ sv:
   Club_List: Klubbar
   New_Club: Ny klubb
   Edit_Club: Redigera klubb
-  All_Clubs: Alla klubbar
   Edit_Student: Redigera tränande
   Email: Epost
   Home_phone: Telefon hemma
@@ -81,7 +80,7 @@ sv:
   for: för
   Num_clubs: Antal klubbar
   Change_password: Byt lösenord
-  Confirm_password: Upprepa lösenordet, för säkerhets skull
+  Confirm_password: Upprepa lösenordet
   Group_List: Grupper
   All_Groups: Alla grupper
   New_Group: Ny grupp
@@ -91,8 +90,6 @@ sv:
   User_List: Användare
   All_Users: Alla användare
   New_User: Ny användare
-  Allowed_to: Har tillåtelse att
-  Not_allowed_to: Har ej tillåtelse att
   Edit_clubs: Redigera klubbar
   Edit_groups: Redigera grupper
   Edit_users: Redigera användare
@@ -145,6 +142,15 @@ sv:
   Edit_user: Redigera användare
   Edit_mailing_list: Redigera epostlista
   Address: Adress
+  read: se
+  edit: redigera
+  delete: radera
+  graduations: graderingar
+  payments: inbetalningar
+  P_yes: Ja
+  P_no: Nej
+  User_created: Användaren har skapats.
+  Age: Ålder
 
   activerecord:
     errors:

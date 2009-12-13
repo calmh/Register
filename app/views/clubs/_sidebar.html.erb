@@ -1,10 +1,8 @@
-<% if controller.controller_name == "clubs" && controller.action_name == "index" -%>
+<% if current_user.clubs_permission? && controller.controller_name == "clubs" && controller.action_name == "index" -%>
 <div class="block">
 	<h3><%=t(:Links)%></h3>
 	<ul class="navigation">
-		<% if current_user.clubs_permission? %>
 		<li><%= link_to t(:New_Club), new_club_path %></li>
-		<% end %>
 	</ul>
 </div>
 

@@ -7,10 +7,7 @@ td.student-active {
 td.student-inactive {
         background-color: #fff0f0;
 }
-th.first {
-        width: inherit!important;
-}
-th.last {
+th.first, td, table {
         width: inherit!important;
 }
 .table td {

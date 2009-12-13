@@ -2,10 +2,10 @@
 users_001: 
   created_at: 2009-12-09 09:09:19
   single_access_token: RcNDgaUdOCKapN7hWLUU
-  last_request_at: 2009-12-13 19:35:06
+  last_request_at: 2009-12-13 21:08:09
   crypted_password: 6694a5cda8fcb5ddcfd6171ce35de9e593c20da32b0341917f4f1f6d40ce6d98
-  updated_at: 2009-12-13 19:35:06
-  perishable_token: omYX4a-0-2n5QSxPVWMl
+  updated_at: 2009-12-13 21:08:09
+  perishable_token: Y-nxdgFOVifL_eDCqFSw
   groups_permission: "1"
   id: "1"
   failed_login_count: "0"
@@ -22,3 +22,26 @@ users_001:
   sname: Istrator
   email: admin@example.com
   clubs_permission: "1"
+users_002: 
+  created_at: 2009-12-13 21:05:43
+  single_access_token: PukZmC0UFMPgAS6XOieY
+  last_request_at: 
+  crypted_password: 9bad0e92a8e4e713700495c3e058cd1c0781396b3ef7ae3a6d06eceaca5f634b
+  updated_at: 2009-12-13 21:06:02
+  perishable_token: OiANbF63ZoKpxPUuZGbs
+  groups_permission: "0"
+  id: "30"
+  failed_login_count: 
+  current_login_ip: 
+  current_login_at: 
+  persistence_token: e12a68f9f736ea810817e7b5822130e187a239a78715820ec21003489f748c83965bb48e0fef5eefb2f7de6cb4faa380487c808442d6cb05d8cb2a6721257086
+  login_count: 
+  fname: Chief
+  last_login_ip: 
+  users_permission: "0"
+  mailinglists_permission: "0"
+  login: ci
+  last_login_at: 
+  sname: Instructor
+  email: ci@example.com
+  clubs_permission: "0"
