@@ -13,3 +13,6 @@ th.last {
 .table td {
     padding: 3px 4px 2px 4px;
 }
+#footer {
+	font-size: .8em;
+}

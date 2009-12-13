@@ -1,0 +1,17 @@
+<div class="block">
+	<h3><%=t(:Statistics)%></h3>
+	<div class="content">
+		<p>
+			<%= t(:Matched_x_students, :count => @students.length) %>.
+		</p>
+		<% for group in groups do -%>
+		<% num_students = @students.select{ |s| s.group_ids.include? group.id }.length -%>
+		<% if num_students != 0 -%>
+		<p>
+			<%=t(:Group)%>: <%=h group.identifier%><br/>
+			<%=t(:Num_students)%>: <%= num_students %><br/>
+		</p>
+		<% end %>
+		<% end %>
+	</div>
+</div>

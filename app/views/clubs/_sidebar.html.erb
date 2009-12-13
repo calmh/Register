@@ -31,19 +31,5 @@
 		<% end %>
 	</ul>
 </div>
-
-<div class="block">
-	<h3><%=t(:Statistics)%></h3>
-	<div class="content">
-		<% for group in groups do -%>
-		<% students = group.members_in(@club) -%>
-		<% if !students.blank? -%>
-		<p>
-			<%=t(:Group)%>: <%=h group.identifier%><br/>
-			<%=t(:Num_students)%>: <%= students.length %><br/>
-		</p>
-		<% end %>
-		<% end %>
-	</div>
-</div>
+<%= render :partial => "students/statistics" %>
 <% end -%>
