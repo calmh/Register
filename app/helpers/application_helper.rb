@@ -44,6 +44,10 @@ module ApplicationHelper
 		Club.find(:all, :order => :name)
 	end
 
+	def mailing_lists
+		MailingList.find(:all, :order => :description)
+	end
+
 	def version
 		`git describe --always`
 	end

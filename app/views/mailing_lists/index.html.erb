@@ -11,16 +11,14 @@
 			<table class="table">
 				<tr>
 					<th class="first"><%=t:Email%></th>
-					<th class="last"><%=t:Description%></th>
+					<th><%=t:Description%></th>
+					<th class="last"><%=t:Security%></th>
 				</tr>
 				<% @mailing_lists.each do |mailing_list| -%>
 				<tr class="<%= cycle("odd", "even") %>">
-					<td>
-						<%= link_to mailing_list.email, edit_mailing_list_path(mailing_list) %>
-					</td>
-					<td>
-						<%=h mailing_list.description %>
-					</td>
+					<td><%= link_to mailing_list.email, edit_mailing_list_path(mailing_list) %></td>
+					<td><%=h mailing_list.description %></td>
+					<td><%=t(mailing_list.security.titlecase) %></td>
 				</tr>
 				<% end -%>
 			</table>

@@ -138,6 +138,12 @@ sv:
   Per_gender: Per kön
   Per_age: Per åldersgrupp
   years: år
+  Members: Medlemmar
+  Public: Publik
+  Private: Privat
+  Security_descr: En publik lista kan enskilda elever välja att gå med i, men en privat lista kan endast en CI administrera medlemskap för.
+  Edit_user: Redigera användare
+  Edit_mailing_list: Redigera epostlista
 
   activerecord:
     errors:

@@ -121,6 +121,13 @@ class StudentsController < ApplicationController
 			@student.groups.clear
 		end
 
+		if params.key? :subscribes_to
+			ml_ids = params[:subscribes_to].keys
+			@student.mailing_list_ids = ml_ids
+		else
+			@student.mailing_lists.clear
+		end
+
 		respond_to do |format|
 			if @student.update_attributes(params[:student])
 				flash[:notice] = t:Student_updated
