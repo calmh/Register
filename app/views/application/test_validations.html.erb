@@ -1,7 +1,7 @@
-<em><div class="block">
+<div class="block">
   <div class="secondary-navigation">
     <ul>
-      <li class="first active"><%= link_to 'Validations', '/validate'  %></li>
+      <li class="first active"><%= link_to 'Validations', url_for(:action=>"test_validations", :controller=>"application")  %></li>
     </ul>
     <div class="clear"></div>
   </div>
@@ -63,5 +63,3 @@
     </div>
   </div>
 </div>
-
-</em>
