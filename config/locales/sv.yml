@@ -100,6 +100,8 @@ sv:
   Gender: Kön
   male: man
   female: kvinna
+  Male: Man
+  Female: Kvinna
   Gender_descr: Om ett komplett personnumer matats in ovan kommer informationen i det att användas för att bestämma könet.
   Read: Läsa
   Write: Skriva
@@ -132,6 +134,10 @@ sv:
   Edit_Mailing_List: Redigera epostlista
   Groups: Grupper
   Matched_x_students: Hittade {{count}} tränande
+  Per_group: Per grupp
+  Per_gender: Per kön
+  Per_age: Per åldersgrupp
+  years: år
 
   activerecord:
     errors:

@@ -4,14 +4,59 @@
 		<p>
 			<%= t(:Matched_x_students, :count => @students.length) %>.
 		</p>
-		<% for group in groups do -%>
-		<% num_students = @students.select{ |s| s.group_ids.include? group.id }.length -%>
-		<% if num_students != 0 -%>
-		<p>
-			<%=t(:Group)%>: <%=h group.identifier%><br/>
-			<%=t(:Num_students)%>: <%= num_students %><br/>
-		</p>
-		<% end %>
-		<% end %>
+
+		<h4><%=t:Per_group%></h4>
+		<table class="table">
+			<tr class="<%= cycle("odd", "even") %>">
+				<th class="first"><%=t:Group%></th>
+				<th class="last"><%=t:Num_students%></th>
+			</tr>
+
+			<% for group in groups do -%>
+			<% num_students = @students.select{ |s| s.group_ids.include? group.id }.length -%>
+			<% if num_students != 0 -%>
+			<tr class="<%= cycle("odd", "even") %>">
+				<td><%=h group.identifier%></td>
+				<td><%= num_students %></td>
+			</tr>
+			<% end %>
+			<% end %>
+		</table>
+
+		<h4><%=t:Per_gender%></h4>
+		<table class="table">
+			<tr class="<%= cycle("odd", "even") %>">
+				<th class="first"><%=t:Gender%></th>
+				<th class="last"><%=t:Num_students%></th>
+			</tr>
+
+			<% male = @students.select{ |s| s.gender == 'male' }.length -%>
+			<% female = @students.select{ |s| s.gender == 'female' }.length -%>
+			<tr class="<%= cycle("odd", "even") %>">
+				<td><%=t:Male%></td>
+				<td><%=male%></td>
+			</tr>
+			<tr class="<%= cycle("odd", "even") %>">
+				<td><%=t:Female%></td>
+				<td><%=female%></td>
+			</tr>
+		</table>
+
+
+		<h4><%=t:Per_age%></h4>
+		<table class="table">
+			<tr class="<%= cycle("odd", "even") %>">
+				<th class="first"><%=t:Age%></th>
+				<th class="last"><%=t:Num_students%></th>
+			</tr>
+			<% ages = [ [0,7], [8,14], [15,20], [21,25], [26,99] ] %>
+			<% for age_span in ages do %>
+			<% count = @students.select{ |s| s.age >= age_span[0] && s.age <= age_span[1] }.length -%>
+			<tr class="<%= cycle("odd", "even") %>">
+				<td><%=age_span[0]%>-<%=age_span[1]%> <%=t:years%></td>
+				<td><%=count%></td>
+			</tr>
+			<% end %>
+		</table>
 	</div>
 </div>
