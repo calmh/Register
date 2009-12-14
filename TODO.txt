@@ -3,7 +3,6 @@
   - Add payments in bulk
   - Sort by column headers
   - Filter (same as on search students page)
-  - More statistics
   - Export to CSV
 - Individual student logins
   - Change (some) personal information

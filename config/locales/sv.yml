@@ -151,6 +151,7 @@ sv:
   P_no: Nej
   User_created: Användaren har skapats.
   Age: Ålder
+  Grade_category: System
 
   activerecord:
     errors:

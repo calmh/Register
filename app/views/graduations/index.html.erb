@@ -19,7 +19,7 @@
 				<% @graduations.each do |graduation| -%>
 				<tr class="<%= cycle("odd", "even") %>">
 					<td><%=h graduation.graduated.to_date%></td>
-					<td><%=h grade_name graduation.grade%></td>
+					<td><%=h grade_str(graduation)%></td>
 					<td><%=h graduation.instructor%></td>
 					<td><%=h graduation.examiner%></td>
 				</tr>

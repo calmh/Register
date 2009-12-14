@@ -10,7 +10,7 @@
 		</tr>
 		<tr class="<%=cycle('even','odd')%>">
 			<td><%=t:Grade%>:</td>
-			<td><%= select "searchparams", "grade", [[ t(:All), -100 ]] + -8.upto(12).map { |g| [ grade_name(g), g ] } %></td>
+			<td><%= select "searchparams", "grade", [[ t(:All), -100 ]] + grades.map { |g| [ g.description, g.id ] } %></td>
 		</tr>
 		<tr class="<%=cycle('even','odd')%>">
 			<td><%=t:Group%>:</td>

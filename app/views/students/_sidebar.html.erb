@@ -22,11 +22,15 @@
 		<% g = @student.current_grade %>
 		<p>
 			<b><%=t:Current_grade%>:</b>
-			<%=grade_name(g.grade)%>
+			<%=grade_str(g)%>
 		</p>
 		<p>
 			<b><%=t:Held_since%>:</b>
+			<%- if g == nil -%>
+			-
+			<%- else -%>
 			<%=l(g.graduated.to_date)%>
+			<%- end -%>
 		</p>
 	</div>
 </div>

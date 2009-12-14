@@ -22,15 +22,13 @@
 		<tr>
 			<th class="first"><%=t(:Club)%></th>
 			<th><%=t(:Groups)%></th>
-			<th><%=t(:Name)%></th>
-			<th class="last"><%=t(:Grade)%></th>
+			<th class="last"><%=t(:Name)%></th>
 		</tr>
 		<% @students.each do |student| -%>
 		<tr class="<%= cycle("odd", "even") %>">
 			<td><%= link_to student.club.name, club_path(student.club) %></td>
 			<td><%= student.groups.map{ |g| g.identifier }.join(", ") %></td>
 			<td><%= link_to student.name, student_path(student) %></td>
-			<td><%= grade_name(student.current_grade.grade) %></td>
 		</tr>
 		<% end -%>
 	</table>

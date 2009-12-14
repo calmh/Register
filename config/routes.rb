@@ -1,5 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+	# For debugging, check validations
 	map.connect 'validate', :controller => 'application', :action => 'test_validations'
+
+	# Bulk operations
 	map.connect 'students/search', :controller => 'students', :action => 'search'
 	map.connect 'students/bulkoperations', :controller => 'students', :action => 'bulk_operations'
 	map.connect 'graduations/new_bulk', :controller => 'graduations', :action => 'new_bulk'
@@ -7,6 +10,7 @@ ActionController::Routing::Routes.draw do |map|
 	map.connect 'payments/new_bulk', :controller => 'payments', :action => 'new_bulk'
 	map.connect 'payments/update_bulk', :controller => 'payments', :action => 'update_bulk'
 
+	# Clubs, students and subresources
 	map.resources :clubs, :shallow => true do |club|
 		club.resources :students do |student|
 			student.resources :payments
@@ -14,11 +18,15 @@ ActionController::Routing::Routes.draw do |map|
 		end
 	end
 
-	map.resource :user_session
+	# Other singular resources
 	map.resources :users
 	map.resources :groups
 	map.resources :mailing_lists
 
+	# For login and logout
+	map.resource :user_session
+
+	# Display club list at /
 	map.root :controller => :clubs
 
 	# map.root :controller => "user_sessions", :action => "new"

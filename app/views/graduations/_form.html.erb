@@ -1,8 +1,13 @@
 <%= f.hidden_field :student_id %>
 
 <div class="group">
-	<%= f.label :grade, t(:Grade), :class => :label %>
-	<%= f.select :grade, -8.upto(12).map { |g| [ grade_name(g), g ] } %>
+	<%= f.label :grade_category_id, t(:Grade_category), :class => :label %>
+	<%= f.select :grade_category_id, grade_categories.map { |g| [ g.category, g.id ] } %>
+</div>
+
+<div class="group">
+	<%= f.label :grade_id, t(:Grade), :class => :label %>
+	<%= f.select :grade_id, grades.map { |g| [ g.description, g.id ] } %>
 </div>
 
 <div class="group">

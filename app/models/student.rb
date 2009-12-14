@@ -60,10 +60,7 @@ class Student < ActiveRecord::Base
 
 	def current_grade
 		if graduations.blank?
-			g = Graduation.new
-			g.grade = 0
-			g.graduated = created_at
-			return g
+			return nil
 		else
 			return graduations[0]
 		end

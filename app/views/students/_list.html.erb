@@ -24,7 +24,7 @@
 			<td><%= student.groups.map{ |g| g.identifier }.join(", ") %></td>
 			<td><%= link_to student.name, student_path(student) %></td>
 			<td><%= student.formatted_personal_number %></td>
-			<td><%= grade_name(student.current_grade.grade) %></td>
+			<td><%= grade_str(student.current_grade) %></td>
 			<% if @displayPaymentField %>
 			<td class="student-<%= student.active? ? 'active' :
 			'inactive' %>"><%=h student.latest_payment.description %></td>

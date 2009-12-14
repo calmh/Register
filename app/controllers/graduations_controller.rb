@@ -10,7 +10,8 @@ class GraduationsController < ApplicationController
 
 		@graduation = Graduation.new
 		@graduation.student = @student
-		@graduation.grade = get_default(:graduation_grade)
+		@graduation.grade_id = get_default(:graduation_grade_id)
+		@graduation.grade_category_id = get_default(:graduation_grade_category_id)
 		@graduation.instructor = get_default(:graduation_instructor)
 		@graduation.examiner = get_default(:graduation_examiner)
 		@graduation.graduated = DateTime.parse(get_default(:graduation_graduated) || Date.today.to_s)
@@ -34,7 +35,8 @@ class GraduationsController < ApplicationController
 
 	def new_bulk
 		@graduation = Graduation.new
-		@graduation.grade = get_default(:graduation_grade)
+		@graduation.grade_id = get_default(:graduation_grade_id)
+		@graduation.grade_category_id = get_default(:graduation_grade_category_id)
 		@graduation.instructor = get_default(:graduation_instructor)
 		@graduation.examiner = get_default(:graduation_examiner)
 		@graduation.graduated = DateTime.parse(get_default(:graduation_graduated) || DateTime.now.to_s)

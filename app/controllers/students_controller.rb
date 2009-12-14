@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-	before_filter :require_user
+	before_filter :require_user, :except => [ :register ]
 
 	class SearchParams
 		attr_accessor :group_id
@@ -25,7 +25,7 @@ class StudentsController < ApplicationController
 		def filter(students)
 			matched = students
 			if grade != -100
-				matched = matched.select { |s| s.current_grade.grade == @grade }
+				matched = matched.select { |s| s.current_grade != nil && s.current_grade.grade_id == @grade }
 			end
 			if group_id != -100
 				matched = matched.select { |s| s.group_ids.include? group_id }
@@ -173,6 +173,15 @@ class StudentsController < ApplicationController
 		end
 		if operation == "bulk_payments"
 			redirect_to :controller => 'graduations', :action => 'new_bulk'
+		end
+	end
+
+	def register
+		@student = Student.new
+
+		respond_to do |format|
+			format.html # register.html.erb
+			format.xml  { render :xml => @student }
 		end
 	end
 end
