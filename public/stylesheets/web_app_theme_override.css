@@ -7,8 +7,12 @@ td.student-active {
 td.student-inactive {
         background-color: #fff0f0;
 }
-th.first, td, table {
+th.first, td {
         width: inherit!important;
+}
+.table {
+    width: inherit!important;
+	min-width: 75%;
 }
 .table td {
     padding: 6px 5px 4px 5px;

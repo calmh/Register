@@ -10,7 +10,10 @@ class UserSessionsController < ApplicationController
 		@user_session = UserSession.new(params[:user_session])
 		if @user_session.save
 			flash[:notice] = t(:Login_successful)
-			redirect_back_or_default clubs_url
+			@user = @user_session.user
+			default = clubs_url
+			default = club_url(@user.clubs[0]) if !@user.clubs_permission? && @user.clubs.length == 1
+			redirect_to default
 		else
 			render :action => :new
 		end

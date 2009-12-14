@@ -11,8 +11,7 @@
 			<table class="table">
 				<tr>
 					<th><%=t:Login%></th>
-					<th><%=t:Name%></th>
-					<th class="last">&nbsp;</th>
+					<th class="last"><%=t:Name%></th>
 				</tr>
 				<% @users.each do |user| -%>
 				<tr class="<%= cycle("odd", "even") %>">

@@ -14,7 +14,6 @@ ActionController::Routing::Routes.draw do |map|
 		end
 	end
 
-	map.resource :account, :controller => "users"
 	map.resource :user_session
 	map.resources :users
 	map.resources :groups
