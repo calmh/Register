@@ -1,47 +1,47 @@
 --- 
 users_001: 
-  last_request_at: 2009-12-13 22:23:28
-  single_access_token: RcNDgaUdOCKapN7hWLUU
   created_at: 2009-12-09 09:09:19
+  single_access_token: RcNDgaUdOCKapN7hWLUU
+  last_request_at: 2009-12-15 10:36:09
   crypted_password: 6694a5cda8fcb5ddcfd6171ce35de9e593c20da32b0341917f4f1f6d40ce6d98
-  perishable_token: CsvgHea_m2C4oKpgtvmF
-  updated_at: 2009-12-13 22:23:28
+  updated_at: 2009-12-15 10:36:09
+  perishable_token: GLXAUrGmIItu9WdRgpJo
   groups_permission: "1"
-  current_login_ip: 194.126.249.11
-  failed_login_count: "0"
   id: "1"
-  current_login_at: 2009-12-13 22:11:25
-  login_count: "9"
+  failed_login_count: "0"
+  current_login_ip: 127.0.0.1
+  current_login_at: 2009-12-15 09:39:30
   persistence_token: 0f1dae1907c73885dcbeab9af3105ddf202a6aa8e2dc3ea93b2178a734e183b946a3c5ecfc4bbd7634344dbf7aec7070a4f5976a848ea38ec9d64a31d27c489a
-  mailinglists_permission: "1"
-  users_permission: "1"
-  last_login_ip: 127.0.0.1
+  login_count: "10"
   fname: Admin
-  last_login_at: 2009-12-11 09:37:29
+  last_login_ip: 194.126.249.11
+  users_permission: "1"
+  mailinglists_permission: "1"
   login: admin
-  clubs_permission: "1"
-  email: admin@example.com
+  last_login_at: 2009-12-13 22:11:25
   sname: Istrator
+  email: admin@example.com
+  clubs_permission: "1"
 users_002: 
-  last_request_at: 
-  single_access_token: PukZmC0UFMPgAS6XOieY
   created_at: 2009-12-13 21:05:43
+  single_access_token: PukZmC0UFMPgAS6XOieY
+  last_request_at: 
   crypted_password: 9bad0e92a8e4e713700495c3e058cd1c0781396b3ef7ae3a6d06eceaca5f634b
-  perishable_token: OiANbF63ZoKpxPUuZGbs
   updated_at: 2009-12-13 21:06:02
+  perishable_token: OiANbF63ZoKpxPUuZGbs
   groups_permission: "0"
-  current_login_ip: 
-  failed_login_count: 
   id: "30"
+  failed_login_count: 
+  current_login_ip: 
   current_login_at: 
-  login_count: 
   persistence_token: e12a68f9f736ea810817e7b5822130e187a239a78715820ec21003489f748c83965bb48e0fef5eefb2f7de6cb4faa380487c808442d6cb05d8cb2a6721257086
-  mailinglists_permission: "0"
-  users_permission: "0"
-  last_login_ip: 
+  login_count: 
   fname: Chief
-  last_login_at: 
+  last_login_ip: 
+  users_permission: "0"
+  mailinglists_permission: "0"
   login: ci
-  clubs_permission: "0"
-  email: ci@example.com
+  last_login_at: 
   sname: Instructor
+  email: ci@example.com
+  clubs_permission: "0"

@@ -4,10 +4,16 @@ class Student < ActiveRecord::Base
 	has_and_belongs_to_many :mailing_lists
 	has_many :payments, :order => "received desc", :dependent => :destroy
 	has_many :graduations, :order => "graduated desc", :dependent => :destroy
+	belongs_to :main_interest, :class_name => "GradeCategory"
 	validates_uniqueness_of :personal_number, :if => Proc.new { |s| !s.personal_number.blank? && s.personal_number =~ /^(19[3-9]|20[0-2])\d[01]\d[0-3]\d-\d\d\d\d$/ }
 	validate :check_personal_number
 	validates_associated :club
 	validates_format_of :gender, :with => /male|female|unknown/
+	validates_presence_of :main_interest
+	validates_presence_of :sname
+	validates_presence_of :fname
+	validates_presence_of :personal_number
+	validates_presence_of :club
 
 	def luhn
 		fact = 2
@@ -21,25 +27,20 @@ class Student < ActiveRecord::Base
 
 	def check_personal_number
 		if !personal_number.blank?
-			errors.add_to_base("Personal number is in invalid format") if personal_number !~ /^(19[3-9]|20[0-2])\d[01]\d[0-3]\d(-\d\d\d\d)?$/
+			errors.add(:personal_number, :invalid) if personal_number !~ /^(19[3-9]|20[0-2])\d[01]\d[0-3]\d(-\d\d\d\d)?$/
 			if personal_number.length == 13:
-				errors.add_to_base("Personal number doesn't have a correct check digit") if luhn != 0
+				errors.add(:personal_number, :incorrect_check_digit) if luhn != 0
 			end
 		end
 	end
 
-	def formatted_personal_number
-		personal_number
-	end
-
-	def formatted_personal_number=(value)
+	def personal_number=(value)
 		value = $1 + "-" + $2 if value =~ /^(\d\d\d\d\d\d)(\d\d\d\d)$/;
 		value = $1 + "-" + $2 if value =~ /^(19\d\d\d\d\d\d)(\d\d\d\d)$/;
 		value = $1 + "-" + $2 if value =~ /^(20\d\d\d\d\d\d)(\d\d\d\d)$/;
-		self.personal_number = nil
-		self.personal_number = "19" + value if value =~ /^[3-9]\d\d\d\d\d-\d\d\d\d$/;
-		self.personal_number = "20" + value if value =~ /^[0-2]\d\d\d\d\d-\d\d\d\d$/;
-		self.personal_number = value if value =~ /^\d\d\d\d\d\d\d\d-\d\d\d\d$/;
+		value = "19" + value if value =~ /^[3-9]\d\d\d\d\d(-\d\d\d\d)?$/;
+		value = "20" + value if value =~ /^[0-2]\d\d\d\d\d(-\d\d\d\d)?$/;
+		self[:personal_number] = value
 	end
 
 	def name

@@ -152,18 +152,17 @@ sv:
   User_created: Användaren har skapats.
   Age: Ålder
   Grade_category: System
+  Main_interest: Huvudintresse
 
   activerecord:
     errors:
-      models:
-        user:
-          attributes:
-            email:
-              too_short: för kort
-        student:
-          attributes:
-            personal_number:
-              taken: upptaget
+      messages:
+        too_short: för kort
+        taken: upptaget
+        missing: saknas
+        blank: tomt
+        invalid: ogiltigt
+        incorrect_check_digit: felaktig kontrollsiffra
 
   datetime:
    distance_in_words:

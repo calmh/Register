@@ -96,6 +96,7 @@ class StudentsController < ApplicationController
 	# POST /students.xml
 	def create
 		@student = Student.new(params[:student])
+		@club = @student.club
 
 		if params.key? :member_of
 			group_ids = params[:member_of].keys

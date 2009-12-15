@@ -12,6 +12,37 @@ class GroupsTest < ActionController::IntegrationTest
 		assert_contain " 3 tränande"
 	end
 
+	test "new student with no info" do
+		log_in
+		click_link "Klubbar"
+		click_link "Brålanda"
+		click_link "Ny tränande"
+
+		click_button "Spara"
+
+		assert_not_contain "skapats"
+		assert_contain /tomt|saknas/
+	end
+
+	test "new student with no personal_number, corrected" do
+		log_in
+		click_link "Klubbar"
+		click_link "Brålanda"
+		click_link "Ny tränande"
+
+		fill_in "Förnamn", :with => "Test"
+		fill_in "Efternamn", :with => "Testsson"
+		select "Kung Fu"
+		click_button "Spara"
+
+		assert_not_contain "skapats"
+		assert_contain /tomt|saknas/
+
+		fill_in "Personnummer", :with => "19850203"
+		click_button "Spara"
+		assert_contain "skapats"
+	end
+
 	test "new student with minimal info" do
 		log_in
 		click_link "Klubbar"
@@ -21,7 +52,11 @@ class GroupsTest < ActionController::IntegrationTest
 		fill_in "Förnamn", :with => "Test"
 		fill_in "Efternamn", :with => "Testsson"
 		fill_in "Personnummer", :with => "19850203"
+		select "Kung Fu"
 		click_button "Spara"
+
+		assert_contain "skapats"
+
 		click_link "Klubbar"
 		click_link "Brålanda"
 

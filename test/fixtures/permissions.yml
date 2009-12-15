@@ -4,236 +4,236 @@ permissions_030:
   updated_at: 2009-12-13 21:05:43
   club_id: "8"
   id: "980191104"
-  permission: payments
   user_id: "30"
+  permission: payments
 permissions_019: 
   created_at: 2009-12-11 09:39:30
   updated_at: 2009-12-11 09:39:30
   club_id: "3"
   id: "980191087"
-  permission: graduations
   user_id: "1"
+  permission: graduations
 permissions_008: 
   created_at: 2009-12-11 09:39:30
   updated_at: 2009-12-11 09:39:30
   club_id: "9"
   id: "980191076"
-  permission: edit
   user_id: "1"
+  permission: edit
 permissions_031: 
   created_at: 2009-12-13 21:05:43
   updated_at: 2009-12-13 21:05:43
   club_id: "8"
   id: "980191105"
-  permission: read
   user_id: "30"
+  permission: read
 permissions_020: 
   created_at: 2009-12-11 09:39:30
   updated_at: 2009-12-11 09:39:30
   club_id: "4"
   id: "980191088"
-  permission: edit
   user_id: "1"
+  permission: edit
 permissions_009: 
   created_at: 2009-12-11 09:39:30
   updated_at: 2009-12-11 09:39:30
   club_id: "9"
   id: "980191077"
-  permission: delete
   user_id: "1"
+  permission: delete
 permissions_032: 
   created_at: 2009-12-13 22:23:28
   updated_at: 2009-12-13 22:23:28
   club_id: "8"
   id: "980191106"
-  permission: delete
   user_id: "1"
+  permission: delete
 permissions_021: 
   created_at: 2009-12-11 09:39:30
   updated_at: 2009-12-11 09:39:30
   club_id: "4"
   id: "980191089"
-  permission: delete
   user_id: "1"
+  permission: delete
 permissions_010: 
   created_at: 2009-12-11 09:39:30
   updated_at: 2009-12-11 09:39:30
   club_id: "9"
   id: "980191078"
-  permission: payments
   user_id: "1"
+  permission: payments
 permissions_033: 
   created_at: 2009-12-13 22:23:28
   updated_at: 2009-12-13 22:23:28
   club_id: "8"
   id: "980191107"
-  permission: payments
   user_id: "1"
+  permission: payments
 permissions_022: 
   created_at: 2009-12-11 09:39:30
   updated_at: 2009-12-11 09:39:30
   club_id: "4"
   id: "980191090"
-  permission: payments
   user_id: "1"
+  permission: payments
 permissions_011: 
   created_at: 2009-12-11 09:39:30
   updated_at: 2009-12-11 09:39:30
   club_id: "9"
   id: "980191079"
-  permission: graduations
   user_id: "1"
+  permission: graduations
 permissions_034: 
   created_at: 2009-12-13 22:23:28
   updated_at: 2009-12-13 22:23:28
   club_id: "8"
   id: "980191108"
-  permission: graduations
   user_id: "1"
+  permission: graduations
 permissions_023: 
   created_at: 2009-12-11 09:39:30
   updated_at: 2009-12-11 09:39:30
   club_id: "4"
   id: "980191091"
-  permission: graduations
   user_id: "1"
+  permission: graduations
 permissions_012: 
   created_at: 2009-12-11 09:39:30
   updated_at: 2009-12-11 09:39:30
   club_id: "2"
   id: "980191080"
-  permission: edit
   user_id: "1"
+  permission: edit
 permissions_001: 
   created_at: 2009-12-09 09:10:05
   updated_at: 2009-12-09 09:10:05
   club_id: "8"
   id: "980190980"
-  permission: read
   user_id: "1"
+  permission: read
 permissions_024: 
   created_at: 2009-12-11 09:39:30
   updated_at: 2009-12-11 09:39:30
   club_id: "5"
   id: "980191092"
-  permission: edit
   user_id: "1"
+  permission: edit
 permissions_013: 
   created_at: 2009-12-11 09:39:30
   updated_at: 2009-12-11 09:39:30
   club_id: "2"
   id: "980191081"
-  permission: delete
   user_id: "1"
+  permission: delete
 permissions_002: 
   created_at: 2009-12-09 09:10:05
   updated_at: 2009-12-09 09:10:05
   club_id: "9"
   id: "980190982"
-  permission: read
   user_id: "1"
+  permission: read
 permissions_025: 
   created_at: 2009-12-11 09:39:30
   updated_at: 2009-12-11 09:39:30
   club_id: "5"
   id: "980191093"
-  permission: delete
   user_id: "1"
+  permission: delete
 permissions_014: 
   created_at: 2009-12-11 09:39:30
   updated_at: 2009-12-11 09:39:30
   club_id: "2"
   id: "980191082"
-  permission: payments
   user_id: "1"
+  permission: payments
 permissions_003: 
   created_at: 2009-12-09 09:10:05
   updated_at: 2009-12-09 09:10:05
   club_id: "2"
   id: "980190987"
-  permission: read
   user_id: "1"
+  permission: read
 permissions_026: 
   created_at: 2009-12-11 09:39:30
   updated_at: 2009-12-11 09:39:30
   club_id: "5"
   id: "980191094"
-  permission: payments
   user_id: "1"
+  permission: payments
 permissions_015: 
   created_at: 2009-12-11 09:39:30
   updated_at: 2009-12-11 09:39:30
   club_id: "2"
   id: "980191083"
-  permission: graduations
   user_id: "1"
+  permission: graduations
 permissions_004: 
   created_at: 2009-12-09 09:10:05
   updated_at: 2009-12-09 09:10:05
   club_id: "3"
   id: "980190988"
-  permission: read
   user_id: "1"
+  permission: read
 permissions_027: 
   created_at: 2009-12-11 09:39:30
   updated_at: 2009-12-11 09:39:30
   club_id: "5"
   id: "980191095"
-  permission: graduations
   user_id: "1"
+  permission: graduations
 permissions_016: 
   created_at: 2009-12-11 09:39:30
   updated_at: 2009-12-11 09:39:30
   club_id: "3"
   id: "980191084"
-  permission: edit
   user_id: "1"
+  permission: edit
 permissions_005: 
   created_at: 2009-12-09 09:10:05
   updated_at: 2009-12-09 09:10:05
   club_id: "4"
   id: "980190989"
-  permission: read
   user_id: "1"
+  permission: read
 permissions_028: 
   created_at: 2009-12-13 21:05:43
   updated_at: 2009-12-13 21:05:43
   club_id: "8"
   id: "980191102"
-  permission: edit
   user_id: "30"
+  permission: edit
 permissions_017: 
   created_at: 2009-12-11 09:39:30
   updated_at: 2009-12-11 09:39:30
   club_id: "3"
   id: "980191085"
-  permission: delete
   user_id: "1"
+  permission: delete
 permissions_006: 
   created_at: 2009-12-09 09:10:05
   updated_at: 2009-12-09 09:10:05
   club_id: "5"
   id: "980190991"
-  permission: read
   user_id: "1"
+  permission: read
 permissions_029: 
   created_at: 2009-12-13 21:05:43
   updated_at: 2009-12-13 21:05:43
   club_id: "8"
   id: "980191103"
-  permission: delete
   user_id: "30"
+  permission: delete
 permissions_018: 
   created_at: 2009-12-11 09:39:30
   updated_at: 2009-12-11 09:39:30
   club_id: "3"
   id: "980191086"
-  permission: payments
   user_id: "1"
+  permission: payments
 permissions_007: 
   created_at: 2009-12-11 09:39:30
   updated_at: 2009-12-11 09:39:30
   club_id: "8"
   id: "980191072"
-  permission: edit
   user_id: "1"
+  permission: edit

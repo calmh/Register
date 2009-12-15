@@ -1,248 +1,261 @@
 --- 
 students_013: 
   city: Nybro
-  created_at: 2009-12-09 09:09:19
   personal_number: 19450326-9377
-  comments: ""
+  created_at: 2009-12-09 09:09:19
   title: ToeTai
-  updated_at: 2009-12-13 15:54:22
+  comments: ""
   zipcode: "0"
+  updated_at: 2009-12-15 10:28:44
+  main_interest_id: "1"
   club_id: "9"
-  gender: male
-  group_id: 
-  street: Valldammsgatan 42
-  home_phone: 0481-5635981
   id: "137"
+  home_phone: 0481-5635981
+  street: Valldammsgatan 42
+  group_id: 
+  gender: male
   fname: Svante
   password: 
-  mobile_phone: ""
-  email: svante.jansson@example.com
   sname: Jansson
+  email: svante.jansson@example.com
+  mobile_phone: ""
 students_002: 
   city: "F\xC3\x96LLINGE"
-  created_at: 2009-12-09 09:09:19
   personal_number: 19620629-3349
-  comments: ""
+  created_at: 2009-12-09 09:09:19
   title: Unknown
-  updated_at: 2009-12-13 15:54:32
+  comments: ""
   zipcode: "83066"
+  updated_at: 2009-12-15 10:27:02
+  main_interest_id: "298486374"
   club_id: "2"
-  gender: female
-  group_id: 
-  street: "Norrfj\xC3\xA4ll 44"
-  home_phone: 0645-7595472
   id: "26"
+  home_phone: 0645-7595472
+  street: "Norrfj\xC3\xA4ll 44"
+  group_id: 
+  gender: female
   fname: Agaton
   password: 
-  mobile_phone: ""
-  email: agaton.johnsson@example.com
   sname: Johnsson
+  email: agaton.johnsson@example.com
+  mobile_phone: ""
 students_003: 
   city: Arvidsjaur
-  created_at: 2009-12-09 09:09:19
   personal_number: 19710730-3187
-  comments: ""
+  created_at: 2009-12-09 09:09:19
   title: DjoGau
-  updated_at: 2009-12-13 15:54:52
+  comments: ""
   zipcode: "93000"
+  updated_at: 2009-12-15 10:27:19
+  main_interest_id: "1"
   club_id: "2"
-  gender: female
-  group_id: 
-  street: Barrgatan 81
-  home_phone: 0960-8472971
   id: "27"
+  home_phone: 0960-8472971
+  street: Barrgatan 81
+  group_id: 
+  gender: female
   fname: Emma
   password: 
-  mobile_phone: ""
-  email: emma.petterson@example.com
   sname: Petterson
+  email: emma.petterson@example.com
+  mobile_phone: ""
 students_004: 
   city: "Svart\xC3\xA5"
-  created_at: 2009-12-09 09:09:19
   personal_number: 19420814-3778
-  comments: ""
+  created_at: 2009-12-09 09:09:19
   title: GauLin
-  updated_at: 2009-12-13 15:54:38
+  comments: ""
   zipcode: "69330"
+  updated_at: 2009-12-15 10:27:25
+  main_interest_id: "113629430"
   club_id: "3"
-  gender: male
-  group_id: 
-  street: "Verdandi Gr\xC3\xA4nd 65"
-  home_phone: ""
   id: "29"
+  home_phone: ""
+  street: "Verdandi Gr\xC3\xA4nd 65"
+  group_id: 
+  gender: male
   fname: Emil
   password: 
-  mobile_phone: ""
-  email: emil.nystrom@example.com
   sname: "Nystr\xC3\xB6m"
+  email: emil.nystrom@example.com
+  mobile_phone: ""
 students_005: 
   city: "Vall\xC3\xA5kra"
-  created_at: 2009-12-09 09:09:19
   personal_number: 19850107-1768
-  comments: ""
+  created_at: 2009-12-09 09:09:19
   title: ToeTai
-  updated_at: 2009-12-13 15:54:09
+  comments: ""
   zipcode: "26030"
+  updated_at: 2009-12-15 10:27:30
+  main_interest_id: "1"
   club_id: "3"
-  gender: female
-  group_id: 
-  street: "Mj\xC3\xB6lkal\xC3\xA5nga 64"
-  home_phone: 042-3409841
   id: "30"
+  home_phone: 042-3409841
+  street: "Mj\xC3\xB6lkal\xC3\xA5nga 64"
+  group_id: 
+  gender: female
   fname: Marielle
   password: 
-  mobile_phone: ""
-  email: marielle.dahlberg@example.com
   sname: Dahlberg
+  email: marielle.dahlberg@example.com
+  mobile_phone: ""
 students_006: 
   city: Kristianstad
-  created_at: 2009-12-09 09:09:19
   personal_number: 19460723-4780
-  comments: ""
+  created_at: 2009-12-09 09:09:19
   title: Sifu
-  updated_at: 2009-12-13 15:53:42
+  comments: ""
   zipcode: "12353"
+  updated_at: 2009-12-15 10:27:35
+  main_interest_id: "298486374"
   club_id: "4"
-  gender: female
-  group_id: 
-  street: "Norra B\xC3\xA4ckebo 5"
-  home_phone: 044-212936
   id: "31"
+  home_phone: 044-212936
+  street: "Norra B\xC3\xA4ckebo 5"
+  group_id: 
+  gender: female
   fname: Elif
   password: 
-  mobile_phone: ""
-  email: elif.johnsson@example.com
   sname: Johnsson
+  email: elif.johnsson@example.com
+  mobile_phone: ""
 students_007: 
   city: "Frilles\xC3\xA5s"
-  created_at: 2009-12-09 09:09:19
   personal_number: 19810628-1861
-  comments: ""
+  created_at: 2009-12-09 09:09:19
   title: GauLin
-  updated_at: 2009-12-13 15:53:17
+  comments: ""
   zipcode: "43030"
+  updated_at: 2009-12-15 10:27:55
+  main_interest_id: "1"
   club_id: "4"
-  gender: female
-  group_id: 
-  street: "Tuvv\xC3\xA4gen 20"
-  home_phone: ""
   id: "32"
+  home_phone: ""
+  street: "Tuvv\xC3\xA4gen 20"
+  group_id: 
+  gender: female
   fname: Lisen
   password: 
-  mobile_phone: ""
-  email: lisen.berggren@example.com
   sname: Berggren
+  email: lisen.berggren@example.com
+  mobile_phone: ""
 students_008: 
   city: Kvicksund
-  created_at: 2009-12-09 09:09:19
   personal_number: 19581214-1496
-  comments: ""
+  created_at: 2009-12-09 09:09:19
   title: GauLin
-  updated_at: 2009-12-13 15:53:28
+  comments: ""
   zipcode: "64045"
+  updated_at: 2009-12-15 10:29:01
+  main_interest_id: "1"
   club_id: "4"
-  gender: male
-  group_id: 
-  street: "Kl\xC3\xA4ppinge 89"
-  home_phone: 0563-9198417
   id: "34"
+  home_phone: 0563-9198417
+  street: "Kl\xC3\xA4ppinge 89"
+  group_id: 
+  gender: male
   fname: Edgar
   password: 
-  mobile_phone: ""
-  email: edgar.holmberg@example.com
   sname: Holmberg
+  email: edgar.holmberg@example.com
+  mobile_phone: ""
 students_009: 
   city: Tandsbyn
-  created_at: 2009-12-09 09:09:19
   personal_number: 19671029-1219
-  comments: ""
+  created_at: 2009-12-09 09:09:19
   title: ToeTai
-  updated_at: 2009-12-13 15:52:48
+  comments: ""
   zipcode: "83021"
+  updated_at: 2009-12-15 10:28:02
+  main_interest_id: "298486374"
   club_id: "5"
-  gender: male
-  group_id: 
-  street: Stallstigen 47
-  home_phone: 063-5312134
   id: "35"
+  home_phone: 063-5312134
+  street: Stallstigen 47
+  group_id: 
+  gender: male
   fname: Nino
   password: 
-  mobile_phone: ""
-  email: nino.berg@example.com
   sname: Berg
+  email: nino.berg@example.com
+  mobile_phone: ""
 students_010: 
   city: "F\xC3\xA5gelfors"
-  created_at: 2009-12-09 09:09:19
   personal_number: 19670425-7176
-  comments: ""
+  created_at: 2009-12-09 09:09:19
   title: ToeTai
-  updated_at: 2009-12-13 15:55:03
+  comments: ""
   zipcode: "57075"
+  updated_at: 2009-12-15 10:28:10
+  main_interest_id: "113629430"
   club_id: "5"
-  gender: male
-  group_id: 
-  street: ""
-  home_phone: 0491-5675992
   id: "36"
+  home_phone: 0491-5675992
+  street: ""
+  group_id: 
+  gender: male
   fname: Devin
   password: 
-  mobile_phone: ""
-  email: devin.johansson@example.com
   sname: Johansson
+  email: devin.johansson@example.com
+  mobile_phone: ""
 students_011: 
   city: Ljungby
-  created_at: 2009-12-09 09:09:19
   personal_number: 19510709-8054
-  comments: ""
+  created_at: 2009-12-09 09:09:19
   title: Sifu
-  updated_at: 2009-12-13 15:54:16
+  comments: ""
   zipcode: "34147"
+  updated_at: 2009-12-15 10:28:18
+  main_interest_id: "1"
   club_id: "8"
-  gender: male
-  group_id: 
-  street: Bygget 73
-  home_phone: 0372-9283685
   id: "135"
+  home_phone: 0372-9283685
+  street: Bygget 73
+  group_id: 
+  gender: male
   fname: Razmus
   password: 
-  mobile_phone: ""
-  email: razmus.hermansson@example.com
   sname: Hermansson
+  email: razmus.hermansson@example.com
+  mobile_phone: ""
 students_012: 
   city: Edsvalla
-  created_at: 2009-12-09 09:09:19
   personal_number: 19500513-8515
-  comments: ""
+  created_at: 2009-12-09 09:09:19
   title: ToeTai
-  updated_at: 2009-12-13 15:54:45
+  comments: ""
   zipcode: "66052"
+  updated_at: 2009-12-15 10:28:31
+  main_interest_id: "1"
   club_id: "8"
-  gender: male
-  group_id: 
-  street: ""
-  home_phone: 054-7334012
   id: "136"
+  home_phone: 054-7334012
+  street: ""
+  group_id: 
+  gender: male
   fname: Baran
   password: 
-  mobile_phone: ""
-  email: baran.olofsson@example.com
   sname: Olofsson
+  email: baran.olofsson@example.com
+  mobile_phone: ""
 students_001: 
   city: "Br\xC3\xA5landa"
-  created_at: 2009-12-09 09:09:19
   personal_number: 19810203-9909
-  comments: ""
+  created_at: 2009-12-09 09:09:19
   title: Unknown
-  updated_at: 2009-12-13 19:35:02
+  comments: ""
   zipcode: "46065"
+  updated_at: 2009-12-15 10:26:52
+  main_interest_id: "1"
   club_id: "2"
-  gender: female
-  group_id: 
-  street: Valldammsgatan 42
-  home_phone: 0521-9520867
   id: "25"
+  home_phone: 0521-9520867
+  street: Valldammsgatan 42
+  group_id: 
+  gender: female
   fname: Amalia
   password: 
-  mobile_phone: ""
-  email: amalia.gustavsson@example.com
   sname: Gustavsson
+  email: amalia.gustavsson@example.com
+  mobile_phone: ""

@@ -12,7 +12,7 @@ class GraduationsTest < ActionController::IntegrationTest
 		assert_contain " 3 tränande"
 		assert_not_contain "Blå"
 		assert_not_contain "Gul"
-		assert_not_contain "Röd"
+		assert_not_contain "Grön"
 
 		click_link "Amalia Gustavsson"
 		click_link "Graderingar"
@@ -21,7 +21,7 @@ class GraduationsTest < ActionController::IntegrationTest
 		fill_in "Instruktör", :with => "Name of Instructor"
 		fill_in "Examinator", :with => "Name of Examiner"
 		select "2009"
-		select "Januari"
+		select "Oktober"
 		select "15"
 		click_button "Spara"
 
@@ -38,8 +38,8 @@ class GraduationsTest < ActionController::IntegrationTest
 		fill_in "Instruktör", :with => "Name of Instructor"
 		fill_in "Examinator", :with => "Name of Examiner"
 		select "2009"
-		select "Juni"
-		select "15"
+		select "Oktober"
+		select "20"
 		click_button "Spara"
 
 		click_link "Klubbar"
@@ -68,7 +68,7 @@ class GraduationsTest < ActionController::IntegrationTest
 		fill_in "Instruktör", :with => "Name of Instructor"
 		fill_in "Examinator", :with => "Name of Examiner"
 		select "2009"
-		select "Januari"
+		select "Oktober"
 		select "15"
 		click_button "Spara"
 

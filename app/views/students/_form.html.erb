@@ -33,6 +33,11 @@
 </div>
 
 <div class="group">
+	<%= f.label :main_interest_id, t(:Main_interest), :class => :label %>
+	<%= select "student", "main_interest_id", grade_categories.map { |g| [ g.category, g.id ] } %><br/>
+</div>
+
+<div class="group">
 	<%= f.label :email, t(:Email), :class => :label %>
 	<%= f.text_field :email, :class => 'text_field' %>
 </div>
@@ -84,7 +89,7 @@
 
 <div class="group navform">
 	<input type="submit" class="button" value="<%=t :Save%> &rarr;" />
-	<% if controller.action_name != "new" %>
+	<% if controller.action_name != "new" && controller.action_name != "create" %>
 	<% if current_user.delete_permission?(@club) %>
 	<%=t(:or)%> <%= link_to t(:Destroy), @student, :confirm => t(:Are_you_sure_student), :method => :delete %>
 	<% end %>

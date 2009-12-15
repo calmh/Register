@@ -1,9 +1,10 @@
-one:
-    id: 1
-    category: Kung Fu
-
-two:
-    category: Qi Gong
-
-three:
-    category: Sanshou
+--- 
+grade_categories_001: 
+  category: Kung Fu
+  id: "1"
+grade_categories_002: 
+  category: Sanshou
+  id: "113629430"
+grade_categories_003: 
+  category: Qi Gong
+  id: "298486374"

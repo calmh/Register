@@ -22,14 +22,17 @@ class StudentTest < ActiveSupport::TestCase
 		s.title = "Gau lin"
 		s.comments = "None"
 		s.password = "None"
+		s.main_interest_id = 1
+		s.club_id = 9
+
 		s.personal_number = nil
-		assert s.save # Nil personal number
+		assert !s.save # Nil personal number
 		s.personal_number = "19710730-3187"
 		assert !s.save # Duplicate personal number
 		s.personal_number = "abc123"
 		assert !s.save # Nonsense personal number
 		s.personal_number = ""
-		assert s.save # Blank personal number
+		assert !s.save # Blank personal number
 		s.personal_number = "20710730-3187"
 		assert !s.save # Invalid personal number
 		s.personal_number = "710730-3187"
@@ -43,17 +46,17 @@ class StudentTest < ActiveSupport::TestCase
 		s.personal_number = "19710730"
 		assert s.save # Valid birth date
 
-		s.formatted_personal_number = "abc123"
-		assert s.personal_number == nil
-		s.formatted_personal_number = "20710730-3187"
+		s.personal_number = "abc123"
+		assert s.personal_number == "abc123"
+		s.personal_number = "20710730-3187"
 		assert s.personal_number == "20710730-3187"
-		s.formatted_personal_number = "7107303187"
+		s.personal_number = "7107303187"
 		assert s.personal_number == "19710730-3187"
-		s.formatted_personal_number = "710730-3187"
+		s.personal_number = "710730-3187"
 		assert s.personal_number == "19710730-3187"
-		s.formatted_personal_number = "197107303187"
+		s.personal_number = "197107303187"
 		assert s.personal_number == "19710730-3187"
-		s.formatted_personal_number = "19710730-3187"
+		s.personal_number = "19710730-3187"
 		assert s.personal_number == "19710730-3187"
 	end
 end

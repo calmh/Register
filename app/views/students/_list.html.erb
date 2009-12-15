@@ -6,6 +6,7 @@
 		<% if @displayClubField -%>
 		<th><%=t(:Club)%></th>
 		<% end -%>
+		<th><%=t(:Main_interest)%></th>
 		<th><%=t(:Groups)%></th>
 		<th><%=t(:Personal_no)%></th>
 		<% if @displayPaymentField %>
@@ -22,8 +23,9 @@
 			<% if @displayClubField -%>
 			<td><%= link_to student.club.name, club_path(student.club) %></td>
 			<% end -%>
+			<td><%= student.main_interest.category %></td>
 			<td><%= student.groups.map{ |g| g.identifier }.join(", ") %></td>
-			<td><%= student.formatted_personal_number %></td>
+			<td><%= student.personal_number %></td>
 			<td><%= grade_str(student.current_grade) %></td>
 			<% if @displayPaymentField %>
 			<td class="student-<%= student.active? ? 'active' :
