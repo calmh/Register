@@ -4,45 +4,56 @@ one:
     level: 1
 
 two:
+    id: 2
     description: Röd II
     level: 2
 
 three:
+    id: 3
     description: Gul I
     level: 3
 
 four:
+    id: 4
     description: Gul II
     level: 4
 
 five:
+    id: 5
     description: Grön I
     level: 5
 
 six:
+    id: 6
     description: Grön II
     level: 6
 
 seven:
+    id: 7
     description: Blå I
     level: 7
 
 eight:
+    id: 8
     description: Blå II
     level: 8
 
 bla1:
+    id: 9
     description: Svart I
     level: 9
 
 bla2:
+    id: 10
     description: Svart II
     level: 10
 
 bla3:
+    id: 11
     description: Svart III
     level: 11
 
 bla4:
+    id: 12
     description: Svart IIII
     level: 12

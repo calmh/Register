@@ -11,6 +11,11 @@ class Student < ActiveRecord::Base
 	validates_uniqueness_of :personal_number, :if => Proc.new { |s| !s.personal_number.blank? && s.personal_number =~ /^(19[3-9]|20[0-2])\d[01]\d[0-3]\d-\d\d\d\d$/ }
 	validate :check_personal_number
 	validates_associated :club
+	validates_associated :graduations
+	validates_associated :payments
+	validates_associated :title
+	validates_associated :club_position
+	validates_associated :board_position
 	validates_format_of :gender, :with => /male|female|unknown/
 	validates_presence_of :main_interest
 	validates_presence_of :sname
@@ -19,6 +24,7 @@ class Student < ActiveRecord::Base
 	validates_presence_of :club
 	validates_presence_of :board_position
 	validates_presence_of :club_position
+	validates_presence_of :title
 
 	def luhn
 		fact = 2
@@ -98,7 +104,7 @@ class Student < ActiveRecord::Base
 			d = Date.new($1.to_i, $2.to_i, $3.to_i)
 			return ((Date.today-d) / 365.24).to_i
 		else
-			return nil
+			return -1
 		end
 	end
 end

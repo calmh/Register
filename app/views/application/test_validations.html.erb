@@ -58,6 +58,42 @@
 </tr>
 <% end %>
 
+<% Graduation.find(:all).each do |s| %>
+<tr>
+<td>Graduation #<%=s.id%></td>
+<% if !s.valid? %>
+<% errors = s.errors.each_full { |e| e } %>
+<td><%= errors.join(", ")  %></td>
+<% else %>
+<td>OK</td>
+<% end %>
+</tr>
+<% end %>
+
+<% Grade.find(:all).each do |s| %>
+<tr>
+<td>Grade #<%=s.id%></td>
+<% if !s.valid? %>
+<% errors = s.errors.each_full { |e| e } %>
+<td><%= errors.join(", ")  %></td>
+<% else %>
+<td>OK</td>
+<% end %>
+</tr>
+<% end %>
+</table>
+
+<% Title.find(:all).each do |s| %>
+<tr>
+<td>Title #<%=s.id%></td>
+<% if !s.valid? %>
+<% errors = s.errors.each_full { |e| e } %>
+<td><%= errors.join(", ")  %></td>
+<% else %>
+<td>OK</td>
+<% end %>
+</tr>
+<% end %>
 </table>
 
     </div>
