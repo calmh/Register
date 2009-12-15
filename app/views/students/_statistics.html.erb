@@ -52,7 +52,7 @@
 			<% for age_span in ages do %>
 			<% count = @students.select{ |s| s.age >= age_span[0] && s.age <= age_span[1] }.length -%>
 			<tr class="<%= cycle("odd", "even") %>">
-				<td><%=age_span[0]%>-<%=age_span[1]%>&nbsp;<%=t:years%></td>
+				<td><%=age_span[0]%>&#8209;<%=age_span[1]%>&nbsp;<%=t:years%></td>
 				<td><%=count%></td>
 			</tr>
 			<% end %>
