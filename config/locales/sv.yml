@@ -157,6 +157,7 @@ sv:
   Per_Club_Position: Per föreningsbefattning
   Per_Board_Position: Per styrelsebefattning
   Users: Användare
+  Percentage: Andel
 
   activerecord:
     errors:

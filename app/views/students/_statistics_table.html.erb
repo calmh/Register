@@ -1,0 +1,15 @@
+<table class="table lesspadding fullwidth">
+	<tr class="<%= cycle("odd", "even") %>">
+		<th class="first"><%= col1 %></th>
+		<th><%= col2 %></th>
+		<th class="last"><%= t:Percentage %></th>
+	</tr>
+
+	<% for row in rows do -%>
+	<tr class="<%= cycle("odd", "even") %>">
+		<td><%= row[0] %></td>
+		<td class="last"><%= row[1] %></td>
+		<td class="last"><%= "%d" % (100.0 * row[1] / total) %> %</td>
+	</tr>
+	<% end %>
+</table>
