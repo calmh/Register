@@ -6,6 +6,8 @@ class Student < ActiveRecord::Base
 	has_many :graduations, :order => "graduated desc", :dependent => :destroy
 	belongs_to :main_interest, :class_name => "GradeCategory"
 	belongs_to :title
+	belongs_to :club_position
+	belongs_to :board_position
 	validates_uniqueness_of :personal_number, :if => Proc.new { |s| !s.personal_number.blank? && s.personal_number =~ /^(19[3-9]|20[0-2])\d[01]\d[0-3]\d-\d\d\d\d$/ }
 	validate :check_personal_number
 	validates_associated :club
@@ -15,6 +17,8 @@ class Student < ActiveRecord::Base
 	validates_presence_of :fname
 	validates_presence_of :personal_number
 	validates_presence_of :club
+	validates_presence_of :board_position
+	validates_presence_of :club_position
 
 	def luhn
 		fact = 2
@@ -64,7 +68,12 @@ class Student < ActiveRecord::Base
 		if graduations.blank?
 			return nil
 		else
-			return graduations[0]
+			in_main_interest = graduations.find(:all, :order => 'graduated desc', :conditions => {:grade_category_id => @main_interest_id})
+			if in_main_interest.length > 0
+				return in_main_interest[0]
+			else
+				return graduations[0]
+			end
 		end
 	end
 

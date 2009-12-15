@@ -12,6 +12,14 @@ module ApplicationHelper
 		Title.find(:all, :order => :level)
 	end
 
+	def board_positions
+		BoardPosition.find(:all, :order => :id)
+	end
+
+	def club_positions
+		ClubPosition.find(:all, :order => :id)
+	end
+
 	def grade_str(graduation)
 		if graduation == nil
 			return "-"

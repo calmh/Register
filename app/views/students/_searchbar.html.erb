@@ -6,7 +6,11 @@
 		<table class="table">
 		<tr class="<%=cycle('even','odd')%>">
 			<td><%=t:Club%>:</td>
-			<td><%= select "searchparams", "club_id", [[ t(:All), -100 ]] + @clubs.map { |g| [ g.name, g.id ] } %></td>
+			<td>
+				<%- clubs.each do |club| -%>
+				<label><%=check_box_tag 'searchparams[club_id][]', club.id, @searchparams.club_id.include?(club.id)%> <%=club.name%><br/></label>
+				<%- end -%>
+			</td>
 		</tr>
 		<tr class="<%=cycle('even','odd')%>">
 			<td><%=t:Grade%>:</td>
@@ -19,6 +23,14 @@
 		<tr class="<%=cycle('even','odd')%>">
 			<td><%=t:Title%>:</td>
 			<td><%= select "searchparams", "title_id", [[ t(:All), -100 ]] + titles.map { |g| [ g.title, g.id ] } %></td>
+		</tr>
+		<tr class="<%=cycle('even','odd')%>">
+			<td><%=t:Board_position%>:</td>
+			<td><%= select "searchparams", "board_position_id", [[ t(:All), -100 ]] + board_positions.map { |g| [ g.position, g.id ] } %></td>
+		</tr>
+		<tr class="<%=cycle('even','odd')%>">
+			<td><%=t:Club_position%>:</td>
+			<td><%= select "searchparams", "club_position_id", [[ t(:All), -100 ]] + club_positions.map { |g| [ g.position, g.id ] } %></td>
 		</tr>
 		</table>
 		<%= submit_tag t(:Search) %>

@@ -30,6 +30,11 @@
 					</tr>
 
 					<tr class="<%= cycle("odd", "even") %>">
+						<td><b><%=t(:Main_interest)%>:</b></td>
+						<td><%=@student.main_interest.category %></td>
+					</tr>
+
+					<tr class="<%= cycle("odd", "even") %>">
 						<td><b><%=t(:Email)%>:</b></td>
 						<td><%=h @student.email %></td>
 					</tr>
@@ -59,6 +64,16 @@
 					<tr class="<%= cycle("odd", "even") %>">
 						<td><b><%=t(:Title)%>:</b></td>
 						<td><%=h @student.title.title %></td>
+					</tr>
+
+					<tr class="<%= cycle("odd", "even") %>">
+						<td><b><%=t(:Board_position)%>:</b></td>
+						<td><%=h @student.board_position.position %></td>
+					</tr>
+
+					<tr class="<%= cycle("odd", "even") %>">
+						<td><b><%=t(:Club_position)%>:</b></td>
+						<td><%=h @student.club_position.position %></td>
 					</tr>
 
 					<tr class="<%= cycle("odd", "even") %>">

@@ -52,7 +52,12 @@ class GraduationsTest < ActionController::IntegrationTest
 	test "graduation on multiple students" do
 		log_in
 		click_link "Sök tränande"
-		select "Brålanda"
+		check "Brålanda"
+		uncheck "Edsvalla"
+		uncheck "Frillesås"
+		uncheck "Nybro"
+		uncheck "Tandsbyn"
+		uncheck "Vallåkra"
 		click_button "Sök"
 
 		assert_contain "Amalia Gustavsson"

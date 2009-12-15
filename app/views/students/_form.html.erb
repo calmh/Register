@@ -83,6 +83,16 @@
 </div>
 
 <div class="group">
+	<%= f.label :club_position_id, t(:Club_position), :class => :label %>
+	<%= select "student", "club_position_id", club_positions.map { |g| [ g.position, g.id ] } %><br/>
+</div>
+
+<div class="group">
+	<%= f.label :board_position_id, t(:Board_position), :class => :label %>
+	<%= select "student", "board_position_id", board_positions.map { |g| [ g.position, g.id ] } %><br/>
+</div>
+
+<div class="group">
 	<%= f.label :comments, t(:Comments), :class => :label %>
 	<%= f.text_area :comments, :class => 'text_area', :rows => 4, :cols => 16 %>
 </div>

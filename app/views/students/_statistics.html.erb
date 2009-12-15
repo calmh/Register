@@ -42,7 +42,6 @@
 			</tr>
 		</table>
 
-
 		<h4><%=t:Per_age%></h4>
 		<table class="table lesspadding">
 			<tr class="<%= cycle("odd", "even") %>">
@@ -54,6 +53,36 @@
 			<% count = @students.select{ |s| s.age >= age_span[0] && s.age <= age_span[1] }.length -%>
 			<tr class="<%= cycle("odd", "even") %>">
 				<td><%=age_span[0]%>-<%=age_span[1]%>&nbsp;<%=t:years%></td>
+				<td><%=count%></td>
+			</tr>
+			<% end %>
+		</table>
+
+		<h4><%=t:Per_board_position%></h4>
+		<table class="table lesspadding">
+			<tr class="<%= cycle("odd", "even") %>">
+				<th class="first"><%=t:Board_position%></th>
+				<th class="last"><%=t:Num_students%></th>
+			</tr>
+			<% for position in board_positions do %>
+			<% count = @students.select{ |s| s.board_position == position }.length -%>
+			<tr class="<%= cycle("odd", "even") %>">
+				<td><%=position.position%></td>
+				<td><%=count%></td>
+			</tr>
+			<% end %>
+		</table>
+
+		<h4><%=t:Per_club_position%></h4>
+		<table class="table lesspadding">
+			<tr class="<%= cycle("odd", "even") %>">
+				<th class="first"><%=t:Board_position%></th>
+				<th class="last"><%=t:Num_students%></th>
+			</tr>
+			<% for position in club_positions do %>
+			<% count = @students.select{ |s| s.club_position == position }.length -%>
+			<tr class="<%= cycle("odd", "even") %>">
+				<td><%=position.position%></td>
 				<td><%=count%></td>
 			</tr>
 			<% end %>

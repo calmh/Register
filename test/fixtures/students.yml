@@ -19,6 +19,8 @@ students_013:
   sname: Jansson
   email: svante.jansson@example.com
   mobile_phone: ""
+  club_position_id: 1
+  board_position_id: 1
 students_002:
   city: "F\xC3\x96LLINGE"
   personal_number: 19620629-3349
@@ -39,6 +41,8 @@ students_002:
   sname: Johnsson
   email: agaton.johnsson@example.com
   mobile_phone: ""
+  club_position_id: 1
+  board_position_id: 1
 students_003:
   city: Arvidsjaur
   personal_number: 19710730-3187
@@ -59,6 +63,8 @@ students_003:
   sname: Petterson
   email: emma.petterson@example.com
   mobile_phone: ""
+  club_position_id: 1
+  board_position_id: 1
 students_004:
   city: "Svart\xC3\xA5"
   personal_number: 19420814-3778
@@ -79,6 +85,8 @@ students_004:
   sname: "Nystr\xC3\xB6m"
   email: emil.nystrom@example.com
   mobile_phone: ""
+  club_position_id: 1
+  board_position_id: 1
 students_005:
   city: "Vall\xC3\xA5kra"
   personal_number: 19850107-1768
@@ -99,6 +107,8 @@ students_005:
   sname: Dahlberg
   email: marielle.dahlberg@example.com
   mobile_phone: ""
+  club_position_id: 1
+  board_position_id: 1
 students_006:
   city: Kristianstad
   personal_number: 19460723-4780
@@ -119,6 +129,8 @@ students_006:
   sname: Johnsson
   email: elif.johnsson@example.com
   mobile_phone: ""
+  club_position_id: 1
+  board_position_id: 1
 students_007:
   city: "Frilles\xC3\xA5s"
   personal_number: 19810628-1861
@@ -139,6 +151,8 @@ students_007:
   sname: Berggren
   email: lisen.berggren@example.com
   mobile_phone: ""
+  club_position_id: 1
+  board_position_id: 1
 students_008:
   city: Kvicksund
   personal_number: 19581214-1496
@@ -159,6 +173,8 @@ students_008:
   sname: Holmberg
   email: edgar.holmberg@example.com
   mobile_phone: ""
+  club_position_id: 1
+  board_position_id: 1
 students_009:
   city: Tandsbyn
   personal_number: 19671029-1219
@@ -179,6 +195,8 @@ students_009:
   sname: Berg
   email: nino.berg@example.com
   mobile_phone: ""
+  club_position_id: 1
+  board_position_id: 1
 students_010:
   city: "F\xC3\xA5gelfors"
   personal_number: 19670425-7176
@@ -199,6 +217,8 @@ students_010:
   sname: Johansson
   email: devin.johansson@example.com
   mobile_phone: ""
+  club_position_id: 1
+  board_position_id: 1
 students_011:
   city: Ljungby
   personal_number: 19510709-8054
@@ -219,6 +239,8 @@ students_011:
   sname: Hermansson
   email: razmus.hermansson@example.com
   mobile_phone: ""
+  club_position_id: 1
+  board_position_id: 1
 students_012:
   city: Edsvalla
   personal_number: 19500513-8515
@@ -239,6 +261,8 @@ students_012:
   sname: Olofsson
   email: baran.olofsson@example.com
   mobile_phone: ""
+  club_position_id: 1
+  board_position_id: 1
 students_001:
   city: "Br\xC3\xA5landa"
   personal_number: 19810203-9909
@@ -259,3 +283,5 @@ students_001:
   sname: Gustavsson
   email: amalia.gustavsson@example.com
   mobile_phone: ""
+  club_position_id: 1
+  board_position_id: 1

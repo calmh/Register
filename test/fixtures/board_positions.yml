@@ -1,0 +1,13 @@
+s0:
+    position: Ingen
+    id: 1
+s1:
+    position: Kassör
+s2:
+    position: Sekreterare
+s3:
+    position: Ordförande
+s4:
+    position: Ledamot
+s5:
+    position: Suppleant

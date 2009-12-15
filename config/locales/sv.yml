@@ -153,6 +153,10 @@ sv:
   Age: Ålder
   Grade_category: System
   Main_interest: Huvudintresse
+  Club_position: Föreningsbefattning
+  Board_position: Styrelsebefattning
+  Per_club_position: Per föreningsbefattning
+  Per_board_position: Per styrelsebefattning
 
   activerecord:
     errors:

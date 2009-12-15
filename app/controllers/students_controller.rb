@@ -6,24 +6,34 @@ class StudentsController < ApplicationController
 		attr_accessor :grade
 		attr_accessor :club_id
 		attr_accessor :title_id
+		attr_accessor :board_position_id
+		attr_accessor :club_position_id
 
 		def initialize
 			@group_id = -100
 			@grade = -100
-			@club_id = -100
+			@club_id = Club.find(:all).map { |c| c.id }
 			@title_id = -100
+			@board_position_id = -100
+			@club_position_id = -100
 		end
 
 		def conditions
 			variables = []
 			conditions = []
-			if club_id != -100
-				conditions << "club_id = ?"
-				variables << @club_id
-			end
+			conditions << "club_id in (?)"
+			variables << @club_id
 			if title_id != -100
 				conditions << "title_id = ?"
 				variables << @title_id
+			end
+			if board_position_id != -100
+				conditions << "board_position_id = ?"
+				variables << @board_position_id
+			end
+			if club_position_id != -100
+				conditions << "club_position_id = ?"
+				variables << @club_position_id
 			end
 			return [ conditions.join(" AND ") ] + variables
 		end
@@ -55,8 +65,10 @@ class StudentsController < ApplicationController
 		if params.key? :searchparams
 			@searchparams.group_id = params[:searchparams][:group_id].to_i
 			@searchparams.grade = params[:searchparams][:grade].to_i
-			@searchparams.club_id = params[:searchparams][:club_id].to_i
+			@searchparams.club_id = params[:searchparams][:club_id].map{|x| x.to_i}
 			@searchparams.title_id = params[:searchparams][:title_id].to_i
+			@searchparams.board_position_id = params[:searchparams][:board_position_id].to_i
+			@searchparams.club_position_id = params[:searchparams][:club_position_id].to_i
 		end
 
 		@clubs = Club.find(:all, :order => :name)
