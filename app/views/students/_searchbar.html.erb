@@ -16,6 +16,10 @@
 			<td><%=t:Group%>:</td>
 			<td><%= select "searchparams", "group_id", [[ t(:All), -100 ]] + groups.map { |g| [ g.identifier, g.id ] } %></td>
 		</tr>
+		<tr class="<%=cycle('even','odd')%>">
+			<td><%=t:Title%>:</td>
+			<td><%= select "searchparams", "title_id", [[ t(:All), -100 ]] + titles.map { |g| [ g.title, g.id ] } %></td>
+		</tr>
 		</table>
 		<%= submit_tag t(:Search) %>
 		<% end -%>

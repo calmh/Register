@@ -5,11 +5,13 @@ class StudentsController < ApplicationController
 		attr_accessor :group_id
 		attr_accessor :grade
 		attr_accessor :club_id
+		attr_accessor :title_id
 
 		def initialize
 			@group_id = -100
 			@grade = -100
 			@club_id = -100
+			@title_id = -100
 		end
 
 		def conditions
@@ -18,6 +20,10 @@ class StudentsController < ApplicationController
 			if club_id != -100
 				conditions << "club_id = ?"
 				variables << @club_id
+			end
+			if title_id != -100
+				conditions << "title_id = ?"
+				variables << @title_id
 			end
 			return [ conditions.join(" AND ") ] + variables
 		end
@@ -50,6 +56,7 @@ class StudentsController < ApplicationController
 			@searchparams.group_id = params[:searchparams][:group_id].to_i
 			@searchparams.grade = params[:searchparams][:grade].to_i
 			@searchparams.club_id = params[:searchparams][:club_id].to_i
+			@searchparams.title_id = params[:searchparams][:title_id].to_i
 		end
 
 		@clubs = Club.find(:all, :order => :name)
