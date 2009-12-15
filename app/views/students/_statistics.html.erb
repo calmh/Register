@@ -87,5 +87,20 @@
 			</tr>
 			<% end %>
 		</table>
+
+		<h4><%=t:Per_main_interest%></h4>
+		<table class="table lesspadding">
+			<tr class="<%= cycle("odd", "even") %>">
+				<th class="first"><%=t:Main_interest%></th>
+				<th class="last"><%=t:Num_students%></th>
+			</tr>
+			<% for category in grade_categories do %>
+			<% count = @students.select{ |s| s.main_interest == category }.length -%>
+			<tr class="<%= cycle("odd", "even") %>">
+				<td><%=category.category%></td>
+				<td><%=count%></td>
+			</tr>
+			<% end %>
+		</table>
 	</div>
 </div>
