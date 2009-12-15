@@ -12,7 +12,6 @@ students_013:
   id: "137"
   home_phone: 0481-5635981
   street: Valldammsgatan 42
-  group_id:
   gender: male
   fname: Svante
   password:
@@ -34,7 +33,6 @@ students_002:
   id: "26"
   home_phone: 0645-7595472
   street: "Norrfj\xC3\xA4ll 44"
-  group_id:
   gender: female
   fname: Agaton
   password:
@@ -56,7 +54,6 @@ students_003:
   id: "27"
   home_phone: 0960-8472971
   street: Barrgatan 81
-  group_id:
   gender: female
   fname: Emma
   password:
@@ -78,7 +75,6 @@ students_004:
   id: "29"
   home_phone: ""
   street: "Verdandi Gr\xC3\xA4nd 65"
-  group_id:
   gender: male
   fname: Emil
   password:
@@ -100,7 +96,6 @@ students_005:
   id: "30"
   home_phone: 042-3409841
   street: "Mj\xC3\xB6lkal\xC3\xA5nga 64"
-  group_id:
   gender: female
   fname: Marielle
   password:
@@ -122,7 +117,6 @@ students_006:
   id: "31"
   home_phone: 044-212936
   street: "Norra B\xC3\xA4ckebo 5"
-  group_id:
   gender: female
   fname: Elif
   password:
@@ -144,7 +138,6 @@ students_007:
   id: "32"
   home_phone: ""
   street: "Tuvv\xC3\xA4gen 20"
-  group_id:
   gender: female
   fname: Lisen
   password:
@@ -166,7 +159,6 @@ students_008:
   id: "34"
   home_phone: 0563-9198417
   street: "Kl\xC3\xA4ppinge 89"
-  group_id:
   gender: male
   fname: Edgar
   password:
@@ -188,7 +180,6 @@ students_009:
   id: "35"
   home_phone: 063-5312134
   street: Stallstigen 47
-  group_id:
   gender: male
   fname: Nino
   password:
@@ -210,7 +201,6 @@ students_010:
   id: "36"
   home_phone: 0491-5675992
   street: ""
-  group_id:
   gender: male
   fname: Devin
   password:
@@ -232,7 +222,6 @@ students_011:
   id: "135"
   home_phone: 0372-9283685
   street: Bygget 73
-  group_id:
   gender: male
   fname: Razmus
   password:
@@ -254,7 +243,6 @@ students_012:
   id: "136"
   home_phone: 054-7334012
   street: ""
-  group_id:
   gender: male
   fname: Baran
   password:
@@ -276,7 +264,6 @@ students_001:
   id: "25"
   home_phone: 0521-9520867
   street: Valldammsgatan 42
-  group_id:
   gender: female
   fname: Amalia
   password:
