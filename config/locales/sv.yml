@@ -82,13 +82,11 @@ sv:
   Change_password: Byt lösenord
   Confirm_password: Upprepa lösenordet
   Group_List: Grupper
-  All_Groups: Alla grupper
   New_Group: Ny grupp
   Edit_Group: Redigera grupp
   Merge: Slå ihop
   Merge_descr: Om du väljer en annan grupp här, så kommer eleverna i den här gruppen att flyttas till den valda gruppen, och den här gruppen raderas.
   User_List: Användare
-  All_Users: Alla användare
   New_User: Ny användare
   Edit_clubs: Redigera klubbar
   Edit_groups: Redigera grupper
@@ -158,6 +156,7 @@ sv:
   Board_position: Styrelsebefattning
   Per_club_position: Per föreningsbefattning
   Per_board_position: Per styrelsebefattning
+  Users: Användare
 
   activerecord:
     errors:

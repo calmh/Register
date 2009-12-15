@@ -1,7 +1,5 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
+  Register: Register
   Students: Students
   ID: ID
   Name: Name
@@ -11,11 +9,10 @@ en:
   Group: Group
   Personal_no: Personal number
   Latest_payment: Latest payment
-  Time_since_grade: Since graduation
-  Club_List: Club List
-  New_Club: new club
+  Time_since_grade: Time since graduation
+  Club_List: Clubs
+  New_Club: New Club
   Edit_Club: Edit Club
-  All_Clubs: All Clubs
   Edit_Student: Edit Student
   Email: Email
   Home_phone: Home phone
@@ -26,7 +23,9 @@ en:
   Title: Title
   Comments: Comments
   Sname: Surname
-  Fname: First name
+  Fname: Name
+  Save: Save
+  Cancel: Cancel
   red: red
   yellow: yellow
   green: green
@@ -34,3 +33,126 @@ en:
   black: black
   unknown: unknown
   none: none
+  silver: silver
+  junior: junior
+  or: or
+  Profile: Profile
+  Settings: Settings
+  Logout: Logout
+  Graduations: Graduations
+  Instructor: Instructor
+  Examiner: Examiner
+  Graduated: Graduated
+  Edit: Edit
+  Payments: Payments
+  Description: Description
+  Received: Received
+  Amount: Amount
+  Must_log_in: You must log in to access this page.
+  Log_in: Log in
+  Login: Login
+  Password: Password
+  Remember_me: Remember me
+  Login_successful: Login successful
+  Logout_successful: Logout successful
+  Logged_in_since: Logged in since
+  Logged_in_from: Logged in from
+  Previous_login: Previous login
+  Previous_login_from: Previous login from
+  Num_logins: Number of logins
+  Login_descr: Three or more characters
+  Edit_User: Edit User
+  Current_grade: Current grade
+  Held_since: Held since
+  Personal_no_descr: Personal number (19700101-1234) or birthdate (19700101).
+  Phone_number_descr: Phone number (046-123456) or international phone number (+46 46-123456).
+  New_Student: New Student
+  Register_Graduation: Register Graduation
+  ago: ago
+  Send_Message: Send Message
+  Register_Payment: Register Payment
+  Acts_on_selected: Select on or more students above to act on them.
+  Show: Show
+  Links: Links
+  for: for
+  Num_clubs: Number of clubs
+  Change_password: Change password
+  Confirm_password: Confirm password
+  Group_List: Groups
+  All_Groups: Groups
+  New_Group: New Group
+  Edit_Group: Edit Group
+  Merge: Merge
+  Merge_descr: Select a different group here to merge this group.
+  User_List: Users
+  All_Users: Users
+  New_User: New User
+  Edit_clubs: Edit clubs
+  Edit_groups: Edit groups
+  Edit_users: Edit users
+  Edit_mailinglists: Edit mailinglists
+  Gender: Gender
+  male: male
+  female: female
+  Male: Male
+  Female: Female
+  Gender_descr: Select a gender. If a complete personal number is filled in above, that wull be used to determine gender.
+  Read: Read
+  Write: Write
+  Delete: Delete
+  Club: Club
+  Global_permissions: Global permissions
+  Club_permissions: Club permissions
+  Group_merged: Group was successfully merged.
+  Could_not_complete_validation_errors: Could not complete the operation due to validation errors.
+  Group_updated: Group was successfully updated.
+  Group_created: Group was successfully created
+  Club_updated: Club was successfully updated.
+  Club_created: Club was successfully created.
+  Student_updated: Student was successfully updated.
+  Student_created: Student was successfully created.
+  Search: Search
+  All: All
+  Search_students: Search students
+  Search_parameters: Search parameters
+  Search_descr: Use the fields below to filter which students to see.
+  New_Graduation: New Graduation
+  Destroy: Destroy
+  Are_you_sure_club: Are you sure? The will club be deleted.
+  Are_you_sure_student: Are you sure? The student will be deleted.
+  Are_you_sure_user: Are you sure? The user will be deleted.
+  Mailing_Lists: Mailing Lists
+  New_Mailing_List: New Mailing List
+  Email: Email
+  Security: Security
+  Edit_Mailing_List: Edit Mailing List
+  Groups: Groups
+  Matched_x_students: Matched {{count}} students
+  Per_group: Per group
+  Per_gender: Per gender
+  Per_age: Per age
+  years: years
+  Members: Members
+  Public: Public
+  Private: Private
+  Security_descr: A public list can be joined by any user, a provate list can only be edited by an administrator.
+  Edit_user: Edit user
+  Edit_mailing_list: Edit mailing list
+  Address: Address
+  read: read
+  edit: edit
+  delete: delete
+  graduations: graduations
+  payments: payments
+  P_yes: Yes
+  P_no: No
+  User_created: User successfully created
+  Age: Age
+  Grade_category: Grade category
+  Main_interest: Main interest
+  Per_main_interest: Per main interest
+  Club_position: Club position
+  Board_position: Board position
+  Per_club_position: Per club position
+  Per_board_position: Per board position
+  Users: Users

@@ -8,9 +8,5 @@
   - Change (some) personal information
   - Join/leave public mailing lists
   - Change password
-- Mailing lists
-  - Global administration
-  - Per student administration
 - Send message
   - SMS
-- Title -> Dropdown
