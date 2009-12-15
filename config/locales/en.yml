@@ -5,20 +5,20 @@ en:
   Name: Name
   Grade: Grade
   Statistics: Statistics
-  Num_students: Number of students
+  Num_Students: Number of Students
   Group: Group
-  Personal_no: Personal number
-  Latest_payment: Latest payment
+  Personal_Num: Personal Number
+  Latest_Payment: Latest Payment
   Time_since_grade: Time since graduation
   Club_List: Clubs
   New_Club: New Club
   Edit_Club: Edit Club
   Edit_Student: Edit Student
   Email: Email
-  Home_phone: Home phone
-  Mobile_phone: Mobile phone
+  Home_phone: Home Phone
+  Mobile_phone: Mobile Phone
   Street: Street
-  Zipcode: Zip code
+  Zipcode: Zip Code
   City: City
   Title: Title
   Comments: Comments
@@ -59,12 +59,12 @@ en:
   Logged_in_from: Logged in from
   Previous_login: Previous login
   Previous_login_from: Previous login from
-  Num_logins: Number of logins
+  Num_Loginss: Number of Logins
   Login_descr: Three or more characters
   Edit_User: Edit User
-  Current_grade: Current grade
-  Held_since: Held since
-  Personal_no_descr: Personal number (19700101-1234) or birthdate (19700101).
+  Current_Grade: Current Grade
+  Held_Since: Held Since
+  Personal_Num_descr: Personal number (19700101-1234) or birthdate (19700101).
   Phone_number_descr: Phone number (046-123456) or international phone number (+46 46-123456).
   New_Student: New Student
   Register_Graduation: Register Graduation
@@ -75,9 +75,9 @@ en:
   Show: Show
   Links: Links
   for: for
-  Num_clubs: Number of clubs
-  Change_password: Change password
-  Confirm_password: Confirm password
+  Num_Clubs: Number of Clubs
+  Change_Password: Change Password
+  Confirm_Password: Confirm Password
   Group_List: Groups
   All_Groups: Groups
   New_Group: New Group
@@ -87,10 +87,10 @@ en:
   User_List: Users
   All_Users: Users
   New_User: New User
-  Edit_clubs: Edit clubs
-  Edit_groups: Edit groups
-  Edit_users: Edit users
-  Edit_mailinglists: Edit mailinglists
+  Edit_clubs: Edit Clubs
+  Edit_groups: Edit Groups
+  Edit_Users: Edit Users
+  Edit_Mailing_Lists: Edit Mailing Lists
   Gender: Gender
   male: male
   female: female
@@ -101,8 +101,8 @@ en:
   Write: Write
   Delete: Delete
   Club: Club
-  Global_permissions: Global permissions
-  Club_permissions: Club permissions
+  Global_Permissions: Global Permissions
+  Club_Permissions: Club Permissions
   Group_merged: Group was successfully merged.
   Could_not_complete_validation_errors: Could not complete the operation due to validation errors.
   Group_updated: Group was successfully updated.
@@ -113,8 +113,8 @@ en:
   Student_created: Student was successfully created.
   Search: Search
   All: All
-  Search_students: Search students
-  Search_parameters: Search parameters
+  Search_Students: Search Students
+  Search_Parameters: Search Parameters
   Search_descr: Use the fields below to filter which students to see.
   New_Graduation: New Graduation
   Destroy: Destroy
@@ -136,8 +136,8 @@ en:
   Public: Public
   Private: Private
   Security_descr: A public list can be joined by any user, a provate list can only be edited by an administrator.
-  Edit_user: Edit user
-  Edit_mailing_list: Edit mailing list
+  Edit_User: Edit User
+  Edit_Mailing_List: Edit Mailing List
   Address: Address
   read: read
   edit: edit
@@ -148,11 +148,11 @@ en:
   P_no: No
   User_created: User successfully created
   Age: Age
-  Grade_category: Grade category
-  Main_interest: Main interest
-  Per_main_interest: Per main interest
-  Club_position: Club position
-  Board_position: Board position
-  Per_club_position: Per club position
-  Per_board_position: Per board position
+  Grade_category: Grade Category
+  Main_Interest: Main&nbsp;Interest
+  Per_Main_Interest: Per Main Interest
+  Club_Position: Club&nbsp;Position
+  Board_Position: Board&nbsp;Position
+  Per_Club_Position: Per Club Position
+  Per_Board_Position: Per Board Position
   Users: Users

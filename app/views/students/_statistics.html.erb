@@ -9,7 +9,7 @@
 		<table class="table lesspadding">
 			<tr class="<%= cycle("odd", "even") %>">
 				<th class="first"><%=t:Group%></th>
-				<th class="last"><%=t:Num_students%></th>
+				<th class="last"><%=t:Num_Students%></th>
 			</tr>
 
 			<% for group in groups do -%>
@@ -27,7 +27,7 @@
 		<table class="table lesspadding">
 			<tr class="<%= cycle("odd", "even") %>">
 				<th class="first"><%=t:Gender%></th>
-				<th class="last"><%=t:Num_students%></th>
+				<th class="last"><%=t:Num_Students%></th>
 			</tr>
 
 			<% male = @students.select{ |s| s.gender == 'male' }.length -%>
@@ -46,7 +46,7 @@
 		<table class="table lesspadding">
 			<tr class="<%= cycle("odd", "even") %>">
 				<th class="first"><%=t:Age%></th>
-				<th class="last"><%=t:Num_students%></th>
+				<th class="last"><%=t:Num_Students%></th>
 			</tr>
 			<% ages = [ [0,7], [8,14], [15,20], [21,25], [26,99] ] %>
 			<% for age_span in ages do %>
@@ -58,11 +58,11 @@
 			<% end %>
 		</table>
 
-		<!--<h4><%=t:Per_board_position%></h4>-->
+		<!--<h4><%=t:Per_Board_Position%></h4>-->
 		<table class="table lesspadding">
 			<tr class="<%= cycle("odd", "even") %>">
-				<th class="first"><%=t:Board_position%></th>
-				<th class="last"><%=t:Num_students%></th>
+				<th class="first"><%=t:Board_Position%></th>
+				<th class="last"><%=t:Num_Students%></th>
 			</tr>
 			<% for position in board_positions do %>
 			<% count = @students.select{ |s| s.board_position == position }.length -%>
@@ -73,11 +73,11 @@
 			<% end %>
 		</table>
 
-		<!--<h4><%=t:Per_club_position%></h4>-->
+		<!--<h4><%=t:Per_Club_Position%></h4>-->
 		<table class="table lesspadding">
 			<tr class="<%= cycle("odd", "even") %>">
-				<th class="first"><%=t:Club_position%></th>
-				<th class="last"><%=t:Num_students%></th>
+				<th class="first"><%=t:Club_Position%></th>
+				<th class="last"><%=t:Num_Students%></th>
 			</tr>
 			<% for position in club_positions do %>
 			<% count = @students.select{ |s| s.club_position == position }.length -%>
@@ -88,11 +88,11 @@
 			<% end %>
 		</table>
 
-		<!--<h4><%=t:Per_main_interest%></h4>-->
+		<!--<h4><%=t:Per_Main_Interest%></h4>-->
 		<table class="table lesspadding">
 			<tr class="<%= cycle("odd", "even") %>">
-				<th class="first"><%=t:Main_interest%></th>
-				<th class="last"><%=t:Num_students%></th>
+				<th class="first"><%=t:Main_Interest%></th>
+				<th class="last"><%=t:Num_Students%></th>
 			</tr>
 			<% for category in grade_categories do %>
 			<% count = @students.select{ |s| s.main_interest == category }.length -%>

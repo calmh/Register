@@ -21,16 +21,16 @@
 </div>
 
 <div class="group">
-	<%= f.label :password, f.object.new_record? ? t(:Password) : t(:Change_password), :class => :label %>
+	<%= f.label :password, f.object.new_record? ? t(:Password) : t(:Change_Password), :class => :label %>
 	<%= f.password_field :password, :class => 'text_field' %>
 </div>
 <div class="group">
-	<%= f.label :password_confirmation, t(:Confirm_password), :class => :label %>
+	<%= f.label :password_confirmation, t(:Confirm_Password), :class => :label %>
 	<%= f.password_field :password_confirmation, :class => 'text_field' %>
 </div>
 
 <% if current_user.users_permission? %>
-<h3><%=t:Global_permissions%></h3>
+<h3><%=t:Global_Permissions%></h3>
 <div class="group">
 	<table>
 		<tr>
@@ -44,18 +44,18 @@
 		</tr>
 
 		<tr>
-			<td><%=t(:Edit_users)%></td>
+			<td><%=t(:Edit_Users)%></td>
 			<td><%= f.check_box :users_permission, :class => 'check_box' %></td>
 		</tr>
 
 		<tr>
-			<td><%=t(:Edit_mailinglists)%></td>
+			<td><%=t(:Edit_Mailing_Lists)%></td>
 			<td><%= f.check_box :mailinglists_permission, :class => 'check_box' %></td>
 		</tr>
 	</table>
 </div>
 
-<h3><%=t:Club_permissions%></h3>
+<h3><%=t:Club_Permissions%></h3>
 <div class="group">
 	<table>
 		<tr>

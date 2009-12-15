@@ -17,15 +17,15 @@
 </div>
 
 <div class="block">
-	<h3><%=t:Current_grade%></h3>
+	<h3><%=t:Current_Grade%></h3>
 	<div class="content">
 		<% g = @student.current_grade %>
 		<p>
-			<b><%=t:Current_grade%>:</b>
+			<b><%=t:Current_Grade%>:</b>
 			<%=grade_str(g)%>
 		</p>
 		<p>
-			<b><%=t:Held_since%>:</b>
+			<b><%=t:Held_Since%>:</b>
 			<%- if g == nil -%>
 			-
 			<%- else -%>
@@ -36,7 +36,7 @@
 </div>
 
 <div class="block">
-	<h3><%=t:Latest_payment%></h3>
+	<h3><%=t:Latest_Payment%></h3>
 	<div class="content">
 		<p>
 			<% if @student.payments.blank? %>

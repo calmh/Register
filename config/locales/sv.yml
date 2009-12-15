@@ -8,10 +8,10 @@ sv:
   Name: Namn
   Grade: Grad
   Statistics: Statistik
-  Num_students: Antal tränande
+  Num_Students: Antal tränande
   Group: Grupp
-  Personal_no: Personnummer
-  Latest_payment: Senaste inbetalning
+  Personal_Num: Personnummer
+  Latest_Payment: Senaste inbetalning
   Time_since_grade: Sen gradering
   Club_List: Klubbar
   New_Club: Ny klubb
@@ -62,12 +62,12 @@ sv:
   Logged_in_from: Loggade senast in från
   Previous_login: Förra inloggningen
   Previous_login_from: Loggade förra gången in från
-  Num_logins: Antal lyckade inloggningar
+  Num_Loginss: Antal lyckade inloggningar
   Login_descr: Bokstäver och siffror, minst två tecken.
   Edit_User: Redigera användare
-  Current_grade: Nuvarande grad
-  Held_since: Sedan
-  Personal_no_descr: Ange personnumer (19700102-1234) eller födelsedatum (19700102).
+  Current_Grade: Nuvarande grad
+  Held_Since: Sedan
+  Personal_Num_descr: Ange personnumer (19700102-1234) eller födelsedatum (19700102).
   Phone_number_descr: Ange telefonnummer på formen 0123-456789 eller +45 12345678 för internationella nummer.
   New_Student: Ny tränande
   Register_Graduation: Registrera gradering
@@ -78,9 +78,9 @@ sv:
   Show: Visa
   Links: Val
   for: för
-  Num_clubs: Antal klubbar
-  Change_password: Byt lösenord
-  Confirm_password: Upprepa lösenordet
+  Num_Clubs: Antal klubbar
+  Change_Password: Byt lösenord
+  Confirm_Password: Upprepa lösenordet
   Group_List: Grupper
   New_Group: Ny grupp
   Edit_Group: Redigera grupp
@@ -90,8 +90,8 @@ sv:
   New_User: Ny användare
   Edit_clubs: Redigera klubbar
   Edit_groups: Redigera grupper
-  Edit_users: Redigera användare
-  Edit_mailinglists: Redigera epost-listor
+  Edit_Users: Redigera användare
+  Edit_Mailing_Lists: Redigera epost-listor
   Gender: Kön
   male: man
   female: kvinna
@@ -102,8 +102,8 @@ sv:
   Write: Skriva
   Delete: Radera
   Club: Klubb
-  Global_permissions: Globala rättigheter
-  Club_permissions: Rättigheter per klubb
+  Global_Permissions: Globala rättigheter
+  Club_Permissions: Rättigheter per klubb
   Group_merged: Gruppen har slagits ihop och raderats.
   Could_not_complete_validation_errors: Det gick inte att fullfölja operationen på grund av valideringsfel. Detta är ett tecken på att all information inte är som den ska i databasen. Kontakta administratatören.
   Group_updated: Gruppen har uppdaterats.
@@ -114,8 +114,8 @@ sv:
   Student_created: Eleven har skapats.
   Search: Sök
   All: Alla
-  Search_students: Sök tränande
-  Search_parameters: Sökparametrar
+  Search_Students: Sök tränande
+  Search_Parameters: Sökparametrar
   Search_descr: Använd fälten nedan för att begränsa listan på tränande till vänster.
   New_Graduation: Ny gradering
   Destroy: Radera
@@ -137,8 +137,8 @@ sv:
   Public: Publik
   Private: Privat
   Security_descr: En publik lista kan enskilda elever välja att gå med i, men en privat lista kan endast en CI administrera medlemskap för.
-  Edit_user: Redigera användare
-  Edit_mailing_list: Redigera epostlista
+  Edit_User: Redigera användare
+  Edit_Mailing_List: Redigera epostlista
   Address: Adress
   read: se
   edit: redigera
@@ -150,12 +150,12 @@ sv:
   User_created: Användaren har skapats.
   Age: Ålder
   Grade_category: System
-  Main_interest: Huvudinriktning
-  Per_main_interest: Per huvudinriktning
-  Club_position: Föreningsbefattning
-  Board_position: Styrelsebefattning
-  Per_club_position: Per föreningsbefattning
-  Per_board_position: Per styrelsebefattning
+  Main_Interest: Huvudinriktning
+  Per_Main_Interest: Per huvudinriktning
+  Club_Position: Föreningsbefattning
+  Board_Position: Styrelsebefattning
+  Per_Club_Position: Per föreningsbefattning
+  Per_Board_Position: Per styrelsebefattning
   Users: Användare
 
   activerecord:

@@ -1,5 +1,5 @@
 <div class="block">
-	<h3><%=t(:Search_parameters)%></h3>
+	<h3><%=t(:Search_Parameters)%></h3>
 	<div class="content">
 		<p><%=t(:Search_descr)%></p>
 		<% form_tag :action=>"search", :controller=>"students", :class => "form", :method => "post" do -%>
@@ -25,11 +25,11 @@
 			<td><%= select "searchparams", "title_id", [[ t(:All), -100 ]] + titles.map { |g| [ g.title, g.id ] } %></td>
 		</tr>
 		<tr class="<%=cycle('even','odd')%>">
-			<td><%=t:Board_position%>:</td>
+			<td><%=t:Board_Position%>:</td>
 			<td><%= select "searchparams", "board_position_id", [[ t(:All), -100 ]] + board_positions.map { |g| [ g.position, g.id ] } %></td>
 		</tr>
 		<tr class="<%=cycle('even','odd')%>">
-			<td><%=t:Club_position%>:</td>
+			<td><%=t:Club_Position%>:</td>
 			<td><%= select "searchparams", "club_position_id", [[ t(:All), -100 ]] + club_positions.map { |g| [ g.position, g.id ] } %></td>
 		</tr>
 		</table>

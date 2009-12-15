@@ -45,7 +45,7 @@
 				</tr>
 
 				<tr class="<%=cycle('odd', 'even')%>">
-					<td><%=t:Num_logins%>:</td>
+					<td><%=t:Num_Loginss%>:</td>
 					<td><%= @user.login_count %></td>
 				</tr>
 			</table>
@@ -53,7 +53,7 @@
 			<% if @user.clubs_permission? || @user.groups_permission? || @user.users_permission? || @user.mailinglists_permission? -%>
 			<table class="table">
 				<tr>
-					<th colspan="2" class="first last"><%=t:Global_permissions%></th>
+					<th colspan="2" class="first last"><%=t:Global_Permissions%></th>
 				</tr>
 
 				<% if @user.clubs_permission? %>
@@ -72,14 +72,14 @@
 
 				<% if @user.users_permission? %>
 				<tr class="<%=cycle('even', 'odd')%>">
-					<td><%=t(:Edit_users)%>:</td>
+					<td><%=t(:Edit_Users)%>:</td>
 					<td><%=t(:P_yes)%></td>
 				</tr>
 				<% end %>
 
 				<% if @user.mailinglists_permission? %>
 				<tr class="<%=cycle('even', 'odd')%>">
-					<td><%=t(:Edit_mailinglists)%>:</td>
+					<td><%=t(:Edit_Mailing_Lists)%>:</td>
 					<td><%=t(:P_yes)%></td>
 				</tr>
 				<% end %>
@@ -88,7 +88,7 @@
 
 			<table class="table">
 				<tr>
-					<th colspan="2" class="first last"><%=t:Club_permissions%></th>
+					<th colspan="2" class="first last"><%=t:Club_Permissions%></th>
 				</tr>
 
 				<% clubs.each do |club| %>

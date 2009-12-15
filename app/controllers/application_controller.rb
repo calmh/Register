@@ -9,9 +9,8 @@ class ApplicationController < ActionController::Base
 	protect_from_forgery # :secret => '4250e2ff2a2308b6668755ef76677cbb'
 
 	def set_locale
-		if params[:locale] != nil
-			I18n.locale = params[:locale]
-		end
+		session[:locale] = params[:locale] if params[:locale] != nil
+		I18n.locale = session[:locale] if session[:locale] != nil
 	end
 
 	def test_validations
