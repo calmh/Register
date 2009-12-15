@@ -2,11 +2,11 @@
 <table class="table lesspadding">
 	<tr>
 		<th class="first">&nbsp;</th>
+		<th><%=t(:Name)%></th>
 		<% if @displayClubField -%>
 		<th><%=t(:Club)%></th>
 		<% end -%>
 		<th><%=t(:Groups)%></th>
-		<th><%=t(:Name)%></th>
 		<th><%=t(:Personal_no)%></th>
 		<% if @displayPaymentField %>
 		<th><%=t(:Grade)%></th>
@@ -17,12 +17,12 @@
 		</tr>
 		<% @students.each do |student| -%>
 		<tr class="<%= cycle("odd", "even") %>">
-			<td><%= check_box_tag "selected_students[]", student.id %></td>
+			<td><%= check_box_tag "selected_students[]", student.id, false, { :id => 'selected_students_' + student.id.to_s } %></td>
+			<td><%= link_to student.name, student_path(student) %></td>
 			<% if @displayClubField -%>
 			<td><%= link_to student.club.name, club_path(student.club) %></td>
 			<% end -%>
 			<td><%= student.groups.map{ |g| g.identifier }.join(", ") %></td>
-			<td><%= link_to student.name, student_path(student) %></td>
 			<td><%= student.formatted_personal_number %></td>
 			<td><%= grade_str(student.current_grade) %></td>
 			<% if @displayPaymentField %>
