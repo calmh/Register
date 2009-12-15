@@ -1,10 +1,12 @@
---- 
-grade_categories_001: 
+grade_categories_001:
   category: Kung Fu
   id: "1"
-grade_categories_002: 
+grade_categories_002:
   category: Sanshou
-  id: "113629430"
-grade_categories_003: 
+  id: "2"
+grade_categories_003:
   category: Qi Gong
-  id: "298486374"
+  id: "3"
+grade_categories_004:
+  category: Junior
+  id: "4"

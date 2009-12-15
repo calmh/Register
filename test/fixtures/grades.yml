@@ -1,53 +1,48 @@
---- 
-grades_007: 
-  level: "7"
-  id: "374648174"
-  description: !binary |
-    QmzDpSBJ
+one:
+    id: 1
+    description: Röd I
+    level: 1
 
-grades_008: 
-  level: "9"
-  id: "480151567"
-  description: Svart I
-grades_009: 
-  level: "8"
-  id: "638205575"
-  description: "Bl\xC3\xA5 II"
-grades_010: 
-  level: "12"
-  id: "754220165"
-  description: Svart IIII
-grades_011: 
-  level: "11"
-  id: "848357664"
-  description: Svart III
-grades_012: 
-  level: "5"
-  id: "1018350795"
-  description: "Gr\xC3\xB6n I"
-grades_001: 
-  level: "1"
-  id: "1"
-  description: !binary |
-    UsO2ZCBJ
+two:
+    description: Röd II
+    level: 2
 
-grades_002: 
-  level: "6"
-  id: "51848956"
-  description: "Gr\xC3\xB6n II"
-grades_003: 
-  level: "10"
-  id: "93837751"
-  description: Svart II
-grades_004: 
-  level: "3"
-  id: "113629430"
-  description: Gul I
-grades_005: 
-  level: "4"
-  id: "281110143"
-  description: Gul II
-grades_006: 
-  level: "2"
-  id: "298486374"
-  description: "R\xC3\xB6d II"
+three:
+    description: Gul I
+    level: 3
+
+four:
+    description: Gul II
+    level: 4
+
+five:
+    description: Grön I
+    level: 5
+
+six:
+    description: Grön II
+    level: 6
+
+seven:
+    description: Blå I
+    level: 7
+
+eight:
+    description: Blå II
+    level: 8
+
+bla1:
+    description: Svart I
+    level: 9
+
+bla2:
+    description: Svart II
+    level: 10
+
+bla3:
+    description: Svart III
+    level: 11
+
+bla4:
+    description: Svart IIII
+    level: 12

@@ -48,6 +48,10 @@ doc.elements.each("DataStore/Clubs/Club") do |c|
 			'zipcode' => s.attributes["ZipCode"],
 			'city' => s.attributes["City"],
 			'personal_number' => pnum,
+			'main_interest_id' => 1,
+			'title_id' => 1,
+			'club_position_id' => 1,
+			'board_position_id' => 1,
 		}
 		s.elements.each("Payments/Payment") do |p|
 			payments << {

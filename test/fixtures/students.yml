@@ -29,7 +29,7 @@ students_002:
   comments: ""
   zipcode: "83066"
   updated_at: 2009-12-15 10:27:02
-  main_interest_id: "298486374"
+  main_interest_id: "1"
   club_id: "2"
   id: "26"
   home_phone: 0645-7595472
@@ -51,7 +51,7 @@ students_003:
   comments: ""
   zipcode: "93000"
   updated_at: 2009-12-15 10:27:19
-  main_interest_id: "1"
+  main_interest_id: "2"
   club_id: "2"
   id: "27"
   home_phone: 0960-8472971
@@ -73,7 +73,7 @@ students_004:
   comments: ""
   zipcode: "69330"
   updated_at: 2009-12-15 10:27:25
-  main_interest_id: "113629430"
+  main_interest_id: "1"
   club_id: "3"
   id: "29"
   home_phone: ""
@@ -117,7 +117,7 @@ students_006:
   comments: ""
   zipcode: "12353"
   updated_at: 2009-12-15 10:27:35
-  main_interest_id: "298486374"
+  main_interest_id: "3"
   club_id: "4"
   id: "31"
   home_phone: 044-212936
@@ -183,7 +183,7 @@ students_009:
   comments: ""
   zipcode: "83021"
   updated_at: 2009-12-15 10:28:02
-  main_interest_id: "298486374"
+  main_interest_id: "2"
   club_id: "5"
   id: "35"
   home_phone: 063-5312134
@@ -205,7 +205,7 @@ students_010:
   comments: ""
   zipcode: "57075"
   updated_at: 2009-12-15 10:28:10
-  main_interest_id: "113629430"
+  main_interest_id: "1"
   club_id: "5"
   id: "36"
   home_phone: 0491-5675992
@@ -271,7 +271,7 @@ students_001:
   comments: ""
   zipcode: "46065"
   updated_at: 2009-12-15 10:26:52
-  main_interest_id: "1"
+  main_interest_id: "3"
   club_id: "2"
   id: "25"
   home_phone: 0521-9520867
