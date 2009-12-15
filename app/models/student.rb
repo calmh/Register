@@ -5,6 +5,7 @@ class Student < ActiveRecord::Base
 	has_many :payments, :order => "received desc", :dependent => :destroy
 	has_many :graduations, :order => "graduated desc", :dependent => :destroy
 	belongs_to :main_interest, :class_name => "GradeCategory"
+	belongs_to :title
 	validates_uniqueness_of :personal_number, :if => Proc.new { |s| !s.personal_number.blank? && s.personal_number =~ /^(19[3-9]|20[0-2])\d[01]\d[0-3]\d-\d\d\d\d$/ }
 	validate :check_personal_number
 	validates_associated :club

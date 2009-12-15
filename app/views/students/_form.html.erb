@@ -78,8 +78,8 @@
 </div>
 
 <div class="group">
-	<%= f.label :title, t(:Title), :class => :label %>
-	<%= f.text_field :title, :class => 'text_field' %>
+	<%= f.label :title_id, t(:Title), :class => :label %>
+	<%= select "student", "title_id", titles.map { |g| [ g.title, g.id ] } %><br/>
 </div>
 
 <div class="group">

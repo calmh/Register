@@ -19,7 +19,7 @@ class StudentTest < ActiveSupport::TestCase
 		s.street = "Bonaröd 78"
 		s.zipcode = "23021"
 		s.city = "Beddingestrand"
-		s.title = "Gau lin"
+		s.title_id = 1
 		s.comments = "None"
 		s.password = "None"
 		s.main_interest_id = 1

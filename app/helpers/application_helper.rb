@@ -8,6 +8,10 @@ module ApplicationHelper
 		GradeCategory.find(:all, :order => :category)
 	end
 
+	def titles
+		Title.find(:all, :order => :level)
+	end
+
 	def grade_str(graduation)
 		if graduation == nil
 			return "-"
