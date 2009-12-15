@@ -80,7 +80,7 @@ class PermissionTest < ActionController::IntegrationTest
 
 		assert_not_contain "Redigera användare:"
 		assert_contain /Redigera grupper:\s+Ja/m
-		assert_not_contain "Användare"
+		assert_not_contain /Användare\W/
 		click_link "Redigera"
 
 		assert_not_contain "Globala rättigheter"

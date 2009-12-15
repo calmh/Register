@@ -111,6 +111,8 @@ en:
   Club_created: Club was successfully created.
   Student_updated: Student was successfully updated.
   Student_created: Student was successfully created.
+  User_updated: User was successfully updated.
+  User_created: User was successfully created.
   Search: Search
   All: All
   Search_Students: Search Students
