@@ -2,20 +2,14 @@ body {
 	line-height: 1.5em;
 }
 td.student-active {
-        background-color: #f0fff0;
+        background-color: #d0ffd0;
 }
 td.student-inactive {
-        background-color: #fff0f0;
+        background-color: #ffd0d0;
 }
 th.first, th.last, td {
         width: inherit!important;
 }
-/*
-.table {
-    width: inherit!important;
-	min-width: 75%;
-}
-*/
 .fullwidth {
 	width: 100%;
 }
