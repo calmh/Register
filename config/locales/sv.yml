@@ -160,9 +160,10 @@ sv:
   Per_Board_Position: Per styrelsebefattning
   Users: Användare
   Percentage: Andel
-  Edit_Site: Redigera webbplatsinställningar
+  Edit_Site: Webbplatsinställningar
   Site_settings_updated: Webbplatsens inställningar uppdaterades.
   Site_Name: Webbplatsens namn
+  Edit_own_permissions_descr: OBS! Om du tar bort en rättighet från dig själv kommer du inte att kunna lägga till den igen.
 
   activerecord:
     errors:

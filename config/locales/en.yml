@@ -162,3 +162,4 @@ en:
   Edit_Site: Edit Site Settings
   Site_settings_updated: The site settings were updated.
   Site_Name: Site Name
+  Edit_own_permissions_descr: N.B! If you remove a permission from yourself, you will not be able to add it back again.
