@@ -1,6 +1,31 @@
 # Filters added to this controller apply to all controllers in the application.
 # Likewise, all the methods added will be available for all controllers.
 
+class SiteSettings
+	def self.get_setting(setting)
+		s = ConfigurationSetting.find(:first, :conditions => { :setting => setting })
+		return "" if s == nil
+		return s.value
+	end
+
+	def self.set_setting(setting, value)
+		s = ConfigurationSetting.find(:first, :conditions => { :setting => setting })
+		if s == nil
+			s = ConfigurationSetting.new
+			s.setting = setting
+		end
+		s.value = value
+		s.save!
+	end
+
+	def self.site_name
+		get_setting(:site_name)
+	end
+	def self.site_name=(value)
+		set_setting(:site_name, value)
+	end
+end
+
 class ApplicationController < ActionController::Base
 	helper :all # include all helpers, all the time
 	filter_parameter_logging :password, :password_confirmation
@@ -11,6 +36,15 @@ class ApplicationController < ActionController::Base
 	def set_locale
 		session[:locale] = params[:locale] if params[:locale] != nil
 		I18n.locale = session[:locale] if session[:locale] != nil
+	end
+
+	def edit_site_settings
+	end
+
+	def update_site_settings
+		SiteSettings.site_name = params[:site_name]
+		flash[:notice] = t(:Site_settings_updated)
+		redirect_to :controller => 'application', :action => 'edit_site_settings'
 	end
 
 	def validate

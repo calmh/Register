@@ -1,5 +1,9 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
+	def get_config(setting)
+		SiteSettings.get_setting(setting)
+	end
+
 	def grades
 		Grade.find(:all, :order => :level)
 	end

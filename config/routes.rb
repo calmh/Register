@@ -1,6 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
 	# For debugging, check validations
 	map.connect 'validate', :controller => 'application', :action => 'validate'
+	map.connect 'edit_site_settings', :controller => 'application', :action => 'edit_site_settings'
+	map.connect 'update_site_settings', :controller => 'application', :action => 'update_site_settings'
 
 	# Bulk operations
 	map.connect 'students/search', :controller => 'students', :action => 'search'

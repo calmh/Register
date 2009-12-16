@@ -160,7 +160,9 @@ sv:
   Per_Board_Position: Per styrelsebefattning
   Users: Användare
   Percentage: Andel
-  Edit_Site: Redigera siteinställningar
+  Edit_Site: Redigera webbplatsinställningar
+  Site_settings_updated: Webbplatsens inställningar uppdaterades.
+  Site_Name: Webbplatsens namn
 
   activerecord:
     errors:
