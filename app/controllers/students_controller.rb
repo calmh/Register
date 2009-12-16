@@ -143,6 +143,7 @@ class StudentsController < ApplicationController
 	# PUT /students/1.xml
 	def update
 		@student = Student.find(params[:id])
+		@club = @student.club
 
 		if params.key? :member_of
 			group_ids = params[:member_of].keys
