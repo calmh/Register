@@ -165,6 +165,28 @@ sv:
   Site_Name: Webbplatsens namn
   Edit_own_permissions_descr: OBS! Om du tar bort en rättighet från dig själv kommer du inte att kunna lägga till den igen.
 
+  authlogic:
+     error_messages:
+       login_blank: kan inte vara tomt
+       login_not_found: är ogiltig
+       login_invalid: får bara innehålla bokstäver och siffror
+       consecutive_failed_logins_limit_exceeded: För många felaktiga inloggningar. Kontot är blockerat.
+       email_invalid: måste se ut som en epostadress.
+       password_blank: kan inte vara tomt
+       password_invalid: är ogiltigt
+       not_active: Ditt konto är inte aktivt
+       not_confirmed: Ditt konto är inte konfirmerat
+       not_approved: Ditt konto är inte accepterat
+       no_authentication_details: You did not provide any details for authentication.
+     models:
+       user_session: Användarsession
+     attributes:
+       user_session:
+         login: användarnamn
+         email: epostadress
+         password: lösenord
+         remember_me: kom ihåg mig
+
   activerecord:
     errors:
       messages:
