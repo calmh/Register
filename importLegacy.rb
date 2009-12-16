@@ -36,7 +36,7 @@ doc.elements.each("DataStore/Clubs/Club") do |c|
 		end
 		pnum = s.attributes["PersonalNumber"]
 		pnum = pnum.sub(/-1111$/, "").sub(/-1234$/, "").sub(/^190/, "200") unless pnum == nil
-		pnum = '19700101' if pnum == nil
+		# pnum = '19700101' if pnum == nil
 		title_id = 1
 		title_id = 2 if s.attributes["Title"] == "DjoGau"
 		title_id = 3 if s.attributes["Title"] == "GauLin"
