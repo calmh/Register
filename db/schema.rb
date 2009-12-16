@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091215180402) do
+ActiveRecord::Schema.define(:version => 20091216164227) do
 
   create_table "board_positions", :force => true do |t|
     t.string   "position"
@@ -150,6 +150,7 @@ ActiveRecord::Schema.define(:version => 20091215180402) do
     t.integer  "groups_permission"
     t.integer  "mailinglists_permission"
     t.integer  "clubs_permission"
+    t.integer  "site_permission"
   end
 
 end

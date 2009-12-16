@@ -33,25 +33,40 @@
 <h3><%=t:Global_Permissions%></h3>
 <div class="group">
 	<table>
+		<%- if current_user.clubs_permission? -%>
 		<tr>
 			<td><%=t(:Edit_clubs)%></td>
 			<td><%= f.check_box :clubs_permission, :class => 'check_box' %></td>
 		</tr>
+		<%- end -%>
 
+		<%- if current_user.groups_permission? -%>
 		<tr>
 			<td><%=t(:Edit_groups)%></td>
 			<td><%= f.check_box :groups_permission, :class => 'check_box' %></td>
 		</tr>
+		<%- end -%>
 
+		<%- if current_user.users_permission? -%>
 		<tr>
 			<td><%=t(:Edit_Users)%></td>
 			<td><%= f.check_box :users_permission, :class => 'check_box' %></td>
 		</tr>
+		<%- end -%>
 
+		<%- if current_user.mailinglists_permission? -%>
 		<tr>
 			<td><%=t(:Edit_Mailing_Lists)%></td>
 			<td><%= f.check_box :mailinglists_permission, :class => 'check_box' %></td>
 		</tr>
+		<%- end -%>
+
+		<%- if current_user.site_permission? -%>
+		<tr>
+			<td><%=t(:Edit_Site)%></td>
+			<td><%= f.check_box :site_permission, :class => 'check_box' %></td>
+		</tr>
+		<%- end -%>
 	</table>
 </div>
 

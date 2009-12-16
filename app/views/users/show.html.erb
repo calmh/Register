@@ -83,6 +83,13 @@
 					<td><%=t(:P_yes)%></td>
 				</tr>
 				<% end %>
+
+				<% if @user.site_permission? %>
+				<tr class="<%=cycle('even', 'odd')%>">
+					<td><%=t(:Edit_Site)%>:</td>
+					<td><%=t(:P_yes)%></td>
+				</tr>
+				<% end %>
 			</table>
 			<% end -%>
 
