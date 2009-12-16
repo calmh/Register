@@ -13,11 +13,8 @@ class ApplicationController < ActionController::Base
 		I18n.locale = session[:locale] if session[:locale] != nil
 	end
 
-	def test_validations
-		@users = User.find(:all)
-		@groups = Group.find(:all)
-		@students = Student.find(:all)
-		@mailing_lists = MailingList.find(:all)
+	def validate
+		require_user
 	end
 
 	def current_user_session

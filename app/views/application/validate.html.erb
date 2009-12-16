@@ -1,7 +1,7 @@
 <div class="block">
   <div class="secondary-navigation">
     <ul>
-      <li class="first active"><%= link_to 'Validations', url_for(:action=>"test_validations", :controller=>"application")  %></li>
+      <li class="first active"><%= link_to 'Validations', url_for(:action=>"validate", :controller=>"application")  %></li>
     </ul>
     <div class="clear"></div>
   </div>
@@ -10,7 +10,7 @@
 
 <table>
 
-<% @users.each do |u| %>
+<% User.find(:all).each do |u| %>
 <tr>
 <td><%=u.login%></td>
 <% if !u.valid? %>
@@ -22,7 +22,7 @@
 </tr>
 <% end %>
 
-<% @groups.each do |g| %>
+<% Group.find(:all).each do |g| %>
 <tr>
 <td><%=g.identifier%></td>
 <% if !g.valid? %>
@@ -34,7 +34,7 @@
 </tr>
 <% end %>
 
-<% @students.each do |s| %>
+<% Student.find(:all).each do |s| %>
 <tr>
 <td><%=s.name%></td>
 <% if !s.valid? %>
@@ -46,7 +46,7 @@
 </tr>
 <% end %>
 
-<% @mailing_lists.each do |s| %>
+<% MailingList.find(:all).each do |s| %>
 <tr>
 <td><%=s.email%></td>
 <% if !s.valid? %>
