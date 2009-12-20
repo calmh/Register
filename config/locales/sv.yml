@@ -164,11 +164,12 @@ sv:
   Site_settings_updated: Webbplatsens inställningar uppdaterades.
   Site_Name: Webbplatsens namn
   Edit_own_permissions_descr: OBS! Om du tar bort en rättighet från dig själv kommer du inte att kunna lägga till den igen.
+  Login_invalid: Användarnamn eller lösenord är ogiltigt.
 
   authlogic:
      error_messages:
        login_blank: kan inte vara tomt
-       login_not_found: är ogiltig
+       login_not_found: är ogiltigt
        login_invalid: får bara innehålla bokstäver och siffror
        consecutive_failed_logins_limit_exceeded: För många felaktiga inloggningar. Kontot är blockerat.
        email_invalid: måste se ut som en epostadress.

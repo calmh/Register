@@ -15,7 +15,8 @@ class UserSessionsController < ApplicationController
 			default = club_url(@user.clubs[0]) if !@user.clubs_permission? && @user.clubs.length == 1
 			redirect_to default
 		else
-			render :action => :new
+			flash[:warning] = t(:Login_invalid)
+			redirect_to new_user_session_url
 		end
 	end
 
