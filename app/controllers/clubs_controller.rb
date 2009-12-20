@@ -6,7 +6,7 @@ class ClubsController < ApplicationController
 	# GET /clubs.xml
 	def index
 		# @clubs = Club.find(:all)
-		@clubs = current_user.clubs
+		@clubs = current_user.clubs.find(:all, :order => 'name')
 
 		respond_to do |format|
 			format.html # index.html.erb

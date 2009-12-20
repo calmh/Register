@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 	validates_presence_of :groups_permission
 	validates_presence_of :users_permission
 	validates_presence_of :mailinglists_permission
-	has_many :clubs, :through => :permissions, :uniq => true, :order => "name"
+	has_many :clubs, :through => :permissions, :uniq => true
 
 	acts_as_authentic do |c|
 		Authlogic::CryptoProviders::Sha1.stretches = 1
