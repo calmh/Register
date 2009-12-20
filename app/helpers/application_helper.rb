@@ -45,6 +45,6 @@ module ApplicationHelper
 	end
 
 	def version
-		`git describe --always`
+		`git describe`.strip.sub(/-(\d+)-g([0-9a-f]+)/, ' (+\1, \2)')
 	end
 end
