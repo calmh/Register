@@ -53,7 +53,7 @@ sv:
   Amount: Belopp
   Must_log_in: Du måste logga in för att komma åt den här sidan.
   Log_in: Logga in
-  Login: Användarnamn
+  Login: Användarnamn eller epostadress
   Password: Lösenord
   Remember_me: Kom ihåg mig
   Login_successful: Du är nu inloggad.
@@ -165,6 +165,9 @@ sv:
   Site_Name: Webbplatsens namn
   Edit_own_permissions_descr: OBS! Om du tar bort en rättighet från dig själv kommer du inte att kunna lägga till den igen.
   Login_invalid: Användarnamn eller lösenord är ogiltigt.
+  Self_updated: Dina nya uppgifter har sparats.
+  New_Password: Nytt lösenord
+  New_Password_descr: Ange ett nytt lösenord eller lämna blankt för att inte ändra det nuvarande.
 
   authlogic:
      error_messages:

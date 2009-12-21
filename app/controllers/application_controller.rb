@@ -48,8 +48,7 @@ class ApplicationController < ActionController::Base
 	end
 
 	def validate
-		require_user
-	end
+		require_administrator	end
 
 	def current_user_session
 		return @current_user_session if defined?(@current_user_session)
@@ -69,8 +68,16 @@ class ApplicationController < ActionController::Base
 		return false
 	end
 
-	def require_user
+	def require_student_or_administrator
 		return denied unless current_user
+	end
+
+	def require_administrator_or_self(student)
+		return denied unless current_user.type == 'Administrator' || current_user == student
+	end
+
+	def require_administrator
+		return denied unless current_user && current_user.type == 'Administrator'
 	end
 
 	def require_clubs_permission

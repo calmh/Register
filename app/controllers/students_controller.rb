@@ -1,54 +1,55 @@
-class StudentsController < ApplicationController
-	before_filter :require_user, :except => [ :register ]
+class SearchParams
+	attr_accessor :group_id
+	attr_accessor :grade
+	attr_accessor :club_id
+	attr_accessor :title_id
+	attr_accessor :board_position_id
+	attr_accessor :club_position_id
 
-	class SearchParams
-		attr_accessor :group_id
-		attr_accessor :grade
-		attr_accessor :club_id
-		attr_accessor :title_id
-		attr_accessor :board_position_id
-		attr_accessor :club_position_id
-
-		def initialize
-			@group_id = -100
-			@grade = -100
-			@club_id = Club.find(:all).map { |c| c.id }
-			@title_id = -100
-			@board_position_id = -100
-			@club_position_id = -100
-		end
-
-		def conditions
-			variables = []
-			conditions = []
-			conditions << "club_id in (?)"
-			variables << @club_id
-			if title_id != -100
-				conditions << "title_id = ?"
-				variables << @title_id
-			end
-			if board_position_id != -100
-				conditions << "board_position_id = ?"
-				variables << @board_position_id
-			end
-			if club_position_id != -100
-				conditions << "club_position_id = ?"
-				variables << @club_position_id
-			end
-			return [ conditions.join(" AND ") ] + variables
-		end
-
-		def filter(students)
-			matched = students
-			if grade != -100
-				matched = matched.select { |s| s.current_grade != nil && s.current_grade.grade_id == @grade }
-			end
-			if group_id != -100
-				matched = matched.select { |s| s.group_ids.include? group_id }
-			end
-			return matched
-		end
+	def initialize
+		@group_id = -100
+		@grade = -100
+		@club_id = Club.find(:all).map { |c| c.id }
+		@title_id = -100
+		@board_position_id = -100
+		@club_position_id = -100
 	end
+
+	def conditions
+		variables = []
+		conditions = []
+		conditions << "club_id in (?)"
+		variables << @club_id
+		if title_id != -100
+			conditions << "title_id = ?"
+			variables << @title_id
+		end
+		if board_position_id != -100
+			conditions << "board_position_id = ?"
+			variables << @board_position_id
+		end
+		if club_position_id != -100
+			conditions << "club_position_id = ?"
+			variables << @club_position_id
+		end
+		return [ conditions.join(" AND ") ] + variables
+	end
+
+	def filter(students)
+		matched = students
+		if grade != -100
+			matched = matched.select { |s| s.current_grade != nil && s.current_grade.grade_id == @grade }
+		end
+		if group_id != -100
+			matched = matched.select { |s| s.group_ids.include? group_id }
+		end
+		return matched
+	end
+end
+
+class StudentsController < ApplicationController
+	before_filter :require_administrator, :except => [ :register, :edit, :update ]
+	before_filter :require_student_or_administrator, :only => [ :edit, :update ]
 
 	def index
 		@club = Club.find(params[:club_id])
@@ -80,8 +81,6 @@ class StudentsController < ApplicationController
 		end
 	end
 
-	# GET /students/1
-	# GET /students/1.xml
 	def show
 		@student = Student.find(params[:id])
 		@club = @student.club
@@ -92,8 +91,6 @@ class StudentsController < ApplicationController
 		end
 	end
 
-	# GET /students/new
-	# GET /students/new.xml
 	def new
 		@club = Club.find(params[:club_id])
 		@student = Student.new
@@ -105,14 +102,12 @@ class StudentsController < ApplicationController
 		end
 	end
 
-	# GET /students/1/edit
 	def edit
 		@student = Student.find(params[:id])
+		require_administrator_or_self(@student)
 		@club = @student.club
 	end
 
-	# POST /students
-	# POST /students.xml
 	def create
 		@student = Student.new(params[:student])
 		@club = @student.club
@@ -139,19 +134,19 @@ class StudentsController < ApplicationController
 		end
 	end
 
-	# PUT /students/1
-	# PUT /students/1.xml
 	def update
 		@student = Student.find(params[:id])
+		require_administrator_or_self(@student)
 		@club = @student.club
 
-		if params.key? :member_of
+		if current_user.type == 'Administrator' && params.key?(:member_of)
 			group_ids = params[:member_of].keys
 			@student.group_ids = group_ids
 		else
 			@student.groups.clear
 		end
 
+		# TODO: This is insecure, a student could potentially join a mailing list they shouldn't by editing hidden fields.
 		if params.key? :subscribes_to
 			ml_ids = params[:subscribes_to].keys
 			@student.mailing_list_ids = ml_ids
@@ -159,20 +154,31 @@ class StudentsController < ApplicationController
 			@student.mailing_lists.clear
 		end
 
-		respond_to do |format|
-			if @student.update_attributes(params[:student])
-				flash[:notice] = t:Student_updated
-				format.html { redirect_to(@student) }
-				format.xml  { head :ok }
-			else
-				format.html { render :action => "edit" }
-				format.xml  { render :xml => @student.errors, :status => :unprocessable_entity }
+		if current_user.type == 'Administrator'
+			respond_to do |format|
+				if @student.update_attributes(params[:student])
+					flash[:notice] = t(:Student_updated)
+					format.html { redirect_to(@student) }
+					format.xml  { head :ok }
+				else
+					format.html { render :action => "edit" }
+					format.xml  { render :xml => @student.errors, :status => :unprocessable_entity }
+				end
+			end
+		elsif current_user.type == 'Student'
+			respond_to do |format|
+				if @student.update_attributes(params[:student])
+					flash[:notice] = t(:Self_updated)
+					format.html { redirect_to edit_student_path(@student) }
+					format.xml  { head :ok }
+				else
+					format.html { render :action => "edit" }
+					format.xml  { render :xml => @student.errors, :status => :unprocessable_entity }
+				end
 			end
 		end
 	end
 
-	# DELETE /students/1
-	# DELETE /students/1.xml
 	def destroy
 		@student = Student.find(params[:id])
 		@student.destroy

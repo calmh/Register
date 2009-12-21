@@ -50,7 +50,7 @@ en:
   Amount: Amount
   Must_log_in: You must log in to access this page.
   Log_in: Log in
-  Login: Login
+  Login: Login or email address
   Password: Password
   Remember_me: Remember me
   Login_successful: Login successful
@@ -164,3 +164,6 @@ en:
   Site_Name: Site Name
   Edit_own_permissions_descr: N.B! If you remove a permission from yourself, you will not be able to add it back again.
   Login_invalid: Username or password is invalid.
+  Self_updated: Your new information has been saved.
+  New_Password: New Password
+  New_Password_descr: Set a new password, or leave blank to leave the existing password unchanged.

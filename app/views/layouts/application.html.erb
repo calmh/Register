@@ -12,15 +12,17 @@
 			<h1><a href="/"><%=get_config(:site_name)%></a></h1>
 			<div id="user-navigation">
 				<ul>
-				<% if current_user %>
+				<% if current_user -%>
+				<% if current_user.type == 'Administrator' -%>
 				<li><%=link_to t(:Profile), administrator_path(current_user)%></a></li>
+				<% end -%>
 				<li><%=link_to t(:Logout), user_session_path, :method => :delete, :class => "logout"%></a></li>
-				<%end%>
-				<% for locale in I18n.available_locales do %>
-				<% if locale.to_s != I18n.locale.to_s %>
+				<% end -%>
+				<% for locale in I18n.available_locales do -%>
+				<% if locale.to_s != I18n.locale.to_s -%>
 				<li><%=link_to image_tag(locale.to_s + '.png'), '?locale=' + locale.to_s %></li>
-				<% end %>
-				<% end %>
+				<% end -%>
+				<% end -%>
 			</ul>
 			<div class="clear"></div>
 		</div>

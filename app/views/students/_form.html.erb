@@ -97,6 +97,12 @@
 	<%= f.text_area :comments, :class => 'text_area', :rows => 4, :cols => 16 %>
 </div>
 
+<div class="group">
+	<%= f.label :password, t(:New_Password), :class => :label %>
+	<%= f.text_field :password, :class => 'text_field' %>
+	<span class="description"><%=t :New_Password_descr%></span>
+</div>
+
 <div class="group navform">
 	<input type="submit" class="button" value="<%=t :Save%> &rarr;" />
 	<% if controller.action_name != "new" && controller.action_name != "create" %>

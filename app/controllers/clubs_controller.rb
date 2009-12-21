@@ -1,5 +1,5 @@
 class ClubsController < ApplicationController
-	before_filter :require_user
+	before_filter :require_administrator
 	before_filter :require_clubs_permission, :only => [ :new, :edit, :create, :destroy, :update ]
 
 	# GET /clubs

@@ -1,3 +1,4 @@
+<% if current_user.type == "Administrator" -%>
 <div class="block">
 	<h3><%=t(:Links)%> <%= t(:for) %> <%= h(@student.name) %></h3>
 	<ul class="navigation">
@@ -15,6 +16,7 @@
 		<% end -%>
 	</ul>
 </div>
+<% end -%>
 
 <div class="block">
 	<h3><%=t:Current_Grade%></h3>

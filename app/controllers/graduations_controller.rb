@@ -1,5 +1,5 @@
 class GraduationsController < ApplicationController
-	before_filter :require_user
+	before_filter :require_administrator
 
 	# GET /graduations
 	# GET /graduations.xml

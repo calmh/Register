@@ -1,5 +1,5 @@
 class AdministratorsController < ApplicationController
-		before_filter :require_user
+		before_filter :require_administrator
 		before_filter :require_users_permission, :only => [ :destroy, :new, :create, :index ]
 
 		def index
