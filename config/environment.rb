@@ -9,6 +9,12 @@ RAILS_GEM_VERSION = '2.3.5' unless defined? RAILS_GEM_VERSION
 
 COPYRIGHT = "Copyright (c) 2009 Jakob Borg"
 
+# Setting this to false will disable validates_presence_of on personal_number.
+# All other validations will still run when personal_number is present.
+# This is useful as a temporary measure when importing data, to clean up later.
+# Tests fails when this is set to false.
+REQUIRE_PERSONAL_NUMBER = Proc.new { true }
+
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 

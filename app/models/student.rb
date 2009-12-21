@@ -8,6 +8,7 @@ class Student < User
 	belongs_to :title
 	belongs_to :club_position
 	belongs_to :board_position
+	validates_presence_of :personal_number, :if => REQUIRE_PERSONAL_NUMBER
 	validates_uniqueness_of :personal_number, :if => Proc.new { |s| !s.personal_number.blank? && s.personal_number =~ /^(19[3-9]|20[0-2])\d[01]\d[0-3]\d-\d\d\d\d$/ }
 	validate :check_personal_number
 	validates_associated :club
@@ -20,7 +21,6 @@ class Student < User
 	validates_presence_of :main_interest
 	validates_presence_of :sname
 	validates_presence_of :fname
-	validates_presence_of :personal_number
 	validates_presence_of :club
 	validates_presence_of :board_position
 	validates_presence_of :club_position
