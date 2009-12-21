@@ -50,7 +50,8 @@ en:
   Amount: Amount
   Must_log_in: You must log in to access this page.
   Log_in: Log in
-  Login: Login or email address
+  Login: Login
+  Login_or_email: Login or email address
   Password: Password
   Remember_me: Remember me
   Login_successful: Login successful

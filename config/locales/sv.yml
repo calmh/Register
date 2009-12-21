@@ -53,7 +53,8 @@ sv:
   Amount: Belopp
   Must_log_in: Du måste logga in för att komma åt den här sidan.
   Log_in: Logga in
-  Login: Användarnamn eller epostadress
+  Login: Användarnamn
+  Login_or_email: Användarnamn eller epostadress
   Password: Lösenord
   Remember_me: Kom ihåg mig
   Login_successful: Du är nu inloggad.
