@@ -24,6 +24,13 @@ class SiteSettings
 	def self.site_name=(value)
 		set_setting(:site_name, value)
 	end
+
+	def self.site_theme
+		get_setting(:site_theme)
+	end
+	def self.site_theme=(value)
+		set_setting(:site_theme, value)
+	end
 end
 
 class ApplicationController < ActionController::Base
@@ -39,10 +46,12 @@ class ApplicationController < ActionController::Base
 	end
 
 	def edit_site_settings
+		@available_themes = Dir.entries("public/stylesheets/themes").select { |d| !d.starts_with? '.' }
 	end
 
 	def update_site_settings
 		SiteSettings.site_name = params[:site_name]
+		SiteSettings.site_theme = params[:site_theme]
 		flash[:notice] = t(:Site_settings_updated)
 		redirect_to :controller => 'application', :action => 'edit_site_settings'
 	end

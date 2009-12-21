@@ -173,6 +173,7 @@ sv:
   Default_ML_descr: Om epostlistan är ett standardval kommer nya elever att bli medlemmar på den när de skapas.
   Default_group_descr: Om gruppen är ett standardval kommer nya elever att bli medlemmar i den när de skapas.
   Only_Active: Endast aktiva
+  Site_Theme: Webbplatsens tema
 
   authlogic:
      error_messages:
