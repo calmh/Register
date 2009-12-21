@@ -1,51 +1,571 @@
----
-users_001:
+--- 
+users_015: 
+  city: "Vall\xC3\xA5kra"
+  single_access_token: zDafGGhEtEtfK9g11eZx
+  last_request_at: 
+  personal_number: 19850107-1768
   created_at: 2009-12-09 09:09:19
-  single_access_token: RcNDgaUdOCKapN7hWLUU
-  last_request_at: 2009-12-16 17:44:13
-  crypted_password: 6694a5cda8fcb5ddcfd6171ce35de9e593c20da32b0341917f4f1f6d40ce6d98
-  updated_at: 2009-12-16 17:44:13
-  perishable_token: LiSQqgb_046vlq0s1XBg
-  groups_permission: "1"
-  id: "1"
-  failed_login_count: "0"
-  current_login_ip: 127.0.0.1
-  current_login_at: 2009-12-15 09:39:30
-  persistence_token: 0f1dae1907c73885dcbeab9af3105ddf202a6aa8e2dc3ea93b2178a734e183b946a3c5ecfc4bbd7634344dbf7aec7070a4f5976a848ea38ec9d64a31d27c489a
-  login_count: "10"
-  fname: Admin
-  last_login_ip: 194.126.249.11
-  users_permission: "1"
-  mailinglists_permission: "1"
-  login: admin
-  last_login_at: 2009-12-13 22:11:25
-  site_permission: "1"
-  sname: Istrator
-  email: admin@example.com
-  clubs_permission: "1"
-  type: "Administrator"
-users_002:
-  created_at: 2009-12-13 21:05:43
+  comments: ""
+  crypted_password: 
+  perishable_token: 5rQ0RBAYZmO754GLDgTx
+  updated_at: 2009-12-21 09:14:05
+  zipcode: "26030"
+  main_interest_id: "1"
+  groups_permission: 
+  club_id: "3"
+  board_position_id: "1"
+  id: "614887029"
+  current_login_ip: 
+  street: "Mj\xC3\xB6lkal\xC3\xA5nga 64"
+  home_phone: 042-3409841
+  gender: female
+  failed_login_count: 
+  type: Student
+  title_id: "1"
+  current_login_at: 
+  login_count: 
+  persistence_token: 187d92abdfe267759a5574b8e1cbc7569bbad127be89e15922077c5f174ca28ebf0dc4b2d0fd573558a7b2bd92edee677fc210a005a6fff3f45dc5734327b38a
+  users_permission: 
+  mailinglists_permission: 
+  fname: Marielle
+  last_login_ip: 
+  site_permission: 
+  last_login_at: 
+  login: 
+  sname: Dahlberg
+  clubs_permission: 
+  email: marielle.dahlberg@example.com
+  club_position_id: "1"
+  mobile_phone: ""
+users_004: 
+  city: Arvidsjaur
+  single_access_token: 
+  last_request_at: 
+  personal_number: 19710730-3187
+  created_at: 2009-12-09 09:09:19
+  comments: ""
+  crypted_password: 
+  perishable_token: 
+  updated_at: 2009-12-15 10:27:19
+  zipcode: "93000"
+  main_interest_id: "2"
+  groups_permission: 
+  club_id: "2"
+  board_position_id: "1"
+  id: "27"
+  current_login_ip: 
+  street: Barrgatan 81
+  home_phone: 0960-8472971
+  gender: female
+  failed_login_count: 
+  type: Student
+  title_id: "1"
+  current_login_at: 
+  login_count: 
+  persistence_token: 
+  users_permission: 
+  mailinglists_permission: 
+  fname: Emma
+  last_login_ip: 
+  site_permission: 
+  last_login_at: 
+  login: 
+  sname: Petterson
+  clubs_permission: 
+  email: emma.petterson@example.com
+  club_position_id: "1"
+  mobile_phone: ""
+users_005: 
+  city: "Svart\xC3\xA5"
+  single_access_token: 
+  last_request_at: 
+  personal_number: 19420814-3778
+  created_at: 2009-12-09 09:09:19
+  comments: ""
+  crypted_password: 
+  perishable_token: 
+  updated_at: 2009-12-15 10:27:25
+  zipcode: "69330"
+  main_interest_id: "1"
+  groups_permission: 
+  club_id: "3"
+  board_position_id: "1"
+  id: "29"
+  current_login_ip: 
+  street: "Verdandi Gr\xC3\xA4nd 65"
+  home_phone: ""
+  gender: male
+  failed_login_count: 
+  type: Student
+  title_id: "1"
+  current_login_at: 
+  login_count: 
+  persistence_token: 
+  users_permission: 
+  mailinglists_permission: 
+  fname: Emil
+  last_login_ip: 
+  site_permission: 
+  last_login_at: 
+  login: 
+  sname: "Nystr\xC3\xB6m"
+  clubs_permission: 
+  email: emil.nystrom@example.com
+  club_position_id: "1"
+  mobile_phone: ""
+users_006: 
+  city: 
   single_access_token: PukZmC0UFMPgAS6XOieY
-  last_request_at:
+  last_request_at: 
+  personal_number: 
+  created_at: 2009-12-13 21:05:43
+  comments: 
   crypted_password: 9bad0e92a8e4e713700495c3e058cd1c0781396b3ef7ae3a6d06eceaca5f634b
-  updated_at: 2009-12-13 21:06:02
   perishable_token: OiANbF63ZoKpxPUuZGbs
+  updated_at: 2009-12-13 21:06:02
+  zipcode: 
+  main_interest_id: 
   groups_permission: "0"
+  club_id: 
+  board_position_id: 
   id: "30"
-  failed_login_count:
-  current_login_ip:
-  current_login_at:
+  current_login_ip: 
+  street: 
+  home_phone: 
+  gender: 
+  failed_login_count: 
+  type: Administrator
+  title_id: 
+  current_login_at: 
+  login_count: 
   persistence_token: e12a68f9f736ea810817e7b5822130e187a239a78715820ec21003489f748c83965bb48e0fef5eefb2f7de6cb4faa380487c808442d6cb05d8cb2a6721257086
-  login_count:
-  fname: Chief
-  last_login_ip:
   users_permission: "0"
   mailinglists_permission: "0"
-  login: ci
-  last_login_at:
+  fname: Chief
+  last_login_ip: 
   site_permission: "0"
+  last_login_at: 
+  login: ci
   sname: Instructor
-  email: ci@example.com
   clubs_permission: "0"
-  type: "Administrator"
+  email: ci@example.com
+  club_position_id: 
+  mobile_phone: 
+users_007: 
+  city: Kristianstad
+  single_access_token: 
+  last_request_at: 
+  personal_number: 19460723-4780
+  created_at: 2009-12-09 09:09:19
+  comments: ""
+  crypted_password: 
+  perishable_token: 
+  updated_at: 2009-12-15 10:27:35
+  zipcode: "12353"
+  main_interest_id: "3"
+  groups_permission: 
+  club_id: "4"
+  board_position_id: "1"
+  id: "31"
+  current_login_ip: 
+  street: "Norra B\xC3\xA4ckebo 5"
+  home_phone: 044-212936
+  gender: female
+  failed_login_count: 
+  type: Student
+  title_id: "1"
+  current_login_at: 
+  login_count: 
+  persistence_token: 
+  users_permission: 
+  mailinglists_permission: 
+  fname: Elif
+  last_login_ip: 
+  site_permission: 
+  last_login_at: 
+  login: 
+  sname: Johnsson
+  clubs_permission: 
+  email: elif.johnsson@example.com
+  club_position_id: "1"
+  mobile_phone: ""
+users_008: 
+  city: "Frilles\xC3\xA5s"
+  single_access_token: 
+  last_request_at: 
+  personal_number: 19810628-1861
+  created_at: 2009-12-09 09:09:19
+  comments: ""
+  crypted_password: 
+  perishable_token: 
+  updated_at: 2009-12-15 10:27:55
+  zipcode: "43030"
+  main_interest_id: "1"
+  groups_permission: 
+  club_id: "4"
+  board_position_id: "1"
+  id: "32"
+  current_login_ip: 
+  street: "Tuvv\xC3\xA4gen 20"
+  home_phone: ""
+  gender: female
+  failed_login_count: 
+  type: Student
+  title_id: "1"
+  current_login_at: 
+  login_count: 
+  persistence_token: 
+  users_permission: 
+  mailinglists_permission: 
+  fname: Lisen
+  last_login_ip: 
+  site_permission: 
+  last_login_at: 
+  login: 
+  sname: Berggren
+  clubs_permission: 
+  email: lisen.berggren@example.com
+  club_position_id: "1"
+  mobile_phone: ""
+users_010: 
+  city: Tandsbyn
+  single_access_token: 
+  last_request_at: 
+  personal_number: 19671029-1219
+  created_at: 2009-12-09 09:09:19
+  comments: ""
+  crypted_password: 
+  perishable_token: 
+  updated_at: 2009-12-15 10:28:02
+  zipcode: "83021"
+  main_interest_id: "2"
+  groups_permission: 
+  club_id: "5"
+  board_position_id: "1"
+  id: "35"
+  current_login_ip: 
+  street: Stallstigen 47
+  home_phone: 063-5312134
+  gender: male
+  failed_login_count: 
+  type: Student
+  title_id: "1"
+  current_login_at: 
+  login_count: 
+  persistence_token: 
+  users_permission: 
+  mailinglists_permission: 
+  fname: Nino
+  last_login_ip: 
+  site_permission: 
+  last_login_at: 
+  login: 
+  sname: Berg
+  clubs_permission: 
+  email: nino.berg@example.com
+  club_position_id: "1"
+  mobile_phone: ""
+users_009: 
+  city: Kvicksund
+  single_access_token: 
+  last_request_at: 
+  personal_number: 19581214-1496
+  created_at: 2009-12-09 09:09:19
+  comments: ""
+  crypted_password: 
+  perishable_token: 
+  updated_at: 2009-12-15 10:29:01
+  zipcode: "64045"
+  main_interest_id: "1"
+  groups_permission: 
+  club_id: "4"
+  board_position_id: "1"
+  id: "34"
+  current_login_ip: 
+  street: "Kl\xC3\xA4ppinge 89"
+  home_phone: 0563-9198417
+  gender: male
+  failed_login_count: 
+  type: Student
+  title_id: "1"
+  current_login_at: 
+  login_count: 
+  persistence_token: 
+  users_permission: 
+  mailinglists_permission: 
+  fname: Edgar
+  last_login_ip: 
+  site_permission: 
+  last_login_at: 
+  login: 
+  sname: Holmberg
+  clubs_permission: 
+  email: edgar.holmberg@example.com
+  club_position_id: "1"
+  mobile_phone: ""
+users_011: 
+  city: "F\xC3\xA5gelfors"
+  single_access_token: 
+  last_request_at: 
+  personal_number: 19670425-7176
+  created_at: 2009-12-09 09:09:19
+  comments: ""
+  crypted_password: 
+  perishable_token: 
+  updated_at: 2009-12-15 10:28:10
+  zipcode: "57075"
+  main_interest_id: "1"
+  groups_permission: 
+  club_id: "5"
+  board_position_id: "1"
+  id: "36"
+  current_login_ip: 
+  street: ""
+  home_phone: 0491-5675992
+  gender: male
+  failed_login_count: 
+  type: Student
+  title_id: "1"
+  current_login_at: 
+  login_count: 
+  persistence_token: 
+  users_permission: 
+  mailinglists_permission: 
+  fname: Devin
+  last_login_ip: 
+  site_permission: 
+  last_login_at: 
+  login: 
+  sname: Johansson
+  clubs_permission: 
+  email: devin.johansson@example.com
+  club_position_id: "1"
+  mobile_phone: ""
+users_012: 
+  city: Ljungby
+  single_access_token: 
+  last_request_at: 
+  personal_number: 19510709-8054
+  created_at: 2009-12-09 09:09:19
+  comments: ""
+  crypted_password: 
+  perishable_token: 
+  updated_at: 2009-12-15 10:28:18
+  zipcode: "34147"
+  main_interest_id: "1"
+  groups_permission: 
+  club_id: "8"
+  board_position_id: "1"
+  id: "135"
+  current_login_ip: 
+  street: Bygget 73
+  home_phone: 0372-9283685
+  gender: male
+  failed_login_count: 
+  type: Student
+  title_id: "1"
+  current_login_at: 
+  login_count: 
+  persistence_token: 
+  users_permission: 
+  mailinglists_permission: 
+  fname: Razmus
+  last_login_ip: 
+  site_permission: 
+  last_login_at: 
+  login: 
+  sname: Hermansson
+  clubs_permission: 
+  email: razmus.hermansson@example.com
+  club_position_id: "1"
+  mobile_phone: ""
+users_001: 
+  city: 
+  single_access_token: RcNDgaUdOCKapN7hWLUU
+  last_request_at: 2009-12-21 09:14:10
+  personal_number: 
+  created_at: 2009-12-09 09:09:19
+  comments: 
+  crypted_password: 6694a5cda8fcb5ddcfd6171ce35de9e593c20da32b0341917f4f1f6d40ce6d98
+  perishable_token: DeIhNFg9cbmfcVvGSchl
+  updated_at: 2009-12-21 09:14:10
+  zipcode: 
+  main_interest_id: 
+  groups_permission: "1"
+  club_id: 
+  board_position_id: 
+  id: "1"
+  current_login_ip: 127.0.0.1
+  street: 
+  home_phone: 
+  gender: 
+  failed_login_count: "0"
+  type: Administrator
+  title_id: 
+  current_login_at: 2009-12-15 09:39:30
+  login_count: "10"
+  persistence_token: 0f1dae1907c73885dcbeab9af3105ddf202a6aa8e2dc3ea93b2178a734e183b946a3c5ecfc4bbd7634344dbf7aec7070a4f5976a848ea38ec9d64a31d27c489a
+  users_permission: "1"
+  mailinglists_permission: "1"
+  fname: Admin
+  last_login_ip: 194.126.249.11
+  site_permission: "1"
+  last_login_at: 2009-12-13 22:11:25
+  login: admin
+  sname: Istrator
+  clubs_permission: "1"
+  email: admin@example.com
+  club_position_id: 
+  mobile_phone: 
+users_013: 
+  city: Edsvalla
+  single_access_token: 
+  last_request_at: 
+  personal_number: 19500513-8515
+  created_at: 2009-12-09 09:09:19
+  comments: ""
+  crypted_password: 
+  perishable_token: 
+  updated_at: 2009-12-15 10:28:31
+  zipcode: "66052"
+  main_interest_id: "1"
+  groups_permission: 
+  club_id: "8"
+  board_position_id: "1"
+  id: "136"
+  current_login_ip: 
+  street: ""
+  home_phone: 054-7334012
+  gender: male
+  failed_login_count: 
+  type: Student
+  title_id: "1"
+  current_login_at: 
+  login_count: 
+  persistence_token: 
+  users_permission: 
+  mailinglists_permission: 
+  fname: Baran
+  last_login_ip: 
+  site_permission: 
+  last_login_at: 
+  login: 
+  sname: Olofsson
+  clubs_permission: 
+  email: baran.olofsson@example.com
+  club_position_id: "1"
+  mobile_phone: ""
+users_002: 
+  city: "Br\xC3\xA5landa"
+  single_access_token: 
+  last_request_at: 
+  personal_number: 19810203-9909
+  created_at: 2009-12-09 09:09:19
+  comments: ""
+  crypted_password: 
+  perishable_token: 
+  updated_at: 2009-12-15 10:26:52
+  zipcode: "46065"
+  main_interest_id: "3"
+  groups_permission: 
+  club_id: "2"
+  board_position_id: "1"
+  id: "25"
+  current_login_ip: 
+  street: Valldammsgatan 42
+  home_phone: 0521-9520867
+  gender: female
+  failed_login_count: 
+  type: Student
+  title_id: "1"
+  current_login_at: 
+  login_count: 
+  persistence_token: 
+  users_permission: 
+  mailinglists_permission: 
+  fname: Amalia
+  last_login_ip: 
+  site_permission: 
+  last_login_at: 
+  login: 
+  sname: Gustavsson
+  clubs_permission: 
+  email: amalia.gustavsson@example.com
+  club_position_id: "1"
+  mobile_phone: ""
+users_014: 
+  city: Nybro
+  single_access_token: 
+  last_request_at: 
+  personal_number: 19450326-9377
+  created_at: 2009-12-09 09:09:19
+  comments: ""
+  crypted_password: 
+  perishable_token: 
+  updated_at: 2009-12-15 10:28:44
+  zipcode: "0"
+  main_interest_id: "1"
+  groups_permission: 
+  club_id: "9"
+  board_position_id: "1"
+  id: "137"
+  current_login_ip: 
+  street: Valldammsgatan 42
+  home_phone: 0481-5635981
+  gender: male
+  failed_login_count: 
+  type: Student
+  title_id: "1"
+  current_login_at: 
+  login_count: 
+  persistence_token: 
+  users_permission: 
+  mailinglists_permission: 
+  fname: Svante
+  last_login_ip: 
+  site_permission: 
+  last_login_at: 
+  login: 
+  sname: Jansson
+  clubs_permission: 
+  email: svante.jansson@example.com
+  club_position_id: "1"
+  mobile_phone: ""
+users_003: 
+  city: "F\xC3\x96LLINGE"
+  single_access_token: 
+  last_request_at: 
+  personal_number: 19620629-3349
+  created_at: 2009-12-09 09:09:19
+  comments: ""
+  crypted_password: 
+  perishable_token: 
+  updated_at: 2009-12-15 10:27:02
+  zipcode: "83066"
+  main_interest_id: "1"
+  groups_permission: 
+  club_id: "2"
+  board_position_id: "1"
+  id: "26"
+  current_login_ip: 
+  street: "Norrfj\xC3\xA4ll 44"
+  home_phone: 0645-7595472
+  gender: female
+  failed_login_count: 
+  type: Student
+  title_id: "1"
+  current_login_at: 
+  login_count: 
+  persistence_token: 
+  users_permission: 
+  mailinglists_permission: 
+  fname: Agaton
+  last_login_ip: 
+  site_permission: 
+  last_login_at: 
+  login: 
+  sname: Johnsson
+  clubs_permission: 
+  email: agaton.johnsson@example.com
+  club_position_id: "1"
+  mobile_phone: ""

@@ -1,19 +1,25 @@
-tt:
+--- 
+titles_001: 
+  created_at: 2009-12-21 09:12:31
   title: Toe tai
-  level: 1
-  id: 1
-
-dg:
+  updated_at: 2009-12-21 09:12:31
+  level: "1"
+  id: "1"
+titles_002: 
+  created_at: 2009-12-21 09:12:31
   title: Djo gau
-  level: 2
-  id: 2
-
-gl:
+  updated_at: 2009-12-21 09:12:31
+  level: "2"
+  id: "2"
+titles_003: 
+  created_at: 2009-12-21 09:12:31
   title: Gau lin
-  level: 3
-  id: 3
-
-sf:
+  updated_at: 2009-12-21 09:12:31
+  level: "3"
+  id: "3"
+titles_004: 
+  created_at: 2009-12-21 09:12:31
   title: Sifu
-  level: 4
-  id: 4
+  updated_at: 2009-12-21 09:12:31
+  level: "4"
+  id: "4"

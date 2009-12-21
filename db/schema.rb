@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091221072544) do
+ActiveRecord::Schema.define(:version => 20091221083610) do
 
   create_table "board_positions", :force => true do |t|
     t.string   "position"
@@ -123,28 +123,6 @@ ActiveRecord::Schema.define(:version => 20091221072544) do
   add_index "permissions", ["club_id"], :name => "index_permissions_on_club_id"
   add_index "permissions", ["user_id"], :name => "index_permissions_on_user_id"
 
-  create_table "students", :force => true do |t|
-    t.integer  "club_id"
-    t.string   "sname"
-    t.string   "fname"
-    t.string   "personal_number"
-    t.string   "email"
-    t.string   "home_phone"
-    t.string   "mobile_phone"
-    t.string   "street"
-    t.string   "zipcode"
-    t.string   "city"
-    t.text     "comments"
-    t.string   "password"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "gender"
-    t.integer  "main_interest_id"
-    t.integer  "title_id"
-    t.integer  "board_position_id"
-    t.integer  "club_position_id"
-  end
-
   create_table "titles", :force => true do |t|
     t.string   "title"
     t.integer  "level"
@@ -176,6 +154,19 @@ ActiveRecord::Schema.define(:version => 20091221072544) do
     t.integer  "clubs_permission"
     t.integer  "site_permission"
     t.string   "type"
+    t.integer  "club_id"
+    t.string   "personal_number"
+    t.string   "home_phone"
+    t.string   "mobile_phone"
+    t.string   "street"
+    t.string   "zipcode"
+    t.string   "city"
+    t.text     "comments"
+    t.string   "gender"
+    t.integer  "main_interest_id"
+    t.integer  "title_id"
+    t.integer  "board_position_id"
+    t.integer  "club_position_id"
   end
 
 end

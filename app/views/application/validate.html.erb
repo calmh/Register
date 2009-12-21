@@ -10,12 +10,12 @@
 
 <table>
 
-<% User.find(:all).each do |u| %>
+<% Administrator.find(:all).each do |u| %>
 <tr>
 <td><%=u.login%></td>
 <% if !u.valid? %>
 <% errors = u.errors.each_full { |e| e } %>
-<td><%=link_to errors.join(", "), edit_user_path(u) %></td>
+<td><%=errors.join(", ")%></td>
 <% else %>
 <td>OK</td>
 <% end %>

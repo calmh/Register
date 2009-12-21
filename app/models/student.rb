@@ -1,4 +1,4 @@
-class Student < ActiveRecord::Base
+class Student < User
 	belongs_to :club
 	has_and_belongs_to_many :groups, :order => "identifier"
 	has_and_belongs_to_many :mailing_lists
@@ -56,6 +56,10 @@ class Student < ActiveRecord::Base
 
 	def name
 		return fname + " " + sname
+	end
+
+	def login
+		"student-%d" % id
 	end
 
 	def latest_payment

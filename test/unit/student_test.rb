@@ -23,7 +23,6 @@ class StudentTest < ActiveSupport::TestCase
 		s.club_position_id = 1
 		s.board_position_id = 1
 		s.comments = "None"
-		s.password = "None"
 		s.main_interest_id = 1
 		s.club_id = 9
 
