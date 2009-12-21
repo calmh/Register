@@ -20,6 +20,16 @@ class PermissionTest < ActionController::IntegrationTest
 		assert_contain "Logga in"
 	end
 
+	test "log in by email works" do
+		visit "/"
+		assert_contain "måste logga in"
+		fill_in "Användarnamn", :with => "admin@example.com"
+		fill_in "Lösenord", :with => "admin"
+		click_button "Logga in"
+
+		assert_contain "inloggad"
+	end
+
 	test "try to log in and check clubs list" do
 		log_in
 

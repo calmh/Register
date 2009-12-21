@@ -8,5 +8,9 @@ class User < ActiveRecord::Base
 		c.validate_password_field = false
 		c.require_password_confirmation = false
 	end
+
+	def self.find_by_login_or_email(login)
+	  User.find_by_login(login) || User.find_by_email(login)
+	end
 end
 
