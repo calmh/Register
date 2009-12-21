@@ -12,16 +12,14 @@
 				<tr>
 					<th class="first"><%=t:Name%></th>
 					<th><%=t:Description%></th>
+					<th><%=t:Default%></th>
 					<th class="last"><%=t:Num_Students%></th>
 				</tr>
 				<% @groups.each do |group| -%>
 				<tr class="<%= cycle("odd", "even") %>">
-					<td>
-						<%= link_to group.identifier, edit_group_path(group) %>
-					</td>
-					<td>
-						<%= group.comments %>
-					</td>
+					<td><%= link_to group.identifier, edit_group_path(group) %></td>
+					<td><%= group.comments %></td>
+					<td><%= group.default? ? t(:P_yes) : t(:P_no) %></td>
 					<td class="last">
 						<%= group.students.length %>
 					</td>

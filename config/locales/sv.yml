@@ -169,6 +169,9 @@ sv:
   Self_updated: Dina nya uppgifter har sparats.
   New_Password: Nytt lösenord
   New_Password_descr: Ange ett nytt lösenord eller lämna blankt för att inte ändra det nuvarande.
+  Default: Standardval
+  Default_ML_descr: Om epostlistan är ett standardval kommer nya elever att bli medlemmar på den när de skapas.
+  Default_group_descr: Om gruppen är ett standardval kommer nya elever att bli medlemmar i den när de skapas.
 
   authlogic:
      error_messages:

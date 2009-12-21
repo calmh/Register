@@ -14,6 +14,12 @@
 	<span class="description"><%=t :Security_descr%></span>
 </div>
 
+<div class="group">
+	<%= f.label :default, t(:Default), :class => :label %>
+	<%= f.check_box :default %><br/>
+	<span class="description"><%=t :Default_ML_descr%></span>
+</div>
+
 <% if controller.action_name != "new" -%>
 <div class="group">
 	<%= f.label nil, t(:Members), :class => :label %>

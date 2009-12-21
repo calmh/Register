@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091221083610) do
+ActiveRecord::Schema.define(:version => 20091221105424) do
 
   create_table "board_positions", :force => true do |t|
     t.string   "position"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(:version => 20091221083610) do
     t.text     "comments"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "default"
   end
 
   create_table "groups_students", :id => false, :force => true do |t|
@@ -91,6 +92,7 @@ ActiveRecord::Schema.define(:version => 20091221083610) do
     t.string   "security"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "default"
   end
 
   create_table "mailing_lists_students", :id => false, :force => true do |t|

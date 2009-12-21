@@ -95,6 +95,8 @@ class StudentsController < ApplicationController
 		@club = Club.find(params[:club_id])
 		@student = Student.new
 		@student.club = @club
+		@student.mailing_lists = MailingList.find(:all, :conditions => { :default => 1 })
+		@student.groups = Group.find(:all, :conditions => { :default => 1 })
 
 		respond_to do |format|
 			format.html # new.html.erb

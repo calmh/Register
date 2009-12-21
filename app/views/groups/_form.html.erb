@@ -12,6 +12,12 @@
 </div>
 
 <div class="group">
+	<%= f.label :default, t(:Default), :class => :label %>
+	<%= f.check_box :default %><br/>
+	<span class="description"><%=t :Default_group_descr%></span>
+</div>
+
+<div class="group">
 	<%= f.label :comments, t(:Description), :class => :label %>
 	<%= f.text_area :comments, :class => 'text_area', :rows => 4, :cols => 16 %>
 </div>

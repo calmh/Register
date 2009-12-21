@@ -168,3 +168,6 @@ en:
   Self_updated: Your new information has been saved.
   New_Password: New Password
   New_Password_descr: Set a new password, or leave blank to leave the existing password unchanged.
+  Default: Default
+  Default_ML_descr: If the mailing list is a default, new students will become members when they register.
+  Default_group_descr: If the mailing group is a default, new students will become members when they register.
