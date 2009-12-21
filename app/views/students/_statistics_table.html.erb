@@ -9,7 +9,11 @@
 	<tr class="<%= cycle("odd", "even") %>">
 		<td><%= row[0] %></td>
 		<td class="last"><%= row[1] %></td>
+		<% if total > 0 -%>
 		<td class="last"><%= "%d" % (100.0 * row[1] / total) %> %</td>
+		<% else -%>
+		<td class="last">-</td>
+		<% end -%>
 	</tr>
 	<% end %>
 </table>

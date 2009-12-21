@@ -18,6 +18,7 @@ ActionController::Routing::Routes.draw do |map|
 			student.resources :payments
 			student.resources :graduations
 		end
+		club.filter 'filter', :controller => 'students', :action => 'filter'
 	end
 
 	# Other singular resources

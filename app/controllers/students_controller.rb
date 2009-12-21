@@ -52,12 +52,44 @@ class StudentsController < ApplicationController
 	before_filter :require_student_or_administrator, :only => [ :edit, :update ]
 
 	def index
+		@only_active = get_default(:only_active)
+
 		@club = Club.find(params[:club_id])
 		@students = @club.students
 
+		if @only_active == 'yes'
+			@students = @students.select { |s| s.active? }
+		end
+
 		respond_to do |format|
-			format.html # new.html.erb
-			format.xml  { render :xml => @student }
+			format.html # index.html
+			format.xml  { render :xml => @students }
+		end
+	end
+
+	def filter
+		@searchparams = SearchParams.new
+		if params.key? :searchparams
+			@searchparams.group_id = params[:searchparams][:group_id].to_i
+			@searchparams.grade = params[:searchparams][:grade].to_i
+			@searchparams.title_id = params[:searchparams][:title_id].to_i
+			@searchparams.board_position_id = params[:searchparams][:board_position_id].to_i
+			@searchparams.club_position_id = params[:searchparams][:club_position_id].to_i
+			set_default(:only_active, params[:searchparams][:only_active])
+		end
+		@searchparams = SearchParams.new if @searchparams == nil
+		@only_active = get_default(:only_active)
+
+		@club = Club.find(params[:club_id])
+		@students = @searchparams.filter(@club.students.find(:all, :conditions => @searchparams.conditions, :order => "fname, sname"))
+
+		if @only_active == 'yes'
+			@students = @students.select { |s| s.active? }
+		end
+
+		respond_to do |format|
+			format.html { render :index }
+			format.xml  { render :xml => @students }
 		end
 	end
 
@@ -70,13 +102,18 @@ class StudentsController < ApplicationController
 			@searchparams.title_id = params[:searchparams][:title_id].to_i
 			@searchparams.board_position_id = params[:searchparams][:board_position_id].to_i
 			@searchparams.club_position_id = params[:searchparams][:club_position_id].to_i
+			set_default(:only_active, params[:searchparams][:only_active])
 		end
+		@only_active = get_default(:only_active)
 
 		@clubs = Club.find(:all, :order => :name)
 		@students = @searchparams.filter(Student.find(:all, :conditions => @searchparams.conditions, :order => "fname, sname"))
+		if @only_active == 'yes'
+			@students = @students.select { |s| s.active? }
+		end
 
 		respond_to do |format|
-			format.html # new.html.erb
+			format.html
 			format.xml  { render :xml => @student }
 		end
 	end
