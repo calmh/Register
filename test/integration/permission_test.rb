@@ -44,7 +44,7 @@ class PermissionTest < ActionController::IntegrationTest
 
 		click_link "Redigera"
 
-		uncheck "user[clubs_permission]"
+		uncheck "administrator[clubs_permission]"
 		click_button "Spara"
 
 		assert_not_contain "Redigera klubbar:"
@@ -75,7 +75,7 @@ class PermissionTest < ActionController::IntegrationTest
 
 		click_link "Redigera"
 
-		uncheck "user[users_permission]"
+		uncheck "administrator[users_permission]"
 		click_button "Spara"
 
 		assert_not_contain "Redigera användare:"
@@ -89,7 +89,7 @@ class PermissionTest < ActionController::IntegrationTest
 		click_link "Klubbar"
 		assert_contain "Nybro"
 
-		visit "/users"
+		visit "/administrators"
 		assert_contain "måste logga in"
 	end
 
@@ -105,7 +105,7 @@ class PermissionTest < ActionController::IntegrationTest
 
 		click_link "Redigera"
 
-		uncheck "user[groups_permission]"
+		uncheck "administrator[groups_permission]"
 		click_button "Spara"
 
 		assert_not_contain "Redigera grupper:"

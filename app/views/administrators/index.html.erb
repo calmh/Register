@@ -13,13 +13,13 @@
 					<th><%=t:Login%></th>
 					<th class="last"><%=t:Name%></th>
 				</tr>
-				<% @users.each do |user| -%>
+				<% @admins.each do |admin| -%>
 				<tr class="<%= cycle("odd", "even") %>">
 					<td>
-						<%= link_to user.login, user_path(user) %>
+						<%= link_to admin.login, administrator_path(admin) %>
 					</td>
 					<td>
-						<%= (user.fname or "") + " " + (user.sname or "") %>
+						<%= (admin.fname or "") + " " + (admin.sname or "") %>
 					</td>
 				</tr>
 				<% end -%>

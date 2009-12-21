@@ -23,7 +23,7 @@
 <% if current_user.users_permission? -%>
 <% active = controller.controller_name == 'users' &&
    controller.action_name == 'index' -%>
-<li class="<%= active ? ' active' : ''%>"><%= link_to t(:User_List), users_path %></li>
+<li class="<%= active ? ' active' : ''%>"><%= link_to t(:User_List), administrators_path %></li>
 <% end -%>
 
 <% if current_user.site_permission? -%>

@@ -46,22 +46,6 @@ class UsersController < ApplicationController
 		@user = User.new(params[:user])
 		success = @user.save
 
-		if success && params.key?(:permission)
-			params[:permission].each_key do |club_id|
-				permissions = params[:permission][club_id]
-				current_perms = @user.permissions_for Club.find(club_id)
-				permissions.each_key do |perm|
-					if !current_perms.include? perm
-						np = Permission.new
-						np.club_id = club_id.to_i
-						np.user = @user
-						np.permission = perm
-						np.save!
-					end
-				end
-			end
-		end
-
 		respond_to do |format|
 			if success
 				flash[:notice] = t:User_created
@@ -74,38 +58,8 @@ class UsersController < ApplicationController
 		end
 	end
 
-	# PUT /users/1
-	# PUT /users/1.xml
 	def update
 		@user = User.find(params[:id])
-
-		if current_user.users_permission?
-			# Check all existing permissions to see if we should keep them
-			if !@user.permissions.blank?
-				@user.permissions.each do |p|
-					c_id = p.club_id.to_s
-					if !params.key?(:permission) || !params[:permission].key?(c_id) || !params[:permission][c_id].key?(p.permission)
-						p.destroy
-					end
-				end
-			end
-
-			if params.key? :permission
-				params[:permission].each_key do |club_id|
-					permissions = params[:permission][club_id]
-					current_perms = @user.permissions_for Club.find(club_id)
-					permissions.each_key do |perm|
-						if !current_perms.include? perm
-							np = Permission.new
-							np.club_id = club_id.to_i
-							np.user = @user
-							np.permission = perm
-							np.save!
-						end
-					end
-				end
-			end
-		end
 
 		respond_to do |format|
 			if @user.update_attributes(params[:user])

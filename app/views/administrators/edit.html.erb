@@ -2,14 +2,14 @@
 	<div class="secondary-navigation">
 		<ul>
 			<%= render :partial => 'application/links' %>
-			<li class="active"><%= link_to t(:New_User), new_user_path %></li>
+			<li class="active"><%= link_to t(:Edit_User), edit_administrator_path(@admin) %></li>
 		</ul>
 		<div class="clear"></div>
 	</div>
 	<div class="content">
-		<h2 class="title"><%=t:New_User%></h2>
+		<h2 class="title"><%=t(:Edit_User)%></h2>
 		<div class="inner">
-			<% form_for @user, :url => users_path, :html => { :class => :form } do |f| -%>
+			<% form_for @admin, :url => administrator_path(@admin), :html => { :class => :form } do |f| -%>
 			<%= render :partial => "form", :locals => {:f => f} %>
 			<% end -%>
 		</div>

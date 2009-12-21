@@ -21,7 +21,7 @@ ActionController::Routing::Routes.draw do |map|
 	end
 
 	# Other singular resources
-	map.resources :users
+	map.resources :administrators
 	map.resources :groups
 	map.resources :mailing_lists
 

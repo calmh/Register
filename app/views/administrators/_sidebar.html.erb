@@ -1,0 +1,16 @@
+<% if controller.action_name != "new" %>
+<div class="block">
+	<h3><%=t:Links%></h3>
+	<ul class="navigation">
+	<% if current_user.users_permission? && controller.action_name != "new" -%>
+	<li><%= link_to t(:New_User), new_administrator_path %></li>
+	<% end %>
+	<% if !@admin.blank? && @admin.id != nil && controller.action_name != "show" -%>
+	<li><%= link_to t(:Show), administrator_path(@admin) %></li>
+	<% end -%>
+	<% if !@admin.blank? && @admin.id != nil && controller.action_name != "edit" -%>
+	<li><%= link_to t(:Edit), edit_administrator_path(@admin) %></li>
+	<% end -%>
+</ul>
+</div>
+<% end %>

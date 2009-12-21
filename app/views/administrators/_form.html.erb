@@ -32,7 +32,7 @@
 <% if current_user.users_permission? %>
 <h3><%=t:Global_Permissions%></h3>
 <div class="group">
-	<% if current_user == @user -%>
+	<% if current_user == @admin -%>
 	<span class="description"><%=t:Edit_own_permissions_descr%></span>
 	<% end -%>
 	<table>
@@ -87,7 +87,7 @@
 		<% clubs.each do |c| -%>
 		<tr>
 			<td><%=c.name%></td>
-			<%= permission_checkboxes @user, c %>
+			<%= permission_checkboxes @admin, c %>
 		</tr>
 		<% end -%>
 	</table>
@@ -99,8 +99,8 @@
 	<input type="submit" class="button" value="<%=t:Save%> &rarr;" />
 	<% if controller.action_name != "new" %>
 	<% if current_user.users_permission? %>
-	<%=t(:or)%> <%= link_to t(:Destroy), @user, :confirm => t(:Are_you_sure_user), :method => :delete %>
+	<%=t(:or)%> <%= link_to t(:Destroy), @admin, :confirm => t(:Are_you_sure_user), :method => :delete %>
 	<% end %>
-	<%=t:or%> <%= link_to t(:Cancel), users_path %>
+	<%=t:or%> <%= link_to t(:Cancel), administrators_path %>
 	<% end %>
 </div>
