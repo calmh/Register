@@ -78,7 +78,7 @@ class Student < User
 		if graduations.blank?
 			return nil
 		else
-			in_main_interest = graduations.find(:all, :order => 'graduated desc', :conditions => {:grade_category_id => main_interest_id})
+			in_main_interest = graduations.select { |g| g.grade_category == main_interest }
 			if in_main_interest.length > 0
 				return in_main_interest[0]
 			else

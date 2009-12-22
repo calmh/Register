@@ -107,7 +107,7 @@ class StudentsController < ApplicationController
 		@only_active = get_default(:only_active)
 
 		@clubs = Club.find(:all, :order => :name)
-		@students = @searchparams.filter(Student.find(:all, :conditions => @searchparams.conditions, :order => "fname, sname"))
+		@students = @searchparams.filter(Student.find(:all, :include => [ "graduations", "payments", "club", "groups", "main_interest", "board_position", "club_position", "title" ], :conditions => @searchparams.conditions, :order => "fname, sname"))
 		if @only_active == 'yes'
 			@students = @students.select { |s| s.active? }
 		end
