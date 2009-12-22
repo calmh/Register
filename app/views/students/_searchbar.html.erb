@@ -3,9 +3,9 @@
 	<div class="content">
 		<p><%=t(:Search_descr)%></p>
 		<% if controller.action_name == 'search' -%>
-		<% destination = { :action=>"search", :controller=>"students" } -%>
+		<% destination = search_path -%>
 		<% else -%>
-		<% destination = club_filter_path(@club.id) -%>
+		<% destination = filter_club_students_path(@club.id) -%>
 		<% end -%>
 
 		<% form_tag destination, :class => "form", :method => "post" do -%>
@@ -42,7 +42,7 @@
 			</tr>
 			<tr class="<%=cycle('even','odd')%>">
 				<td><%=t:Only_Active%>:</td>
-				<td><label><%=check_box_tag 'searchparams[only_active]', 'yes', @only_active %></label></td>
+				<td><label><%=check_box_tag 'searchparams[only_active]', '1', @only_active %></label></td>
 			</tr>
 		</table>
 		<%= submit_tag t(:Search) %>

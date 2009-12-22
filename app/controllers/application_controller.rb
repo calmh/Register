@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
 	end
 
 	def edit_site_settings
-		@available_themes = Dir.entries("public/stylesheets/themes").select { |d| !d.starts_with? '.' }
+		@available_themes = Dir.entries("public/stylesheets/themes").select { |d| !d.starts_with? '.' }.sort
 	end
 
 	def update_site_settings
@@ -73,7 +73,7 @@ class ApplicationController < ActionController::Base
 		store_location
 		flash[:warning] = t(:Must_log_in)
 		current_user_session.destroy if current_user_session
-		redirect_to new_user_session_url
+		redirect_to new_user_session_path
 		return false
 	end
 

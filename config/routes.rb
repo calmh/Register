@@ -1,11 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
 	# For debugging, check validations
-	map.connect 'validate', :controller => 'application', :action => 'validate'
-	map.connect 'edit_site_settings', :controller => 'application', :action => 'edit_site_settings'
-	map.connect 'update_site_settings', :controller => 'application', :action => 'update_site_settings'
+	map.validate 'validate', :controller => 'application', :action => 'validate'
+	map.edit_site 'edit_site_settings', :controller => 'application', :action => 'edit_site_settings'
+	map.update_site 'update_site_settings', :controller => 'application', :action => 'update_site_settings'
 
 	# Bulk operations
-	map.connect 'students/search', :controller => 'students', :action => 'search'
+	map.search 'students/search', :controller => 'students', :action => 'search'
 	map.connect 'students/bulkoperations', :controller => 'students', :action => 'bulk_operations'
 	map.connect 'graduations/new_bulk', :controller => 'graduations', :action => 'new_bulk'
 	map.connect 'graduations/update_bulk', :controller => 'graduations', :action => 'update_bulk'
@@ -14,11 +14,10 @@ ActionController::Routing::Routes.draw do |map|
 
 	# Clubs, students and subresources
 	map.resources :clubs, :shallow => true do |club|
-		club.resources :students do |student|
+		club.resources :students, :collection => { :filter => :post } do |student|
 			student.resources :payments
 			student.resources :graduations
 		end
-		club.filter 'filter', :controller => 'students', :action => 'filter'
 	end
 
 	# Other singular resources

@@ -18,7 +18,7 @@
 <div class="block">
 	<h3><%=t(:Links)%> <%= t(:for) %> <%= h(@club.name) %></h3>
 	<ul class="navigation">
-		<% if controller.action_name != "index" -%>
+		<% if controller.action_name != "index" && controller.action_name != "filter" -%>
 		<li><%= link_to t(:Show), club_path(@club) %></li>
 		<% end %>
 		<% if current_user.clubs_permission? && controller.action_name != "edit" -%>

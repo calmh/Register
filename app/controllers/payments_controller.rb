@@ -57,7 +57,7 @@ class PaymentsController < ApplicationController
 		@payment.destroy
 
 		respond_to do |format|
-			format.html { redirect_to(payments_url) }
+			format.html { redirect_to(payments_path) }
 			format.xml  { head :ok }
 		end
 	end

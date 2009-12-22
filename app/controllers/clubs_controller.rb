@@ -2,10 +2,7 @@ class ClubsController < ApplicationController
 	before_filter :require_administrator
 	before_filter :require_clubs_permission, :only => [ :new, :edit, :create, :destroy, :update ]
 
-	# GET /clubs
-	# GET /clubs.xml
 	def index
-		# @clubs = Club.find(:all)
 		@clubs = current_user.clubs.find(:all, :order => 'name')
 
 		respond_to do |format|
@@ -14,14 +11,10 @@ class ClubsController < ApplicationController
 		end
 	end
 
-	# GET /clubs/1
-	# GET /clubs/1.xml
 	def show
 		redirect_to(:controller => 'students', :action => 'index', :club_id => params[:id]) and return
 	end
 
-	# GET /clubs/new
-	# GET /clubs/new.xml
 	def new
 		@club = Club.new
 
@@ -31,13 +24,10 @@ class ClubsController < ApplicationController
 		end
 	end
 
-	# GET /clubs/1/edit
 	def edit
 		@club = Club.find(params[:id])
 	end
 
-	# POST /clubs
-	# POST /clubs.xml
 	def create
 		@club = Club.new(params[:club])
 
@@ -53,8 +43,6 @@ class ClubsController < ApplicationController
 		end
 	end
 
-	# PUT /clubs/1
-	# PUT /clubs/1.xml
 	def update
 		@club = Club.find(params[:id])
 
@@ -70,14 +58,12 @@ class ClubsController < ApplicationController
 		end
 	end
 
-	# DELETE /clubs/1
-	# DELETE /clubs/1.xml
 	def destroy
 		@club = Club.find(params[:id])
 		@club.destroy
 
 		respond_to do |format|
-			format.html { redirect_to(clubs_url) }
+			format.html { redirect_to(clubs_path) }
 			format.xml  { head :ok }
 		end
 	end

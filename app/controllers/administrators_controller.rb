@@ -113,7 +113,7 @@ class AdministratorsController < ApplicationController
 			@admin.destroy
 
 			respond_to do |format|
-				format.html { redirect_to(administrators_url) }
+				format.html { redirect_to(administrators_path) }
 				format.xml  { head :ok }
 			end
 		end

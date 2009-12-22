@@ -11,12 +11,10 @@
 		<div class="inner">
 			<p>
 				<table class="table">
-					<tr><th class="first last  <%=cycle("odd", "even")%>" colspan="2"><%=h @student.name %></th></tr>
+					<tr><th class="first last <%=cycle("odd", "even")%>" colspan="2"><%=h @student.name %></th></tr>
 					<tr class="<%= cycle("odd", "even") %>">
 						<td><b><%=t(:Groups)%>:</b></td>
-						<td>
-						<%= @student.groups.map{ |g| g.identifier }.join(", ") -%>
-						</td>
+						<td><%= @student.group_list %></td>
 					</tr>
 
 					<tr class="<%= cycle("odd", "even") %>">
@@ -41,9 +39,7 @@
 
 					<tr class="<%= cycle("odd", "even") %>">
 						<td><b><%=t(:Mailing_Lists)%>:</b></td>
-						<td>
-						<%= @student.mailing_lists.map{ |g| g.description }.join(", ") -%>
-						</td>
+						<td><%= @student.mailing_lists.map{ |g| g.description }.join(", ") %></td>
 					</tr>
 
 					<tr class="<%= cycle("odd", "even") %>">

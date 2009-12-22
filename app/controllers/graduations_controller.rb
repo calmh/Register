@@ -103,7 +103,7 @@ class GraduationsController < ApplicationController
 		@graduation.destroy
 
 		respond_to do |format|
-			format.html { redirect_to(graduations_url) }
+			format.html { redirect_to(graduations_path) }
 			format.xml  { head :ok }
 		end
 	end

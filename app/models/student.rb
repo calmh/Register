@@ -111,4 +111,8 @@ class Student < User
 			return -1
 		end
 	end
+
+	def group_list
+		groups.map{ |g| g.identifier }.join(", ")
+	end
 end

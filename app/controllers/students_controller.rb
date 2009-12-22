@@ -6,13 +6,24 @@ class SearchParams
 	attr_accessor :board_position_id
 	attr_accessor :club_position_id
 
-	def initialize
+	def initialize(params)
 		@group_id = -100
 		@grade = -100
 		@club_id = Club.find(:all).map { |c| c.id }
 		@title_id = -100
 		@board_position_id = -100
 		@club_position_id = -100
+
+		if params.key? :searchparams
+			@group_id = params[:searchparams][:group_id].to_i
+			@grade = params[:searchparams][:grade].to_i
+			@title_id = params[:searchparams][:title_id].to_i
+			@board_position_id = params[:searchparams][:board_position_id].to_i
+			@club_position_id = params[:searchparams][:club_position_id].to_i
+			if params[:searchparams].has_key? :club_id
+				@club_id = params[:searchparams][:club_id].map{|x| x.to_i}
+			end
+		end
 	end
 
 	def conditions
@@ -45,6 +56,20 @@ class SearchParams
 		end
 		return matched
 	end
+
+	def find_all(only_active)
+		@students = Student.find(:all, :include => [ "graduations", "payments", "club", "groups", "main_interest", "board_position", "club_position", "title" ], :conditions => conditions, :order => "fname, sname")
+		@students = filter(@students)
+		@students = @students.select { |s| s.active? } if only_active
+		return @students
+	end
+
+	def find_in_club(club, only_active)
+		@students = club.students.find(:all, :include => [ "graduations", "payments", "club", "groups", "main_interest", "board_position", "club_position", "title" ], :conditions => conditions, :order => "fname, sname")
+		@students = filter(@students)
+		@students = @students.select { |s| s.active? } if only_active
+		return @students
+	end
 end
 
 class StudentsController < ApplicationController
@@ -52,14 +77,9 @@ class StudentsController < ApplicationController
 	before_filter :require_student_or_administrator, :only => [ :edit, :update ]
 
 	def index
-		@only_active = get_default(:only_active)
-
+		setup_searchparams
 		@club = Club.find(params[:club_id])
-		@students = Student.find(:all, :include => [ "graduations", "payments", "club", "groups", "main_interest", "board_position", "club_position", "title" ], :conditions => { :club_id => @club.id }, :order => "fname, sname")
-
-		if @only_active == 'yes'
-			@students = @students.select { |s| s.active? }
-		end
+		@students = @searchparams.find_in_club(@club, @only_active)
 
 		respond_to do |format|
 			format.html # index.html
@@ -68,24 +88,9 @@ class StudentsController < ApplicationController
 	end
 
 	def filter
-		@searchparams = SearchParams.new
-		if params.key? :searchparams
-			@searchparams.group_id = params[:searchparams][:group_id].to_i
-			@searchparams.grade = params[:searchparams][:grade].to_i
-			@searchparams.title_id = params[:searchparams][:title_id].to_i
-			@searchparams.board_position_id = params[:searchparams][:board_position_id].to_i
-			@searchparams.club_position_id = params[:searchparams][:club_position_id].to_i
-			set_default(:only_active, params[:searchparams][:only_active])
-		end
-		@searchparams = SearchParams.new if @searchparams == nil
-		@only_active = get_default(:only_active)
-
+		setup_searchparams
 		@club = Club.find(params[:club_id])
-		@students = @searchparams.filter(@club.students.find(:all, :conditions => @searchparams.conditions, :order => "fname, sname"))
-
-		if @only_active == 'yes'
-			@students = @students.select { |s| s.active? }
-		end
+		@students = @searchparams.find_in_club(@club, @only_active)
 
 		respond_to do |format|
 			format.html { render :index }
@@ -94,23 +99,9 @@ class StudentsController < ApplicationController
 	end
 
 	def search
-		@searchparams = SearchParams.new
-		if params.key? :searchparams
-			@searchparams.group_id = params[:searchparams][:group_id].to_i
-			@searchparams.grade = params[:searchparams][:grade].to_i
-			@searchparams.club_id = params[:searchparams][:club_id].map{|x| x.to_i}
-			@searchparams.title_id = params[:searchparams][:title_id].to_i
-			@searchparams.board_position_id = params[:searchparams][:board_position_id].to_i
-			@searchparams.club_position_id = params[:searchparams][:club_position_id].to_i
-			set_default(:only_active, params[:searchparams][:only_active])
-		end
-		@only_active = get_default(:only_active)
-
+		setup_searchparams
 		@clubs = Club.find(:all, :order => :name)
-		@students = @searchparams.filter(Student.find(:all, :include => [ "graduations", "payments", "club", "groups", "main_interest", "board_position", "club_position", "title" ], :conditions => @searchparams.conditions, :order => "fname, sname"))
-		if @only_active == 'yes'
-			@students = @students.select { |s| s.active? }
-		end
+		@students = @searchparams.find_all(@only_active)
 
 		respond_to do |format|
 			format.html
@@ -193,27 +184,23 @@ class StudentsController < ApplicationController
 			@student.mailing_lists.clear
 		end
 
+		success = @student.update_attributes(params[:student])
+
 		if current_user.type == 'Administrator'
-			respond_to do |format|
-				if @student.update_attributes(params[:student])
-					flash[:notice] = t(:Student_updated)
-					format.html { redirect_to(@student) }
-					format.xml  { head :ok }
-				else
-					format.html { render :action => "edit" }
-					format.xml  { render :xml => @student.errors, :status => :unprocessable_entity }
-				end
-			end
+			flash[:notice] = t(:Student_updated) if success
+			redirect = student_path(@student)
 		elsif current_user.type == 'Student'
-			respond_to do |format|
-				if @student.update_attributes(params[:student])
-					flash[:notice] = t(:Self_updated)
-					format.html { redirect_to edit_student_path(@student) }
-					format.xml  { head :ok }
-				else
-					format.html { render :action => "edit" }
-					format.xml  { render :xml => @student.errors, :status => :unprocessable_entity }
-				end
+			flash[:notice] = t(:Self_updated) if success
+			redirect = edit_student_path(@student)
+		end
+
+		respond_to do |format|
+			if success
+				format.html { redirect_to redirect }
+				format.xml  { head :ok }
+			else
+				format.html { render :action => "edit" }
+				format.xml  { render :xml => @student.errors, :status => :unprocessable_entity }
 			end
 		end
 	end
@@ -248,6 +235,17 @@ class StudentsController < ApplicationController
 		respond_to do |format|
 			format.html # register.html.erb
 			format.xml  { render :xml => @student }
+		end
+	end
+
+	private
+	def setup_searchparams
+		@searchparams = SearchParams.new(params)
+		if params.has_key? :searchparams
+			@only_active = params[:searchparams][:only_active] == '1'
+			set_default(:only_active, @only_active)
+		else
+			@only_active = get_default(:only_active)
 		end
 	end
 end

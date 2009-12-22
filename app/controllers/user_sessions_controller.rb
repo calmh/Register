@@ -12,22 +12,22 @@ class UserSessionsController < ApplicationController
 			flash[:notice] = t(:Login_successful)
 			@user = @user_session.user
 			if @user.type == 'Student'
-				default = edit_student_url(@user)
+				default = edit_student_path(@user)
 			elsif @user.type == 'Administrator'
-				default = clubs_url
-				default = club_url(@user.clubs[0]) if !@user.clubs_permission? && @user.clubs.length == 1
+				default = clubs_path
+				default = club_path(@user.clubs[0]) if !@user.clubs_permission? && @user.clubs.length == 1
 			end
 			redirect_to default
 		else
 			flash[:warning] = t(:Login_invalid)
-			redirect_to new_user_session_url
+			redirect_to new_user_session_path
 		end
 	end
 
 	def destroy
 		current_user_session.destroy
 		flash[:notice] = t(:Logout_successful)
-		redirect_to new_user_session_url
+		redirect_to new_user_session_path
 	end
 end
 

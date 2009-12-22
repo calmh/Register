@@ -137,11 +137,18 @@ class PermissionTest < ActionController::IntegrationTest
 		assert_contain "Sök tränande"
 		assert_contain "Ny klubb"
 		click_link "Sök tränande"
-
 		assert_contain " 13 tränande"
+
 		select "Instruktörer"
 		click_button "Sök"
+		assert_contain " 2 tränande"
 
+		check "searchparams_only_active"
+		click_button "Sök"
+		assert_contain " 1 tränande"
+
+		uncheck "searchparams_only_active"
+		click_button "Sök"
 		assert_contain " 2 tränande"
 	end
 

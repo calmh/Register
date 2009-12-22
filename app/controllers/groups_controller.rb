@@ -36,7 +36,7 @@ class GroupsController < ApplicationController
 		respond_to do |format|
 			if @group.save
 				flash[:notice] = t:Group_created
-				format.html { redirect_to(groups_url) }
+				format.html { redirect_to(groups_path) }
 				format.xml  { render :xml => @group, :status => :created, :location => @group }
 			else
 				format.html { render :action => "new" }
@@ -58,12 +58,12 @@ class GroupsController < ApplicationController
 			end
 			merge_with.save!
 			@group.destroy
-			redirect_to(groups_url)
+			redirect_to(groups_path)
 		else
 			respond_to do |format|
 				if @group.update_attributes(params[:group])
 					flash[:notice] = t:Group_updated
-					format.html { redirect_to(groups_url) }
+					format.html { redirect_to(groups_path) }
 					format.xml  { head :ok }
 				else
 					format.html { render :action => "edit" }
@@ -80,7 +80,7 @@ class GroupsController < ApplicationController
 		@group.destroy
 
 		respond_to do |format|
-			format.html { redirect_to(groups_url) }
+			format.html { redirect_to(groups_path) }
 			format.xml  { head :ok }
 		end
 	end

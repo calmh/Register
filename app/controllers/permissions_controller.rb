@@ -78,7 +78,7 @@ class PermissionsController < ApplicationController
 		@permission.destroy
 
 		respond_to do |format|
-			format.html { redirect_to(permissions_url) }
+			format.html { redirect_to(permissions_path) }
 			format.xml  { head :ok }
 		end
 	end
