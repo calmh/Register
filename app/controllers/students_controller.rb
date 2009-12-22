@@ -55,7 +55,7 @@ class StudentsController < ApplicationController
 		@only_active = get_default(:only_active)
 
 		@club = Club.find(params[:club_id])
-		@students = @club.students
+		@students = Student.find(:all, :include => [ "graduations", "payments", "club", "groups", "main_interest", "board_position", "club_position", "title" ], :conditions => { :club_id => @club.id })
 
 		if @only_active == 'yes'
 			@students = @students.select { |s| s.active? }
