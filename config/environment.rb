@@ -7,7 +7,7 @@
 # Specifies gem version of Rails to use when vendor/rails is not present
 RAILS_GEM_VERSION = '2.3.5' unless defined? RAILS_GEM_VERSION
 
-COPYRIGHT = "Copyright (c) 2009 Jakob Borg"
+COPYRIGHT = "Copyright &copy; 2009-2010 Jakob Borg"
 
 # Setting this to false will disable validates_presence_of on personal_number.
 # All other validations will still run when personal_number is present.
