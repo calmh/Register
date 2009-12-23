@@ -145,27 +145,4 @@ class GroupsTest < ActionController::IntegrationTest
 
 		assert_contain "Test Testsson"
 	end
-
-	test "remove student from mailing list" do
-		log_in
-		click_link "Epostlistor"
-		click_link "instructors@example.com"
-
-		assert_contain "Amalia"
-
-		click_link "Klubbar"
-		click_link "Brålanda"
-		click_link "Amalia Gustavsson"
-		click_link "Redigera"
-
-		uncheck "Instructors"
-		click_button "Spara"
-
-		assert_not_contain "Instructors"
-
-		click_link "Epostlistor"
-		click_link "instructors@example.com"
-
-		assert_not_contain "Amalia"
-	end
 end

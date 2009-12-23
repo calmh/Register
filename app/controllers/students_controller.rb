@@ -5,6 +5,7 @@ class SearchParams
 	attr_accessor :title_id
 	attr_accessor :board_position_id
 	attr_accessor :club_position_id
+	attr_accessor :only_active
 
 	def initialize(params)
 		@group_id = -100
@@ -13,6 +14,7 @@ class SearchParams
 		@title_id = -100
 		@board_position_id = -100
 		@club_position_id = -100
+		@only_active = false
 
 		if params.key? :searchparams
 			@group_id = params[:searchparams][:group_id].to_i
@@ -20,6 +22,7 @@ class SearchParams
 			@title_id = params[:searchparams][:title_id].to_i
 			@board_position_id = params[:searchparams][:board_position_id].to_i
 			@club_position_id = params[:searchparams][:club_position_id].to_i
+			@only_active = (params[:searchparams][:only_active] == '1')
 			if params[:searchparams].has_key? :club_id
 				@club_id = params[:searchparams][:club_id].map{|x| x.to_i}
 			end
@@ -54,20 +57,21 @@ class SearchParams
 		if group_id != -100
 			matched = matched.select { |s| s.group_ids.include? group_id }
 		end
+		if only_active
+			matched = matched.select { |s| s.active? }
+		end
 		return matched
 	end
 
-	def find_all(only_active)
+	def find_all
 		@students = Student.find(:all, :include => [ "graduations", "payments", "club", "groups", "main_interest", "board_position", "club_position", "title" ], :conditions => conditions, :order => "fname, sname")
 		@students = filter(@students)
-		@students = @students.select { |s| s.active? } if only_active
 		return @students
 	end
 
-	def find_in_club(club, only_active)
+	def find_in_club(club)
 		@students = club.students.find(:all, :include => [ "graduations", "payments", "club", "groups", "main_interest", "board_position", "club_position", "title" ], :conditions => conditions, :order => "fname, sname")
 		@students = filter(@students)
-		@students = @students.select { |s| s.active? } if only_active
 		return @students
 	end
 end
@@ -77,9 +81,9 @@ class StudentsController < ApplicationController
 	before_filter :require_student_or_administrator, :only => [ :edit, :update ]
 
 	def index
-		setup_searchparams
+		@searchparams = SearchParams.new(params)
 		@club = Club.find(params[:club_id])
-		@students = @searchparams.find_in_club(@club, @only_active)
+		@students = @searchparams.find_in_club(@club)
 
 		respond_to do |format|
 			format.html # index.html
@@ -88,9 +92,9 @@ class StudentsController < ApplicationController
 	end
 
 	def filter
-		setup_searchparams
+		@searchparams = SearchParams.new(params)
 		@club = Club.find(params[:club_id])
-		@students = @searchparams.find_in_club(@club, @only_active)
+		@students = @searchparams.find_in_club(@club)
 
 		respond_to do |format|
 			format.html { render :index }
@@ -99,9 +103,9 @@ class StudentsController < ApplicationController
 	end
 
 	def search
-		setup_searchparams
+		@searchparams = SearchParams.new(params)
 		@clubs = Club.find(:all, :order => :name)
-		@students = @searchparams.find_all(@only_active)
+		@students = @searchparams.find_all
 
 		respond_to do |format|
 			format.html
@@ -238,14 +242,4 @@ class StudentsController < ApplicationController
 		end
 	end
 
-	private
-	def setup_searchparams
-		@searchparams = SearchParams.new(params)
-		if params.has_key? :searchparams
-			@only_active = params[:searchparams][:only_active] == '1'
-			set_default(:only_active, @only_active)
-		else
-			@only_active = get_default(:only_active)
-		end
-	end
 end

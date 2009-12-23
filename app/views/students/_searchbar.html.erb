@@ -42,7 +42,7 @@
 			</tr>
 			<tr class="<%=cycle('even','odd')%>">
 				<td><%=t:Only_Active%>:</td>
-				<td><label><%=check_box_tag 'searchparams[only_active]', '1', @only_active %></label></td>
+				<td><label><%=check_box_tag 'searchparams[only_active]', '1', @searchparams.only_active %></label></td>
 			</tr>
 		</table>
 		<%= submit_tag t(:Search) %>

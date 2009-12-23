@@ -128,31 +128,6 @@ class PermissionTest < ActionController::IntegrationTest
 		assert_contain "måste logga in"
 	end
 
-	test "verify student search" do
-		log_in
-
-		assert_contain "Klubbar"
-		assert_contain "Grupper"
-		assert_contain "Användare"
-		assert_contain "Sök tränande"
-		assert_contain "Ny klubb"
-		click_link "Sök tränande"
-		assert_contain " 13 tränande"
-
-		select "Instruktörer"
-		click_button "Sök"
-		assert_contain " 2 tränande"
-
-		check "searchparams_only_active"
-		click_button "Sök"
-		assert_contain " 1 tränande"
-
-		uncheck "searchparams_only_active"
-		click_button "Sök"
-		assert_contain " 2 tränande"
-	end
-
-
 	test "ci permissions" do
 		log_in_as_ci
 		assert_contain "Edsvalla"
