@@ -128,6 +128,28 @@ class PermissionTest < ActionController::IntegrationTest
 		assert_contain "måste logga in"
 	end
 
+	test "add and remove club permissions" do
+		log_in
+
+		click_link "Användare"
+		click_link "ci"
+
+		assert_contain /Edsvalla:\s+Radera, Redigera, Inbetalningar, Se/m
+		assert_not_contain "Nybro"
+
+		click_link "Redigera"
+		uncheck "permission[8][edit]"
+		uncheck "permission[8][delete]"
+		uncheck "permission[8][payments]"
+		check "permission[9][read]"
+		check "permission[9][edit]"
+		check "permission[9][payments]"
+		click_button "Spara"
+
+		assert_contain /Edsvalla:\s+Se/m
+		assert_contain /Nybro:\s+Redigera, Inbetalningar, Se/m
+	end
+
 	test "ci permissions" do
 		log_in_as_ci
 		assert_contain "Edsvalla"
