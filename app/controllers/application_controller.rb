@@ -52,6 +52,7 @@ class ApplicationController < ActionController::Base
 	def update_site_settings
 		SiteSettings.site_name = params[:site_name]
 		SiteSettings.site_theme = params[:site_theme]
+		expire_fragment('layout_header')
 		flash[:notice] = t(:Site_settings_updated)
 		redirect_to :controller => 'application', :action => 'edit_site_settings'
 	end
