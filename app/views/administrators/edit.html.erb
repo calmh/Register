@@ -1,7 +1,9 @@
 <div class="block">
 	<div class="secondary-navigation">
 		<ul>
+			<% if current_user.users_permission? %>
 			<li class="first"><%= link_to t(:Users), administrators_path %></li>
+			<% end %>
 			<li><%= link_to t(:Profile), administrator_path(@admin) %></li>
 			<li class="active last"><%= link_to t(:Edit_User), edit_administrator_path(@admin) %></li>
 		</ul>

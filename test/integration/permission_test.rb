@@ -27,13 +27,13 @@ class PermissionTest < ActionController::IntegrationTest
 		fill_in "Lösenord", :with => "admin"
 		click_button "Logga in"
 
-		assert_contain "inloggad"
+		assert_contain "Logga ut"
 	end
 
 	test "try to log in and check clubs list" do
 		log_in
 
-		assert_contain "inloggad"
+		assert_contain "Logga ut"
 		assert_contain "Klubbar"
 		click_link "Nybro"
 		assert_contain " 1 tränande"
