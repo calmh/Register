@@ -14,24 +14,12 @@
 			<% end -%>
 			<div id="user-navigation">
 				<ul>
-				<% if current_user -%>
-				<% if current_user.type == 'Administrator' -%>
-				<li><%=link_to t(:Profile), administrator_path(current_user)%></a></li>
-				<% end -%>
-				<li><%=link_to t(:Logout), user_session_path, :method => :delete, :class => "logout"%></a></li>
-				<% end -%>
 				<% for locale in I18n.available_locales do -%>
 				<% if locale.to_s != I18n.locale.to_s -%>
 				<li><%=link_to image_tag(locale.to_s + '.png'), '?locale=' + locale.to_s %></li>
 				<% end -%>
 				<% end -%>
-			</ul>
-			<div class="clear"></div>
-		</div>
-		<div id="main-navigation">
-			<ul>
-				<%= render :partial => 'application/links' %>
-			</ul>
+				</ul>
 			<div class="clear"></div>
 		</div>
 	</div>
@@ -52,9 +40,6 @@
 					<% end %>
 				</div>
 			</div>
-		</div>
-		<div id="sidebar">
-			<%= yield :sidebar %>
 		</div>
 		<div class="clear"></div>
 	</div>

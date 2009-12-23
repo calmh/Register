@@ -1,33 +1,27 @@
-<% active = controller.controller_name == 'clubs' &&
-   controller.action_name == 'index' -%>
+<% active = controller.controller_name == 'clubs' || (controller.controller_name == "students" && controller.action_name != "search") -%>
 <li class="first<%= active ? ' active' : ''%>"><%= link_to t(:Club_List), clubs_path %></li>
 
 <% if current_user.clubs_permission? -%>
-<% active = controller.controller_name == 'students' &&
-   controller.action_name == 'search' -%>
+<% active = controller.controller_name == 'students' && controller.action_name == "search" -%>
 <li class="<%= active ? ' active' : ''%>"><%= link_to t(:Search_Students), search_path %></li>
 <% end -%>
 
 <% if current_user.groups_permission? -%>
-<% active = controller.controller_name == 'groups' &&
-   controller.action_name == 'index' -%>
+<% active = controller.controller_name == 'groups' -%>
 <li class="<%= active ? ' active' : ''%>"><%= link_to t(:Group_List), groups_path %></li>
 <% end -%>
 
 <% if current_user.mailinglists_permission? -%>
-<% active = controller.controller_name == 'mailing_lists' &&
-   controller.action_name == 'index' -%>
+<% active = controller.controller_name == 'mailing_lists' -%>
 <li class="<%= active ? ' active' : ''%>"><%= link_to t(:Mailing_Lists), mailing_lists_path %></li>
 <% end -%>
 
 <% if current_user.users_permission? -%>
-<% active = controller.controller_name == 'users' &&
-   controller.action_name == 'index' -%>
+<% active = controller.controller_name == 'administrators' -%>
 <li class="<%= active ? ' active' : ''%>"><%= link_to t(:User_List), administrators_path %></li>
 <% end -%>
 
 <% if current_user.site_permission? -%>
-<% active = controller.controller_name == 'application' &&
-   controller.action_name == 'edit_site_settings' -%>
+<% active = controller.controller_name == 'application' -%>
 <li class="<%= active ? ' active' : ''%>"><%= link_to t(:Edit_Site), edit_site_path %></li>
 <% end -%>

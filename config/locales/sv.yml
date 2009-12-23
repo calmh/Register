@@ -175,6 +175,7 @@ sv:
   Only_Active: Endast aktiva
   Site_Theme: Webbplatsens tema
   No_payment: Ingen inbetalning registrerad
+  Validations: Validera data
 
   authlogic:
      error_messages:

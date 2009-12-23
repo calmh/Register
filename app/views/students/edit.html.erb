@@ -2,10 +2,11 @@
 	<div class="secondary-navigation">
 		<ul>
 			<% if current_user.type == 'Administrator' -%>
-			<%= render :partial => 'application/links' %>
-			<li><%= link_to @club.name, club_students_path(@club) %></li>
+			<li class="first"><%= link_to t(:Club_List), clubs_path %></li>
+			<li><%= link_to h(@club.name), club_path(@club) %></li>
+			<li><%= link_to h(@student.name), student_path(@student) %></li>
 			<% end -%>
-			<li class="active"><%= link_to h(@student.name), edit_student_path(@student) %></li>
+			<li class="active last"><%= link_to t(:Edit_Student), edit_student_path(@student) %></li>
 		</ul>
 		<div class="clear"></div>
 	</div>
