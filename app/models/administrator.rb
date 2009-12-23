@@ -1,5 +1,5 @@
 class Administrator < User
-	has_many :permissions, :dependent => :destroy, :foreign_key => 'user_id'
+	has_many :permissions, :dependent => :destroy, :foreign_key => 'user_id', :order => "club_id, permission"
 	has_many :clubs, :through => :permissions, :uniq => true
 	validates_presence_of :clubs_permission
 	validates_presence_of :groups_permission
