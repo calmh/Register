@@ -1,13 +1,12 @@
 class PaymentsController < ApplicationController
 	before_filter :require_administrator
 
-	# GET /payments
-	# GET /payments.xml
 	def index
 		@student = Student.find(params[:student_id])
 		@club = @student.club
 		@payments = @student.payments
 		@payment = Payment.new
+		@payment.student_id = @student.id
 		@payment.received = DateTime.parse(get_default(:payment_received) || DateTime.now.to_s)
 		@payment.amount = get_default(:payment_amount)
 		@payment.description = get_default(:payment_description)
@@ -18,24 +17,20 @@ class PaymentsController < ApplicationController
 		end
 	end
 
-	# GET /payments/1/edit
 	def edit
 		@payment = Payment.find(params[:id])
 	end
 
-	# POST /payments
-	# POST /payments.xml
 	def create
+		params[:payment][:amount].sub!(",", ".") # Handle Swedish decimal comma in an ugly way
 		@payment = Payment.new(params[:payment])
-		@payment.save
+		@payment.save!
 		set_default(:payment_amount, @payment.amount)
 		set_default(:payment_description, @payment.description)
 		set_default(:payment_received, @payment.received)
 		redirect_to :action => :index
 	end
 
-	# PUT /payments/1
-	# PUT /payments/1.xml
 	def update
 		@payment = Payment.find(params[:id])
 
@@ -50,8 +45,6 @@ class PaymentsController < ApplicationController
 		end
 	end
 
-	# DELETE /payments/1
-	# DELETE /payments/1.xml
 	def destroy
 		@payment = Payment.find(params[:id])
 		@payment.destroy
