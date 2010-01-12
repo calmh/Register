@@ -1,8 +1,7 @@
 <div class="block">
   <div class="content">
+    <h2 class="title"><%=t:Log_in%></h2>
     <div class="inner">
-      <h2><%=t:Log_in%></h2>
-
       <% form_for @user_session, :url => user_session_path do |f| %>
       <%= f.label :login, t(:Login_or_email) %><br />
       <%= f.text_field :login %><br />
