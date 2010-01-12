@@ -1,29 +1,29 @@
 <div class="block">
-	<div class="secondary-navigation">
-		<ul>
-	      <li class="first active"><%= link_to t(:Edit_Site), edit_site_path %></li>
-	      <li class="last"><%= link_to t(:Validations), validate_path %></li>
-		</ul>
-		<div class="clear"></div>
-	</div>
-	<div class="content">
-		<h2 class="title"><%=t(:Edit_Site)%></h2>
-		<div class="inner">
-			<% form_tag({ :controller => 'application', :action => 'update_site_settings' }, { :class => :form }) do -%>
-			<div class="group">
-				<%= label_tag 'site_name', t(:Site_Name), :class => 'label' %>
-				<%= text_field_tag 'site_name', SiteSettings.site_name, :class => 'text_field' %>
-			</div>
+  <div class="secondary-navigation">
+    <ul>
+        <li class="first active"><%= link_to t(:Edit_Site), edit_site_path %></li>
+        <li class="last"><%= link_to t(:Validations), validate_path %></li>
+    </ul>
+    <div class="clear"></div>
+  </div>
+  <div class="content">
+    <h2 class="title"><%=t(:Edit_Site)%></h2>
+    <div class="inner">
+      <% form_tag({ :controller => 'application', :action => 'update_site_settings' }, { :class => :form }) do -%>
+      <div class="group">
+        <%= label_tag 'site_name', t(:Site_Name), :class => 'label' %>
+        <%= text_field_tag 'site_name', SiteSettings.site_name, :class => 'text_field' %>
+      </div>
 
-			<div class="group">
-				<%= label_tag 'site_theme', t(:Site_Theme), :class => 'label' %>
-				<%= select_tag 'site_theme', options_for_select(@available_themes, SiteSettings.site_theme) %>
-			</div>
+      <div class="group">
+        <%= label_tag 'site_theme', t(:Site_Theme), :class => 'label' %>
+        <%= select_tag 'site_theme', options_for_select(@available_themes, SiteSettings.site_theme) %>
+      </div>
 
-			<div class="group navform">
-				<input type="submit" class="button" value="<%=t:Save%> &rarr;" />
-			</div>
-			<% end -%>
-		</div>
-	</div>
+      <div class="group navform">
+        <input type="submit" class="button" value="<%=t:Save%> &rarr;" />
+      </div>
+      <% end -%>
+    </div>
+  </div>
 </div>

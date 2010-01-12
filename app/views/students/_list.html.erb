@@ -1,51 +1,51 @@
 <% form_tag :controller => 'students', :action => 'bulk_operations', :class => "form", :method => "post" do %>
 <table class="table lesspadding">
-	<tr>
-		<th class="first">&nbsp;</th>
-		<th><%=t(:Name)%></th>
-		<% if @displayClubField -%>
-		<th><%=t(:Club)%></th>
-		<% end -%>
-		<th><%=t(:Main_Interest)%></th>
-		<th><%=t(:Groups)%></th>
-		<th><%=t(:Personal_Num)%></th>
-		<% if @displayPaymentField %>
-		<th><%=t(:Grade)%></th>
-		<th class="last"><%=t(:Latest_Payment)%>
-			<% else %>
-			<th class="last"><%=t(:Grade)%></th>
-			<% end %>
-		</tr>
-		<% @students.each do |student| -%>
-		<tr class="<%= cycle("odd", "even") %>">
-			<td><%= check_box_tag "selected_students[]", student.id, false, { :id => 'selected_students_' + student.id.to_s } %></td>
-			<td><%= link_to student.name, student_path(student) %></td>
-			<% if @displayClubField -%>
-			<td><%= link_to student.club.name, club_path(student.club) %></td>
-			<% end -%>
-			<td><%= student.main_interest.category %></td>
-			<td><%= student.groups.map{ |g| g.identifier }.join(", ") %></td>
-			<td><%= student.personal_number %></td>
-			<td><%= grade_str(student.current_grade) %></td>
-			<% if @displayPaymentField %>
-			<td class="student-<%= student.active? ? 'active' :
-			'inactive' %>"><%=h student.latest_payment.description %></td>
-			<% end %>
-		</tr>
-		<% end -%>
-	</table>
-	<div class="group navform">
-		<p><%= t(:Acts_on_selected) %></p>
-		<!--
-			<%= submit_tag t(:Send_Message) + " &rarr;", :name => "bulk_message", :class => "button" %>
-		-->
-		<% if current_user.clubs_permission? || current_user.graduations_permission?(@club) %>
-		<%= submit_tag t(:Register_Graduation) + " &rarr;", :name => "bulk_graduations", :class => "button", :id => "bulk_graduations" %>
-		<% end %>
-		<!-->
-			<% if @club && current_user.payments_permission?(@club) %>
-			<%= submit_tag t(:Register_Payment) + " &rarr;", :name => "bulk_payments", :class => "button", :id => "bulk_payments" %>
-			<% end %>
-		-->
-	</div>
-	<% end -%>
+  <tr>
+    <th class="first">&nbsp;</th>
+    <th><%=t(:Name)%></th>
+    <% if @displayClubField -%>
+    <th><%=t(:Club)%></th>
+    <% end -%>
+    <th><%=t(:Main_Interest)%></th>
+    <th><%=t(:Groups)%></th>
+    <th><%=t(:Personal_Num)%></th>
+    <% if @displayPaymentField %>
+    <th><%=t(:Grade)%></th>
+    <th class="last"><%=t(:Latest_Payment)%>
+      <% else %>
+      <th class="last"><%=t(:Grade)%></th>
+      <% end %>
+    </tr>
+    <% @students.each do |student| -%>
+    <tr class="<%= cycle("odd", "even") %>">
+      <td><%= check_box_tag "selected_students[]", student.id, false, { :id => 'selected_students_' + student.id.to_s } %></td>
+      <td><%= link_to student.name, student_path(student) %></td>
+      <% if @displayClubField -%>
+      <td><%= link_to student.club.name, club_path(student.club) %></td>
+      <% end -%>
+      <td><%= student.main_interest.category %></td>
+      <td><%= student.groups.map{ |g| g.identifier }.join(", ") %></td>
+      <td><%= student.personal_number %></td>
+      <td><%= grade_str(student.current_grade) %></td>
+      <% if @displayPaymentField %>
+      <td class="student-<%= student.active? ? 'active' :
+      'inactive' %>"><%=h student.latest_payment.description %></td>
+      <% end %>
+    </tr>
+    <% end -%>
+  </table>
+  <div class="group navform">
+    <p><%= t(:Acts_on_selected) %></p>
+    <!--
+      <%= submit_tag t(:Send_Message) + " &rarr;", :name => "bulk_message", :class => "button" %>
+    -->
+    <% if current_user.clubs_permission? || current_user.graduations_permission?(@club) %>
+    <%= submit_tag t(:Register_Graduation) + " &rarr;", :name => "bulk_graduations", :class => "button", :id => "bulk_graduations" %>
+    <% end %>
+    <!-->
+      <% if @club && current_user.payments_permission?(@club) %>
+      <%= submit_tag t(:Register_Payment) + " &rarr;", :name => "bulk_payments", :class => "button", :id => "bulk_payments" %>
+      <% end %>
+    -->
+  </div>
+  <% end -%>

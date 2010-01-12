@@ -1,117 +1,117 @@
 <div class="block">
-	<div class="secondary-navigation">
-		<ul>
-			<% if current_user.users_permission? %>
-			<li class="first"><%= link_to t(:Users), administrators_path %></li>
-			<% end %>
-			<li class="active last"><%= link_to t(:Profile), administrator_path(@admin) %></li>
-		</ul>
-		<div class="clear"></div>
-	</div>
-	<div class="content">
-		<div class="inner">
-			<p></p>
-			<table class="table">
-				<tr>
-					<th colspan="2" class="first last"><%= @admin.fname %> <%= @admin.sname %></th>
-				</tr>
+  <div class="secondary-navigation">
+    <ul>
+      <% if current_user.users_permission? %>
+      <li class="first"><%= link_to t(:Users), administrators_path %></li>
+      <% end %>
+      <li class="active last"><%= link_to t(:Profile), administrator_path(@admin) %></li>
+    </ul>
+    <div class="clear"></div>
+  </div>
+  <div class="content">
+    <div class="inner">
+      <p></p>
+      <table class="table">
+        <tr>
+          <th colspan="2" class="first last"><%= @admin.fname %> <%= @admin.sname %></th>
+        </tr>
 
-				<tr class="<%=cycle('odd', 'even')%>">
-					<td><%=t:Login%>:</td>
-					<td><%= @admin.login %></td>
-				</tr>
+        <tr class="<%=cycle('odd', 'even')%>">
+          <td><%=t:Login%>:</td>
+          <td><%= @admin.login %></td>
+        </tr>
 
-				<tr class="<%=cycle('odd', 'even')%>">
-					<td><%=t:Email%>:</td>
-					<td><%= @admin.email %></td>
-				</tr>
+        <tr class="<%=cycle('odd', 'even')%>">
+          <td><%=t:Email%>:</td>
+          <td><%= @admin.email %></td>
+        </tr>
 
-				<tr class="<%=cycle('odd', 'even')%>">
-					<td><%=t:Logged_in_since%>:</td>
-					<td><%= @admin.current_login_at %></td>
-				</tr>
+        <tr class="<%=cycle('odd', 'even')%>">
+          <td><%=t:Logged_in_since%>:</td>
+          <td><%= @admin.current_login_at %></td>
+        </tr>
 
-				<tr class="<%=cycle('odd', 'even')%>">
-					<td><%=t:Logged_in_from%>:</td>
-					<td><%= @admin.current_login_ip %></td>
-				</tr>
+        <tr class="<%=cycle('odd', 'even')%>">
+          <td><%=t:Logged_in_from%>:</td>
+          <td><%= @admin.current_login_ip %></td>
+        </tr>
 
-				<tr class="<%=cycle('odd', 'even')%>">
-					<td><%=t:Previous_login%>:</td>
-					<td><%= @admin.last_login_at %></td>
-				</tr>
+        <tr class="<%=cycle('odd', 'even')%>">
+          <td><%=t:Previous_login%>:</td>
+          <td><%= @admin.last_login_at %></td>
+        </tr>
 
-				<tr class="<%=cycle('odd', 'even')%>">
-					<td><%=t:Previous_login_from%>:</td>
-					<td><%= @admin.last_login_ip %></td>
-				</tr>
+        <tr class="<%=cycle('odd', 'even')%>">
+          <td><%=t:Previous_login_from%>:</td>
+          <td><%= @admin.last_login_ip %></td>
+        </tr>
 
-				<tr class="<%=cycle('odd', 'even')%>">
-					<td><%=t:Num_Loginss%>:</td>
-					<td><%= @admin.login_count %></td>
-				</tr>
-			</table>
+        <tr class="<%=cycle('odd', 'even')%>">
+          <td><%=t:Num_Loginss%>:</td>
+          <td><%= @admin.login_count %></td>
+        </tr>
+      </table>
 
-			<% if @admin.clubs_permission? || @admin.groups_permission? || @admin.users_permission? || @admin.mailinglists_permission? -%>
-			<table class="table">
-				<tr>
-					<th colspan="2" class="first last"><%=t:Global_Permissions%></th>
-				</tr>
+      <% if @admin.clubs_permission? || @admin.groups_permission? || @admin.users_permission? || @admin.mailinglists_permission? -%>
+      <table class="table">
+        <tr>
+          <th colspan="2" class="first last"><%=t:Global_Permissions%></th>
+        </tr>
 
-				<% if @admin.clubs_permission? %>
-				<tr class="<%=cycle('even', 'odd')%>">
-					<td><%=t(:Edit_clubs)%>:</td>
-					<td><%=t(:P_yes)%></td>
-				</tr>
-				<% end %>
+        <% if @admin.clubs_permission? %>
+        <tr class="<%=cycle('even', 'odd')%>">
+          <td><%=t(:Edit_clubs)%>:</td>
+          <td><%=t(:P_yes)%></td>
+        </tr>
+        <% end %>
 
-				<% if @admin.groups_permission? %>
-				<tr class="<%=cycle('even', 'odd')%>">
-					<td><%=t(:Edit_groups)%>:</td>
-					<td><%=t(:P_yes)%></td>
-				</tr>
-				<% end %>
+        <% if @admin.groups_permission? %>
+        <tr class="<%=cycle('even', 'odd')%>">
+          <td><%=t(:Edit_groups)%>:</td>
+          <td><%=t(:P_yes)%></td>
+        </tr>
+        <% end %>
 
-				<% if @admin.users_permission? %>
-				<tr class="<%=cycle('even', 'odd')%>">
-					<td><%=t(:Edit_Users)%>:</td>
-					<td><%=t(:P_yes)%></td>
-				</tr>
-				<% end %>
+        <% if @admin.users_permission? %>
+        <tr class="<%=cycle('even', 'odd')%>">
+          <td><%=t(:Edit_Users)%>:</td>
+          <td><%=t(:P_yes)%></td>
+        </tr>
+        <% end %>
 
-				<% if @admin.mailinglists_permission? %>
-				<tr class="<%=cycle('even', 'odd')%>">
-					<td><%=t(:Edit_Mailing_Lists)%>:</td>
-					<td><%=t(:P_yes)%></td>
-				</tr>
-				<% end %>
+        <% if @admin.mailinglists_permission? %>
+        <tr class="<%=cycle('even', 'odd')%>">
+          <td><%=t(:Edit_Mailing_Lists)%>:</td>
+          <td><%=t(:P_yes)%></td>
+        </tr>
+        <% end %>
 
-				<% if @admin.site_permission? %>
-				<tr class="<%=cycle('even', 'odd')%>">
-					<td><%=t(:Edit_Site)%>:</td>
-					<td><%=t(:P_yes)%></td>
-				</tr>
-				<% end %>
-			</table>
-			<% end -%>
+        <% if @admin.site_permission? %>
+        <tr class="<%=cycle('even', 'odd')%>">
+          <td><%=t(:Edit_Site)%>:</td>
+          <td><%=t(:P_yes)%></td>
+        </tr>
+        <% end %>
+      </table>
+      <% end -%>
 
-			<table class="table">
-				<tr>
-					<th colspan="2" class="first last"><%=t:Club_Permissions%></th>
-				</tr>
+      <table class="table">
+        <tr>
+          <th colspan="2" class="first last"><%=t:Club_Permissions%></th>
+        </tr>
 
-				<% clubs.each do |club| %>
-				<% perms = @admin.permissions_for(club) %>
-				<% if perms.length > 0 %>
-				<tr class="<%=cycle('even','odd')%>">
-					<td><%= club.name %>:</td>
-					<td><%= @admin.permissions_for(club).map{ |p| t(p).titlecase }.join(", ") %></td>
-				</tr>
-				<% end %>
-				<% end %>
-			</table>
-		</div>
-	</div>
+        <% clubs.each do |club| %>
+        <% perms = @admin.permissions_for(club) %>
+        <% if perms.length > 0 %>
+        <tr class="<%=cycle('even','odd')%>">
+          <td><%= club.name %>:</td>
+          <td><%= @admin.permissions_for(club).map{ |p| t(p).titlecase }.join(", ") %></td>
+        </tr>
+        <% end %>
+        <% end %>
+      </table>
+    </div>
+  </div>
 </div>
 
 <% content_for :sidebar, render(:partial => 'sidebar') -%>

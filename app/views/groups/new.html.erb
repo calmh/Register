@@ -1,18 +1,18 @@
 <div class="block">
-	<div class="secondary-navigation">
-		<ul>
-			<li class="first"><%= link_to t(:Groups), groups_path %></li>
-			<li class="active last"><%= link_to t(:New_Group), new_group_path %></li>
-		</ul>
-		<div class="clear"></div>
-	</div>
-	<div class="content">
-		<h2 class="title"><%=t:New_Group%></h2>
-		<div class="inner">
-			<% form_for :group, :url => groups_path, :html => { :class => :form } do |f| -%>
-			<%= render :partial => "form", :locals => {:f => f} %>
-			<% end -%>
-		</div>
-	</div>
+  <div class="secondary-navigation">
+    <ul>
+      <li class="first"><%= link_to t(:Groups), groups_path %></li>
+      <li class="active last"><%= link_to t(:New_Group), new_group_path %></li>
+    </ul>
+    <div class="clear"></div>
+  </div>
+  <div class="content">
+    <h2 class="title"><%=t:New_Group%></h2>
+    <div class="inner">
+      <% form_for :group, :url => groups_path, :html => { :class => :form } do |f| -%>
+      <%= render :partial => "form", :locals => {:f => f} %>
+      <% end -%>
+    </div>
+  </div>
 </div>
 

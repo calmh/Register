@@ -1,16 +1,16 @@
 <div class="block">
-	<div class="secondary-navigation">
-		<ul>
-			<li class="active"><%= link_to t(:New_Student), new_club_student_path(@club) %></li>
-		</ul>
-		<div class="clear"></div>
-	</div>
-	<div class="content">
-		<h2 class="title"><%=t:New_Student%></h2>
-		<div class="inner">
-			<% form_for :student, :url => club_students_path(-1), :html => { :class => :form } do |f| -%>
-			<%= render :partial => "form", :locals => {:f => f} %>
-			<% end -%>
-		</div>
-	</div>
+  <div class="secondary-navigation">
+    <ul>
+      <li class="active"><%= link_to t(:New_Student), new_club_student_path(@club) %></li>
+    </ul>
+    <div class="clear"></div>
+  </div>
+  <div class="content">
+    <h2 class="title"><%=t:New_Student%></h2>
+    <div class="inner">
+      <% form_for :student, :url => club_students_path(-1), :html => { :class => :form } do |f| -%>
+      <%= render :partial => "form", :locals => {:f => f} %>
+      <% end -%>
+    </div>
+  </div>
 </div>

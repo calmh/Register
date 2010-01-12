@@ -1,27 +1,27 @@
 <div class="block">
-	<div class="secondary-navigation">
-		<ul>
-			<% if current_user.type == 'Administrator' -%>
-			<li class="first"><%= link_to t(:Club_List), clubs_path %></li>
-			<li><%= link_to h(@club.name), club_path(@club) %></li>
-			<li><%= link_to h(@student.name), student_path(@student) %></li>
-			<% end -%>
-			<li class="active last"><%= link_to t(:Edit_Student), edit_student_path(@student) %></li>
-		</ul>
-		<div class="clear"></div>
-	</div>
-	<div class="content">
-		<h2 class="title"><%=t:Edit_Student%></h2>
-		<div class="inner">
-			<% form_for @student, :url => student_path(@student), :html => { :class => :form } do |f| -%>
-			<% if current_user.type == 'Administrator' -%>
-			<%= render :partial => "form", :locals => {:f => f} %>
-			<% elsif current_user.type == 'Student' && @student == current_user -%>
-			<%= render :partial => "self_form", :locals => {:f => f} %>
-			<% end -%>
-			<% end -%>
-		</div>
-	</div>
+  <div class="secondary-navigation">
+    <ul>
+      <% if current_user.type == 'Administrator' -%>
+      <li class="first"><%= link_to t(:Club_List), clubs_path %></li>
+      <li><%= link_to h(@club.name), club_path(@club) %></li>
+      <li><%= link_to h(@student.name), student_path(@student) %></li>
+      <% end -%>
+      <li class="active last"><%= link_to t(:Edit_Student), edit_student_path(@student) %></li>
+    </ul>
+    <div class="clear"></div>
+  </div>
+  <div class="content">
+    <h2 class="title"><%=t:Edit_Student%></h2>
+    <div class="inner">
+      <% form_for @student, :url => student_path(@student), :html => { :class => :form } do |f| -%>
+      <% if current_user.type == 'Administrator' -%>
+      <%= render :partial => "form", :locals => {:f => f} %>
+      <% elsif current_user.type == 'Student' && @student == current_user -%>
+      <%= render :partial => "self_form", :locals => {:f => f} %>
+      <% end -%>
+      <% end -%>
+    </div>
+  </div>
 </div>
 
 <% content_for :sidebar, render(:partial => 'sidebar') -%>

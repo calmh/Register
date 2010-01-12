@@ -1,10 +1,10 @@
 <div class="block">
-	<h3><%=t(:Links)%></h3>
-	<ul class="navigation">
-		<% if controller.action_name != "new" %>
-		<% if current_user.mailinglists_permission? %>
-		<li><%= link_to t(:New_Mailing_List), new_mailing_list_path %></li>
-		<% end %>
-		<% end %>
-	</ul>
+  <h3><%=t(:Links)%></h3>
+  <ul class="navigation">
+    <% if controller.action_name != "new" %>
+    <% if current_user.mailinglists_permission? %>
+    <li><%= link_to t(:New_Mailing_List), new_mailing_list_path %></li>
+    <% end %>
+    <% end %>
+  </ul>
 </div>

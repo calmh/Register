@@ -1,51 +1,51 @@
 <div class="block">
-	<h3><%=t(:Search_Parameters)%></h3>
-	<div class="content">
-		<p><%=t(:Search_descr)%></p>
-		<% if controller.action_name == 'search' -%>
-		<% destination = search_path -%>
-		<% else -%>
-		<% destination = filter_club_students_path(@club.id) -%>
-		<% end -%>
+  <h3><%=t(:Search_Parameters)%></h3>
+  <div class="content">
+    <p><%=t(:Search_descr)%></p>
+    <% if controller.action_name == 'search' -%>
+    <% destination = search_path -%>
+    <% else -%>
+    <% destination = filter_club_students_path(@club.id) -%>
+    <% end -%>
 
-		<% form_tag destination, :class => "form", :method => "post" do -%>
-		<table class="table">
-			<% if @clubs != nil -%>
-			<tr class="<%=cycle('even','odd')%>">
-				<td><%=t:Club%>:</td>
-				<td>
-					<%- clubs.each do |club| -%>
-					<label><%=check_box_tag 'searchparams[club_id][]', club.id, @searchparams.club_id.include?(club.id)%> <%=club.name%><br/></label>
-					<%- end -%>
-				</td>
-			</tr>
-			<% end -%>
-			<tr class="<%=cycle('even','odd')%>">
-				<td><%=t:Grade%>:</td>
-				<td><%= select "searchparams", "grade", [[ t(:All), -100 ]] + grades.map { |g| [ g.description, g.id ] } %></td>
-			</tr>
-			<tr class="<%=cycle('even','odd')%>">
-				<td><%=t:Group%>:</td>
-				<td><%= select "searchparams", "group_id", [[ t(:All), -100 ]] + groups.map { |g| [ g.identifier, g.id ] } %></td>
-			</tr>
-			<tr class="<%=cycle('even','odd')%>">
-				<td><%=t:Title%>:</td>
-				<td><%= select "searchparams", "title_id", [[ t(:All), -100 ]] + titles.map { |g| [ g.title, g.id ] } %></td>
-			</tr>
-			<tr class="<%=cycle('even','odd')%>">
-				<td><%=t:Board_Position%>:</td>
-				<td><%= select "searchparams", "board_position_id", [[ t(:All), -100 ]] + board_positions.map { |g| [ g.position, g.id ] } %></td>
-			</tr>
-			<tr class="<%=cycle('even','odd')%>">
-				<td><%=t:Club_Position%>:</td>
-				<td><%= select "searchparams", "club_position_id", [[ t(:All), -100 ]] + club_positions.map { |g| [ g.position, g.id ] } %></td>
-			</tr>
-			<tr class="<%=cycle('even','odd')%>">
-				<td><%=t:Only_Active%>:</td>
-				<td><label><%=check_box_tag 'searchparams[only_active]', '1', @searchparams.only_active %></label></td>
-			</tr>
-		</table>
-		<%= submit_tag t(:Search) %>
-		<% end -%>
-	</div>
+    <% form_tag destination, :class => "form", :method => "post" do -%>
+    <table class="table">
+      <% if @clubs != nil -%>
+      <tr class="<%=cycle('even','odd')%>">
+        <td><%=t:Club%>:</td>
+        <td>
+          <%- clubs.each do |club| -%>
+          <label><%=check_box_tag 'searchparams[club_id][]', club.id, @searchparams.club_id.include?(club.id)%> <%=club.name%><br/></label>
+          <%- end -%>
+        </td>
+      </tr>
+      <% end -%>
+      <tr class="<%=cycle('even','odd')%>">
+        <td><%=t:Grade%>:</td>
+        <td><%= select "searchparams", "grade", [[ t(:All), -100 ]] + grades.map { |g| [ g.description, g.id ] } %></td>
+      </tr>
+      <tr class="<%=cycle('even','odd')%>">
+        <td><%=t:Group%>:</td>
+        <td><%= select "searchparams", "group_id", [[ t(:All), -100 ]] + groups.map { |g| [ g.identifier, g.id ] } %></td>
+      </tr>
+      <tr class="<%=cycle('even','odd')%>">
+        <td><%=t:Title%>:</td>
+        <td><%= select "searchparams", "title_id", [[ t(:All), -100 ]] + titles.map { |g| [ g.title, g.id ] } %></td>
+      </tr>
+      <tr class="<%=cycle('even','odd')%>">
+        <td><%=t:Board_Position%>:</td>
+        <td><%= select "searchparams", "board_position_id", [[ t(:All), -100 ]] + board_positions.map { |g| [ g.position, g.id ] } %></td>
+      </tr>
+      <tr class="<%=cycle('even','odd')%>">
+        <td><%=t:Club_Position%>:</td>
+        <td><%= select "searchparams", "club_position_id", [[ t(:All), -100 ]] + club_positions.map { |g| [ g.position, g.id ] } %></td>
+      </tr>
+      <tr class="<%=cycle('even','odd')%>">
+        <td><%=t:Only_Active%>:</td>
+        <td><label><%=check_box_tag 'searchparams[only_active]', '1', @searchparams.only_active %></label></td>
+      </tr>
+    </table>
+    <%= submit_tag t(:Search) %>
+    <% end -%>
+  </div>
 </div>

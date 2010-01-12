@@ -1,61 +1,61 @@
 <% if current_user.type == "Administrator" -%>
 <div class="block">
-	<h3><%=t(:Links)%> <%= t(:for) %> <%= h(@student.name) %></h3>
-	<ul class="navigation">
-		<% if current_user.edit_club_permission?(@club) && controller.action_name != "edit" -%>
-		<li><%= link_to t(:Edit), edit_student_path(@student) %></li>
-		<% end -%>
-		<% if controller.action_name != "show" -%>
-		<li><%= link_to t(:Show), student_path(@student) %></li>
-		<% end -%>
-		<% if current_user.graduations_permission?(@club) && controller.controller_name != "graduations" -%>
-		<li><%= link_to t(:Graduations), student_graduations_path(@student) %></li>
-		<% end -%>
-		<% if current_user.payments_permission?(@club) && controller.controller_name != "payments" -%>
-		<li><%= link_to t(:Payments), student_payments_path(@student) %></li>
-		<% end -%>
-	</ul>
+  <h3><%=t(:Links)%> <%= t(:for) %> <%= h(@student.name) %></h3>
+  <ul class="navigation">
+    <% if current_user.edit_club_permission?(@club) && controller.action_name != "edit" -%>
+    <li><%= link_to t(:Edit), edit_student_path(@student) %></li>
+    <% end -%>
+    <% if controller.action_name != "show" -%>
+    <li><%= link_to t(:Show), student_path(@student) %></li>
+    <% end -%>
+    <% if current_user.graduations_permission?(@club) && controller.controller_name != "graduations" -%>
+    <li><%= link_to t(:Graduations), student_graduations_path(@student) %></li>
+    <% end -%>
+    <% if current_user.payments_permission?(@club) && controller.controller_name != "payments" -%>
+    <li><%= link_to t(:Payments), student_payments_path(@student) %></li>
+    <% end -%>
+  </ul>
 </div>
 <% end -%>
 
 <div class="block">
-	<h3><%=t:Current_Grade%></h3>
-	<div class="content">
-		<% g = @student.current_grade %>
-		<p>
-			<b><%=t:Current_Grade%>:</b>
-			<%=grade_str(g)%>
-		</p>
-		<p>
-			<b><%=t:Held_Since%>:</b>
-			<%- if g == nil -%>
-			-
-			<%- else -%>
-			<%=l(g.graduated.to_date)%>
-			<%- end -%>
-		</p>
-	</div>
+  <h3><%=t:Current_Grade%></h3>
+  <div class="content">
+    <% g = @student.current_grade %>
+    <p>
+      <b><%=t:Current_Grade%>:</b>
+      <%=grade_str(g)%>
+    </p>
+    <p>
+      <b><%=t:Held_Since%>:</b>
+      <%- if g == nil -%>
+      -
+      <%- else -%>
+      <%=l(g.graduated.to_date)%>
+      <%- end -%>
+    </p>
+  </div>
 </div>
 
 <div class="block">
-	<h3><%=t:Latest_Payment%></h3>
-	<div class="content">
-		<p>
-			<% if @student.payments.blank? %>
-			<%=t:No_payment%>
-			<% else %>
-			<% p = @student.payments[0] %>
-			<b><%=t:Amount%>:</b>
-			<%=p.amount%>
-		</p>
-		<p>
-			<b><%=t:Received%>:</b>
-			<%=l(p.received.to_date)%>
-		</p>
-		<p>
-			<b><%=t:Description%>:</b>
-			<%=h p.description%>
-			<% end %>
-		</p>
-	</div>
+  <h3><%=t:Latest_Payment%></h3>
+  <div class="content">
+    <p>
+      <% if @student.payments.blank? %>
+      <%=t:No_payment%>
+      <% else %>
+      <% p = @student.payments[0] %>
+      <b><%=t:Amount%>:</b>
+      <%=p.amount%>
+    </p>
+    <p>
+      <b><%=t:Received%>:</b>
+      <%=l(p.received.to_date)%>
+    </p>
+    <p>
+      <b><%=t:Description%>:</b>
+      <%=h p.description%>
+      <% end %>
+    </p>
+  </div>
 </div>

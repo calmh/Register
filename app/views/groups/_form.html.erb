@@ -1,46 +1,46 @@
 <% if controller.action_name == "edit" %>
 <div class="group">
-	<%= f.label :identifier, t(:Merge), :class => :label %>
-	<%= t:Merge_descr %><br/>
-	<%= select "group", "id", groups.map { |g| [ g.identifier, g.id ] } %>
+  <%= f.label :identifier, t(:Merge), :class => :label %>
+  <%= t:Merge_descr %><br/>
+  <%= select "group", "id", groups.map { |g| [ g.identifier, g.id ] } %>
 </div>
 <% end %>
 
 <div class="group">
-	<%= f.label :identifier, t(:Name), :class => :label %>
-	<%= f.text_field :identifier, :class => 'text_field' %>
+  <%= f.label :identifier, t(:Name), :class => :label %>
+  <%= f.text_field :identifier, :class => 'text_field' %>
 </div>
 
 <div class="group">
-	<%= f.label :default, t(:Default), :class => :label %>
-	<%= f.check_box :default %><br/>
-	<span class="description"><%=t :Default_group_descr%></span>
+  <%= f.label :default, t(:Default), :class => :label %>
+  <%= f.check_box :default %><br/>
+  <span class="description"><%=t :Default_group_descr%></span>
 </div>
 
 <div class="group">
-	<%= f.label :comments, t(:Description), :class => :label %>
-	<%= f.text_area :comments, :class => 'text_area', :rows => 4, :cols => 16 %>
+  <%= f.label :comments, t(:Description), :class => :label %>
+  <%= f.text_area :comments, :class => 'text_area', :rows => 4, :cols => 16 %>
 </div>
 
 <div class="group">
-	<%= f.label nil, t(:Members), :class => :label %>
-	<% @students = @group.students %>
-	<table class="table">
-		<tr>
-			<th class="first"><%=t(:Club)%></th>
-			<th><%=t(:Groups)%></th>
-			<th class="last"><%=t(:Name)%></th>
-		</tr>
-		<% @students.each do |student| -%>
-		<tr class="<%= cycle("odd", "even") %>">
-			<td><%= link_to student.club.name, club_path(student.club) %></td>
-			<td><%= student.groups.map{ |g| g.identifier }.join(", ") %></td>
-			<td><%= link_to student.name, student_path(student) %></td>
-		</tr>
-		<% end -%>
-	</table>
+  <%= f.label nil, t(:Members), :class => :label %>
+  <% @students = @group.students %>
+  <table class="table">
+    <tr>
+      <th class="first"><%=t(:Club)%></th>
+      <th><%=t(:Groups)%></th>
+      <th class="last"><%=t(:Name)%></th>
+    </tr>
+    <% @students.each do |student| -%>
+    <tr class="<%= cycle("odd", "even") %>">
+      <td><%= link_to student.club.name, club_path(student.club) %></td>
+      <td><%= student.groups.map{ |g| g.identifier }.join(", ") %></td>
+      <td><%= link_to student.name, student_path(student) %></td>
+    </tr>
+    <% end -%>
+  </table>
 </div>
 
 <div class="group navform">
-	<input type="submit" class="button" value="<%=t:Save%> &rarr;" /> <%=t:or%> <%= link_to t(:Cancel), groups_path %>
+  <input type="submit" class="button" value="<%=t:Save%> &rarr;" /> <%=t:or%> <%= link_to t(:Cancel), groups_path %>
 </div>
