@@ -1,0 +1,87 @@
+.block
+
+  .secondary-navigation
+    %ul
+      %li.first= link_to t(:Club_List), clubs_path
+      %li= link_to h(@club.name), club_path(@club)
+      %li.last.active= link_to @student.name, student_path(@student)
+    .clear
+
+  .content
+    .inner
+      %p
+      %table.table
+        %tr{:class => cycle("odd", "even")}
+          %th.first.odd.last{:colspan => 2}= h @student.name
+
+        %tr{:class => cycle("odd", "even")}
+          %td
+            %b= t(:Groups) + ":"
+          %td= @student.group_list
+
+        %tr{:class => cycle("odd", "even")}
+          %td
+            %b= t(:Personal_Num) + ":"
+          %td= h @student.personal_number
+
+        %tr{:class => cycle("odd", "even")}
+          %td
+            %b= t(:Gender) + ":"
+          %td= t(@student.gender).titlecase
+
+        %tr{:class => cycle("odd", "even")}
+          %td
+            %b= t(:Main_Interest) + ":"
+          %td= @student.main_interest.category
+
+        %tr{:class => cycle("odd", "even")}
+          %td
+            %b= t(:Email) + ":"
+          %td= h @student.email
+
+        %tr{:class => cycle("odd", "even")}
+          %td
+            %b= t(:Mailing_Lists) + ":"
+          %td= @student.mailing_lists.map{ |g| g.description }.join(", ")
+
+        %tr{:class => cycle("odd", "even")}
+          %td
+            %b= t(:Home_phone) + ":"
+          %td= h @student.home_phone
+
+        %tr{:class => cycle("odd", "even")}
+          %td
+            %b= t(:Mobile_phone) + ":"
+          %td= h @student.mobile_phone
+
+        %tr{:class => cycle("odd", "even")}
+          %td
+            %b= t(:Address) + ":"
+          %td
+            = h @student.street
+            %br
+            = h format_zipcode(@student.zipcode)
+            %br
+            = h @student.city
+
+        %tr{:class => cycle("odd", "even")}
+          %td
+            %b= t(:Title) + ":"
+          %td= h @student.title.title
+
+        %tr{:class => cycle("odd", "even")}
+          %td
+            %b= t(:Board_Position) + ":"
+          %td= h @student.board_position.position
+
+        %tr{:class => cycle("odd", "even")}
+          %td
+            %b= t(:Club_Position) + ":"
+          %td= h @student.club_position.position
+
+        %tr{:class => cycle("odd", "even")}
+          %td
+            %b= t(:Comments) + ":"
+          %td= simple_format @student.comments
+
+= content_for :sidebar, render(:partial => 'sidebar')

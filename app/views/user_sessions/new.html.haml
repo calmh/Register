@@ -1,0 +1,19 @@
+.block
+  .content
+    %h2.title= t:Log_in
+    .inner
+      - form_for @user_session, :url => user_session_path do |f|
+        %p
+          = f.label :login, t(:Login_or_email)
+          %br
+          = f.text_field :login
+        %p
+          = f.label :password, t(:Password)
+          %br
+          = f.password_field :password
+        %p
+          = f.check_box :remember_me
+          = f.label t(:Remember_me)
+        %p
+          = f.submit t(:Log_in)
+
