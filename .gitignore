@@ -4,3 +4,4 @@ tmp/**/*
 tmp/*
 doc/api
 doc/app
+public/stylesheets/web_app_theme_override.css
