@@ -1,12 +1,15 @@
 class UserSessionsController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_administrator, :only => :destroy
+  caches_page :new
 
   def new
     @user_session = UserSession.new
   end
 
   def create
+    flash.delete(:warning)
+    flash.delete(:notice)
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
       # flash[:notice] = t(:Login_successful)
@@ -26,7 +29,6 @@ class UserSessionsController < ApplicationController
 
   def destroy
     current_user_session.destroy
-    flash[:notice] = t(:Logout_successful)
     redirect_to new_user_session_path
   end
 end
