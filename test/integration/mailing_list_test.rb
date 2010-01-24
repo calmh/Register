@@ -27,6 +27,21 @@ class MailingListTest < ActionController::IntegrationTest
 		assert_not_contain "all@example.com"
 	end
 
+	test "email address must be unique" do
+		log_in
+		click_link "Epostlistor"
+
+		assert_contain "all@example.com"
+		click_link "Ny epostlista"
+
+		fill_in "Epostadress", :with => "all@example.com"
+		fill_in "Förklaring", :with => "En testlista"
+		fill_in "Säkerhet", :with => "public"
+		click_button "Spara"
+
+    assert_contain "upptagen"
+	end
+
 	test "remove student from mailing list" do
 		log_in
 		click_link "Epostlistor"

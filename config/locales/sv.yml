@@ -204,6 +204,11 @@ sv:
 
   activerecord:
     errors:
+      models:
+          mailing_list:
+              attributes:
+                  email:
+                      taken: Epostadress upptagen
       messages:
         too_short: för kort
         taken: upptaget
