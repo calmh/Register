@@ -127,7 +127,7 @@ class StudentsController < ApplicationController
     @club = Club.find(params[:club_id])
     @student = Student.new
     @student.club = @club
-    @student.mailing_lists = MailingList.find(:all, :conditions => { :default => 1 })
+    @student.mailing_lists = MailingList.find_all_by_default_and_club_id(1, nil) + MailingList.find_all_by_default_and_club_id(1, @club.id)
     @student.groups = Group.find(:all, :conditions => { :default => 1 })
 
     respond_to do |format|

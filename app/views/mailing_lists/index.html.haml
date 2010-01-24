@@ -1,0 +1,28 @@
+.block
+  .secondary-navigation
+    %ul
+      %li.active.first.last= link_to t(:Mailing_Lists), mailing_lists_path
+    .clear
+  .content
+    %h2.title= t(:Mailing_Lists)
+    .inner
+      %table.table
+        %tr
+          %th.first= t(:Email)
+          %th= t(:Belongs_to_club)
+          %th= t(:Description)
+          %th= t(:Default)
+          %th.last= t(:Security)
+        - @mailing_lists.each do |mailing_list|
+          %tr{ :class => cycle("odd", "even") }
+            %td= link_to mailing_list.email, edit_mailing_list_path(mailing_list)
+            %td= h mailing_list.club.try(:name)
+            %td= h mailing_list.description
+            %td= mailing_list.default? ? t(:P_yes) : t(:P_no)
+            %td= t(mailing_list.security.titlecase)
+      .actions-bar
+        .actions
+      .clear
+
+= content_for :sidebar, render(:partial => 'sidebar')
+

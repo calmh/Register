@@ -11,7 +11,7 @@
 <div class="group">
   <%= f.label :mailing_lists, t(:Mailing_Lists), :class => :label %>
   <% mailing_lists.each do |ml| -%>
-  <% if ml.security == 'public' -%>
+  <% if ml.security == 'public' && ( ml.club == nil || ml.club == @club ) -%>
   <label><td><%= check_box_tag "subscribes_to[" + ml.id.to_s + "]", value = "1", checked = @student.mailing_list_ids.include?(ml.id) %> <%=ml.description%></label><br/>
   <% else -%>
   <%= hidden_field_tag "subscribes_to[" + ml.id.to_s + "]", value = @student.mailing_list_ids.include?(ml.id) ? "1" : "0" %>

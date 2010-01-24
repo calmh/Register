@@ -1,0 +1,46 @@
+.group
+  = f.label :email, t(:Email), :class => :label
+  = f.text_field :email, :class => 'text_field'
+
+.group
+  = f.label :description, t(:Description), :class => :label
+  = f.text_field :description, :class => 'text_field'
+
+.group
+  = f.label :security, t(:Security), :class => :label
+  = f.select(:security, {  t(:Public) => 'public', t(:Private) => 'private' })
+  %br
+  %span.description= t(:Security_descr)
+
+.group
+  = f.label :club, t(:Club), :class => :label
+  = f.select(:club_id, [ [ t(:None), nil ] ] + clubs.map { |c| [c.name, c.id ]})
+
+.group
+  = f.label :default, t(:Default), :class => :label
+  = f.check_box :default
+  %br
+  %span.description= t(:Default_ML_descr)
+
+- if controller.action_name != "new"
+  .group
+    = f.label nil, t(:Members), :class => :label
+    - @students = @mailing_list.students
+    %table.table
+      %tr
+        %th.first= t(:Club)
+        %th= t(:Groups)
+        %th.last= t(:Name)
+      - @students.each do |student|
+        %tr{ :class => cycle("odd", "even") }
+          %td= link_to student.club.name, club_path(student.club)
+          %td= student.groups.map{ |g| g.identifier }.join(", ")
+          %td= link_to student.name, student_path(student)
+
+.group.navform
+  %input.button{ :type => "submit", :value => t(:Save) + " &rarr;" }
+  - if controller.action_name != "new"
+    = t(:or)
+    = link_to t(:Destroy), @mailing_list, :confirm => t(:Are_you_sure_mailing_list), :method => :delete
+  = t(:or)
+  = link_to t(:Cancel), mailing_lists_path

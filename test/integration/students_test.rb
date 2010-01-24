@@ -145,4 +145,42 @@ class GroupsTest < ActionController::IntegrationTest
 
 		assert_contain "Test Testsson"
 	end
+
+	test "new student should join club mailing list per default" do
+		log_in
+		click_link "Klubbar"
+		click_link "Brålanda"
+		click_link "Ny tränande"
+
+		fill_in "Förnamn", :with => "Test"
+		fill_in "Efternamn", :with => "Testsson"
+		fill_in "Personnummer", :with => "19850203"
+		click_button "Spara"
+
+		assert_contain "Brålanda-elever"
+
+		click_link "Epostlistor"
+		click_link "bralanda@example.com"
+
+		assert_contain "Test Testsson"
+	end
+
+	test "new student should not join other club mailing list per default" do
+		log_in
+		click_link "Klubbar"
+		click_link "Edsvalla"
+		click_link "Ny tränande"
+
+		fill_in "Förnamn", :with => "Test"
+		fill_in "Efternamn", :with => "Testsson"
+		fill_in "Personnummer", :with => "19850203"
+		click_button "Spara"
+
+		assert_not_contain "Brålanda-elever"
+
+		click_link "Epostlistor"
+		click_link "bralanda@example.com"
+
+		assert_not_contain "Test Testsson"
+	end
 end

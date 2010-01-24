@@ -176,6 +176,9 @@ sv:
   Site_Theme: Webbplatsens tema
   No_payment: Ingen inbetalning registrerad
   Validations: Validera data
+  Belongs_to_club: Tillhör klubb
+  Mailing_list_updated: Epostlistan har uppdateras.
+  None: Ingen
 
   authlogic:
      error_messages:
