@@ -25,13 +25,13 @@ class ViewingTest < ActionController::IntegrationTest
 		check "searchparams[only_active]"
 		click_button "Sök"
 
-		assert_contain "Baran"
-		assert_not_contain "Razmus"
+		assert_contain "Razmus"
+		assert_not_contain "Baran"
 
 		click_button "Sök"
 
-		assert_contain "Baran"
-		assert_not_contain "Razmus"
+		assert_contain "Razmus"
+		assert_not_contain "Baran"
 
 		uncheck "searchparams[only_active]"
 		click_button "Sök"
