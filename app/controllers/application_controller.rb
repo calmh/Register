@@ -80,34 +80,47 @@ class ApplicationController < ActionController::Base
 
   def require_student_or_administrator
     return denied unless current_user
+    return true
   end
 
   def require_administrator_or_self(student)
     return denied unless current_user.type == 'Administrator' || current_user == student
+    return true
   end
 
   def require_administrator
     return denied unless current_user && current_user.type == 'Administrator'
+    return true
   end
 
   def require_clubs_permission
     return denied unless current_user
     return denied unless current_user.clubs_permission?
+    return true
   end
 
   def require_groups_permission
     return denied unless current_user
     return denied unless current_user.groups_permission?
+    return true
   end
 
   def require_users_permission
     return denied unless current_user
     return denied unless current_user.users_permission?
+    return true
   end
 
   def require_mailing_lists_permission
     return denied unless current_user
     return denied unless current_user.mailinglists_permission?
+    return true
+  end
+
+  def require_export_permission(club)
+    return denied unless current_user
+    return denied unless current_user.export_permission?(club)
+    return true
   end
 
   def require_no_user
@@ -116,6 +129,7 @@ class ApplicationController < ActionController::Base
       redirect_to current_user
       return false
     end
+    return true
   end
 
   def store_location
