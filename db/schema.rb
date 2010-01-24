@@ -172,6 +172,7 @@ ActiveRecord::Schema.define(:version => 20100124102924) do
     t.integer  "club_position_id"
   end
 
+  add_index "users", ["club_id"], :name => "index_users_on_club_id"
   add_index "users", ["fname"], :name => "index_users_on_fname"
   add_index "users", ["sname"], :name => "index_users_on_sname"
   add_index "users", ["type"], :name => "index_users_on_type"
