@@ -158,4 +158,19 @@ class PermissionTest < ActionController::IntegrationTest
 		click_link "Användarprofil"
 		assert_not_contain "Ny användare"
 	end
+
+	test "ci does not have access to export" do
+		log_in_as_ci
+		click_link "Edsvalla"
+		assert_not_contain "Export"
+		visit "/clubs/8/students.csv"
+		assert_contain "logga in"
+	end
+
+	test "admin has access to export" do
+		log_in
+		click_link "Edsvalla"
+		click_link "Exportera som CSV"
+		assert_contain "first_name"
+	end
 end

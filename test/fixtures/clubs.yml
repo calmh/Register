@@ -1,31 +1,18 @@
---- 
-clubs_006: 
+clubs_006:
   name: Nybro
-  created_at: 2009-12-09 09:09:19
-  updated_at: 2009-12-09 09:09:19
   id: "9"
-clubs_001: 
+clubs_001:
   name: "Br\xC3\xA5landa"
-  created_at: 2009-12-09 09:09:19
-  updated_at: 2009-12-09 09:09:19
   id: "2"
-clubs_002: 
+clubs_002:
   name: "Vall\xC3\xA5kra"
-  created_at: 2009-12-09 09:09:19
-  updated_at: 2009-12-09 09:09:19
   id: "3"
-clubs_003: 
+clubs_003:
   name: "Frilles\xC3\xA5s"
-  created_at: 2009-12-09 09:09:19
-  updated_at: 2009-12-09 09:09:19
   id: "4"
-clubs_004: 
+clubs_004:
   name: Tandsbyn
-  created_at: 2009-12-09 09:09:19
-  updated_at: 2009-12-09 09:09:19
   id: "5"
-clubs_005: 
+clubs_005:
   name: Edsvalla
-  created_at: 2009-12-09 09:09:19
-  updated_at: 2009-12-09 09:09:19
   id: "8"
