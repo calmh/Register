@@ -27,6 +27,9 @@
     <% if current_user.edit_club_permission?(@club) %>
     <li><%= link_to t(:New_Student), new_club_student_path(@club) %></li>
     <% end %>
+    <% if current_user.export_permission?(@club) -%>
+    <li><%= link_to t(:Export_as_CSV), request.request_uri + ".csv" %></li>
+    <% end -%>
   </ul>
 </div>
 <%= render :partial => 'students/searchbar' %>

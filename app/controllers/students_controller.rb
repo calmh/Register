@@ -87,7 +87,12 @@ class StudentsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html
-      format.xml  { render :xml => @students }
+      format.csv  do
+        if require_export_permission(@club)
+          send_data(students_csv, :type => 'text/csv; charset=utf-8; header=present', :disposition => "attachment; filename=#{@club.name}.csv")
+          return
+        end
+      end
     end
   end
 
@@ -95,32 +100,17 @@ class StudentsController < ApplicationController
     @searchparams = SearchParams.new(params)
     @club = Club.find(params[:club_id])
     @students = @searchparams.find_in_club(@club)
-
-    respond_to do |format|
-      format.html { render :index }
-      format.xml  { render :xml => @students }
-    end
   end
 
   def search
     @searchparams = SearchParams.new(params)
     @clubs = Club.find(:all, :order => :name)
     @students = @searchparams.find_all
-
-    respond_to do |format|
-      format.html
-      format.xml  { render :xml => @student }
-    end
   end
 
   def show
     @student = Student.find(params[:id])
     @club = @student.club
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @student }
-    end
   end
 
   def new
@@ -129,11 +119,6 @@ class StudentsController < ApplicationController
     @student.club = @club
     @student.mailing_lists = MailingList.find_all_by_default_and_club_id(1, nil) + MailingList.find_all_by_default_and_club_id(1, @club.id)
     @student.groups = Group.find(:all, :conditions => { :default => 1 })
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @student }
-    end
   end
 
   def edit
@@ -156,15 +141,11 @@ class StudentsController < ApplicationController
       @student.mailing_list_ids = ml_ids
     end
 
-    respond_to do |format|
-      if @student.save
-        flash[:notice] = t:Student_created
-        format.html { redirect_to(@student) }
-        format.xml  { render :xml => @student, :status => :created, :location => @student }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @student.errors, :status => :unprocessable_entity }
-      end
+    if @student.save
+      flash[:notice] = t:Student_created
+      redirect_to(@student)
+    else
+      render :action => "new"
     end
   end
 
@@ -198,25 +179,17 @@ class StudentsController < ApplicationController
       redirect = edit_student_path(@student)
     end
 
-    respond_to do |format|
-      if success
-        format.html { redirect_to redirect }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @student.errors, :status => :unprocessable_entity }
-      end
+    if success
+      redirect_to redirect
+    else
+      render :action => "edit"
     end
   end
 
   def destroy
     @student = Student.find(params[:id])
     @student.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(@student.club) }
-      format.xml  { head :ok }
-    end
+    redirect_to(@student.club)
   end
 
   def bulk_operations
@@ -235,11 +208,16 @@ class StudentsController < ApplicationController
 
   def register
     @student = Student.new
-
-    respond_to do |format|
-      format.html # register.html.erb
-      format.xml  { render :xml => @student }
-    end
   end
 
+  private
+  def students_csv
+    csv_string = FasterCSV.generate do |csv|
+      csv << ["id", "first_name", "last_name", "groups", "personal_number", "gender", "main_interest", "email", "mailing_lists", "home_phone", "mobile_phone", "address", "title", "board_position", "club_position", "comments", "grade", "graduated", "payment_recieved", "payment_amount", "payment_description"]
+      @students.each do |user|
+        csv << [user.id, user.fname, user.sname, user.groups.map{|g| g.identifier}.join(","), user.personal_number, user.gender, user.main_interest.category, user.email, user.mailing_lists.map{|m| m.email}.join(","), user.home_phone, user.mobile_phone, user.street, user.title.title, user.board_position.position, user.club_position.position, user.comments, user.current_grade.try(:grade).try(:description), user.current_grade.try(:graduated), user.latest_payment.try(:received), user.latest_payment.try(:amount),  user.latest_payment.try(:description)]
+      end
+    end
+    return csv_string
+  end
 end

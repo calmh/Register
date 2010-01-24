@@ -1,7 +1,7 @@
 module UsersHelper
   def permission_checkboxes(user, club)
     perms = user.permissions_for(club)
-    ["read", "edit", "delete", "payments", "graduations"].map do |perm|
+    ["read", "edit", "delete", "payments", "graduations", "export"].map do |perm|
       "<td>" + permission_checkbox(club.id, perm, perms.include?(perm)) + "</td>"
     end
   end

@@ -178,3 +178,5 @@ en:
   Belongs_to_club: Belongs to club
   Mailing_list_updated: Mailing list updated.
   None: None
+  Export: Export
+  Export_as_CSV: Export as CSV

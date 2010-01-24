@@ -35,4 +35,8 @@ class Administrator < User
   def payments_permission?(club)
     permissions_for(club).include? 'payments'
   end
+
+  def export_permission?(club)
+    permissions_for(club).include? 'export'
+  end
 end

@@ -179,6 +179,8 @@ sv:
   Belongs_to_club: Tillhör klubb
   Mailing_list_updated: Epostlistan har uppdateras.
   None: Ingen
+  Export: Exportera
+  Export_as_CSV: Exportera som CSV
 
   authlogic:
      error_messages:
