@@ -9,7 +9,6 @@ class UserSessionsController < ApplicationController
   def create
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
-      # flash[:notice] = t(:Login_successful)
       @user = @user_session.user
       if @user.type == 'Student'
         default = edit_student_path(@user)

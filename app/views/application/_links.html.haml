@@ -1,0 +1,22 @@
+- active = active_string(controller.controller_name == 'clubs' || (controller.controller_name == "students" && controller.action_name != "search"))
+%li.first{:class => active}= link_to t(:Club_List), clubs_path
+
+- if current_user.clubs_permission?
+  - active = active_string(controller.controller_name == 'students' && controller.action_name == "search")
+  %li{:class => active}= link_to t(:Search_Students), search_path
+
+- if current_user.groups_permission?
+  - active = active_string(controller.controller_name == 'groups')
+  %li{:class => active}= link_to t(:Group_List), groups_path
+
+- if current_user.mailinglists_permission?
+  - active = active_string(controller.controller_name == 'mailing_lists')
+  %li{:class => active}= link_to t(:Mailing_Lists), mailing_lists_path
+
+- if current_user.users_permission?
+  - active = active_string(controller.controller_name == 'administrators')
+  %li{:class => active}= link_to t(:User_List), administrators_path
+
+- if current_user.site_permission?
+  - active = active_string(controller.controller_name == 'application')
+  %li{:class => active}= link_to t(:Edit_Site), edit_site_path

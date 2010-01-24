@@ -45,6 +45,11 @@ module ApplicationHelper
   end
 
   def version
-    `git describe`.strip.sub(/-(\d+)-g([0-9a-f]+)/, ' (+\1, \2)')
+    `git describe`.strip.sub(/-(\d+)-g[0-9a-f]+$/, '+\1')
+  end
+
+  def active_string(active)
+    return 'active' if active
+    ''
   end
 end
