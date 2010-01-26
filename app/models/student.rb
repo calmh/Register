@@ -26,6 +26,12 @@ class Student < User
   validates_presence_of :club_position
   validates_presence_of :title
 
+  acts_as_authentic do |c|
+    c.validate_password_field = true
+    c.require_password_confirmation = true
+    c.validates_length_of_login_field_options = { :in => 2..20 }
+  end
+
   def luhn
     fact = 2
     sum = 0

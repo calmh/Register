@@ -23,13 +23,22 @@ class PasswordResetsController < ApplicationController
   end
 
   def update
-    data = params[:student]
-    data = params[:administrator] if data.nil?
+    data = nil
+    if params.key? :administrator
+      data = params[:administrator]
+    elsif params.key? :student
+      data = params[:student]
+    end
     @user.password = data[:password]
     @user.password_confirmation = data[:password_confirmation]
+
     if @user.save
       flash[:notice] = t(:Password_updated)
-      redirect_to root_url
+      if @user.kind_of? Administrator
+        redirect_to edit_administrator_path(@user)
+      else
+        redirect_to edit_student_path(@user)
+      end
     else
       render :action => :edit
     end

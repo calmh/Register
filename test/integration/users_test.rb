@@ -25,4 +25,13 @@ class UsersTest < ActionController::IntegrationTest
 		assert_not_contain "Brålanda"
 		assert_not_contain "Nybro"
 	end
+
+	test "log in as student" do
+	  visit "/"
+	  fill_in "Användarnamn eller epostadress", :with => "agaton.johnsson@example.com"
+	  fill_in "Lösenord", :with => "password"
+	  click_button "Logga in"
+	  assert_contain "Epostadress"
+	  assert_contain "Epostlistor"
+  end
 end

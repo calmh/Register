@@ -25,6 +25,8 @@ class StudentTest < ActiveSupport::TestCase
 		s.comments = "None"
 		s.main_interest_id = 1
 		s.club_id = 9
+		s.password = "password"
+		s.password_confirmation = "password"
 
 		s.personal_number = nil
 		assert !s.save # Nil personal number

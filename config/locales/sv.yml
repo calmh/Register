@@ -183,7 +183,7 @@ sv:
   Export: Exportera
   Export_as_CSV: Exportera som CSV
   Reset_password: Återställ lösenord
-  Mailed_reset_instruction: Instruktioner för att återställa ditt lösenord has skickats med epost. Vänligen kontrollera din epost.
+  Mailed_reset_instruction: Instruktioner för att återställa ditt lösenord har skickats med epost. Vänligen kontrollera din epost.
   No_user_found: Ingen användare kunde hittas med den epostadressen eller kontonamnet.
   Password_updated: Lösenordet har uppdaterats.
   Could_not_load_account: Vi kunde inte hitta ditt konto. Testa att kopiera URL:en från mailet direkt till din webbläsare och försök igen.
@@ -208,10 +208,10 @@ sv:
        user_session: Användarsession
      attributes:
        user_session:
-         login: användarnamn
-         email: epostadress
-         password: lösenord
-         remember_me: kom ihåg mig
+         login: Användarnamn
+         email: Epostadress
+         password: Lösenord
+         remember_me: Kom ihåg mig
 
   activerecord:
     errors:

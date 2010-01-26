@@ -129,6 +129,12 @@ class StudentsController < ApplicationController
 
   def create
     @student = Student.new(params[:student])
+
+    # This is an ugly hack that uses the random perishable token as a base password for the user.
+    @student.reset_perishable_token!
+    @student.password = @student.password_confirmation = @student.perishable_token
+    @student.reset_perishable_token!
+
     @club = @student.club
 
     if params.key? :member_of
