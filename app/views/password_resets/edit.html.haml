@@ -1,0 +1,15 @@
+.block
+  .content
+    %h2.title= t:Reset_password
+    .inner
+      - form_for @user, :url => { :controller => 'password_resets', :action => 'update' }, :html => {:class => 'form'} do |f|
+        = f.hidden_field :perishable_token
+        .group
+          = f.label :password, t(:Password), :class => :label
+          = f.password_field :password, :class => 'text_field'
+        .group
+          = f.label :password_confirmation, t(:Confirm_Password), :class => :label
+          = f.password_field :password_confirmation, :class => 'text_field'
+        .group
+          = f.submit t(:Request_password_reset)
+

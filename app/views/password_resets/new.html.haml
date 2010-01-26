@@ -1,0 +1,12 @@
+.block
+  .content
+    %h2.title= t:Reset_password
+    .inner
+      - form_for :password_reset, :url => {:action => 'create'}, :html => {:class => 'form'} do |f|
+        .group
+          = f.label :login, t(:Login_or_email), :class => 'label'
+          = f.text_field :login, :class => 'text_field'
+          %span.description= t(:Password_reset_descr)
+        .group
+          = f.submit t(:Request_password_reset)
+
