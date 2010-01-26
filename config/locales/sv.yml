@@ -182,6 +182,14 @@ sv:
   None: Ingen
   Export: Exportera
   Export_as_CSV: Exportera som CSV
+  Reset_password: Återställ lösenord
+  Mailed_reset_instruction: Instruktioner för att återställa ditt lösenord has skickats med epost. Vänligen kontrollera din epost.
+  No_user_found: Ingen användare kunde hittas med den epostadressen eller kontonamnet.
+  Password_updated: Lösenordet har uppdaterats.
+  Could_not_load_account: Vi kunde inte hitta ditt konto. Testa att kopiera URL:en från mailet direkt till din webbläsare och försök igen.
+  Password_reset_descr: Ange ditt kontonamn (som administratatör) eller epostadress.
+  Request_password_reset: Återställ lösenord
+  Forgot_password: Glömt ditt lösenord?
 
   authlogic:
      error_messages:
@@ -219,6 +227,7 @@ sv:
         blank: tomt
         invalid: ogiltigt
         incorrect_check_digit: felaktig kontrollsiffra
+        confirmation: stämmer inte med konfirmationen
 
   datetime:
    distance_in_words:

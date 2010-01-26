@@ -22,7 +22,7 @@
                 %li= link_to image_tag(locale.to_s + '.png'), '?locale=' + locale.to_s
           .clear
 
-        - if controller.controller_name != 'user_sessions'
+        - if ! ['user_sessions', 'password_resets'].include?(controller.controller_name)
           #main-navigation
             %ul
               = render :partial => 'application/links'

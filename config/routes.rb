@@ -28,6 +28,9 @@ ActionController::Routing::Routes.draw do |map|
   # For login and logout
   map.resource :user_session
 
+  # Password reset
+  map.resources :password_resets
+
   # Display club list at /
   map.root :controller => :clubs
 
