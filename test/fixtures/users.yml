@@ -6,9 +6,9 @@ users_015:
   personal_number: 19850107-1768
   created_at: 2009-12-09 09:09:19
   comments: ""
-  crypted_password: 
-  perishable_token: 5rQ0RBAYZmO754GLDgTx
-  updated_at: 2009-12-21 09:14:05
+  crypted_password: ad4755017100f0bcc24f016d0ef7b57cf3a76453ab477dd82059810463bf0a59
+  perishable_token: OS2yY7jSgwHnI0HmUvBv
+  updated_at: 2010-01-26 18:21:35
   zipcode: "26030"
   main_interest_id: "1"
   groups_permission: 
@@ -24,7 +24,7 @@ users_015:
   title_id: "1"
   current_login_at: 
   login_count: 
-  persistence_token: 187d92abdfe267759a5574b8e1cbc7569bbad127be89e15922077c5f174ca28ebf0dc4b2d0fd573558a7b2bd92edee677fc210a005a6fff3f45dc5734327b38a
+  persistence_token: 181ce34df4e5704fb47f07dd41209df8840903c9e2e0d1595b0e1b37086d4771d19678af672a68b442f5d1ea85c4492618e346c09ea2566dc25d2864494b2669
   users_permission: 
   mailinglists_permission: 
   fname: Marielle
@@ -39,14 +39,14 @@ users_015:
   mobile_phone: ""
 users_004: 
   city: Arvidsjaur
-  single_access_token: 
+  single_access_token: pLUnSxRXdioKC6DrVs48
   last_request_at: 
   personal_number: 19710730-3187
   created_at: 2009-12-09 09:09:19
   comments: ""
-  crypted_password: 
-  perishable_token: 
-  updated_at: 2009-12-15 10:27:19
+  crypted_password: ad4755017100f0bcc24f016d0ef7b57cf3a76453ab477dd82059810463bf0a59
+  perishable_token: qLIqIc9Eulplp2gVOV2Q
+  updated_at: 2010-01-26 18:21:35
   zipcode: "93000"
   main_interest_id: "2"
   groups_permission: 
@@ -62,7 +62,7 @@ users_004:
   title_id: "1"
   current_login_at: 
   login_count: 
-  persistence_token: 
+  persistence_token: 26db96d89f9b07cb86e3980ddbcf3382b668e8537ef9ab90f6a9a5430840ce406ea4c161a6f43fe7e4142e9944f63586242896367e10b3ea4079386571f5852d
   users_permission: 
   mailinglists_permission: 
   fname: Emma
@@ -77,14 +77,14 @@ users_004:
   mobile_phone: ""
 users_005: 
   city: "Svart\xC3\xA5"
-  single_access_token: 
+  single_access_token: WLpBRwcuouV2JocfhNXd
   last_request_at: 
   personal_number: 19420814-3778
   created_at: 2009-12-09 09:09:19
   comments: ""
-  crypted_password: 
-  perishable_token: 
-  updated_at: 2009-12-15 10:27:25
+  crypted_password: ad4755017100f0bcc24f016d0ef7b57cf3a76453ab477dd82059810463bf0a59
+  perishable_token: fIDpa7BWiLZXoPeJxFdT
+  updated_at: 2010-01-26 18:21:35
   zipcode: "69330"
   main_interest_id: "1"
   groups_permission: 
@@ -100,7 +100,7 @@ users_005:
   title_id: "1"
   current_login_at: 
   login_count: 
-  persistence_token: 
+  persistence_token: 85f36153d06ac5c77e31f88655341bcad50ea360a1680d5b883f5ddecb9e64c6c1da1258f4b0c631df11900956698d49848ec6de0398714ef1eabaa0bca98217
   users_permission: 
   mailinglists_permission: 
   fname: Emil
@@ -153,14 +153,14 @@ users_006:
   mobile_phone: 
 users_007: 
   city: Kristianstad
-  single_access_token: 
+  single_access_token: G2-Mx5dZZv1Sztom3ESU
   last_request_at: 
   personal_number: 19460723-4780
   created_at: 2009-12-09 09:09:19
   comments: ""
-  crypted_password: 
-  perishable_token: 
-  updated_at: 2009-12-15 10:27:35
+  crypted_password: ad4755017100f0bcc24f016d0ef7b57cf3a76453ab477dd82059810463bf0a59
+  perishable_token: kIAInJyDT5aTVEy8J5pc
+  updated_at: 2010-01-26 18:21:35
   zipcode: "12353"
   main_interest_id: "3"
   groups_permission: 
@@ -176,7 +176,7 @@ users_007:
   title_id: "1"
   current_login_at: 
   login_count: 
-  persistence_token: 
+  persistence_token: 87527942b789db8c88d2a9f81c263e951d7134a01419cb5f67904b679d65200c38009fcbac11e239472d45fdbff3c94d89c30fb2e64650948042dc2d875a307c
   users_permission: 
   mailinglists_permission: 
   fname: Elif
@@ -191,14 +191,14 @@ users_007:
   mobile_phone: ""
 users_008: 
   city: "Frilles\xC3\xA5s"
-  single_access_token: 
+  single_access_token: AbZ6siLotedB55t3a0N6
   last_request_at: 
   personal_number: 19810628-1861
   created_at: 2009-12-09 09:09:19
   comments: ""
-  crypted_password: 
-  perishable_token: 
-  updated_at: 2009-12-15 10:27:55
+  crypted_password: ad4755017100f0bcc24f016d0ef7b57cf3a76453ab477dd82059810463bf0a59
+  perishable_token: V4O3hMrdtyH6Raegbp1K
+  updated_at: 2010-01-26 18:21:35
   zipcode: "43030"
   main_interest_id: "1"
   groups_permission: 
@@ -214,7 +214,7 @@ users_008:
   title_id: "1"
   current_login_at: 
   login_count: 
-  persistence_token: 
+  persistence_token: 1b9fc09c5f843dc0d05ad9f767aab9e53e05af07954cd0538896cc70aa417ff49f91251a84fb254667e521aebf1cb97d52843ee8c22265a0c401d665b9dfc9b1
   users_permission: 
   mailinglists_permission: 
   fname: Lisen
@@ -229,14 +229,14 @@ users_008:
   mobile_phone: ""
 users_010: 
   city: Tandsbyn
-  single_access_token: 
+  single_access_token: 4f0mzVSsGtutT4lR788A
   last_request_at: 
   personal_number: 19671029-1219
   created_at: 2009-12-09 09:09:19
   comments: ""
-  crypted_password: 
-  perishable_token: 
-  updated_at: 2009-12-15 10:28:02
+  crypted_password: ad4755017100f0bcc24f016d0ef7b57cf3a76453ab477dd82059810463bf0a59
+  perishable_token: 2tzua9jnq8Ieyg1C7YIW
+  updated_at: 2010-01-26 18:21:35
   zipcode: "83021"
   main_interest_id: "2"
   groups_permission: 
@@ -252,7 +252,7 @@ users_010:
   title_id: "1"
   current_login_at: 
   login_count: 
-  persistence_token: 
+  persistence_token: c8dd0a057199cb3386c2da4ab9fa84cbdcd3a70058685626d06ee551a000990e6c1e5d65b1bffa50a384046787d706594ff1cee76153025569e71c3b097a5f17
   users_permission: 
   mailinglists_permission: 
   fname: Nino
@@ -267,14 +267,14 @@ users_010:
   mobile_phone: ""
 users_009: 
   city: Kvicksund
-  single_access_token: 
+  single_access_token: QBIZWu_swyIvbvjgzAcn
   last_request_at: 
   personal_number: 19581214-1496
   created_at: 2009-12-09 09:09:19
   comments: ""
-  crypted_password: 
-  perishable_token: 
-  updated_at: 2009-12-15 10:29:01
+  crypted_password: ad4755017100f0bcc24f016d0ef7b57cf3a76453ab477dd82059810463bf0a59
+  perishable_token: Hl0KIzquCA5fmMoHMs6n
+  updated_at: 2010-01-26 18:21:35
   zipcode: "64045"
   main_interest_id: "1"
   groups_permission: 
@@ -290,7 +290,7 @@ users_009:
   title_id: "1"
   current_login_at: 
   login_count: 
-  persistence_token: 
+  persistence_token: ad3ce523fcc6b40f2593c5c8b980aec9e530a749d1895f51a5368070dda1991f0078ae045ca369fa12f16d544edfcedd4e5c3252a3855a264b9eccef800b3f7f
   users_permission: 
   mailinglists_permission: 
   fname: Edgar
@@ -305,14 +305,14 @@ users_009:
   mobile_phone: ""
 users_011: 
   city: "F\xC3\xA5gelfors"
-  single_access_token: 
+  single_access_token: LGOQfxGdt4YOrU5asK6O
   last_request_at: 
   personal_number: 19670425-7176
   created_at: 2009-12-09 09:09:19
   comments: ""
-  crypted_password: 
-  perishable_token: 
-  updated_at: 2009-12-15 10:28:10
+  crypted_password: ad4755017100f0bcc24f016d0ef7b57cf3a76453ab477dd82059810463bf0a59
+  perishable_token: 8-LO-mmC6NRCr-M8tLvF
+  updated_at: 2010-01-26 18:21:35
   zipcode: "57075"
   main_interest_id: "1"
   groups_permission: 
@@ -328,7 +328,7 @@ users_011:
   title_id: "1"
   current_login_at: 
   login_count: 
-  persistence_token: 
+  persistence_token: 629d78c925e23604c16d10df964fad2e83b433b69125f9feff45f6bb3254361d6c713aba6b5e8f9d638e2422e327ecb953e5ed4a8e69f8a3ae9de39ce71043f0
   users_permission: 
   mailinglists_permission: 
   fname: Devin
@@ -343,14 +343,14 @@ users_011:
   mobile_phone: ""
 users_012: 
   city: Ljungby
-  single_access_token: 
+  single_access_token: r3-xfoMODusX9u53yZkX
   last_request_at: 
   personal_number: 19510709-8054
   created_at: 2009-12-09 09:09:19
   comments: ""
-  crypted_password: 
-  perishable_token: 
-  updated_at: 2009-12-15 10:28:18
+  crypted_password: ad4755017100f0bcc24f016d0ef7b57cf3a76453ab477dd82059810463bf0a59
+  perishable_token: 4fYpUiPrU70vlo86swvz
+  updated_at: 2010-01-26 18:21:35
   zipcode: "34147"
   main_interest_id: "1"
   groups_permission: 
@@ -366,7 +366,7 @@ users_012:
   title_id: "1"
   current_login_at: 
   login_count: 
-  persistence_token: 
+  persistence_token: cfba9b4d6ed63659b98a6326f749809ad648d59d515f98977ffe4bc0e3dca4337bfebf2069c2b89db5ac731c909ce4da1ea53fcd5e5d59782928c8f990f5f394
   users_permission: 
   mailinglists_permission: 
   fname: Razmus
@@ -382,13 +382,13 @@ users_012:
 users_001: 
   city: 
   single_access_token: RcNDgaUdOCKapN7hWLUU
-  last_request_at: 2009-12-21 09:14:10
+  last_request_at: 2010-01-26 18:20:16
   personal_number: 
   created_at: 2009-12-09 09:09:19
   comments: 
   crypted_password: 6694a5cda8fcb5ddcfd6171ce35de9e593c20da32b0341917f4f1f6d40ce6d98
-  perishable_token: DeIhNFg9cbmfcVvGSchl
-  updated_at: 2009-12-21 09:14:10
+  perishable_token: CLSbAu-0HlViX9BHA15J
+  updated_at: 2010-01-26 18:20:16
   zipcode: 
   main_interest_id: 
   groups_permission: "1"
@@ -402,15 +402,15 @@ users_001:
   failed_login_count: "0"
   type: Administrator
   title_id: 
-  current_login_at: 2009-12-15 09:39:30
-  login_count: "10"
+  current_login_at: 2010-01-26 18:20:07
+  login_count: "16"
   persistence_token: 0f1dae1907c73885dcbeab9af3105ddf202a6aa8e2dc3ea93b2178a734e183b946a3c5ecfc4bbd7634344dbf7aec7070a4f5976a848ea38ec9d64a31d27c489a
   users_permission: "1"
   mailinglists_permission: "1"
   fname: Admin
-  last_login_ip: 194.126.249.11
+  last_login_ip: 127.0.0.1
   site_permission: "1"
-  last_login_at: 2009-12-13 22:11:25
+  last_login_at: 2010-01-26 18:15:07
   login: admin
   sname: Istrator
   clubs_permission: "1"
@@ -419,14 +419,14 @@ users_001:
   mobile_phone: 
 users_013: 
   city: Edsvalla
-  single_access_token: 
+  single_access_token: LaRu89LjhsoSjbl5oUW2
   last_request_at: 
   personal_number: 19500513-8515
   created_at: 2009-12-09 09:09:19
   comments: ""
-  crypted_password: 
-  perishable_token: 
-  updated_at: 2009-12-15 10:28:31
+  crypted_password: ad4755017100f0bcc24f016d0ef7b57cf3a76453ab477dd82059810463bf0a59
+  perishable_token: xHgKK1uasoMGO2Dt_E1C
+  updated_at: 2010-01-26 18:21:35
   zipcode: "66052"
   main_interest_id: "1"
   groups_permission: 
@@ -442,7 +442,7 @@ users_013:
   title_id: "1"
   current_login_at: 
   login_count: 
-  persistence_token: 
+  persistence_token: 301e09c1198d69f3d609a517d58ac3c1a0f84d15c698627acaba710292eb7c574bae66d99a0cb12f236e4bdf3b8ff998c119d9d2e24a821729a8f074e8d26f73
   users_permission: 
   mailinglists_permission: 
   fname: Baran
@@ -457,14 +457,14 @@ users_013:
   mobile_phone: ""
 users_002: 
   city: "Br\xC3\xA5landa"
-  single_access_token: 
+  single_access_token: 1Is4aPKS401krBlSDD7Z
   last_request_at: 
   personal_number: 19810203-9909
   created_at: 2009-12-09 09:09:19
   comments: ""
-  crypted_password: 
-  perishable_token: 
-  updated_at: 2009-12-15 10:26:52
+  crypted_password: ad4755017100f0bcc24f016d0ef7b57cf3a76453ab477dd82059810463bf0a59
+  perishable_token: r-Wjwf1Dbtqe5oSEQKt-
+  updated_at: 2010-01-26 18:21:35
   zipcode: "46065"
   main_interest_id: "3"
   groups_permission: 
@@ -480,7 +480,7 @@ users_002:
   title_id: "1"
   current_login_at: 
   login_count: 
-  persistence_token: 
+  persistence_token: f464267a0b07fda46e6ebc1e42e5a7f4ddba7992c230a814ca2d3f5cae79541f0da9f61c21195a94c195e38f3eccf7bd056263999047e3a04566040308d259c3
   users_permission: 
   mailinglists_permission: 
   fname: Amalia
@@ -495,14 +495,14 @@ users_002:
   mobile_phone: ""
 users_014: 
   city: Nybro
-  single_access_token: 
+  single_access_token: mFlg5QnvGvSij7hU7TpA
   last_request_at: 
   personal_number: 19450326-9377
   created_at: 2009-12-09 09:09:19
   comments: ""
-  crypted_password: 
-  perishable_token: 
-  updated_at: 2009-12-15 10:28:44
+  crypted_password: ad4755017100f0bcc24f016d0ef7b57cf3a76453ab477dd82059810463bf0a59
+  perishable_token: Bc-8EaOIqSYd1d4TJ1mH
+  updated_at: 2010-01-26 18:21:35
   zipcode: "0"
   main_interest_id: "1"
   groups_permission: 
@@ -518,7 +518,7 @@ users_014:
   title_id: "1"
   current_login_at: 
   login_count: 
-  persistence_token: 
+  persistence_token: bd184489c816e9713f0e7a80b877e1566c2069b92ecce03cce7ca08c6418c80ee1921eb3bcec1e49da2440a55f9cd919d8d0f7b13482bb7e1aa734c7014b1f93
   users_permission: 
   mailinglists_permission: 
   fname: Svante
@@ -533,14 +533,14 @@ users_014:
   mobile_phone: ""
 users_003: 
   city: "F\xC3\x96LLINGE"
-  single_access_token: 
+  single_access_token: wZH5gvpBWujlA_Vmvhka
   last_request_at: 
   personal_number: 19620629-3349
   created_at: 2009-12-09 09:09:19
   comments: ""
-  crypted_password: 
-  perishable_token: 
-  updated_at: 2009-12-15 10:27:02
+  crypted_password: ad4755017100f0bcc24f016d0ef7b57cf3a76453ab477dd82059810463bf0a59
+  perishable_token: rpa8hlTBpAhcuftX8lC6
+  updated_at: 2010-01-26 18:21:35
   zipcode: "83066"
   main_interest_id: "1"
   groups_permission: 
@@ -556,7 +556,7 @@ users_003:
   title_id: "1"
   current_login_at: 
   login_count: 
-  persistence_token: 
+  persistence_token: 508d9227ac884460493a5a07a66af16dd5a363fa116bf421a824c1f9f911e92090bb212728fa05d5c26bf4fb6a207261ec11a86256093f2888ead23d78165f46
   users_permission: 
   mailinglists_permission: 
   fname: Agaton
