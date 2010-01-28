@@ -2,18 +2,18 @@
 <table class="table lesspadding">
   <tr>
     <th class="first">&nbsp;</th>
-    <th><%=t(:Name)%></th>
+    <th><%= sort_link t(:Name), :fname %></th>
     <% if @displayClubField -%>
-    <th><%=t(:Club)%></th>
+    <th><%= sort_link t(:Club), :club %></th>
     <% end -%>
-    <th><%=t(:Main_Interest)%></th>
+    <th><%= sort_link t(:Main_Interest), :main_interest %></th>
     <th><%=t(:Groups)%></th>
-    <th><%=t(:Personal_Num)%></th>
+    <th><%= sort_link t(:Personal_Num), :personal_number %></th>
     <% if @displayPaymentField %>
-    <th><%=t(:Grade)%></th>
-    <th class="last"><%=t(:Latest_Payment)%>
+    <th><%= sort_link t(:Grade), :current_grade %></th>
+    <th class="last"><%= sort_link t(:Latest_Payment), :latest_payment %>
       <% else %>
-      <th class="last"><%=t(:Grade)%></th>
+      <th class="last"><%= sort_link t(:Grade), :current_grade %></th>
       <% end %>
     </tr>
     <% @students.each do |student| -%>

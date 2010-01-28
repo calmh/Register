@@ -25,6 +25,7 @@ class Student < User
   validates_presence_of :board_position
   validates_presence_of :club_position
   validates_presence_of :title
+  named_scope :all_inclusive, :include => [ "graduations", "payments", "club", "groups", "main_interest", "board_position", "club_position", "title" ]
 
   acts_as_authentic do |c|
     c.validate_password_field = true

@@ -4,4 +4,8 @@ class Club < ActiveRecord::Base
   has_many :permissions, :dependent => :destroy
   validates_presence_of :name
   validates_uniqueness_of :name
+
+  def <=>(b)
+    name <=> b.name
+  end
 end

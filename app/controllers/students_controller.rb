@@ -6,6 +6,8 @@ class SearchParams
   attr_accessor :board_position_id
   attr_accessor :club_position_id
   attr_accessor :only_active
+  attr_accessor :sort_field
+  attr_accessor :sort_order
 
   def initialize(params)
     @group_id = -100
@@ -15,6 +17,8 @@ class SearchParams
     @board_position_id = -100
     @club_position_id = -100
     @only_active = false
+    @sort_order = "up"
+    @sort_field = :fname
 
     if params.key? :searchparams
       @group_id = params[:searchparams][:group_id].to_i
@@ -27,6 +31,9 @@ class SearchParams
         @club_id = params[:searchparams][:club_id].map{|x| x.to_i}
       end
     end
+
+    @sort_field = params[:c] if params.key? :c
+    @sort_order = params[:d] if params.key? :d
   end
 
   def conditions
@@ -49,6 +56,24 @@ class SearchParams
     return [ conditions.join(" AND ") ] + variables
   end
 
+  def sort(students)
+    students.sort do |a, b|
+      af = a.send(@sort_field)
+      bf = b.send(@sort_field)
+      if !af.nil? && !bf.nil?
+        r = af <=> bf
+      elsif af.nil? && !bf.nil?
+        r = -1
+      elsif !af.nil? && bf.nil?
+        r = 1
+      else
+        r = 0
+      end
+      r = -r if @sort_order == 'down'
+      r
+    end
+  end
+
   def filter(students)
     matched = students
     if grade != -100
@@ -60,19 +85,7 @@ class SearchParams
     if only_active
       matched = matched.select { |s| s.active? }
     end
-    return matched
-  end
-
-  def find_all
-    @students = Student.find(:all, :include => [ "graduations", "payments", "club", "groups", "main_interest", "board_position", "club_position", "title" ], :conditions => conditions, :order => "fname, sname")
-    @students = filter(@students)
-    return @students
-  end
-
-  def find_in_club(club)
-    @students = club.students.find(:all, :include => [ "graduations", "payments", "club", "groups", "main_interest", "board_position", "club_position", "title" ], :conditions => conditions, :order => "fname, sname")
-    @students = filter(@students)
-    return @students
+    return sort(matched)
   end
 end
 
@@ -83,7 +96,7 @@ class StudentsController < ApplicationController
   def index
     @searchparams = SearchParams.new(params)
     @club = Club.find(params[:club_id])
-    @students = @searchparams.find_in_club(@club)
+    @students = @searchparams.filter @club.students.all_inclusive.find :all, :conditions => @searchparams.conditions
 
     respond_to do |format|
       format.html # index.html
@@ -99,13 +112,13 @@ class StudentsController < ApplicationController
   def filter
     @searchparams = SearchParams.new(params)
     @club = Club.find(params[:club_id])
-    @students = @searchparams.find_in_club(@club)
+    @students = @searchparams.filter @club.students.all_inclusive.find(:all, :conditions => @searchparams.conditions)
   end
 
   def search
     @searchparams = SearchParams.new(params)
     @clubs = Club.find(:all, :order => :name)
-    @students = @searchparams.find_all
+    @students = @searchparams.filter Student.all_inclusive.find(:all, :conditions => @searchparams.conditions)
   end
 
   def show
