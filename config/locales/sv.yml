@@ -192,6 +192,7 @@ sv:
   Forgot_password: Glömt ditt lösenord?
   Report_bug: Rapportera felaktighet
   View_source: Se källkod
+  Last_logged_in: Senaste inloggning
 
   authlogic:
      error_messages:

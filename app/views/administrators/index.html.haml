@@ -1,0 +1,22 @@
+.block
+  .secondary-navigation
+    %ul
+      %li.active.first.las= link_to t(:Users), administrators_path
+    .clear
+  .content
+    %h2.title= t:Users
+    .inner
+      %table.table
+        %tr
+          %th.first= t:Login
+          %th= t:Name
+          %th= t:Last_logged_in
+        - @admins.each do |admin|
+          %tr{ :class => cycle("odd", "even") }
+            %td= link_to admin.login, administrator_path(admin)
+            %td= (admin.fname or "") + " " + (admin.sname or "")
+            %td= admin.current_login_at or admin.last_login_at
+      .clear
+
+= content_for :sidebar, render(:partial => 'sidebar')
+
