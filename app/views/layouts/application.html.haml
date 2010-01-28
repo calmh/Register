@@ -38,7 +38,12 @@
         - cache('layout_footer') do
           #footer
             .block
-              %p #{t(:Register)} v#{version} &emsp;|&emsp; #{COPYRIGHT}
+              %p
+                #{t(:Register)} v#{version}
+                &emsp;|&emsp;
+                #{COPYRIGHT}
+                &emsp;|&emsp;
+                = link_to t(:Report_bug), 'http://github.com/calmh/Register/issues'
 
       #sidebar= yield :sidebar
       .clear

@@ -190,6 +190,7 @@ sv:
   Password_reset_descr: Ange ditt kontonamn (som administratatör) eller epostadress.
   Request_password_reset: Återställ lösenord
   Forgot_password: Glömt ditt lösenord?
+  Report_bug: Rapportera felaktighet
 
   authlogic:
      error_messages:
