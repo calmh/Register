@@ -9,82 +9,79 @@ class SearchParams
   attr_accessor :sort_field
   attr_accessor :sort_order
 
-  def initialize(params)
-    @group_id = -100
-    @grade = -100
-    @club_id = Club.find(:all).map { |c| c.id }
-    @title_id = -100
-    @board_position_id = -100
-    @club_position_id = -100
-    @only_active = false
-    @sort_order = "up"
-    @sort_field = :fname
-
-    if params.key? :searchparams
-      @group_id = params[:searchparams][:group_id].to_i
-      @grade = params[:searchparams][:grade].to_i
-      @title_id = params[:searchparams][:title_id].to_i
-      @board_position_id = params[:searchparams][:board_position_id].to_i
-      @club_position_id = params[:searchparams][:club_position_id].to_i
-      @only_active = (params[:searchparams][:only_active] == '1')
-      if params[:searchparams].has_key? :club_id
-        @club_id = params[:searchparams][:club_id].map{|x| x.to_i}
-      end
-    end
-
-    @sort_field = params[:c] if params.key? :c
-    @sort_order = params[:d] if params.key? :d
+  def initialize
+    @club_id = Club.all.map { |c| c.id }
+    @sort_field = 'fname'
+    @sort_order = 'up'
   end
 
   def conditions
     variables = []
     conditions = []
-    conditions << "club_id in (?)"
-    variables << @club_id
-    if title_id != -100
+
+    if @club_id.respond_to?(:each)
+      conditions << "club_id in (?)"
+      variables << @club_id
+    elsif !@club_id.nil?
+      conditions << "club_id = ?"
+      variables << @club_id
+    end
+
+    if !@title_id.nil?
       conditions << "title_id = ?"
       variables << @title_id
     end
-    if board_position_id != -100
+
+    if !@board_position_id.nil?
       conditions << "board_position_id = ?"
       variables << @board_position_id
     end
-    if club_position_id != -100
+
+    if !@club_position_id.nil?
       conditions << "club_position_id = ?"
       variables << @club_position_id
     end
+
     return [ conditions.join(" AND ") ] + variables
   end
 
   def sort(students)
-    students.sort do |a, b|
-      af = a.send(@sort_field)
-      bf = b.send(@sort_field)
-      if !af.nil? && !bf.nil?
-        r = af <=> bf
-      elsif af.nil? && !bf.nil?
-        r = -1
-      elsif !af.nil? && bf.nil?
-        r = 1
-      else
-        r = 0
+    if @sort_field.nil? || @sort_order.nil?
+      return students
+    else
+      return students.sort do |a, b|
+        af = a.send(@sort_field)
+        bf = b.send(@sort_field)
+        if !af.nil? && !bf.nil?
+          r = af <=> bf
+        elsif af.nil? && !bf.nil?
+          r = -1
+        elsif !af.nil? && bf.nil?
+          r = 1
+        else
+          r = 0
+        end
+        r = -r if @sort_order == 'down'
+        r
       end
-      r = -r if @sort_order == 'down'
-      r
     end
   end
 
   def filter(students)
     matched = students
-    if grade != -100
+
+    if !@grade.nil?
       matched = matched.select { |s| s.current_grade != nil && s.current_grade.grade_id == @grade }
     end
-    if group_id != -100
-      matched = matched.select { |s| s.group_ids.include? group_id }
+
+    if !@group_id.nil?
+      matched = matched.select { |s| s.group_ids.include? @group_id }
     end
-    if only_active
+
+    if @only_active
       matched = matched.select { |s| s.active? }
     end
+
     return sort(matched)
   end
 end
@@ -92,33 +89,45 @@ end
 class StudentsController < ApplicationController
   before_filter :require_administrator, :except => [ :register, :edit, :update ]
   before_filter :require_student_or_administrator, :only => [ :edit, :update ]
+  before_filter :load_searchparams, :only => [ :index ]
 
   def index
-    @searchparams = SearchParams.new(params)
-    @club = Club.find(params[:club_id])
-    @students = @searchparams.filter @club.students.all_inclusive.find :all, :conditions => @searchparams.conditions
+    if !params[:club_id].blank?
+      @club = Club.find(params[:club_id])
+      @searchparams.club_id = @club.id
+      @displayPaymentField = true
+      @displayClubField = false
+    else
+      @clubs = Club.all
+      @displayPaymentField = false
+      @displayClubField = true
+    end
+    @students = @searchparams.filter Student.all_inclusive(@searchparams.conditions)
 
     respond_to do |format|
       format.html # index.html
       format.csv  do
         if require_export_permission(@club)
-          send_data(students_csv, :type => 'text/csv; charset=utf-8; header=present', :disposition => "attachment; filename=#{@club.name}.csv")
+          send_data(students_csv, :type => 'text/csv; charset=utf-8; header=present', :disposition => "attachment; filename=export.csv")
           return
         end
       end
     end
   end
 
-  def filter
-    @searchparams = SearchParams.new(params)
-    @club = Club.find(params[:club_id])
-    @students = @searchparams.filter @club.students.all_inclusive.find(:all, :conditions => @searchparams.conditions)
-  end
-
-  def search
-    @searchparams = SearchParams.new(params)
-    @clubs = Club.find(:all, :order => :name)
-    @students = @searchparams.filter Student.all_inclusive.find(:all, :conditions => @searchparams.conditions)
+  def load_searchparams
+    @searchparams = SearchParams.new
+    @searchparams.group_id = params[:gi].to_i unless params[:gi].blank?
+    @searchparams.grade = params[:gr].to_i unless params[:gr].blank?
+    @searchparams.title_id = params[:ti].to_i unless params[:ti].blank?
+    @searchparams.board_position_id = params[:bp].to_i unless params[:bp].blank?
+    @searchparams.club_position_id = params[:cp].to_i unless params[:cp].blank?
+    @searchparams.only_active = params[:a].to_i unless params[:a].blank?
+    @searchparams.sort_field = params[:c] unless params[:c].blank?
+    @searchparams.sort_order = params[:d] unless params[:d].blank?
+    if params.key? :ci
+      @searchparams.club_id = params[:ci].map{|x| x.to_i}
+    end
   end
 
   def show

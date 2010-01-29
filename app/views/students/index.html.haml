@@ -1,13 +1,15 @@
 .block
   .secondary-navigation
     %ul
-      %li.first= link_to t(:Club_List), clubs_path
-      %li.active.last= link_to h(@club.name), club_path(@club)
+      - if !@club.blank?
+        %li.first= link_to t(:Club_List), clubs_path
+        %li.active.last= link_to h(@club.name), club_path(@club)
+      - else
+        %li.first.active.last= link_to t(:Search_Students), students_path
     .clear
   .content
     .inner
       %h2= t(:Students)
-      - @displayPaymentField = true
       = render :partial => 'list'
 
 = content_for :sidebar, render(:partial => 'clubs/sidebar')

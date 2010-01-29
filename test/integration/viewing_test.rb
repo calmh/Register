@@ -22,7 +22,7 @@ class ViewingTest < ActionController::IntegrationTest
 		assert_contain "Baran"
 		assert_contain "Razmus"
 
-		check "searchparams[only_active]"
+		check "a"
 		click_button "Sök"
 
 		assert_contain "Razmus"
@@ -33,7 +33,7 @@ class ViewingTest < ActionController::IntegrationTest
 		assert_contain "Razmus"
 		assert_not_contain "Baran"
 
-		uncheck "searchparams[only_active]"
+		uncheck "a"
 		click_button "Sök"
 
 		assert_contain "Baran"
@@ -55,11 +55,11 @@ class ViewingTest < ActionController::IntegrationTest
 		click_button "Sök"
 		assert_contain " 2 tränande"
 
-		check "searchparams_only_active"
+		check "a"
 		click_button "Sök"
 		assert_contain " 1 tränande"
 
-		uncheck "searchparams_only_active"
+		uncheck "a"
 		click_button "Sök"
 		assert_contain " 2 tränande"
 	end

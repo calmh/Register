@@ -1,9 +1,9 @@
-- active = active_string(controller.controller_name == 'clubs' || (controller.controller_name == "students" && controller.action_name != "search"))
+- active = active_string(controller.controller_name == 'clubs' || (controller.controller_name == "students" && !@club.blank? ))
 %li.first{:class => active}= link_to t(:Club_List), clubs_path
 
 - if current_user.clubs_permission?
-  - active = active_string(controller.controller_name == 'students' && controller.action_name == "search")
-  %li{:class => active}= link_to t(:Search_Students), search_path
+  - active = active_string(controller.controller_name == 'students' && @club.blank? )
+  %li{:class => active}= link_to t(:Search_Students), students_path
 
 - if current_user.groups_permission?
   - active = active_string(controller.controller_name == 'groups')

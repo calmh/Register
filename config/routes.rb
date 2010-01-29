@@ -5,7 +5,6 @@ ActionController::Routing::Routes.draw do |map|
   map.update_site 'update_site_settings', :controller => 'application', :action => 'update_site_settings'
 
   # Bulk operations
-  map.search 'students/search', :controller => 'students', :action => 'search'
   map.connect 'students/bulkoperations', :controller => 'students', :action => 'bulk_operations'
   map.connect 'graduations/new_bulk', :controller => 'graduations', :action => 'new_bulk'
   map.connect 'graduations/update_bulk', :controller => 'graduations', :action => 'update_bulk'
@@ -19,6 +18,7 @@ ActionController::Routing::Routes.draw do |map|
       student.resources :graduations
     end
   end
+  map.resources :students, :only => :index
 
   # Other singular resources
   map.resources :administrators
