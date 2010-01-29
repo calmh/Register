@@ -1,7 +1,0 @@
-- Reset forgotten password.
-- Club page:
-  - Add payments in bulk
-  - Sort by column headers
-  - Export to CSV
-- Send message
-  - SMS
