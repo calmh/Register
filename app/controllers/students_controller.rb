@@ -107,7 +107,7 @@ class StudentsController < ApplicationController
     respond_to do |format|
       format.html # index.html
       format.csv  do
-        if require_export_permission(@club)
+        if @club.nil? || require_export_permission(@club)
           send_data(students_csv, :type => 'text/csv; charset=utf-8; header=present', :disposition => "attachment; filename=export.csv")
           return
         end

@@ -1,0 +1,32 @@
+- if current_user.clubs_permission? && controller.controller_name == "clubs" && controller.action_name == "index"
+  .block
+    %h3= t(:Links)
+    %ul.navigation
+      %li= link_to t(:New_Club), new_club_path
+  .block
+    %h3= t(:Statistics)
+    .content
+      %p= t(:Num_Clubs) + ":" + @clubs.length.to_s
+      %br
+- elsif controller.controller_name != 'clubs' && controller.action_name != 'new'  && controller.action_name != "create"
+  - if !@club.blank?
+    .block
+      %h3
+        = t(:Links) + " " + t(:for) + " " + h(@club.name)
+      %ul.navigation
+        - if controller.action_name != "index" && controller.action_name != "filter"
+          %li= link_to t(:Show), club_path(@club)
+        - if current_user.clubs_permission? && controller.action_name != "edit"
+          %li= link_to t(:Edit), edit_club_path(@club)
+        - if current_user.edit_club_permission?(@club)
+          %li= link_to t(:New_Student), new_club_student_path(@club)
+        - if current_user.export_permission?(@club)
+          %li= link_to t(:Export_as_CSV), request.parameters.merge(:format => :csv)
+  - else
+    .block
+      %h3
+        = t(:Links)
+      %ul.navigation
+        %li= link_to t(:Export_as_CSV), request.parameters.merge(:format => :csv)
+  = render :partial => 'students/searchbar'
+  = render :partial => 'students/statistics'
