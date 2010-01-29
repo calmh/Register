@@ -29,3 +29,4 @@
     %p= t(:Acts_on_selected)
     - if current_user.clubs_permission? || current_user.graduations_permission?(@club)
       = submit_tag t(:Register_Graduation) + " &rarr;", :name => "bulk_graduations", :class => "button", :id => "bulk_graduations"
+    = submit_tag t(:Send_Message) + " &rarr;", :name => "bulk_message", :class => "button", :id => "bulk_message"

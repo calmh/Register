@@ -1,0 +1,14 @@
+.block
+  .content
+    %h2= t(:Send_Message)
+    .inner
+      - if !@sent.blank?
+        %p
+          = t(:Message_sent_to)
+          = (@sent.map { |s| s.name }).join(", ") + "."
+      - if !@noemail.blank?
+        %p
+          = t(:Couldnt_send_to)
+          = (@noemail.map { |s| s.name }).join(", ")
+          = t(:because_no_email)
+      %p= link_to t(:Back), session[:before_bulk]

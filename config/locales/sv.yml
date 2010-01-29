@@ -193,6 +193,14 @@ sv:
   Report_bug: Rapportera felaktighet
   View_source: Se källkod
   Last_logged_in: Senaste inloggning
+  Body_text: Brödtext
+  Send: Skicka
+  Subject: Ärende
+  From: Från
+  Back: Tillbaka
+  Message_sent_to: Meddelandet skickades till
+  Couldnt_send_to: Kunde inte skicka meddelande till
+  because_no_email: eftersom de inte har en epostadress.
 
   authlogic:
      error_messages:

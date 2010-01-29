@@ -232,6 +232,9 @@ class StudentsController < ApplicationController
     if operation == "bulk_payments"
       redirect_to :controller => 'graduations', :action => 'new_bulk'
     end
+    if operation == "bulk_message"
+      redirect_to :controller => 'messages', :action => 'new'
+    end
   end
 
   def register

@@ -1,0 +1,19 @@
+.block
+  .content
+    %h2= t(:Send_Message)
+    .inner
+      %p
+        = t(:for).titlecase
+        = (@students.map { |s| s.name }).join(", ")
+      - form_for @message, :html => { :class => 'form' } do |f|
+        .group
+          = f.label :from, t(:From), :class => 'label'
+          = f.text_field :from, :disabled => true, :class => 'text_field'
+        .group
+          = f.label :subject, t(:Subject), :class => 'label'
+          = f.text_field :subject, :class => 'text_field'
+        .group
+          = f.label :body, t(:Body_text), :class => 'label'
+          = f.text_area :body, :rows => 10, :cols => 40, :class => 'text_area'
+        .group.navform
+          %input.button{ :type => "submit", :value => t(:Send) + " &rarr;" }

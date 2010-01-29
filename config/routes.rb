@@ -24,6 +24,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :administrators
   map.resources :groups
   map.resources :mailing_lists
+  map.resources :messages
 
   # For login and logout
   map.resource :user_session

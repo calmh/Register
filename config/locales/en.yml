@@ -184,3 +184,11 @@ en:
   Report_bug: Report bug
   View_source: View source
   Last_logged_in: Last logged in
+  Body_text: Body text
+  Send: Send
+  Subject: Subject
+  From: From
+  Back: Back
+  Message_sent_to: Message sent to
+  Couldnt_send_to: Couldn't send to
+  because_no_email: because they don't have an email address.
