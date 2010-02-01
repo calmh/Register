@@ -8,9 +8,11 @@ class Student < User
   belongs_to :title
   belongs_to :club_position
   belongs_to :board_position
-  validates_presence_of :personal_number, :if => REQUIRE_PERSONAL_NUMBER
-  validates_uniqueness_of :personal_number, :if => Proc.new { |s| !s.personal_number.blank? && s.personal_number =~ /^(19[3-9]|20[0-2])\d[01]\d[0-3]\d-\d\d\d\d$/ }
-  validate :check_personal_number
+  validates_presence_of :personal_number, :if => lambda { REQUIRE_PERSONAL_NUMBER }
+  validates_uniqueness_of :personal_number, :if => :personal_number_complete?
+  validate :validate_personal_number,
+    :if => lambda { |s| (REQUIRE_PERSONAL_NUMBER && !BIRTHDATE_IS_ENOUGH) || s.personal_number_complete? }
+  validate :validate_possible_birthdate, :if => lambda { |s| BIRTHDATE_IS_ENOUGH || !s.personal_number.blank? }
   validates_associated :club
   validates_associated :graduations
   validates_associated :payments
@@ -45,12 +47,29 @@ class Student < User
     sum % 10
   end
 
-  def check_personal_number
-    if !personal_number.blank?
-      errors.add(:personal_number, :invalid) if personal_number !~ /^(19[3-9]|20[0-2])\d[01]\d[0-3]\d(-\d\d\d\d)?$/
-      if personal_number.length == 13:
-        errors.add(:personal_number, :incorrect_check_digit) if luhn != 0
+  def personal_number_valid_format?
+    personal_number =~ /^(19[3-9]|20[0-2])\d[01]\d[0-3]\d-\d\d\d\d$/
+  end
+
+  def personal_number_complete?
+    !personal_number.blank? && personal_number_valid_format?
+  end
+
+  def validate_personal_number
+    if personal_number_valid_format?
+      if luhn != 0
+        errors.add(:personal_number, :incorrect_check_digit)
       end
+    else
+      errors.add(:personal_number, :invalid)
+    end
+  end
+
+  def validate_possible_birthdate
+    return if personal_number.blank?
+    return if personal_number_valid_format?
+    if personal_number !~ /^(19[3-9]|20[0-2])\d[01]\d[0-3]\d$/
+      errors.add(:personal_number, :invalid)
     end
   end
 

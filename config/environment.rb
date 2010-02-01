@@ -12,8 +12,10 @@ COPYRIGHT = "Copyright &copy; 2009-2010 Jakob Borg"
 # Setting this to false will disable validates_presence_of on personal_number.
 # All other validations will still run when personal_number is present.
 # This is useful as a temporary measure when importing data, to clean up later.
-# Tests fails when this is set to false.
-REQUIRE_PERSONAL_NUMBER = Proc.new { true }
+REQUIRE_PERSONAL_NUMBER = true
+# Setting this to true will allow birthdates instead of full personal numbers.
+# Validations will still be performed on personal numbers.
+BIRTHDATE_IS_ENOUGH = true
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
