@@ -19,7 +19,7 @@ class StudentTest < ActiveSupport::TestCase
     @student.club_id = 9
     @student.password = "password"
     @student.password_confirmation = "password"
-    @student.personal_number = "19710730"
+    @student.personal_number = "19550213-2490"
   end
 
   test "luhn calculation valid" do
@@ -123,5 +123,25 @@ class StudentTest < ActiveSupport::TestCase
         assert !@student.valid?
       end
     end
+  end
+
+  test "gender should be set manually in lack of personal number" do
+    @student.personal_number = nil
+    @student.gender = "male"
+    assert @student.gender == "male"
+    @student.gender = "female"
+    assert @student.gender == "female"
+  end
+
+  test "gender should be set from personal number, male" do
+    @student.personal_number = "19550213-2490"
+    @student.gender = "female"
+    assert @student.gender == "male"
+  end
+
+  test "gender should be set from personal number, female" do
+    @student.personal_number = "19680614-5527"
+    @student.gender = "male"
+    assert @student.gender == "female"
   end
 end
