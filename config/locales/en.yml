@@ -148,6 +148,7 @@ en:
   delete: delete
   graduations: graduations
   payments: payments
+  export: export
   P_yes: Yes
   P_no: No
   User_created: User successfully created
