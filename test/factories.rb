@@ -32,8 +32,36 @@ Factory.define :graduation do |f|
   f.examiner "Examiner"
   f.graduated Time.now
   f.grade { cached_association(:grade) }
-  f.grade_category { cached_association(:grade) }
+  f.grade_category { cached_association(:grade_category) }
   f.student { cached_association(:grade) }
+end
+
+Factory.define :group do |f|
+  f.sequence(:identifier) { |n| "Group #{n}" }
+  f.comments "An auto-created group"
+  f.default 0
+end
+
+Factory.define :groups_students do |f|
+  f.association :group
+  f.association :student
+end
+
+Factory.define :mailing_list do |f|
+  f.sequence(:email) { |n| "list#{n}@example.com" }
+  f.sequence(:description) { |n| "Mailing List #{n}" }
+  f.security "public"
+  f.default 0
+end
+
+Factory.define :mailing_lists_students do |f|
+  f.association :mailing_list
+  f.association :student
+end
+
+Factory.define :groups_students do |f|
+  f.association :group
+  f.association :student
 end
 
 Factory.define :club do |c|
@@ -80,14 +108,20 @@ Factory.define :administrator do |s|
   s.password_confirmation "password"
   s.sequence(:email) {|n| "admin#{n}@example.com" }
   s.sequence(:login) {|n| "admin#{n}" }
-  s.clubs_permission false
-  s.users_permission false
-  s.groups_permission false
-  s.mailinglists_permission false
+  s.clubs_permission true
+  s.users_permission true
+  s.groups_permission true
+  s.mailinglists_permission true
+  s.site_permission true
 end
 
 Factory.define :permission do |p|
   p.association :club
   p.association :user, :factory => :administrator
   p.permission "read"
+end
+
+Factory.define :configuration_setting do |o|
+  o.setting "setting"
+  o.value "value"
 end
