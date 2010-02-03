@@ -47,11 +47,7 @@ class ApplicationController < ActionController::Base
   end
 
   def edit_site_settings
-    begin
-      @available_themes = Dir.entries("public/stylesheets/themes").select { |d| !d.starts_with? '.' }.sort
-    rescue Exception => e
-      @available_themes = []
-    end
+    @available_themes = Dir.entries("public/stylesheets/themes").select { |d| !d.starts_with? '.' }.sort
   end
 
   def update_site_settings

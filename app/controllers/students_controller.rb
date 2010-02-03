@@ -10,12 +10,23 @@ class SearchParams
   attr_accessor :sort_order
 
   def initialize(params = nil)
+    set_sort_order(params)
+
     if params.key? :ci
       @club_id = params[:ci].map{ |x| x.to_i }
     else
       @club_id = Club.all.map { |c| c.id }
     end
 
+    @group_id = int_or_nil(params[:gi])
+    @grade = int_or_nil(params[:gr])
+    @title_id = int_or_nil(params[:ti])
+    @board_position_id = int_or_nil(params[:bp])
+    @club_position_id = int_or_nil(params[:cp])
+    @only_active = (params[:a].to_i == 1)
+  end
+
+  def set_sort_order(params)
     if !params[:c].blank?
       @sort_field = params[:c]
     else
@@ -27,13 +38,6 @@ class SearchParams
     else
       @sort_order = params[:d] = 'up'
     end
-
-    @group_id = int_or_nil(params[:gi])
-    @grade = int_or_nil(params[:gr])
-    @title_id = int_or_nil(params[:ti])
-    @board_position_id = int_or_nil(params[:bp])
-    @club_position_id = int_or_nil(params[:cp])
-    @only_active = (params[:a].to_i == 1)
   end
 
   def conditions
@@ -137,12 +141,7 @@ class StudentsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html
-      format.csv  do
-        if @club.nil? || require_export_permission(@club)
-          send_data(students_csv, :type => 'text/csv; charset=utf-8; header=present', :disposition => "attachment; filename=export.csv")
-          return
-        end
-      end
+      format.csv { respond_to_csv }
     end
   end
 
@@ -171,13 +170,8 @@ class StudentsController < ApplicationController
 
   def create
     @student = Student.new(params[:student])
-
-    # This is an ugly hack that uses the random perishable token as a base password for the user.
-    @student.reset_perishable_token!
-    @student.password = @student.password_confirmation = @student.perishable_token
-    @student.reset_perishable_token!
-
     @club = @student.club
+    set_initial_password
 
     if params.key? :member_of
       group_ids = params[:member_of].keys
@@ -202,21 +196,32 @@ class StudentsController < ApplicationController
     require_administrator_or_self(@student)
     @club = @student.club
 
-    update_group_membership if current_user.kind_of? Administrator
+    if current_user.type == 'Administrator'
+      update_as_admin
+    else
+      update_as_self
+    end
+    return # Avoid automatic render
+  end
+
+  def update_as_self
     update_mailing_list_membership
 
-    success = @student.update_attributes(params[:student])
-
-    if current_user.type == 'Administrator'
-      flash[:notice] = t(:Student_updated) if success
-      redirect = student_path(@student)
-    elsif current_user.type == 'Student'
-      flash[:notice] = t(:Self_updated) if success
-      redirect = edit_student_path(@student)
+    if @student.update_attributes(params[:student])
+      flash[:notice] = t(:Self_updated)
+      redirect_to edit_student_path(@student)
+    else
+      render :action => "edit"
     end
+  end
 
-    if success
-      redirect_to redirect
+  def update_as_admin
+    update_group_membership
+    update_mailing_list_membership
+
+    if @student.update_attributes(params[:student])
+      flash[:notice] = t(:Student_updated)
+      redirect_to student_path(@student)
     else
       render :action => "edit"
     end
@@ -251,6 +256,12 @@ class StudentsController < ApplicationController
 
   private
 
+  def respond_to_csv
+    if @club.nil? || require_export_permission(@club)
+      send_data(students_csv, :type => 'text/csv; charset=utf-8; header=present', :disposition => "attachment; filename=export.csv")
+    end
+  end
+
   def students_csv
     csv_string = FasterCSV.generate do |csv|
       csv << ["id", "first_name", "last_name", "groups", "personal_number", "gender", "main_interest", "email", "mailing_lists", "home_phone", "mobile_phone", "address", "title", "board_position", "club_position", "comments", "grade", "graduated", "payment_recieved", "payment_amount", "payment_description"]
@@ -279,15 +290,22 @@ class StudentsController < ApplicationController
       if !current_user.kind_of? Administrator
         cur_ids = @student.mailing_list_ids
         ml_ids = ml_ids.keys.select do |x|
-           if cur_ids.include?(x)
-             true
-             next
-           end
-           ml = MailingList.find(x)
-           ml.security == 'public' && ( ml.club == nil || ml.club == @club )
+          if cur_ids.include?(x)
+            true
+            next
+          end
+          ml = MailingList.find(x)
+          ml.security == 'public' && ( ml.club == nil || ml.club == @club )
         end
       end
       @student.mailing_list_ids = ml_ids
     end
+  end
+
+  def set_initial_password
+    # This is an ugly hack that uses the random perishable token as a base password for the user.
+    @student.reset_perishable_token!
+    @student.password = @student.password_confirmation = @student.perishable_token
+    @student.reset_perishable_token!
   end
 end
