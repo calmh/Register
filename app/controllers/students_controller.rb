@@ -202,20 +202,8 @@ class StudentsController < ApplicationController
     require_administrator_or_self(@student)
     @club = @student.club
 
-    if current_user.type == 'Administrator' && params.key?(:member_of)
-      group_ids = params[:member_of].keys
-      @student.group_ids = group_ids
-    else
-      @student.groups.clear
-    end
-
-    # TODO: This is insecure, a student could potentially join a mailing list they shouldn't by editing hidden fields.
-    if params.key? :subscribes_to
-      ml_ids = params[:subscribes_to].keys
-      @student.mailing_list_ids = ml_ids
-    else
-      @student.mailing_lists.clear
-    end
+    update_group_membership if current_user.kind_of? Administrator
+    update_mailing_list_membership
 
     success = @student.update_attributes(params[:student])
 
@@ -262,6 +250,7 @@ class StudentsController < ApplicationController
   end
 
   private
+
   def students_csv
     csv_string = FasterCSV.generate do |csv|
       csv << ["id", "first_name", "last_name", "groups", "personal_number", "gender", "main_interest", "email", "mailing_lists", "home_phone", "mobile_phone", "address", "title", "board_position", "club_position", "comments", "grade", "graduated", "payment_recieved", "payment_amount", "payment_description"]
@@ -270,5 +259,35 @@ class StudentsController < ApplicationController
       end
     end
     return csv_string
+  end
+
+  def update_group_membership
+    if !params.key?(:member_of)
+      @student.groups.clear
+    else
+      group_ids = params[:member_of].keys
+      @student.group_ids = group_ids
+    end
+  end
+
+  def update_mailing_list_membership
+    if !params.key? :subscribes_to
+      # You always have the right to unsubscribe from mailing lists
+      @student.mailing_lists.clear
+    else
+      ml_ids = params[:subscribes_to]
+      if !current_user.kind_of? Administrator
+        cur_ids = @student.mailing_list_ids
+        ml_ids = ml_ids.keys.select do |x|
+           if cur_ids.include?(x)
+             true
+             next
+           end
+           ml = MailingList.find(x)
+           ml.security == 'public' && ( ml.club == nil || ml.club == @club )
+        end
+      end
+      @student.mailing_list_ids = ml_ids
+    end
   end
 end
