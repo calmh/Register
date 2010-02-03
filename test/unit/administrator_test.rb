@@ -1,8 +1,12 @@
 require 'test_helper'
 
 class AdministratorTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  def setup
+    @admin = Factory(:administrator)
+  end
+
+  test "administrator must have a login" do
+    @admin.login = nil
+    assert !@admin.valid?
   end
 end

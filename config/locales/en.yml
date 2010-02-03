@@ -192,3 +192,7 @@ en:
   Message_sent_to: Message sent to
   Couldnt_send_to: Couldn't send to
   because_no_email: because they don't have an email address.
+
+  activerecord:
+      messages:
+        in_future: in the future

@@ -2,24 +2,8 @@ require 'test_helper'
 
 class StudentTest < ActiveSupport::TestCase
   def setup
-    @student = Student.new
-    @student.sname = "Johansson"
-    @student.fname = "Karon"
-    @student.email = "karin.johansson@example.com"
-    @student.home_phone = "0410-6495551"
-    @student.mobile_phone = ""
-    @student.street = "Bonaröd 78"
-    @student.zipcode = "23021"
-    @student.city = "Beddingestrand"
-    @student.title_id = 1
-    @student.club_position_id = 1
-    @student.board_position_id = 1
-    @student.comments = "None"
-    @student.main_interest_id = 1
-    @student.club_id = 9
-    @student.password = "password"
-    @student.password_confirmation = "password"
-    @student.personal_number = "19550213-2490"
+    Factory(:student, :personal_number => '19710730-3187')
+    @student = Factory(:student)
   end
 
   test "luhn calculation valid" do

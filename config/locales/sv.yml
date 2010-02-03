@@ -239,6 +239,7 @@ sv:
         invalid: ogiltigt
         incorrect_check_digit: felaktig kontrollsiffra
         confirmation: stämmer inte med konfirmationen
+        in_future: i framtiden
 
   datetime:
    distance_in_words:

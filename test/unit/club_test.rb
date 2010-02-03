@@ -1,17 +1,18 @@
 require 'test_helper'
 
 class ClubTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "validations" do
-    c1 = Club.new
-	c1.name = "Lund"
-	assert c1.save
+  def setup
+    @club = Factory.build(:club)
+  end
 
-	c2 = Club.new
-	assert !c2.save # Blank name
-	c2.name = "Lund"
-	assert !c2.save # Duplicate name
-	c2.name = "Stockholm"
-	assert c2.save
+  test "name may not be blank" do
+    @club.name = nil
+    assert !@club.valid?
+  end
+
+  test "name must be unique" do
+    existing = Factory(:club)
+    @club.name = existing.name
+    assert !@club.valid?
   end
 end
