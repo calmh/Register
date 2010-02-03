@@ -9,10 +9,31 @@ class SearchParams
   attr_accessor :sort_field
   attr_accessor :sort_order
 
-  def initialize
-    @club_id = Club.all.map { |c| c.id }
-    @sort_field = 'fname'
-    @sort_order = 'up'
+  def initialize(params = nil)
+    if params.key? :ci
+      @club_id = params[:ci].map{ |x| x.to_i }
+    else
+      @club_id = Club.all.map { |c| c.id }
+    end
+
+    if !params[:c].blank?
+      @sort_field = params[:c]
+    else
+      @sort_field = params[:c] = 'name'
+    end
+
+    if !params[:d].blank?
+      @sort_order = params[:d]
+    else
+      @sort_order = params[:d] = 'up'
+    end
+
+    @group_id = int_or_nil(params[:gi])
+    @grade = int_or_nil(params[:gr])
+    @title_id = int_or_nil(params[:ti])
+    @board_position_id = int_or_nil(params[:bp])
+    @club_position_id = int_or_nil(params[:cp])
+    @only_active = (params[:a].to_i == 1)
   end
 
   def conditions
@@ -49,21 +70,7 @@ class SearchParams
     if @sort_field.nil? || @sort_order.nil?
       return students
     else
-      return students.sort do |a, b|
-        af = a.send(@sort_field)
-        bf = b.send(@sort_field)
-        if !af.nil? && !bf.nil?
-          r = af <=> bf
-        elsif af.nil? && !bf.nil?
-          r = -1
-        elsif !af.nil? && bf.nil?
-          r = 1
-        else
-          r = 0
-        end
-        r = -r if @sort_order == 'down'
-        r
-      end
+      return students.sort { |a, b| compare(a, b) }
     end
   end
 
@@ -75,6 +82,7 @@ class SearchParams
     end
 
     if !@group_id.nil?
+      @group_id = @group_id.to_i
       matched = matched.select { |s| s.group_ids.include? @group_id }
     end
 
@@ -83,6 +91,29 @@ class SearchParams
     end
 
     return sort(matched)
+  end
+
+  private
+
+  def int_or_nil(val)
+    return nil if val.blank?
+    return val.to_i
+  end
+
+  def compare(a, b)
+    af = a.send(@sort_field)
+    bf = b.send(@sort_field)
+    if !af.nil? && !bf.nil?
+      r = af <=> bf
+    elsif af.nil? && !bf.nil?
+      r = -1
+    elsif !af.nil? && bf.nil?
+      r = 1
+    else
+      r = 0
+    end
+    r = -r if @sort_order == 'down'
+    r
   end
 end
 
@@ -116,18 +147,7 @@ class StudentsController < ApplicationController
   end
 
   def load_searchparams
-    @searchparams = SearchParams.new
-    @searchparams.group_id = params[:gi].to_i unless params[:gi].blank?
-    @searchparams.grade = params[:gr].to_i unless params[:gr].blank?
-    @searchparams.title_id = params[:ti].to_i unless params[:ti].blank?
-    @searchparams.board_position_id = params[:bp].to_i unless params[:bp].blank?
-    @searchparams.club_position_id = params[:cp].to_i unless params[:cp].blank?
-    @searchparams.only_active = params[:a].to_i unless params[:a].blank?
-    @searchparams.sort_field = params[:c] unless params[:c].blank?
-    @searchparams.sort_order = params[:d] unless params[:d].blank?
-    if params.key? :ci
-      @searchparams.club_id = params[:ci].map{|x| x.to_i}
-    end
+    @searchparams = SearchParams.new(params)
   end
 
   def show
