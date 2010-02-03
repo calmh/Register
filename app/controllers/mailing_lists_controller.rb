@@ -3,20 +3,10 @@ class MailingListsController < ApplicationController
 
   def index
     @mailing_lists = MailingList.find(:all)
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @mailing_lists }
-    end
   end
 
   def new
     @mailing_list = MailingList.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @mailing_list }
-    end
   end
 
   def edit
@@ -26,30 +16,22 @@ class MailingListsController < ApplicationController
   def create
     @mailing_list = MailingList.new(params[:mailing_list])
 
-    respond_to do |format|
-      if @mailing_list.save
-        flash[:notice] = t:Mailing_list_created
-        format.html { redirect_to(mailing_lists_path) }
-        format.xml  { render :xml => @mailing_list, :status => :created, :location => @mailing_list }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @mailing_list.errors, :status => :unprocessable_entity }
-      end
+    if @mailing_list.save
+      flash[:notice] = t:Mailing_list_created
+      redirect_to(mailing_lists_path)
+    else
+      render :action => "new"
     end
   end
 
   def update
     @mailing_list = MailingList.find(params[:id])
 
-    respond_to do |format|
-      if @mailing_list.update_attributes(params[:mailing_list])
-        flash[:notice] = t:Mailing_list_updated
-        format.html { redirect_to(mailing_lists_path) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @mailing_list.errors, :status => :unprocessable_entity }
-      end
+    if @mailing_list.update_attributes(params[:mailing_list])
+      flash[:notice] = t:Mailing_list_updated
+      redirect_to(mailing_lists_path)
+    else
+      render :action => "edit"
     end
   end
 
@@ -57,9 +39,6 @@ class MailingListsController < ApplicationController
     @mailing_list = MailingList.find(params[:id])
     @mailing_list.destroy
 
-    respond_to do |format|
-      format.html { redirect_to(mailing_lists_path) }
-      format.xml  { head :ok }
-    end
+    redirect_to(mailing_lists_path)
   end
 end

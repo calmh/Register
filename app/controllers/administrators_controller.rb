@@ -21,9 +21,8 @@ class AdministratorsController < ApplicationController
 
   def create
     @admin = Administrator.new(params[:administrator])
-    success = @admin.save
 
-    if success
+    if @admin.save
       grant_permissions(params[:permission])
       flash[:notice] = t:User_created
       redirect_to(administrators_path)
@@ -36,8 +35,9 @@ class AdministratorsController < ApplicationController
     @admin = Administrator.find(params[:id])
 
     if current_user.users_permission?
-      revoke_other_permissions_than(params[:permission])
-      grant_permissions(params[:permission])
+      permissions = params[:permission]
+      revoke_other_permissions_than(permissions)
+      grant_permissions(permissions)
     end
 
     if @admin.update_attributes(params[:administrator])
@@ -60,14 +60,11 @@ class AdministratorsController < ApplicationController
     return if perms.blank?
     perms.each_key do |club_id|
       permissions = perms[club_id]
-      current_perms = @admin.permissions_for Club.find(club_id)
+      current_perms = @admin.permissions_for(Club.find(club_id))
       permissions.each_key do |perm|
         if !current_perms.include? perm
-          np = Permission.new
-          np.club_id = club_id.to_i
-          np.user = @admin
-          np.permission = perm
-          np.save!
+          new_perm = Permission.new(:club_id => club_id, :user => @admin, :permission => perm)
+          new_perm.save!
         end
       end
     end
@@ -75,10 +72,10 @@ class AdministratorsController < ApplicationController
 
   def revoke_other_permissions_than(perms)
     if !@admin.permissions.blank?
-      @admin.permissions.each do |p|
-        c_id = p.club_id.to_s
-        if perms.blank? || !perms.key?(c_id) || !perms[c_id].key?(p.permission)
-          p.destroy
+      @admin.permissions.each do |permission|
+        c_id = permission.club_id.to_s
+        if perms.blank? || !perms.key?(c_id) || !perms[c_id].key?(permission.permission)
+          permission.destroy
         end
       end
     end

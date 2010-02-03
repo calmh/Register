@@ -44,11 +44,12 @@ class SearchParams
     variables = []
     conditions = []
 
-    if @club_id.respond_to?(:each)
-      conditions << "club_id in (?)"
-      variables << @club_id
-    elsif !@club_id.nil?
-      conditions << "club_id = ?"
+    if !@club_id.nil?
+      if @club_id.respond_to?(:each)
+        conditions << "club_id in (?)"
+      else
+        conditions << "club_id = ?"
+      end
       variables << @club_id
     end
 
@@ -78,6 +79,7 @@ class SearchParams
     end
   end
 
+  # TODO Redo this with to_proc etc
   def filter(students)
     matched = students
 

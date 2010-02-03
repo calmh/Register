@@ -1,28 +1,23 @@
 class MessagesController < ApplicationController
   def new
-    @message = Message.new
-    @message.from = current_user.email
-    @message.subject = get_default(:message_subject)
-    @message.body = get_default(:message_body)
+    @message = Message.new(:from => current_user.email, :subject => get_default(:message_subject), :body => get_default(:message_body))
     @students = Student.find(session[:selected_students]);
   end
 
   def update
-    @message = Message.new
-    @message.from = current_user.email
-    @message.body = params[:message][:body]
-    @message.subject = params[:message][:subject]
-    @students = Student.find(session[:selected_students]);
-    @sent = []
-    @noemail = []
-    @students.each do |s|
-      if s.email.blank?
+    @message = Message.new(:from => current_user.email, :body => params[:message][:body], :subject => params[:message][:subject])
+    @students = Student.find(session[:selected_students])
+    session[:selected_students] = nil
+
+    @sent =  @noemail = []
+    @students.each do |student|
+      if student.email.blank?
         @noemail << s
       else
-        @sent << s if s.deliver_generic_message!(@message)
+        student.deliver_generic_message!(@message)
+        @sent << student
       end
     end
-    session[:selected_students] = nil
 
     set_default(:message_subject, @message.subject)
     set_default(:message_body, @message.body)

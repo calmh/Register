@@ -4,11 +4,6 @@ class ClubsController < ApplicationController
 
   def index
     @clubs = current_user.clubs.find(:all, :order => 'name')
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @clubs }
-    end
   end
 
   def show
@@ -17,11 +12,6 @@ class ClubsController < ApplicationController
 
   def new
     @club = Club.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @club }
-    end
   end
 
   def edit
@@ -31,30 +21,22 @@ class ClubsController < ApplicationController
   def create
     @club = Club.new(params[:club])
 
-    respond_to do |format|
-      if @club.save
-        flash[:notice] = t:Club_created
-        format.html { redirect_to(@club) }
-        format.xml  { render :xml => @club, :status => :created, :location => @club }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @club.errors, :status => :unprocessable_entity }
-      end
+    if @club.save
+      flash[:notice] = t:Club_created
+      redirect_to(@club)
+    else
+      render :action => "new"
     end
   end
 
   def update
     @club = Club.find(params[:id])
 
-    respond_to do |format|
-      if @club.update_attributes(params[:club])
-        flash[:notice] = t:Club_updated
-        format.html { redirect_to(@club) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @club.errors, :status => :unprocessable_entity }
-      end
+    if @club.update_attributes(params[:club])
+      flash[:notice] = t:Club_updated
+      redirect_to(@club)
+    else
+      render :action => "edit"
     end
   end
 
@@ -62,9 +44,6 @@ class ClubsController < ApplicationController
     @club = Club.find(params[:id])
     @club.destroy
 
-    respond_to do |format|
-      format.html { redirect_to(clubs_path) }
-      format.xml  { head :ok }
-    end
+    redirect_to(clubs_path)
   end
 end

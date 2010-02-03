@@ -5,16 +5,10 @@ class PaymentsController < ApplicationController
     @student = Student.find(params[:student_id])
     @club = @student.club
     @payments = @student.payments
-    @payment = Payment.new
-    @payment.student_id = @student.id
-    @payment.received = DateTime.parse(get_default(:payment_received) || DateTime.now.to_s)
-    @payment.amount = get_default(:payment_amount)
-    @payment.description = get_default(:payment_description)
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @payments }
-    end
+    @payment = Payment.new(:student_id => @student.id,
+      :received => DateTime.parse(get_default(:payment_received) || DateTime.now.to_s),
+      :amount => get_default(:payment_amount),
+      :description => get_default(:payment_description))
   end
 
   def edit
@@ -25,23 +19,18 @@ class PaymentsController < ApplicationController
     params[:payment][:amount].sub!(",", ".") # Handle Swedish decimal comma in an ugly way
     @payment = Payment.new(params[:payment])
     @payment.save!
-    set_default(:payment_amount, @payment.amount)
-    set_default(:payment_description, @payment.description)
-    set_default(:payment_received, @payment.received)
+    update_defaults
+
     redirect_to :action => :index
   end
 
   def update
     @payment = Payment.find(params[:id])
 
-    respond_to do |format|
-      if @payment.update_attributes(params[:payment])
-        format.html { redirect_to(@payment) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @payment.errors, :status => :unprocessable_entity }
-      end
+    if @payment.update_attributes(params[:payment])
+      redirect_to(@payment)
+    else
+      render :action => "edit"
     end
   end
 
@@ -49,9 +38,14 @@ class PaymentsController < ApplicationController
     @payment = Payment.find(params[:id])
     @payment.destroy
 
-    respond_to do |format|
-      format.html { redirect_to(payments_path) }
-      format.xml  { head :ok }
-    end
+    redirect_to(payments_path)
+  end
+
+  private
+
+  def update_defaults
+    set_default(:payment_amount, @payment.amount)
+    set_default(:payment_description, @payment.description)
+    set_default(:payment_received, @payment.received)
   end
 end

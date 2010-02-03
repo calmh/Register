@@ -3,16 +3,16 @@
 
 class SiteSettings
   def self.get_setting(setting)
-    s = ConfigurationSetting.find(:first, :conditions => { :setting => setting })
-    return "" if s == nil
-    return s.value
+    setting = ConfigurationSetting.find(:first, :conditions => { :setting => setting })
+    return "" if setting == nil
+    return setting.value
   end
 
   def self.set_setting(setting, value)
-    s = ConfigurationSetting.find(:first, :conditions => { :setting => setting })
-    if s == nil
-      s = ConfigurationSetting.new
-      s.setting = setting
+    setting = ConfigurationSetting.find(:first, :conditions => { :setting => setting })
+    if setting == nil
+      setting = ConfigurationSetting.new
+      setting.setting = setting
     end
     s.value = value
     s.save!
@@ -47,7 +47,7 @@ class ApplicationController < ActionController::Base
   end
 
   def edit_site_settings
-    @available_themes = Dir.entries("public/stylesheets/themes").select { |d| !d.starts_with? '.' }.sort
+    @available_themes = Dir.entries("public/stylesheets/themes").select { |entry| !entry.starts_with? '.' }.sort
   end
 
   def update_site_settings
@@ -150,8 +150,7 @@ class ApplicationController < ActionController::Base
 
   def get_default(key)
     val = DefaultValue.find(:first, :conditions => { :user_id => current_user.id, :key => key })
-    return val.value if val != nil
-    return nil
+    val.try(:value)
   end
 
   def set_default(key, value)
