@@ -13,6 +13,7 @@ club = Factory(:club)
 10.times do
   Factory(:student, :club => club)
 end
+Factory(:student, :club => club, :email => "student@example.com", :password => "student", :password_confirmation => "student")
 
 %w[read edit delete graduations payments export].each do |perm|
   Factory(:permission, :club => club, :user => admin, :permission => perm)
