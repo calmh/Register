@@ -10,7 +10,7 @@ class Payment < ActiveRecord::Base
     end
   end
 
-  def <=>(b)
-    received <=> b.received
+  def <=>(other)
+    received <=> other.received
   end
 end

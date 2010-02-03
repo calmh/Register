@@ -6,12 +6,12 @@ class Administrator < User
   validates_presence_of :users_permission
   validates_presence_of :mailinglists_permission
 
-  acts_as_authentic do |c|
-    c.validate_login_field = true
-    c.validate_email_field = true
-    c.validate_password_field = true
-    c.require_password_confirmation = true
-    c.validates_length_of_login_field_options = { :in => 2..20 }
+  acts_as_authentic do |config|
+    config.validate_login_field = true
+    config.validate_email_field = true
+    config.validate_password_field = true
+    config.require_password_confirmation = true
+    config.validates_length_of_login_field_options = { :in => 2..20 }
   end
 
   def permissions_for(club)

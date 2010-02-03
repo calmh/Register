@@ -11,8 +11,8 @@ class Student < User
   validates_presence_of :personal_number, :if => lambda { REQUIRE_PERSONAL_NUMBER }
   validates_uniqueness_of :personal_number, :if => :personal_number_complete?
   validate :validate_personal_number,
-    :if => lambda { |s| (REQUIRE_PERSONAL_NUMBER && !BIRTHDATE_IS_ENOUGH) || s.personal_number_complete? }
-  validate :validate_possible_birthdate, :if => lambda { |s| BIRTHDATE_IS_ENOUGH || !s.personal_number.blank? }
+    :if => lambda { |student| (REQUIRE_PERSONAL_NUMBER && !BIRTHDATE_IS_ENOUGH) || student.personal_number_complete? }
+  validate :validate_possible_birthdate, :if => lambda { |student| BIRTHDATE_IS_ENOUGH || !student.personal_number.blank? }
   validates_associated :club
   validates_associated :graduations
   validates_associated :payments
@@ -27,21 +27,23 @@ class Student < User
   validates_presence_of :board_position
   validates_presence_of :club_position
   validates_presence_of :title
-  named_scope :all_inclusive, lambda { |c| {
-    :conditions => c, :include => [ { :graduations => :grade_category }, :payments, :club, :groups, :main_interest, :board_position, :club_position, :title ]
+  named_scope :all_inclusive, lambda { |conditions| {
+    :conditions => conditions, :include => [ { :graduations => :grade_category }, :payments, :club, :groups, :main_interest, :board_position, :club_position, :title ]
     } }
 
-  acts_as_authentic do |c|
-    c.validate_password_field = true
-    c.require_password_confirmation = true
-    c.validates_length_of_login_field_options = { :in => 2..20 }
+  acts_as_authentic do |config|
+    config.validate_password_field = true
+    config.require_password_confirmation = true
+    config.validates_length_of_login_field_options = { :in => 2..20 }
   end
 
   def luhn
     fact = 2
     sum = 0
-    personal_number.sub("-", "").split(//)[2..-1].each do |n|
-      (n.to_i * fact).to_s.split(//).each { |i| sum += i.to_i }
+    self.personal_number.sub("-", "").split(//)[2..-1].each do |digit|
+      (digit.to_i * fact).to_s.split(//).each do |fact_digit|
+        sum += fact_digit.to_i
+      end
       fact = 3 - fact
     end
     sum % 10
@@ -74,9 +76,7 @@ class Student < User
   end
 
   def personal_number=(value)
-    value = $1 + "-" + $2 if value =~ /^(\d\d\d\d\d\d)(\d\d\d\d)$/;
-    value = $1 + "-" + $2 if value =~ /^(19\d\d\d\d\d\d)(\d\d\d\d)$/;
-    value = $1 + "-" + $2 if value =~ /^(20\d\d\d\d\d\d)(\d\d\d\d)$/;
+    value = $1 + $2 + "-" + $3 if value =~ /^(19|20|)(\d\d\d\d\d\d)(\d\d\d\d)$/;
     value = "19" + value if value =~ /^[3-9]\d\d\d\d\d(-\d\d\d\d)?$/;
     value = "20" + value if value =~ /^[0-2]\d\d\d\d\d(-\d\d\d\d)?$/;
     self[:personal_number] = value
@@ -94,32 +94,34 @@ class Student < User
     if !payments.blank?
       return payments[0]
     else
-      p = Payment.new
-      p.amount = 0
-      p.received = created_at
-      p.description = "Start"
-      return p
+      payment = Payment.new
+      payment.amount = 0
+      payment.received = created_at
+      payment.description = "Start"
+      return payment
     end
   end
 
   def current_grade
-    if graduations.blank?
+    my_graduations = self.graduations
+    if my_graduations.blank?
       return nil
     else
-      in_main_interest = graduations.select { |g| g.grade_category == main_interest }
+      in_main_interest = my_graduations.select { |graduation| graduation.grade_category == main_interest }
       if in_main_interest.length > 0
         return in_main_interest[0]
       else
-        return graduations[0]
+        return my_graduations[0]
       end
     end
   end
 
   def active?
+    reference = Time.now
     if payments.blank?
-      return Time.now - created_at < 86400 * 45
+      return reference - created_at < 86400 * 45
     else
-      return Time.now - payments[0].received < 86400 * 180
+      return reference - payments[0].received < 86400 * 180
     end
   end
 
@@ -127,20 +129,19 @@ class Student < User
     if personal_number =~ /-\d\d(\d)\d$/
       return $1.to_i.even? ? 'female' : 'male'
     end
-    return self[:gender] unless self[:gender].blank?
-    return 'unknown'
+    return self[:gender] || 'unknown'
   end
 
   def age
     if personal_number =~ /^(\d\d\d\d)(\d\d)(\d\d)/
-      d = Date.new($1.to_i, $2.to_i, $3.to_i)
-      return ((Date.today-d) / 365.24).to_i
+      date_of_birth = Date.new($1.to_i, $2.to_i, $3.to_i)
+      return ((Date.today - date_of_birth) / 365.24).to_i
     else
       return -1
     end
   end
 
   def group_list
-    groups.map{ |g| g.identifier }.join(", ")
+    groups.map{ |group| group.identifier }.join(", ")
   end
 end

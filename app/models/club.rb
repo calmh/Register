@@ -5,7 +5,7 @@ class Club < ActiveRecord::Base
   validates_presence_of :name
   validates_uniqueness_of :name
 
-  def <=>(b)
-    name <=> b.name
+  def <=>(other)
+    name <=> other.name
   end
 end

@@ -26,10 +26,10 @@ class GroupsController < ApplicationController
 
   def update
     @group = Group.find(params[:id])
-    merge_with = Group.find(params[:group][:id])
+    other = Group.find(params[:group][:id])
 
-    if merge_with.id != @group.id
-      merge_groups(@group, merge_with)
+    if other.id != @group.id
+      @group.merge_into(other)
       redirect_to(groups_path)
     else
       if @group.update_attributes(params[:group])
@@ -49,13 +49,4 @@ class GroupsController < ApplicationController
   end
 
   private
-
-  def merge_groups(source, destination)
-    merge_ids = destination.student_ids
-    @group.students.each do |s|
-      destination.students << s unless merge_ids.include? s.id
-    end
-    destination.save!
-    source.destroy
-  end
 end
