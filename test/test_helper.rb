@@ -43,18 +43,19 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
 
+  def create_club_and_admin
+	  @club = Factory(:club)
+	  @admin = Factory(:administrator, :login => 'admin', :password => 'admin', :password_confirmation => 'admin')
+	  %w[read edit delete graduations payments export].each do |perm|
+	    Factory(:permission, :club => @club, :user => @admin, :permission => perm)
+    end
+  end
 
-	def log_in
-		visit "/"
-		fill_in "Användarnamn", :with => "admin"
-		fill_in "Lösenord", :with => "admin"
-		click_button "Logga in"
-	end
-
-	def log_in_as_ci
-		visit "/"
-		fill_in "Användarnamn", :with => "ci"
-		fill_in "Lösenord", :with => "ci123"
-		click_button "Logga in"
-	end
+  def log_in_as_admin
+		visit "/?locale=en"
+		fill_in "Login", :with => "admin"
+		fill_in "Password", :with => "admin"
+		uncheck "Remember me"
+		click_button "Log in"
+  end
 end

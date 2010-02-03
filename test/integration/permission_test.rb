@@ -1,176 +1,158 @@
 require 'test_helper'
 
 class PermissionTest < ActionController::IntegrationTest
-	fixtures :all
+  def setup
+    create_club_and_admin
+  end
 
 	test "blank log in goes nowhere" do
-		visit "/"
-		assert_contain "måste logga in"
-		click_button "Logga in"
-		assert_contain "Logga in"
+		visit "/?locale=en"
+		assert_contain "must log in"
+		click_button "Log in"
+
+		assert_contain "invalid"
+		assert_contain "Log in"
 	end
 
 	test "failed log in goes nowhere" do
-		visit "/"
-		assert_contain "måste logga in"
-		fill_in "Användarnamn", :with => "test"
-		fill_in "Lösenord", :with => "abc123"
-		click_button "Logga in"
+		visit "/?locale=en"
+		assert_contain "must log in"
+		fill_in "Login", :with => "test"
+		fill_in "Password", :with => "abc123"
+		click_button "Log in"
 
-		assert_contain "Logga in"
+		assert_contain "invalid"
+		assert_contain "Log in"
 	end
 
-	test "log in by email works" do
-		visit "/"
-		assert_contain "måste logga in"
-		fill_in "Användarnamn", :with => "admin@example.com"
-		fill_in "Lösenord", :with => "admin"
-		click_button "Logga in"
+	test "should be able to log in by email" do
+		visit "/?locale=en"
+		assert_contain "must log in"
+		fill_in "Login", :with => @admin.email
+		fill_in "Password", :with => "admin"
+		click_button "Log in"
 
-		assert_contain "Logga ut"
+		assert_contain "Log out"
 	end
 
-	test "try to log in and check clubs list" do
-		log_in
+	test "student should be able to log in by email" do
+	  student = Factory(:student, :club => @club, :password => 'password', :password_confirmation => 'password')
+	  visit "/?locale=en"
+	  fill_in "Login", :with => student.email
+	  fill_in "Password", :with => "password"
+	  click_button "Log in"
+	  assert_contain "Home Phone"
+  end
 
-		assert_contain "Logga ut"
-		assert_contain "Klubbar"
-		click_link "Nybro"
-		assert_contain " 1 tränande"
-		assert_contain "Svante Jansson"
-		assert_contain "Val för Nybro"
-		assert_contain "Ny tränande"
+	test "should only see clubs with permissions" do
+    @other_club = Factory(:club)
+		log_in_as_admin
+
+		click_link "Clubs"
+		assert_contain @club.name
+		assert_not_contain @other_club.name
 	end
 
-	test "verify no clubs permission" do
-		log_in
+	test "should see groups link" do
+		log_in_as_admin
 
-		assert_contain "Klubbar"
-		assert_contain "Grupper"
-		assert_contain "Användare"
-		assert_contain "Sök tränande"
-		assert_contain "Ny klubb"
-		click_link "Användarprofil"
+		assert_contain "Groups"
+  end
 
-		click_link "Redigera"
+	test "should see mailing lists link" do
+		log_in_as_admin
 
-		uncheck "administrator[clubs_permission]"
-		click_button "Spara"
+		assert_contain "Mailing Lists"
+  end
 
-		assert_not_contain "Redigera klubbar:"
-		assert_contain /Nybro:[^:]+Redigera/m
-		# assert_not_contain /Edsvalla:[^:]+Graderingar/m
-		click_link "Klubbar"
+	test "should see site settings link" do
+		log_in_as_admin
 
-		assert_not_contain "Ny klubb"
-		assert_not_contain "Sök tränande"
-		# click_link "Edsvalla"
-		# assert_contain " 2 tränande"
-		# assert_have_no_selector "#bulk_graduations"
+		assert_contain "Site Settings"
+  end
 
-		click_link "Klubbar"
-		click_link "Nybro"
-		assert_have_selector "#bulk_graduations"
-	end
+	test "should see users settings link" do
+		log_in_as_admin
 
-	test "verify no users permission" do
-		log_in
+		assert_contain "Users"
+  end
 
-		assert_contain "Klubbar"
-		assert_contain "Grupper"
-		assert_contain "Användare"
-		assert_contain "Sök tränande"
-		assert_contain "Ny klubb"
-		click_link "Användarprofil"
+	test "should not see links we don't have access to" do
+	  @admin.users_permission = false
+	  @admin.site_permission = false
+	  @admin.groups_permission = false
+	  @admin.mailinglists_permission = false
+	  @admin.save
 
-		click_link "Redigera"
+		log_in_as_admin
 
-		uncheck "administrator[users_permission]"
-		click_button "Spara"
+    # Need to check for absence of link "Groups", not just the string
+		# assert_not_contain "Groups"
+		assert_not_contain "Site Settings"
+		assert_not_contain "Mailing Lists"
+		assert_not_contain "Users"
+  end
 
-		assert_not_contain "Redigera användare:"
-		assert_contain /Redigera grupper:\s+Ja/m
-		assert_not_contain /Användare\W/
-		click_link "Redigera"
+  test "should not see edit club link" do
+	  @admin.clubs_permission = false
+	  @admin.save
 
-		assert_not_contain "Globala rättigheter"
-		assert_not_contain "Rättigheter per klubb"
+		log_in_as_admin
+		click_link @club.name
+		assert_not_contain "Edit"
+  end
 
-		click_link "Klubbar"
-		assert_contain "Nybro"
+	test "should not be able to access site settings" do
+	  @admin.site_permission = false
+	  @admin.save
 
-		visit "/administrators"
-		assert_contain "måste logga in"
-	end
+		log_in_as_admin
+		visit "/edit_site_settings"
+		assert_contain "must log in"
+  end
 
-	test "verify no groups permission" do
-		log_in
+	test "should not be able to access groups" do
+	  @admin.groups_permission = false
+	  @admin.save
 
-		assert_contain "Klubbar"
-		assert_contain "Grupper"
-		assert_contain "Användare"
-		assert_contain "Sök tränande"
-		assert_contain "Ny klubb"
-		click_link "Användarprofil"
-
-		click_link "Redigera"
-
-		uncheck "administrator[groups_permission]"
-		click_button "Spara"
-
-		assert_not_contain "Redigera grupper:"
-		assert_not_contain "Grupper"
-
-		click_link "Klubbar"
-		assert_contain "Nybro"
-
+		log_in_as_admin
 		visit "/groups"
-		assert_contain "måste logga in"
-	end
+		assert_contain "must log in"
+  end
 
-	test "add and remove club permissions" do
-		log_in
+	test "should not be able to access mailing lists" do
+	  @admin.mailinglists_permission = false
+	  @admin.save
 
-		click_link "Användare"
-		click_link "ci"
+		log_in_as_admin
+		visit "/mailing_lists"
+		assert_contain "must log in"
+  end
 
-		assert_contain /Edsvalla:\s+Radera, Redigera, Inbetalningar, Se/m
-		assert_not_contain "Nybro"
+	test "should not be able to access users" do
+	  @admin.users_permission = false
+	  @admin.save
 
-		click_link "Redigera"
-		uncheck "permission[8][edit]"
-		uncheck "permission[8][delete]"
-		uncheck "permission[8][payments]"
-		check "permission[9][read]"
-		check "permission[9][edit]"
-		check "permission[9][payments]"
-		click_button "Spara"
+		log_in_as_admin
+		visit "/administrators"
+		assert_contain "must log in"
+  end
 
-		assert_contain /Edsvalla:\s+Se/m
-		assert_contain /Nybro:\s+Redigera, Inbetalningar, Se/m
-	end
+	test "should not be able to edit club" do
+	  @admin.clubs_permission = false
+	  @admin.save
 
-	test "ci permissions" do
-		log_in_as_ci
-		assert_contain "Edsvalla"
-		# assert_not_contain "Val"
+		log_in_as_admin
+		visit "/clubs/" + @club.id.to_s + "/edit"
+		assert_contain "must log in"
+  end
 
-		click_link "Användarprofil"
-		assert_not_contain "Ny användare"
-	end
+	test "should not be able to export club data" do
+	  Permission.find(:all, :conditions => {:permission => 'export'}).each { |p| p.destroy }
+		log_in_as_admin
 
-	test "ci does not have access to export" do
-		log_in_as_ci
-		click_link "Edsvalla"
-		assert_not_contain "Export"
-		visit "/clubs/8/students.csv"
-		assert_contain "logga in"
-	end
+		visit "/clubs/" + @club.id.to_s + "/students.csv"
+		assert_contain "must log in"
+  end
 
-	test "admin has access to export" do
-		log_in
-		click_link "Edsvalla"
-		click_link "Exportera som CSV"
-		assert_contain "first_name"
-	end
 end

@@ -1,185 +1,156 @@
 require 'test_helper'
 
-class GroupsTest < ActionController::IntegrationTest
-	fixtures :all
+class StudentsTest < ActionController::IntegrationTest
+  def setup
+    create_club_and_admin
+    @category = Factory(:grade_category)
+    @students = 10.times.map { Factory(:student, :club => @club) }
+  end
 
-	test "list students" do
-		log_in
-		click_link "Klubbar"
-		click_link "Brålanda"
-
-		assert_contain "Amalia Gustavsson"
-		assert_contain " 3 tränande"
+	test "student page should show all students" do
+		log_in_as_admin
+		click_link "Clubs"
+		click_link @club.name
+		@students.each do |s|
+		  assert_contain s.name
+	  end
+		assert_contain " #{@students.length} students"
 	end
 
-	test "new student with no info" do
-		log_in
-		click_link "Klubbar"
-		click_link "Brålanda"
-		click_link "Ny tränande"
+	test "should not create new blank student" do
+		log_in_as_admin
+		click_link "Clubs"
+		click_link @club.name
+		click_link "New student"
 
-		click_button "Spara"
+		click_button "Save"
 
-		assert_not_contain "skapats"
-		assert_contain /tomt|saknas/
+		assert_not_contain "created"
+		assert_contain "can't be blank"
 	end
 
-	test "new student with no personal_number, corrected" do
-		log_in
-		click_link "Klubbar"
-		click_link "Brålanda"
-		click_link "Ny tränande"
+	test "should create new student with minimal info" do
+		log_in_as_admin
+		click_link "Clubs"
+		click_link @club.name
+		click_link "New student"
 
-		fill_in "Förnamn", :with => "Test"
-		fill_in "Efternamn", :with => "Testsson"
-		select "Kung Fu"
-		click_button "Spara"
+		fill_in "Name", :with => "Test"
+		fill_in "Surname", :with => "Testsson"
+		fill_in "Personal number", :with => "19850203"
+		select @category.category
+		click_button "Save"
 
-		assert_not_contain "skapats"
-		assert_contain /tomt|saknas/
-
-		fill_in "Personnummer", :with => "19850203"
-		click_button "Spara"
-		assert_contain "skapats"
+		assert_contain "created"
 	end
 
-	test "new student with minimal info" do
-		log_in
-		click_link "Klubbar"
-		click_link "Brålanda"
-		click_link "Ny tränande"
+	test "should create a new student in x groups" do
+	  @admin.groups_permission = true
+	  @admin.save
+    all_groups = 4.times.map { Factory(:group) }
+    member_groups = all_groups[1..2]
+    non_member_groups = all_groups - member_groups
 
-		fill_in "Förnamn", :with => "Test"
-		fill_in "Efternamn", :with => "Testsson"
-		fill_in "Personnummer", :with => "19850203"
-		select "Kung Fu"
-		click_button "Spara"
+    log_in_as_admin
+		click_link "Clubs"
+		click_link @club.name
+		click_link "New student"
 
-		assert_contain "skapats"
+		fill_in "Name", :with => "Test"
+		fill_in "Surname", :with => "Testsson"
+		fill_in "Personal number", :with => "19850203"
+		member_groups.each do |g|
+		  check g.identifier
+	  end
+		click_button "Save"
+		assert_contain "created"
 
-		click_link "Klubbar"
-		click_link "Brålanda"
+		member_groups.each do |g|
+  		click_link "Groups"
+      click_link g.identifier
+  		assert_contain "Test Testsson"
+    end
 
-		assert_contain " 4 tränande"
-		assert_contain "Test Testsson"
+		non_member_groups.each do |g|
+  		click_link "Groups"
+      click_link g.identifier
+  		assert_not_contain "Test Testsson"
+    end
 	end
 
-	test "new student in group" do
-		log_in
-		click_link "Klubbar"
-		click_link "Brålanda"
-		click_link "Ny tränande"
+	test "should create a new student in x mailing lists" do
+	  @admin.mailinglists_permission = true
+	  @admin.save
+    all_lists = 4.times.map { Factory(:mailing_list) }
+    member_lists = all_lists[1..2]
+    non_member_lists = all_lists - member_lists
 
-		fill_in "Förnamn", :with => "Test"
-		fill_in "Efternamn", :with => "Testsson"
-		fill_in "Personnummer", :with => "19850203"
-		check "Elever"
-		click_button "Spara"
-		assert_contain "Elever"
+    log_in_as_admin
+		click_link "Clubs"
+		click_link @club.name
+		click_link "New student"
 
-		click_link "Klubbar"
-		click_link "Brålanda"
+		fill_in "Name", :with => "Test"
+		fill_in "Surname", :with => "Testsson"
+		fill_in "Personal number", :with => "19850203"
+		member_lists.each do |m|
+		  check m.description
+	  end
+		click_button "Save"
+		assert_contain "created"
 
-		assert_contain " 4 tränande"
-		assert_contain "Test Testsson"
+		member_lists.each do |m|
+  		click_link "Mailing Lists"
+      click_link m.email
+  		assert_contain "Test Testsson"
+    end
 
-		click_link "Grupper"
-		click_link "Elever"
-		assert_contain "Test Testsson"
-	end
-
-	test "new student in two groups" do
-		log_in
-		click_link "Klubbar"
-		click_link "Brålanda"
-		click_link "Ny tränande"
-
-		fill_in "Förnamn", :with => "Test"
-		fill_in "Efternamn", :with => "Testsson"
-		fill_in "Personnummer", :with => "19850203"
-		check "Elever"
-		check "Instruktörer"
-		click_button "Spara"
-
-		assert_contain "Elever"
-		assert_contain "Instruktörer"
-
-		click_link "Klubbar"
-		click_link "Brålanda"
-
-		assert_contain " 4 tränande"
-		assert_contain "Test Testsson"
-
-		click_link "Grupper"
-		click_link "Elever"
-		assert_contain "Test Testsson"
-
-		click_link "Grupper"
-		click_link "Instruktör"
-		assert_contain "Test Testsson"
-	end
-
-	test "new student in two mailing lists" do
-		log_in
-		click_link "Klubbar"
-		click_link "Brålanda"
-		click_link "Ny tränande"
-
-		fill_in "Förnamn", :with => "Test"
-		fill_in "Efternamn", :with => "Testsson"
-		fill_in "Personnummer", :with => "19850203"
-		check "Everyone"
-		check "Instructors"
-		click_button "Spara"
-
-		assert_contain "Everyone"
-		assert_contain "Instructors"
-
-		click_link "Epostlistor"
-		click_link "all@example.com"
-
-		assert_contain "Test Testsson"
-
-		click_link "Epostlistor"
-		click_link "instructors@example.com"
-
-		assert_contain "Test Testsson"
+		non_member_lists.each do |m|
+  		click_link "Mailing Lists"
+      click_link m.email
+  		assert_not_contain "Test Testsson"
+    end
 	end
 
 	test "new student should join club mailing list per default" do
-		log_in
-		click_link "Klubbar"
-		click_link "Brålanda"
-		click_link "Ny tränande"
+	  mailing_list = Factory(:mailing_list, :default => 1)
+	  @admin.mailinglists_permission = true
+	  @admin.save
+		log_in_as_admin
 
-		fill_in "Förnamn", :with => "Test"
-		fill_in "Efternamn", :with => "Testsson"
-		fill_in "Personnummer", :with => "19850203"
-		click_button "Spara"
+		click_link "Clubs"
+		click_link @club.name
+		click_link "New student"
 
-		assert_contain "Brålanda-elever"
+		fill_in "Name", :with => "Test"
+		fill_in "Surname", :with => "Testsson"
+		fill_in "Personal number", :with => "19850203"
+		click_button "Save"
 
-		click_link "Epostlistor"
-		click_link "bralanda@example.com"
+		click_link "Mailing Lists"
+		click_link mailing_list.email
 
 		assert_contain "Test Testsson"
 	end
 
 	test "new student should not join other club mailing list per default" do
-		log_in
-		click_link "Klubbar"
-		click_link "Edsvalla"
-		click_link "Ny tränande"
+	  other_club = Factory(:club)
+	  mailing_list = Factory(:mailing_list, :default => 1, :club => other_club)
+	  @admin.mailinglists_permission = true
+	  @admin.save
+		log_in_as_admin
 
-		fill_in "Förnamn", :with => "Test"
-		fill_in "Efternamn", :with => "Testsson"
-		fill_in "Personnummer", :with => "19850203"
-		click_button "Spara"
+		click_link "Clubs"
+		click_link @club.name
+		click_link "New student"
 
-		assert_not_contain "Brålanda-elever"
+		fill_in "Name", :with => "Test"
+		fill_in "Surname", :with => "Testsson"
+		fill_in "Personal number", :with => "19850203"
+		click_button "Save"
 
-		click_link "Epostlistor"
-		click_link "bralanda@example.com"
+		click_link "Mailing Lists"
+		click_link mailing_list.email
 
 		assert_not_contain "Test Testsson"
 	end

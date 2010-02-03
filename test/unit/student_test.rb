@@ -128,4 +128,8 @@ class StudentTest < ActiveSupport::TestCase
     @student.gender = "male"
     assert @student.gender == "female"
   end
+
+  test "current grade should be nil by default" do
+    assert @student.current_grade == nil
+  end
 end

@@ -39,6 +39,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_session, :current_user
   before_filter :set_locale
   protect_from_forgery # :secret => '4250e2ff2a2308b6668755ef76677cbb'
+  before_filter :require_site_permission, :only => [ :edit_site_settings, :update_site_settings ]
 
   def set_locale
     session[:locale] = params[:locale] if params[:locale] != nil
@@ -46,7 +47,11 @@ class ApplicationController < ActionController::Base
   end
 
   def edit_site_settings
-    @available_themes = Dir.entries("public/stylesheets/themes").select { |d| !d.starts_with? '.' }.sort
+    begin
+      @available_themes = Dir.entries("public/stylesheets/themes").select { |d| !d.starts_with? '.' }.sort
+    rescue Exception => e
+      @available_themes = []
+    end
   end
 
   def update_site_settings
@@ -114,6 +119,12 @@ class ApplicationController < ActionController::Base
   def require_mailing_lists_permission
     return denied unless current_user
     return denied unless current_user.mailinglists_permission?
+    return true
+  end
+
+  def require_site_permission
+    return denied unless current_user
+    return denied unless current_user.site_permission?
     return true
   end
 

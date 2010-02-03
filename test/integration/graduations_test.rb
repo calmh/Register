@@ -1,100 +1,116 @@
 require 'test_helper'
 
 class GraduationsTest < ActionController::IntegrationTest
-	fixtures :all
+  def setup
+    create_club_and_admin
 
-	test "graduation on a single student" do
-		log_in
-		click_link "Klubbar"
-		click_link "Brålanda"
+    @categories = 4.times.map { Factory(:grade_category) }
+    @grades = 10.times.map { Factory(:grade) }
+    @students = 5.times.map { Factory(:student, :club => @club, :main_interest => @categories[0]) }
+  end
 
-		assert_contain "Amalia Gustavsson"
-		assert_contain " 3 tränande"
+  test "should display graduation on club page" do
+    Factory(:graduation, :student => @students[0], :grade => @grades[0], :grade_category => @categories[0])
+    category = @categories[0].category
+    grade = @grades[0].description
 
-		click_link "Amalia Gustavsson"
-		click_link "Graderingar"
-		select "Qi Gong"
-		select "Gul II"
-		fill_in "Instruktör", :with => "Name of Instructor"
-		fill_in "Examinator", :with => "Name of Examiner"
-		select "2009"
-		select "Oktober"
-		select "15"
-		click_button "Spara"
+    log_in_as_admin
+    click_link @club.name
 
-		click_link "Klubbar"
-		click_link "Brålanda"
-		assert_contain "Amalia Gustavsson"
-		assert_contain " 3 tränande"
-		assert_contain "Gul II (Qi Gong)"
+    assert_contain @students[0].name
+    assert_contain "#{grade} (#{category})"
+  end
 
-		click_link "Amalia Gustavsson"
-		click_link "Graderingar"
-		select "Kung Fu"
-		select "Röd II"
-		fill_in "Instruktör", :with => "Name of Instructor"
-		fill_in "Examinator", :with => "Name of Examiner"
-		select "2009"
-		select "Oktober"
-		select "20"
-		click_button "Spara"
+  test "should display latest graduation on club page" do
+    Factory(:graduation, :student => @students[0], :grade => @grades[0], :grade_category => @categories[0], :graduated => 6.months.ago)
+    Factory(:graduation, :student => @students[0], :grade => @grades[1], :grade_category => @categories[0], :graduated => 2.months.ago)
+    category = @categories[0].category
+    grade = @grades[1].description
 
-		click_link "Klubbar"
-		click_link "Brålanda"
-		assert_contain "Amalia Gustavsson"
-		assert_contain " 3 tränande"
-		assert_contain "Gul II (Qi Gong)"
+    log_in_as_admin
+    click_link @club.name
 
-		click_link "Amalia Gustavsson"
-		click_link "Graderingar"
-		select "Kung Fu"
-		select "Grön II"
-		fill_in "Instruktör", :with => "Name of Instructor"
-		fill_in "Examinator", :with => "Name of Examiner"
-		select "2009"
-		select "Oktober"
-		select "25"
-		click_button "Spara"
+    assert_contain @students[0].name
+    assert_contain "#{grade} (#{category})"
+  end
 
-		click_link "Klubbar"
-		click_link "Brålanda"
-		assert_contain "Amalia Gustavsson"
-		assert_contain " 3 tränande"
-		assert_contain "Gul II (Qi Gong)"
-	end
+  test "should display graduation with same category as main interest, even if earlier, on club page" do
+    Factory(:graduation, :student => @students[0], :grade => @grades[0], :grade_category => @categories[0], :graduated => 6.months.ago)
+    Factory(:graduation, :student => @students[0], :grade => @grades[1], :grade_category => @categories[1], :graduated => 2.months.ago)
+    category = @categories[0].category
+    grade = @grades[0].description
 
-	test "graduation on multiple students" do
-		log_in
-		click_link "Sök tränande"
-		check "Brålanda"
-		uncheck "Edsvalla"
-		uncheck "Frillesås"
-		uncheck "Nybro"
-		uncheck "Tandsbyn"
-		uncheck "Vallåkra"
-		click_button "Sök"
+    log_in_as_admin
+    click_link @club.name
 
-		assert_contain "Amalia Gustavsson"
-		assert_contain " 3 tränande"
+    assert_contain @students[0].name
+    assert_contain "#{grade} (#{category})"
+  end
 
-		check "selected_students_25"
-		check "selected_students_26"
-		check "selected_students_27"
-		click_button "Registrera gradering"
+  test "should display graduation on student page" do
+    Factory(:graduation, :student => @students[0], :grade => @grades[0], :grade_category => @categories[0])
+    category = @categories[0].category
+    grade = @grades[0].description
 
-		select "Kung Fu"
-		select "Gul II"
-		fill_in "Instruktör", :with => "Name of Instructor"
-		fill_in "Examinator", :with => "Name of Examiner"
-		select "2009"
-		select "Oktober"
-		select "15"
-		click_button "Spara"
+    log_in_as_admin
+    click_link @club.name
 
-		click_link "Klubbar"
-		click_link "Brålanda"
-		assert_contain "Amalia Gustavsson"
-		assert_contain " 3 tränande"
-		assert_contain "Gul II (Kung Fu)"
-	end
+    click_link @students[0].name
+    assert_contain grade
+    assert_contain category
+  end
+
+  test "should register graduation on a single student" do
+    category = @categories[0].category
+    grade = @grades[0].description
+
+    log_in_as_admin
+    click_link @club.name
+    click_link @students[0].name
+    click_link "Graduations"
+    select category
+    select grade
+    fill_in "Instructor", :with => "Name of Instructor"
+    fill_in "Examiner", :with => "Name of Examiner"
+    select "2009"
+    select "October"
+    select "15"
+    click_button "Save"
+
+    click_link @club.name
+    assert_contain @students[0].name
+    assert_contain "#{grade} (#{category})"
+  end
+
+  test "should register graduation on multiple students" do
+    category = @categories[0].category
+    grade = @grades[0].description
+    graduated = @students[1..3]
+
+    log_in_as_admin
+    click_link @club.name
+
+    graduated.each do |s|
+      check "selected_students_#{s.id}"
+    end
+    click_button "Register graduation"
+
+    select category
+    select grade
+    fill_in "Instructor", :with => "Name of Instructor"
+    fill_in "Examiner", :with => "Name of Examiner"
+    select "2009"
+    select "October"
+    select "15"
+    click_button "Save"
+
+    click_link "Clubs"
+    click_link @club.name
+    graduated.each do |s|
+      click_link s.name
+      assert_contain grade
+      assert_contain category
+      click_link @club.name
+    end
+  end
 end

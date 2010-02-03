@@ -1,67 +1,111 @@
 require 'test_helper'
 
 class MailingListTest < ActionController::IntegrationTest
-	fixtures :all
+	def setup
+    create_club_and_admin
 
-	test "check list och mailing lists" do
-		log_in
-		click_link "Epostlistor"
+    @admin.mailinglists_permission = true
+    @admin.save
 
-		assert_contain "all@example.com"
-		click_link "Ny epostlista"
+    @mailing_lists = 4.times.map { Factory(:mailing_list) }
+    @students = 5.times.map { Factory(:student) }
 
-		fill_in "Epostadress", :with => "test@example.com"
-		fill_in "Förklaring", :with => "En testlista"
-		fill_in "Säkerhet", :with => "public"
-		click_button "Spara"
+    @member_list = @mailing_lists[0]
+    @students.each do |s|
+      s.mailing_lists << @member_list
+      s.save
+    end
+  end
+
+  test "mailing lists should be displayed on the list page" do
+		log_in_as_admin
+
+		click_link "Mailing lists"
+
+		@mailing_lists.each do |m|
+		  assert_contain m.email
+		  assert_contain m.description
+	  end
+  end
+
+	test "should create new mailing list" do
+		log_in_as_admin
+
+		click_link "Mailing lists"
+		click_link "New mailing list"
+
+		fill_in "Email", :with => "test@example.com"
+		fill_in "Description", :with => "A test list"
+		fill_in "Security", :with => "public"
+
+		click_button "Save"
+		click_link "Mailing lists"
 
 		assert_contain "test@example.com"
-		assert_contain "En testlista"
-		click_link "all@example.com"
-
-		assert_contain "Redigera epostlista"
-		assert_contain "Radera"
-		click_link "Radera"
-
-		assert_contain "test@example.com"
-		assert_not_contain "all@example.com"
+		assert_contain "A test list"
 	end
 
-	test "email address must be unique" do
-		log_in
-		click_link "Epostlistor"
+	test "should delete a mailing list" do
+		log_in_as_admin
 
-		assert_contain "all@example.com"
-		click_link "Ny epostlista"
+		click_link "Mailing lists"
+		click_link @mailing_lists[0].email
+    click_link "Destroy"
 
-		fill_in "Epostadress", :with => "all@example.com"
-		fill_in "Förklaring", :with => "En testlista"
-		fill_in "Säkerhet", :with => "public"
-		click_button "Spara"
-
-    assert_contain "upptagen"
+		click_link "Mailing lists"
+		assert_not_contain @mailing_lists[0].email
 	end
+
+	test "should not be able to create a new mailing list with non-unique email" do
+		log_in_as_admin
+
+		click_link "Mailing lists"
+		click_link "New mailing list"
+
+		fill_in "Email", :with => @mailing_lists[0].email
+		fill_in "Description", :with => "A test list"
+		fill_in "Security", :with => "public"
+
+		click_button "Save"
+		assert_contain "taken"
+	end
+
+  test "mailing list should show members" do
+		log_in_as_admin
+
+		click_link "Mailing lists"
+		click_link @member_list.email
+
+    @students.each do |s|
+      assert_contain s.name
+    end
+  end
 
 	test "remove student from mailing list" do
-		log_in
-		click_link "Epostlistor"
-		click_link "instructors@example.com"
+		log_in_as_admin
 
-		assert_contain "Amalia"
+    click_link @club.name
+		click_link @students[0].name
+		click_link "Edit"
 
-		click_link "Klubbar"
-		click_link "Brålanda"
-		click_link "Amalia Gustavsson"
-		click_link "Redigera"
+		uncheck @member_list.description
+		click_button "Save"
 
-		uncheck "Instructors"
-		click_button "Spara"
+		assert_not_contain @member_list.description
+	end
 
-		assert_not_contain "Instructors"
+	test "remove student from mailing list, and verify this on the membership page" do
+		log_in_as_admin
 
-		click_link "Epostlistor"
-		click_link "instructors@example.com"
+    click_link @club.name
+		click_link @students[0].name
+		click_link "Edit"
 
-		assert_not_contain "Amalia"
+		uncheck @member_list.description
+		click_button "Save"
+
+		click_link "Mailing lists"
+		click_link @member_list.email
+		assert_not_contain @students[0].name
 	end
 end
