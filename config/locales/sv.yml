@@ -201,6 +201,8 @@ sv:
   Message_sent_to: Meddelandet skickades till
   Couldnt_send_to: Kunde inte skicka meddelande till
   because_no_email: eftersom de inte har en epostadress.
+  Welcome_Text: Välkomsttext
+  Welcome_Text_descr: "Detta är den text som skickas ut i välkomstbrevet. Använd platshållarna %club%, %url% och %password% för att hänvisa till den aktuella klubben, URL:en att logga in på samt användarens lösenord."
 
   authlogic:
      error_messages:

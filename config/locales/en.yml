@@ -201,7 +201,8 @@ en:
   Password_reset_descr: Type in your login name (as an administrator), or your email address.
   Request_password_reset: Reset password
   Forgot_password: Forgot your password?
-
+  Welcome_Text: Welcome Text
+  Welcome_Text_descr: "This is the text that is sent in the welcome email. Use the placeholders %club%, %url% and %password% to denote the current club, URL to log in at and the user's password.."
 
   activerecord:
       messages:

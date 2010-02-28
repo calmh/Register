@@ -2,20 +2,20 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class SiteSettings
-  def self.get_setting(setting)
-    setting = ConfigurationSetting.find(:first, :conditions => { :setting => setting })
+  def self.get_setting(setting_name)
+    setting = ConfigurationSetting.find(:first, :conditions => { :setting => setting_name })
     return "" if setting == nil
     return setting.value
   end
 
-  def self.set_setting(setting, value)
-    setting = ConfigurationSetting.find(:first, :conditions => { :setting => setting })
+  def self.set_setting(setting_name, value)
+    setting = ConfigurationSetting.find(:first, :conditions => { :setting => setting_name })
     if setting == nil
       setting = ConfigurationSetting.new
-      setting.setting = setting
+      setting.setting = setting_name
     end
-    s.value = value
-    s.save!
+    setting.value = value
+    setting.save!
   end
 
   def self.site_name
@@ -30,6 +30,13 @@ class SiteSettings
   end
   def self.site_theme=(value)
     set_setting(:site_theme, value)
+  end
+
+  def self.welcome_text
+    get_setting(:welcome_text)
+  end
+  def self.welcome_text=(value)
+    set_setting(:welcome_text, value)
   end
 end
 
@@ -53,6 +60,7 @@ class ApplicationController < ActionController::Base
   def update_site_settings
     SiteSettings.site_name = params[:site_name]
     SiteSettings.site_theme = params[:site_theme]
+    SiteSettings.welcome_text = params[:welcome_text]
     expire_fragment('layout_header')
     flash[:notice] = t(:Site_settings_updated)
     redirect_to :controller => 'application', :action => 'edit_site_settings'
