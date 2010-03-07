@@ -170,7 +170,7 @@ ActiveRecord::Schema.define(:version => 20100307204058) do
     t.integer  "title_id"
     t.integer  "board_position_id"
     t.integer  "club_position_id"
-    t.integer  "archived"
+    t.integer  "archived",                :default => 0
   end
 
   add_index "users", ["club_id"], :name => "index_users_on_club_id"
