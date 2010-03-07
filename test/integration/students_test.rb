@@ -17,6 +17,22 @@ class StudentsTest < ActionController::IntegrationTest
     assert_contain " #{@students.length} students"
   end
 
+  test "student page should show only this club's students" do
+    other_club = Factory(:club)
+    other_students = 10.times.map { Factory(:student, :club => other_club )}
+
+    log_in_as_admin
+    click_link "Clubs"
+    click_link @club.name
+    @students.each do |s|
+      assert_contain s.name
+    end
+    other_students.each do |s|
+      assert_not_contain s.name
+    end
+    assert_contain " #{@students.length} students"
+  end
+
   test "student page should not include archived students" do
     archived_students = 10.times.map { Factory(:student, :club => @club, :archived => 1) }
 

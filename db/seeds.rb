@@ -9,14 +9,18 @@ admin = Factory(:administrator, :login => 'admin',
   :site_permission => true
   )
 
-club = Factory(:club)
-10.times do
-  Factory(:student, :club => club)
+clubs = 2.times.map { Factory(:club) }
+clubs.each do |club|
+  10.times do
+    Factory(:student, :club => club)
+  end
 end
-Factory(:student, :club => club, :email => "student@example.com", :password => "student", :password_confirmation => "student")
+Factory(:student, :club => clubs[0], :email => "student@example.com", :password => "student", :password_confirmation => "student")
 
 %w[read edit delete graduations payments export].each do |perm|
-  Factory(:permission, :club => club, :user => admin, :permission => perm)
+  clubs.each do |club|
+    Factory(:permission, :club => club, :user => admin, :permission => perm)
+  end
 end
 
 4.times do

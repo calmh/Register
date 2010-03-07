@@ -42,7 +42,7 @@ class SearchParams
 
   def conditions
     variables = []
-    conditions = []
+    conditions = [ "archived = 0" ]
 
     if !@club_id.nil?
       if @club_id.respond_to?(:each)

@@ -29,7 +29,7 @@ class Student < User
   validates_presence_of :title
   named_scope :not_archived, :conditions => { :archived => 0 }
   named_scope :all_inclusive, lambda { |conditions| {
-    :conditions => [ "archived = 0" ] + conditions, :include => [ { :graduations => :grade_category }, :payments, :club, :groups, :main_interest, :board_position, :club_position, :title ]
+    :conditions => conditions, :include => [ { :graduations => :grade_category }, :payments, :club, :groups, :main_interest, :board_position, :club_position, :title ]
     } }
 
   acts_as_authentic do |config|
