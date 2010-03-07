@@ -1,11 +1,17 @@
 class MessagesController < ApplicationController
   def new
-    @message = Message.new(:from => current_user.email, :subject => get_default(:message_subject), :body => get_default(:message_body))
     @students = Student.find(session[:selected_students]);
+    @message = Message.new
+    @message.from = current_user.email
+    @message.subject = get_default(:message_subject)
+    @message.body = get_default(:message_body)
   end
 
   def update
-    @message = Message.new(:from => current_user.email, :body => params[:message][:body], :subject => params[:message][:subject])
+    @message = Message.new
+    @message.from = current_user.email
+    @message.body = params[:message][:body]
+    @message.subject = params[:message][:subject]
     @students = Student.find(session[:selected_students])
     session[:selected_students] = nil
 
