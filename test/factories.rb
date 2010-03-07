@@ -99,6 +99,7 @@ Factory.define :student do |s|
   s.club_position { cached_association(:club_position) }
   s.board_position { cached_association(:board_position) }
   s.title { cached_association(:title) }
+  s.archived 0
 end
 
 Factory.define :administrator do |s|

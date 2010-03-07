@@ -17,6 +17,43 @@ class StudentsTest < ActionController::IntegrationTest
     assert_contain " #{@students.length} students"
   end
 
+  test "student page should not include archived students" do
+    archived_students = 10.times.map { Factory(:student, :club => @club, :archived => 1) }
+
+    log_in_as_admin
+    click_link "Clubs"
+    click_link @club.name
+    @students.each do |s|
+      assert_contain s.name
+    end
+    archived_students.each do |s|
+      assert_not_contain s.name
+    end
+    assert_contain " #{@students.length} students"
+  end
+
+  test "overview page student count should not include archived students" do
+    archived_students = 10.times.map { Factory(:student, :club => @club, :archived => 1) }
+
+    log_in_as_admin
+    click_link "Clubs"
+    assert_contain Regexp.new("\\b#{@students.length}\\b")
+    assert_not_contain Regexp.new("\\b#{@students.length + archived_students.length}\\b")
+  end
+
+  test "student should be archived and then not be listed on the club page" do
+    archived = @students[0]
+    log_in_as_admin
+    click_link "Clubs"
+    click_link @club.name
+    click_link archived.name
+    click_link "Edit"
+    click_link "Archive"
+
+    click_link @club.name
+    assert_not_contain archived.name
+  end
+
   test "should not create new blank student" do
     log_in_as_admin
     click_link "Clubs"

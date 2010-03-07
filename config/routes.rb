@@ -13,7 +13,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # Clubs, students and subresources
   map.resources :clubs, :shallow => true do |club|
-    club.resources :students, :collection => { :filter => :post } do |student|
+    club.resources :students, :collection => { :filter => :post }, :member => { :archive => :get } do |student|
       student.resources :payments
       student.resources :graduations
     end

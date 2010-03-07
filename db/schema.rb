@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100124102924) do
+ActiveRecord::Schema.define(:version => 20100307204058) do
 
   create_table "board_positions", :force => true do |t|
     t.string   "position"
@@ -170,6 +170,7 @@ ActiveRecord::Schema.define(:version => 20100124102924) do
     t.integer  "title_id"
     t.integer  "board_position_id"
     t.integer  "club_position_id"
+    t.integer  "archived"
   end
 
   add_index "users", ["club_id"], :name => "index_users_on_club_id"

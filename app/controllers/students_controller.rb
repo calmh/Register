@@ -229,6 +229,13 @@ class StudentsController < ApplicationController
     end
   end
 
+  def archive
+    @student = Student.find(params[:id])
+    @student.archived = 1
+    @student.save
+    redirect_to(@student.club)
+  end
+
   def destroy
     @student = Student.find(params[:id])
     @student.destroy

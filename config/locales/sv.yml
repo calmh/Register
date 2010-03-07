@@ -123,6 +123,7 @@ sv:
   New_Graduation: Ny gradering
   Destroy: Radera
   Are_you_sure_club: Är du säker? Klubben kommer att raderas, tillsammans med alla elever i den.
+  Are_you_sure_archive: Är du säker? Eleven kommer att arkiveras, och därmed vara dold tills han/hon aktiveras igen.
   Are_you_sure_student: Är du säker? Eleven kommer att raderas.
   Are_you_sure_user: Är du säker? Användaren kommer att raderas.
   Are_you_sure_mailing_list: Är du säker? Epostlistan kommer att raderas.
@@ -203,6 +204,7 @@ sv:
   because_no_email: eftersom de inte har en epostadress.
   Welcome_Text: Välkomsttext
   Welcome_Text_descr: "Detta är den text som skickas ut i välkomstbrevet. Använd platshållarna %club%, %url% och %password% för att hänvisa till den aktuella klubben, URL:en att logga in på samt användarens lösenord."
+  Archive: Arkivera
 
   authlogic:
      error_messages:
