@@ -18,7 +18,7 @@ class MessagesController < ApplicationController
     @sent =  @noemail = []
     @students.each do |student|
       if student.email.blank?
-        @noemail << s
+        @noemail << student
       else
         student.deliver_generic_message!(@message)
         @sent << student
