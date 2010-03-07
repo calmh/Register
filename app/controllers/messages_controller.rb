@@ -15,7 +15,8 @@ class MessagesController < ApplicationController
     @students = Student.find(session[:selected_students])
     session[:selected_students] = nil
 
-    @sent =  @noemail = []
+    @sent = []
+    @noemail = []
     @students.each do |student|
       if student.email.blank?
         @noemail << student
