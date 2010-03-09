@@ -9,13 +9,29 @@ admin = Factory(:administrator, :login => 'admin',
   :site_permission => true
   )
 
+# Create two clubs with a few basic students in
 clubs = 2.times.map { Factory(:club) }
+Factory(:student, :club => clubs[0], :email => "student@example.com", :password => "student", :password_confirmation => "student")
 clubs.each do |club|
   10.times do
     Factory(:student, :club => club)
   end
 end
-Factory(:student, :club => clubs[0], :email => "student@example.com", :password => "student", :password_confirmation => "student")
+
+# Create one club with a lot more students and data
+club = Factory(:club, :id => 150)
+clubs << club
+grades = 3.times.map { Factory(:grade) }
+groups = 3.times.map { Factory(:group) }
+mailing_lists = 3.times.map { Factory(:mailing_list) }
+150.times do
+  student = Factory(:student, :club => club)
+  grades.each { |grade| Factory(:graduation, :student => student, :grade => grade) }
+  mailing_lists.each { |ml| student.mailing_lists << ml }
+  groups.each { |ml| student.groups << ml }
+  3.times { Factory(:payment, :student => student) }
+end
+
 
 %w[read edit delete graduations payments export].each do |perm|
   clubs.each do |club|

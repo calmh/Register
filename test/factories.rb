@@ -4,7 +4,11 @@ def cached_association(key)
 end
 
 Factory.sequence :pnumber do |n|
-  personal_number = '19800101-' + '%03d'%n
+  last = n % 1000; n /= 1000
+  day = (n % 28) + 1; n /= 28
+  month = (n % 12) + 1; n /= 12
+  year = 1980 + n
+  personal_number = "%4d%02d%02d-%03d"%[year, month, day, last]
 
   # Calculate valid check digit
   fact = 2
