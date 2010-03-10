@@ -18,18 +18,20 @@ clubs.each do |club|
   end
 end
 
-# Create one club with a lot more students and data
-club = Factory(:club, :id => 150)
-clubs << club
-grades = 3.times.map { Factory(:grade) }
-groups = 3.times.map { Factory(:group) }
-mailing_lists = 3.times.map { Factory(:mailing_list) }
-150.times do
-  student = Factory(:student, :club => club)
-  grades.each { |grade| Factory(:graduation, :student => student, :grade => grade) }
-  mailing_lists.each { |ml| student.mailing_lists << ml }
-  groups.each { |ml| student.groups << ml }
-  3.times { Factory(:payment, :student => student) }
+6.times do
+  # Create one club with a lot more students and data
+  club = Factory(:club)
+  clubs << club
+  grades = 3.times.map { Factory(:grade) }
+  groups = 3.times.map { Factory(:group) }
+  mailing_lists = 3.times.map { Factory(:mailing_list) }
+  150.times do
+    student = Factory(:student, :club => club)
+    grades.each { |grade| Factory(:graduation, :student => student, :grade => grade) }
+    mailing_lists.each { |ml| student.mailing_lists << ml }
+    groups.each { |ml| student.groups << ml }
+    3.times { Factory(:payment, :student => student) }
+  end
 end
 
 
