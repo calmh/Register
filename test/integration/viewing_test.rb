@@ -10,7 +10,10 @@ class ViewingTest < ActionController::IntegrationTest
 	    Factory(:student, :fname => "Aa", :sname => "Bb", :club => @club),
 	    Factory(:student, :fname => "Bb", :sname => "Cc", :club => @club),
 	    Factory(:student, :fname => "Cc", :sname => "Dd", :club => @club),
-	    Factory(:student, :fname => "Dd", :sname => "Ee", :club => @club)
+	    Factory(:student, :fname => "Dd", :sname => "Ee", :club => @club),
+	    if !REQUIRE_PERSONAL_NUMBER
+	      Factory(:student, :fname => "No", :sname => "PersonalNo", :club => @club, :personal_number => nil)
+      end
 	    ]
 	  @students.each do |s|
 	    Factory(:payment, :student => s, :received => 14.months.ago)
