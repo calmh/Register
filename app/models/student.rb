@@ -153,7 +153,7 @@ class Student < User
       date_of_birth = Date.new($1.to_i, $2.to_i, $3.to_i)
       ((Date.today - date_of_birth) / 365.24).to_i
     else
-      -1
+      nil
     end
   end
 

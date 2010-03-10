@@ -20,14 +20,15 @@
       - student.groups.each do |group|
         - group_members[group.identifier] += 1
       - genders[student.gender] += 1
-      - ages[age_intervals[student.age]] += 1
+      - if !student.age.nil?
+        - ages[age_intervals[student.age]] += 1
       - board_positions[student.board_position.position] += 1
       - club_positions[student.club_position.position] += 1
       - main_interests[student.main_interest.category] += 1
       - titles[student.title.title] += 1
 
     = render :partial => 'statistics_table', :locals => { :col1 => t(:Group), :col2 => t(:Num_Students), :rows => group_members.to_a.sort, :total => total }
-    = render :partial => 'statistics_table', :locals => { :col1 => t(:Gender), :col2 => t(:Num_Students), :rows => genders.to_a.sort, :total => total }
+    = render :partial => 'statistics_table', :locals => { :col1 => t(:Gender), :col2 => t(:Num_Students), :rows => genders.to_a.map{|x| [ t(x[0]).titlecase, x[1] ]}.sort, :total => total }
     = render :partial => 'statistics_table', :locals => { :col1 => t(:Age), :col2 => t(:Num_Students), :rows => ages.to_a.sort, :total => total }
     = render :partial => 'statistics_table', :locals => { :col1 => t(:Board_Position), :col2 => t(:Num_Students), :rows => board_positions.to_a.sort, :total => total }
     = render :partial => 'statistics_table', :locals => { :col1 => t(:Club_Position), :col2 => t(:Num_Students), :rows => club_positions.to_a.sort, :total => total }
