@@ -31,7 +31,7 @@ class Student < User
   named_scope :all_inclusive, lambda { |conditions| {
     :conditions => conditions,
     :include => [
-        { :graduations => :grade_category },
+        { :graduations => [ :grade_category, :grade ] },
         :payments, :club, :groups, :main_interest,
         :board_position, :club_position, :title
       ]
