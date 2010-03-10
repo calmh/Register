@@ -29,8 +29,14 @@ class Student < User
   validates_presence_of :title
   named_scope :not_archived, :conditions => { :archived => 0 }
   named_scope :all_inclusive, lambda { |conditions| {
-    :conditions => conditions, :include => [ { :graduations => :grade_category }, :payments, :club, :groups, :main_interest, :board_position, :club_position, :title ]
-    } }
+    :conditions => conditions,
+    :include => [
+        { :graduations => :grade_category },
+        :payments, :club, :groups, :main_interest,
+        :board_position, :club_position, :title
+      ]
+    }
+  }
 
   acts_as_authentic do |config|
     config.validate_password_field = true
@@ -84,7 +90,7 @@ class Student < User
   end
 
   def name
-    return fname + " " + sname
+    @name ||= fname + " " + sname
   end
 
   def login
@@ -92,18 +98,22 @@ class Student < User
   end
 
   def latest_payment
-    if !payments.blank?
-      return payments[0]
+    @latest_payment ||= if !payments.blank?
+      payments[0]
     else
       payment = Payment.new
       payment.amount = 0
       payment.received = created_at
       payment.description = "Start"
-      return payment
+      payment
     end
   end
 
   def current_grade
+    @current_grade ||= calculate_current_grade
+  end
+
+  def calculate_current_grade
     my_graduations = self.graduations
     if my_graduations.blank?
       return nil
@@ -118,31 +128,36 @@ class Student < User
   end
 
   def active?
-    reference = Time.now
-    if payments.blank?
-      return reference - created_at < 86400 * 45
+    @active ||= if payments.blank?
+      Time.now - created_at < 86400 * 45
     else
-      return reference - payments[0].received < 86400 * 180
+      Time.now - payments[0].received < 86400 * 180
     end
+  end
+
+  def gender=(value)
+    self[:gender] = value
+    @gender = nil
   end
 
   def gender
-    if personal_number =~ /-\d\d(\d)\d$/
-      return $1.to_i.even? ? 'female' : 'male'
+    @gender ||= if personal_number =~ /-\d\d(\d)\d$/
+      $1.to_i.even? ? 'female' : 'male'
+    else
+      self[:gender] || 'unknown'
     end
-    return self[:gender] || 'unknown'
   end
 
   def age
-    if personal_number =~ /^(\d\d\d\d)(\d\d)(\d\d)/
+    @age ||= if personal_number =~ /^(\d\d\d\d)(\d\d)(\d\d)/
       date_of_birth = Date.new($1.to_i, $2.to_i, $3.to_i)
-      return ((Date.today - date_of_birth) / 365.24).to_i
+      ((Date.today - date_of_birth) / 365.24).to_i
     else
-      return -1
+      -1
     end
   end
 
   def group_list
-    groups.map{ |group| group.identifier }.join(", ")
+    @group_list ||= groups.map{ |group| group.identifier }.join(", ")
   end
 end
