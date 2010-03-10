@@ -12,7 +12,7 @@ COPYRIGHT = "Copyright &copy; 2009-2010 Jakob Borg"
 # Setting this to false will disable validates_presence_of on personal_number.
 # All other validations will still run when personal_number is present.
 # This is useful as a temporary measure when importing data, to clean up later.
-REQUIRE_PERSONAL_NUMBER = true
+REQUIRE_PERSONAL_NUMBER = false
 # Setting this to true will allow birthdates instead of full personal numbers.
 # Validations will still be performed on personal numbers.
 BIRTHDATE_IS_ENOUGH = true
