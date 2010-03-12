@@ -1,73 +1,31 @@
-# Filters added to this controller apply to all controllers in the application.
-# Likewise, all the methods added will be available for all controllers.
-
-class SiteSettings
-  def self.get_setting(setting_name)
-    setting = ConfigurationSetting.find(:first, :conditions => { :setting => setting_name })
-    return "" if setting == nil
-    return setting.value
-  end
-
-  def self.set_setting(setting_name, value)
-    setting = ConfigurationSetting.find(:first, :conditions => { :setting => setting_name })
-    if setting == nil
-      setting = ConfigurationSetting.new
-      setting.setting = setting_name
-    end
-    setting.value = value
-    setting.save!
-  end
-
-  def self.site_name
-    get_setting(:site_name)
-  end
-  def self.site_name=(value)
-    set_setting(:site_name, value)
-  end
-
-  def self.site_theme
-    get_setting(:site_theme)
-  end
-  def self.site_theme=(value)
-    set_setting(:site_theme, value)
-  end
-
-  def self.welcome_text
-    get_setting(:welcome_text)
-  end
-  def self.welcome_text=(value)
-    set_setting(:welcome_text, value)
-  end
-end
-
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   filter_parameter_logging :password, :password_confirmation
   helper_method :current_user_session, :current_user
   before_filter :set_locale
-  protect_from_forgery # :secret => '4250e2ff2a2308b6668755ef76677cbb'
+  protect_from_forgery
   before_filter :require_site_permission, :only => [ :edit_site_settings, :update_site_settings ]
-
-  def set_locale
-    session[:locale] = params[:locale] if params[:locale] != nil
-    I18n.locale = session[:locale] if session[:locale] != nil
-  end
 
   def edit_site_settings
     @available_themes = Dir.entries("public/stylesheets/themes").select { |entry| !entry.starts_with? '.' }.sort
+    render
   end
 
   def update_site_settings
     SiteSettings.site_name = params[:site_name]
     SiteSettings.site_theme = params[:site_theme]
     SiteSettings.welcome_text = params[:welcome_text]
+
     expire_fragment('layout_header')
+
     flash[:notice] = t(:Site_settings_updated)
     redirect_to :controller => 'application', :action => 'edit_site_settings'
   end
 
-  def validate
-    require_administrator  end
+  def set_locale
+    session[:locale] = params[:locale] if params[:locale] != nil
+    I18n.locale = session[:locale] if session[:locale] != nil
+  end
 
   def current_user_session
     return @current_user_session if defined?(@current_user_session)
@@ -77,14 +35,6 @@ class ApplicationController < ActionController::Base
   def current_user
     return @current_user if defined?(@current_user)
     @current_user = current_user_session && current_user_session.user
-  end
-
-  def denied
-    store_location
-    flash[:warning] = t(:Must_log_in)
-    current_user_session.destroy if current_user_session
-    redirect_to new_user_session_path
-    return false
   end
 
   def require_student_or_administrator
@@ -103,33 +53,23 @@ class ApplicationController < ActionController::Base
   end
 
   def require_clubs_permission
-    return denied unless current_user
-    return denied unless current_user.clubs_permission?
-    return true
+    require_permission(:clubs_permission?)
   end
 
   def require_groups_permission
-    return denied unless current_user
-    return denied unless current_user.groups_permission?
-    return true
+    require_permission(:groups_permission?)
   end
 
   def require_users_permission
-    return denied unless current_user
-    return denied unless current_user.users_permission?
-    return true
+    require_permission(:users_permission?)
   end
 
   def require_mailing_lists_permission
-    return denied unless current_user
-    return denied unless current_user.mailinglists_permission?
-    return true
+    require_permission(:mailinglists_permission?)
   end
 
   def require_site_permission
-    return denied unless current_user
-    return denied unless current_user.site_permission?
-    return true
+    require_permission(:site_permission?)
   end
 
   def require_export_permission(club)
@@ -170,5 +110,21 @@ class ApplicationController < ActionController::Base
     end
     val.value = value
     val.save!
+  end
+
+  private
+
+  def require_permission(permission)
+    return denied unless current_user
+    return denied unless current_user.send(permission)
+    return true
+  end
+
+  def denied
+    store_location
+    flash[:warning] = t(:Must_log_in)
+    current_user_session.destroy if current_user_session
+    redirect_to new_user_session_path
+    return false
   end
 end
