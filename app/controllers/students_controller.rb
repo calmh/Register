@@ -295,10 +295,10 @@ class StudentsController < ApplicationController
       # You always have the right to unsubscribe from mailing lists
       @student.mailing_lists.clear
     else
-      ml_ids = params[:subscribes_to]
+      ml_ids = params[:subscribes_to].keys
       if !current_user.kind_of? Administrator
         cur_ids = @student.mailing_list_ids
-        ml_ids = ml_ids.keys.select do |x|
+        ml_ids = ml_ids.select do |x|
           if cur_ids.include?(x)
             true
             next
