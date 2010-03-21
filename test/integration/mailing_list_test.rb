@@ -9,6 +9,9 @@ class MailingListTest < ActionController::IntegrationTest
 
     @mailing_lists = 4.times.map { Factory(:mailing_list) }
     @students = 5.times.map { Factory(:student) }
+    @unsorted_students = [ Factory(:student, :fname => "Bb", :sname => "Bb"),
+      Factory(:student, :fname => "Aa", :sname => "Aa"),
+      Factory(:student, :fname => "Zz", :sname => "Zz") ]
 
     @member_list = @mailing_lists[0]
     @students.each do |s|
@@ -79,6 +82,22 @@ class MailingListTest < ActionController::IntegrationTest
     @students.each do |s|
       assert_contain s.name
     end
+  end
+
+  test "mailing list should display students sorted by name, even if added randomly" do
+    log_in_as_admin
+
+    @unsorted_students.each do |student|
+      click_link @club.name
+      click_link student.name
+      click_link "Edit"
+      check @mailing_lists[2].description
+      click_button "Save"
+    end
+
+    click_link "Mailing lists"
+    click_link @mailing_lists[2].email
+    assert_contain /Aa Aa.*Bb Bb.*Zz Zz/m
   end
 
   test "remove student from mailing list" do
