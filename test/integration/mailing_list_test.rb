@@ -7,7 +7,12 @@ class MailingListTest < ActionController::IntegrationTest
     @admin.mailinglists_permission = true
     @admin.save
 
-    @mailing_lists = 4.times.map { Factory(:mailing_list) }
+    @mailing_lists = []
+    @mailing_lists << Factory(:mailing_list, :email => "zz@example.com", :description => "Zz List")
+    @mailing_lists << Factory(:mailing_list, :email => "bb@example.com", :description => "Bb List")
+    @mailing_lists << Factory(:mailing_list, :email => "cc@example.com", :description => "Cc List")
+    @mailing_lists << Factory(:mailing_list, :email => "aa@example.com", :description => "Aa List")
+
     @students = 5.times.map { Factory(:student) }
     @unsorted_students = [ Factory(:student, :fname => "Bb", :sname => "Bb"),
       Factory(:student, :fname => "Aa", :sname => "Aa"),
@@ -29,6 +34,13 @@ class MailingListTest < ActionController::IntegrationTest
       assert_contain m.email
       assert_contain m.description
     end
+  end
+
+  test "mailing lists should be displayed on the list page, and should be sorted by email" do
+    log_in_as_admin
+
+    click_link "Mailing lists"
+    assert_contain /aa@example.*bb@example.*cc@example.*zz@example/m
   end
 
   test "should create new mailing list" do
