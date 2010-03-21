@@ -32,6 +32,13 @@ end
     groups.each { |ml| student.groups << ml }
     3.times { Factory(:payment, :student => student) }
   end
+  20.times do
+    student = Factory(:student, :club => club, :archived => 1)
+    grades.each { |grade| Factory(:graduation, :student => student, :grade => grade) }
+    mailing_lists.each { |ml| student.mailing_lists << ml }
+    groups.each { |ml| student.groups << ml }
+    3.times { Factory(:payment, :student => student) }
+  end
 end
 
 

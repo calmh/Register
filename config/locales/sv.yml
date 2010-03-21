@@ -205,6 +205,9 @@ sv:
   Welcome_Text: Välkomsttext
   Welcome_Text_descr: "Detta är den text som skickas ut i välkomstbrevet. Använd platshållarna %club%, %url% och %password% för att hänvisa till den aktuella klubben, URL:en att logga in på samt användarens lösenord."
   Archive: Arkivera
+  Archived: Arkiverade
+  Unarchive: Gör aktiv igen
+  Found: Hittade
 
   authlogic:
      error_messages:

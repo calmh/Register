@@ -27,6 +27,7 @@ class Student < User
   validates_presence_of :board_position
   validates_presence_of :club_position
   validates_presence_of :title
+  named_scope :archived, :conditions => { :archived => 1 }
   named_scope :not_archived, :conditions => { :archived => 0 }
   named_scope :all_inclusive, lambda { |conditions| {
     :conditions => conditions,

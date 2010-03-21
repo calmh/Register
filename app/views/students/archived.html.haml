@@ -1,0 +1,23 @@
+.block
+  .secondary-navigation
+    %ul
+      %li.first= link_to t(:Club_List), clubs_path
+      %li= link_to h(@club.name), club_path(@club)
+      %li.last.active= link_to t(:Archived), archived_club_students_path(@club)
+    .clear
+  .content
+    .inner
+      %h2= t(:Archived)
+      %p
+        = t(:Found)
+        = @students.length
+        = t(:Archived).downcase
+        = t(:Students).downcase + "."
+      %table.table.lesspadding
+        %tr
+          %th.first= t(:Name)
+          %th.last &nbsp;
+        - @students.each do |student|
+          %tr{ :class => cycle("odd", "even") }
+            %td= link_to student.name, student_path(student)
+            %td= link_to t(:Unarchive), unarchive_student_path(student), :class => 'button'

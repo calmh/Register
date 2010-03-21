@@ -205,6 +205,9 @@ en:
   Welcome_Text: Welcome Text
   Welcome_Text_descr: "This is the text that is sent in the welcome email. Use the placeholders %club%, %url% and %password% to denote the current club, URL to log in at and the user's password.."
   Archive: Archive
+  Archived: Archived
+  Unarchive: Make Active
+  Found: Found
 
   activerecord:
       messages:

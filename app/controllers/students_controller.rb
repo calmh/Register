@@ -236,6 +236,18 @@ class StudentsController < ApplicationController
     redirect_to(@student.club)
   end
 
+  def unarchive
+    @student = Student.find(params[:id])
+    @student.archived = 0
+    @student.save
+    redirect_to archived_club_students_path(@student.club)
+  end
+
+  def archived
+    @club = Club.find(params[:club_id])
+    @students = @club.students.archived
+  end
+
   def destroy
     @student = Student.find(params[:id])
     @student.destroy

@@ -3,7 +3,8 @@
     %ul
       - if !@club.blank?
         %li.first= link_to t(:Club_List), clubs_path
-        %li.active.last= link_to h(@club.name), club_path(@club)
+        %li.active= link_to h(@club.name), club_path(@club)
+        %li.last= link_to t(:Archived), archived_club_students_path(@club)
       - else
         %li.first.active.last= link_to t(:Search_Students), students_path
     .clear
