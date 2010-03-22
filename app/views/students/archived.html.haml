@@ -16,8 +16,17 @@
       %table.table.lesspadding
         %tr
           %th.first= t(:Name)
+          %th= t(:Main_Interest)
+          %th= t(:Groups)
+          %th= t(:Personal_Num)
+          %th= t(:Grade)
           %th.last &nbsp;
         - @students.each do |student|
           %tr{ :class => cycle("odd", "even") }
-            %td= link_to student.name, student_path(student)
+            %td= student.name
+            %td= student.main_interest.category
+            %td= student.groups.map{ |g| g.identifier }.join(", ")
+            %td= student.personal_number
+            %td= grade_str(student.current_grade)
             %td= link_to t(:Unarchive), unarchive_student_path(student), :class => 'button'
+            %td &nbsp;
