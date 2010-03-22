@@ -3,6 +3,9 @@
 mailing_list_name = ARGV[0]
 mailing_list = MailingList.find_by_email(mailing_list_name)
 if mailing_list
-	members = mailing_list.students.map { |s| s.email }.reject { |e| e.nil? || e.empty? }
-	members.each { |e| puts e}
+  members = mailing_list.students.reject { |student| student.archived == 1 }
+  addresses = members.map { |student| student.email }.reject { |email| email.nil? || email.empty? }
+  addresses.each do |address|
+    puts address
+  end
 end
