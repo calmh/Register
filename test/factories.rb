@@ -120,6 +120,20 @@ Factory.define :administrator do |s|
   s.site_permission true
 end
 
+Factory.define :club_admin, :class => 'administrator' do |s|
+  s.fname 'Club'
+  s.sequence(:sname) {|n| "Admin_#{n}" }
+  s.password "password"
+  s.password_confirmation "password"
+  s.sequence(:email) {|n| "club_admin#{n}@example.com" }
+  s.sequence(:login) {|n| "club_admin#{n}" }
+  s.clubs_permission false
+  s.users_permission false
+  s.groups_permission false
+  s.mailinglists_permission false
+  s.site_permission false
+end
+
 Factory.define :permission do |p|
   p.association :club
   p.association :user, :factory => :administrator

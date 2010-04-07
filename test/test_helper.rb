@@ -22,8 +22,10 @@ class ActiveSupport::TestCase
   def create_club_and_admin
     @club = Factory(:club)
     @admin = Factory(:administrator, :login => 'admin', :password => 'admin', :password_confirmation => 'admin')
+    @ca = Factory(:club_admin, :login => 'club_admin', :password => 'club_admin', :password_confirmation => 'club_admin')
     %w[read edit delete graduations payments export].each do |perm|
       Factory(:permission, :club => @club, :user => @admin, :permission => perm)
+      Factory(:permission, :club => @club, :user => @ca, :permission => perm)
     end
   end
 
@@ -31,6 +33,14 @@ class ActiveSupport::TestCase
     visit "/?locale=en"
     fill_in "Login", :with => "admin"
     fill_in "Password", :with => "admin"
+    uncheck "Remember me"
+    click_button "Log in"
+  end
+
+  def log_in_as_club_admin
+    visit "/?locale=en"
+    fill_in "Login", :with => "club_admin"
+    fill_in "Password", :with => "club_admin"
     uncheck "Remember me"
     click_button "Log in"
   end
