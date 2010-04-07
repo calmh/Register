@@ -290,4 +290,23 @@ class StudentsTest < ActionController::IntegrationTest
     assert student_from_db.mailing_list_ids.include?(mailing_lists[0].id)
     assert !student_from_db.mailing_list_ids.include?(mailing_lists[1].id)
   end
+
+  test "student leave all mailing lists" do
+    student = Factory(:student, :club => @club, :email => "student@example.com", :password => "password", :password_confirmation => "password")
+    mailing_lists = 2.times.map { Factory(:mailing_list) }
+    student.mailing_lists << mailing_lists[1]
+    student.save!
+
+    visit "/?locale=en"
+    fill_in "Login", :with => student.email
+    fill_in "Password", :with => "password"
+    click_button "Log in"
+
+    uncheck mailing_lists[0].description
+    uncheck mailing_lists[1].description
+    click_button "Save"
+
+    student_from_db = Student.find(student.id)
+    assert student_from_db.mailing_list_ids == []
+  end
 end

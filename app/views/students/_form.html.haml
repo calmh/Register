@@ -37,11 +37,15 @@
 
 .group
   %label.label= t(:Mailing_Lists)
+  - num_displayed_lists = 0
   - mailing_lists.each do |ml|
-    - if ml.club == nil || ml.club == @club
+    - if (ml.security != "admin" || current_user.mailinglists_permission?) && (ml.club == nil || ml.club == @club)
       = check_box_tag "subscribes_to[" + ml.id.to_s + "]", value = "1", checked = @student.mailing_list_ids.include?(ml.id), :class => 'checkbox'
       %label{ :for => "subscribes_to_" + ml.id.to_s }= ml.description
       %br
+      - num_displayed_lists += 1
+  - if num_displayed_lists == 0
+    %span.description= t(:No_mailing_lists)
 
 .group
   = f.label :home_phone, t(:Home_phone), :class => :label

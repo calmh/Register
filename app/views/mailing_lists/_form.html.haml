@@ -8,7 +8,7 @@
 
 .group
   = f.label :security, t(:Security), :class => :label
-  = f.select(:security, {  t(:Public) => 'public', t(:Private) => 'private' })
+  = f.select(:security, {  t(:Public) => 'public', t(:Private) => 'private', t(:Admin) => 'admin' })
   %br
   %span.description= t(:Security_descr)
 

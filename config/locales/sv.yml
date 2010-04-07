@@ -208,6 +208,8 @@ sv:
   Archived: Arkiverade
   Unarchive: Gör aktiv igen
   Found: Hittade
+  No_mailing_lists: Det finns inga tillgängliga epostlistor.
+  Admin: Administrativ
 
   authlogic:
      error_messages:

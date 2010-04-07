@@ -7,11 +7,13 @@ class MailingListTest < ActionController::IntegrationTest
     @admin.mailinglists_permission = true
     @admin.save
 
-    @mailing_lists = []
-    @mailing_lists << Factory(:mailing_list, :email => "zz@example.com", :description => "Zz List")
-    @mailing_lists << Factory(:mailing_list, :email => "bb@example.com", :description => "Bb List")
-    @mailing_lists << Factory(:mailing_list, :email => "cc@example.com", :description => "Cc List")
-    @mailing_lists << Factory(:mailing_list, :email => "aa@example.com", :description => "Aa List")
+    @public_mailing_lists = []
+    @public_mailing_lists << Factory(:mailing_list, :email => "zz@example.com", :description => "Zz List", :security => "public")
+    @public_mailing_lists << Factory(:mailing_list, :email => "aa@example.com", :description => "Aa List", :security => "private")
+    @admin_mailing_lists = []
+    @admin_mailing_lists << Factory(:mailing_list, :email => "bb@example.com", :description => "Bb List", :security => "admin")
+    @admin_mailing_lists << Factory(:mailing_list, :email => "cc@example.com", :description => "Cc List", :security => "admin")
+    @mailing_lists = @public_mailing_lists + @admin_mailing_lists
 
     @students = 5.times.map { Factory(:student) }
     @unsorted_students = [ Factory(:student, :fname => "Bb", :sname => "Bb"),
@@ -51,7 +53,24 @@ class MailingListTest < ActionController::IntegrationTest
 
     fill_in "Email", :with => "test@example.com"
     fill_in "Description", :with => "A test list"
-    fill_in "Security", :with => "public"
+    select "Public"
+
+    click_button "Save"
+    click_link "Mailing lists"
+
+    assert_contain "test@example.com"
+    assert_contain "A test list"
+  end
+
+  test "should create new mailing list with admin security" do
+    log_in_as_admin
+
+    click_link "Mailing lists"
+    click_link "New mailing list"
+
+    fill_in "Email", :with => "test@example.com"
+    fill_in "Description", :with => "A test list"
+    select "Admin"
 
     click_button "Save"
     click_link "Mailing lists"
@@ -166,5 +185,38 @@ class MailingListTest < ActionController::IntegrationTest
 
     assert_contain @mailing_lists[1].description
     assert_contain @mailing_lists[2].description
+  end
+
+  test "club admin should not see mailing lists with admin security" do
+    log_in_as_club_admin
+    click_link @club.name
+    click_link @students[0].name
+    click_link "Edit"
+
+    @public_mailing_lists.each do |m|
+      assert_contain m.description
+    end
+    @admin_mailing_lists.each do |m|
+      assert_not_contain m.description
+    end
+
+    assert_not_contain "no mailing lists"
+  end
+
+  test "club admin should see 'no mailing lists' when there are only admin lists available" do
+    log_in_as_club_admin
+    @public_mailing_lists.each do |m|
+      m.destroy
+    end
+
+    click_link @club.name
+    click_link @students[0].name
+    click_link "Edit"
+
+    @admin_mailing_lists.each do |m|
+      assert_not_contain m.description
+    end
+
+    assert_contain "There are no mailing lists available."
   end
 end

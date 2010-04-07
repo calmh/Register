@@ -208,6 +208,8 @@ en:
   Archived: Archived
   Unarchive: Make Active
   Found: Found
+  No_mailing_lists: There are no mailing lists available.
+  Admin: Admin
 
   activerecord:
       messages:

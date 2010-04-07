@@ -304,22 +304,28 @@ class StudentsController < ApplicationController
 
   def update_mailing_list_membership
     if !params.key? :subscribes_to
-      # You always have the right to unsubscribe from mailing lists
       @student.mailing_lists.clear
     else
       ml_ids = params[:subscribes_to].keys
-      if !current_user.kind_of? Administrator
-        cur_ids = @student.mailing_list_ids
-        ml_ids = ml_ids.select do |x|
-          if cur_ids.include?(x)
-            true
-            next
-          end
-          ml = MailingList.find(x)
-          ml.security == 'public' && ( ml.club == nil || ml.club == @club )
+      cur_ids = @student.mailing_list_ids
+
+      cur_ids.each do |list_id|
+        if !ml_ids.include? list_id
+          ml = MailingList.find(list_id)
+          @student.mailing_lists.delete(ml)
         end
       end
-      @student.mailing_list_ids = ml_ids
+
+      ml_ids.each do |list_id|
+        next if cur_ids.include? list_id
+        ml = MailingList.find(list_id)
+        if  ( ml.club == nil || ml.club == @club ) &&
+            ( ml.security == 'public' ||
+              ( ml.security == 'private' && current_user.edit_club_permission?(@club) ) ||
+              ( ml.security == 'admin' && current_user.mailinglists_permission? ) )
+          @student.mailing_lists << ml
+        end
+      end
     end
   end
 
