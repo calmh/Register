@@ -63,11 +63,6 @@ Factory.define :mailing_lists_students do |f|
   f.association :student
 end
 
-Factory.define :groups_students do |f|
-  f.association :group
-  f.association :student
-end
-
 Factory.define :club do |c|
   c.sequence(:name) {|n| "Club #{n}" }
 end
