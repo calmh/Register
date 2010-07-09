@@ -1,0 +1,17 @@
+#!/bin/sh
+
+export VER=$1
+
+git checkout -b release-$VER
+sed "s/CURRENT_VERSION = \".*\"/CURRENT_VERSION = \"$VER\"/" < config/environment.rb > config/environment.rb.new || exit -1
+mv config/environment.rb.new config/environment.rb
+git commit -am "Bump version number to $VER."
+
+git checkout master
+git merge --no-ff release-$VER
+git tag -a v$VER -m "Release $VER"
+
+git checkout develop
+git merge release-$VER
+git branch -d release-$VER
+
