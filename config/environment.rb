@@ -5,7 +5,7 @@
 # ENV['RAILS_ENV'] ||= 'production'
 
 # Specifies gem version of Rails to use when vendor/rails is not present
-RAILS_GEM_VERSION = '2.3.5' unless defined? RAILS_GEM_VERSION
+RAILS_GEM_VERSION = '2.3.8' unless defined? RAILS_GEM_VERSION
 
 COPYRIGHT = "Copyright &copy; 2009-2010 Jakob Borg"
 
@@ -70,7 +70,7 @@ Rails::Initializer.run do |config|
   # Make sure the secret is at least 30 characters and all random,
   # no regular words or you'll be exposed to dictionary attacks.
   config.action_controller.session = {
-    :session_key => '_Register2_session',
+    :key         => '_Register2_session',
     :secret      => '1f15d78a3256d02741887694f8ac25bafc5e900a6df8f1265c005aa9ee1551b06e86aa697f22935ec0a656a47d3dec8ed5fd7fe5b136953773cf814752756390'
   }
 
