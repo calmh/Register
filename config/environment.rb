@@ -17,7 +17,7 @@ REQUIRE_PERSONAL_NUMBER = false
 # Validations will still be performed on personal numbers.
 BIRTHDATE_IS_ENOUGH = true
 # Version string
-CURRENT_VERSION = "2.0.10"
+CURRENT_VERSION = "2.0.11"
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
@@ -33,15 +33,11 @@ Rails::Initializer.run do |config|
   # config.frameworks -= [ :active_record, :active_resource, :action_mailer ]
 
   # Specify gems that this application depends on.
-  # They can then be installed with "rake gems:install" on new installations.
-  # You have to specify the :lib option for libraries, where the Gem name (sqlite3-ruby) differs from the file itself (sqlite3)
-  # config.gem "bj"
-  # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
-  # config.gem "sqlite3-ruby", :lib => "sqlite3"
-  # config.gem "aws-s3", :lib => "aws/s3"
-  config.gem "authlogic", :version => "2.1.3"
-  config.gem "fastercsv"
-  config.gem "factory_girl"
+  config.gem "authlogic", :version => "2.1.5"
+  config.gem "fastercsv", :version => "1.5.3"
+  config.gem "factory_girl", :version => "1.3.1"
+  config.gem "webrat", :version => "0.7.1"
+  config.gem "haml", :version => "3.0.13"
 
   # Only load the plugins named here, in the order given. By default, all plugins
   # in vendor/plugins are loaded in alphabetical order.
@@ -70,7 +66,7 @@ Rails::Initializer.run do |config|
   # Make sure the secret is at least 30 characters and all random,
   # no regular words or you'll be exposed to dictionary attacks.
   config.action_controller.session = {
-    :session_key => '_Register2_session',
+    :key         => '_Register2_session',
     :secret      => '1f15d78a3256d02741887694f8ac25bafc5e900a6df8f1265c005aa9ee1551b06e86aa697f22935ec0a656a47d3dec8ed5fd7fe5b136953773cf814752756390'
   }
 
