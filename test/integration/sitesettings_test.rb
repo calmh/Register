@@ -34,4 +34,12 @@ class SiteSettingsTest < ActionController::IntegrationTest
     click_link "Site settings"
     assert_contain "New welcome text"
   end
+
+  test "set site welcome to blank" do
+    log_in_as_admin
+    click_link "Site settings"
+    fill_in "Welcome Text", :with => ""
+    click_button "Save"
+    assert_contain "settings were updated"
+  end
 end
