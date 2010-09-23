@@ -173,7 +173,7 @@ class StudentsController < ApplicationController
   def create
     @student = Student.new(params[:student])
     @club = @student.club
-    set_initial_password
+    @student.password = @student.password_confirmation = ActiveSupport::SecureRandom.hex(16)
 
     if params.key? :member_of
       group_ids = params[:member_of].keys
@@ -327,12 +327,5 @@ class StudentsController < ApplicationController
         end
       end
     end
-  end
-
-  def set_initial_password
-    # This is an ugly hack that uses the random perishable token as a base password for the user.
-    @student.reset_perishable_token!
-    @student.password = @student.password_confirmation = @student.perishable_token
-    @student.reset_perishable_token!
   end
 end

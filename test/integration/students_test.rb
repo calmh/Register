@@ -102,18 +102,22 @@ class StudentsTest < ActionController::IntegrationTest
 
   test "should not create new blank student" do
     log_in_as_admin
+    before_students = Student.count
     click_link "Clubs"
     click_link @club.name
     click_link "New student"
 
     click_button "Save"
+    after_students = Student.count
 
     assert_not_contain "created"
     assert_contain "can't be blank"
+    assert_equal before_students, after_students
   end
 
   test "should create new student with minimal info" do
     log_in_as_admin
+    before_students = Student.count
     click_link "Clubs"
     click_link @club.name
     click_link "New student"
@@ -122,9 +126,32 @@ class StudentsTest < ActionController::IntegrationTest
     fill_in "Surname", :with => "Testsson"
     fill_in "Personal number", :with => "19850203"
     select @category.category
+
     click_button "Save"
+    after_students = Student.count
 
     assert_contain "created"
+    assert_equal before_students + 1, after_students
+  end
+
+   test "should not create new student with bad birthdate" do
+    log_in_as_admin
+    before_students = Student.count
+    click_link "Clubs"
+    click_link @club.name
+    click_link "New student"
+
+    fill_in "Name", :with => "Test"
+    fill_in "Surname", :with => "Testsson"
+    fill_in "Personal number", :with => "19859293"
+    select @category.category
+
+    click_button "Save"
+    after_students = Student.count
+
+    assert_not_contain "created"
+    assert_contain "invalid"
+    assert_equal before_students, after_students
   end
 
   test "should create a new student in x groups" do
