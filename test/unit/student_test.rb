@@ -61,6 +61,11 @@ class StudentTest < ActiveSupport::TestCase
     assert !@student.valid?
   end
 
+  test "birth date must be a valid date" do
+    @student.personal_number = "19929593"
+    assert !@student.valid?
+  end
+
   if REQUIRE_PERSONAL_NUMBER
 
     test "personal number cannot be nil" do
