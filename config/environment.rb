@@ -17,7 +17,7 @@ REQUIRE_PERSONAL_NUMBER = false
 # Validations will still be performed on personal numbers.
 BIRTHDATE_IS_ENOUGH = true
 # Version string
-CURRENT_VERSION = "2.0.11"
+CURRENT_VERSION = "2.0.12"
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
