@@ -5,7 +5,7 @@
 # ENV['RAILS_ENV'] ||= 'production'
 
 # Specifies gem version of Rails to use when vendor/rails is not present
-RAILS_GEM_VERSION = '2.3.5' unless defined? RAILS_GEM_VERSION
+RAILS_GEM_VERSION = '2.3.9' unless defined? RAILS_GEM_VERSION
 
 COPYRIGHT = "Copyright &copy; 2009-2010 Jakob Borg"
 
@@ -33,11 +33,11 @@ Rails::Initializer.run do |config|
   # config.frameworks -= [ :active_record, :active_resource, :action_mailer ]
 
   # Specify gems that this application depends on.
-  config.gem "authlogic", :version => "2.1.5"
+  config.gem "authlogic", :version => "2.1.6"
   config.gem "fastercsv", :version => "1.5.3"
   config.gem "factory_girl", :version => "1.3.1"
   config.gem "webrat", :version => "0.7.1"
-  config.gem "haml", :version => "3.0.13"
+  config.gem "haml", :version => "3.0.18"
 
   # Only load the plugins named here, in the order given. By default, all plugins
   # in vendor/plugins are loaded in alphabetical order.

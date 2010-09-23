@@ -132,7 +132,7 @@ en:
   Security: Security
   Edit_Mailing_List: Edit Mailing List
   Groups: Groups
-  Matched_x_students: Matched {{count}} students
+  Matched_x_students: Matched %{count} students
   Per_group: Per group
   Per_gender: Per gender
   Per_age: Per age
