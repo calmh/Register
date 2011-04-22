@@ -166,8 +166,8 @@ class StudentsController < ApplicationController
 
   def edit
     @student = Student.find(params[:id])
-    require_administrator_or_self(@student)
     @club = @student.club
+    require_administrator_or_self(@student)
   end
 
   def create
@@ -195,8 +195,8 @@ class StudentsController < ApplicationController
 
   def update
     @student = Student.find(params[:id])
-    require_administrator_or_self(@student)
     @club = @student.club
+    return if !require_administrator_or_self(@student)
 
     if current_user.type == 'Administrator'
       update_as_admin
@@ -262,11 +262,9 @@ class StudentsController < ApplicationController
     operation = "bulk_graduations" if params[:bulk_graduations]
     if operation == "bulk_graduations"
       redirect_to :controller => 'graduations', :action => 'new_bulk'
-    end
-    if operation == "bulk_payments"
+    elsif operation == "bulk_payments"
       redirect_to :controller => 'graduations', :action => 'new_bulk'
-    end
-    if operation == "bulk_message"
+    elsif operation == "bulk_message"
       redirect_to :controller => 'messages', :action => 'new'
     end
   end
